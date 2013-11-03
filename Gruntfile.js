@@ -110,7 +110,7 @@ module.exports = function ( grunt ) {
     },
 
     watch: {
-      files: [ '<%= app_files.js %>','<%= vendor_files.js %>', '<%= app_files.assets %>', '<%= app_files.stylesheet %>', '<%= app_files.html %>' ],
+      files: [ '<%= app_files.js %>','<%= test_files.js %>','<%= vendor_files.js %>', '<%= app_files.assets %>', '<%= app_files.stylesheet %>', '<%= app_files.html %>' ],
       tasks: ['build']
     },
 
@@ -171,7 +171,7 @@ module.exports = function ( grunt ) {
 
   function filterForTestFiles ( files ) {
     return files.filter( function ( file ) {
-      return file.match( /.*.test\.js$/ );
+      return file.match( /.*.test\.js$/ ) || file.match( /.*.spec\.js$/ );
     });
   }
 
