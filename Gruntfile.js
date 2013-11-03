@@ -6,6 +6,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-karma');
 
   var gruntConfig = require( './config/gruntConfig.js' );
 
@@ -111,13 +112,37 @@ module.exports = function ( grunt ) {
     watch: {
       files: [ '<%= app_files.js %>','<%= vendor_files.js %>', '<%= app_files.assets %>', '<%= app_files.stylesheet %>', '<%= app_files.html %>' ],
       tasks: ['build']
-    }
+    },
+
+    karmaconfig: {
+      unit: {
+        dir: '<%= build_dir %>',
+        src: [ 
+          '<%= vendor_files.js %>',
+          'app/src/**/*.js',
+          '<%= test_files.js %>'
+        ]
+      }
+    },
+
+    karma: {
+      options: {
+        configFile: '<%= build_dir %>/karma.conf.js'
+      },
+      unit: {
+        runnerPort: 9101,
+        background: true
+      },
+      continuous: {
+        singleRun: true
+      }
+    },
 
   };
 
   grunt.initConfig( grunt.util._.extend( taskConfig, gruntConfig ) );
 
-  grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build'] );
+  grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build', 'karmaconfig', 'karma:continuous'] );
   
   grunt.registerTask( 'compile', [ 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
 
@@ -132,9 +157,21 @@ module.exports = function ( grunt ) {
     });
   }
 
+  function filterForJSWithoutTest ( files ) {
+    return files.filter( function ( file ) {
+      return !file.match( /test\.js$/ );
+    });
+  }
+
   function filterForLESS ( files ) {
     return files.filter( function ( file ) {
       return file.match( /\.less$/ ) || file.match( /\.css$/ );
+    });
+  }
+
+  function filterForTestFiles ( files ) {
+    return files.filter( function ( file ) {
+      return file.match( /.*.test\.js$/ );
     });
   }
 
@@ -156,6 +193,25 @@ module.exports = function ( grunt ) {
             scripts: jsFiles,
             styles: lessFiles,
             version: grunt.config( 'pkg.version' )
+          }
+        });
+      }
+    });
+  });
+
+  grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
+    var jsFiles = filterForJSWithoutTest( this.filesSrc );
+    
+    var testsFiles = filterForTestFiles(this.filesSrc).map(function(file) {
+        return "../" + file;
+    });
+
+    grunt.file.copy( 'config/karma.conf.tpl.js', grunt.config( 'build_dir' ) + '/karma.conf.js', { 
+      process: function ( contents, path ) {
+        return grunt.template.process( contents, {
+          data: {
+            vendorsScripts: jsFiles,
+            testsScripts: testsFiles
           }
         });
       }
