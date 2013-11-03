@@ -104,3 +104,11 @@ git push origin ${REMOTE_BRANCH}
 git checkout ${LOCAL_BRANCH}
 git rm -r -f "${BIN_DIR}/."
 git commit -m "end deploy bin"
+
+git branch
+git status
+
+echo "Normally all is ok :D ? o/ctrl+c :"
+read next
+
+echo "OOOOOOOOOOOOOOO yes \o/"
