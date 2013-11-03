@@ -8,7 +8,8 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-jshint');
-
+  grunt.loadNpmTasks('grunt-contrib-connect');
+  
   var gruntConfig = require( './config/gruntConfig.js' );
 
   var taskConfig = {
@@ -168,6 +169,16 @@ module.exports = function ( grunt ) {
       }
     },
 
+    connect: {
+      server: {
+        options: {
+          port: 8080,
+          base: '<%= build_dir %>/app',
+          keepalive: false
+        }
+      }
+    }
+
   };
 
   grunt.initConfig( grunt.util._.extend( taskConfig, gruntConfig ) );
@@ -176,7 +187,7 @@ module.exports = function ( grunt ) {
   
   grunt.registerTask( 'compile', [ 'jshint', 'karma:compile:start', 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
 
-  grunt.registerTask( 'dev', [ 'jshint', 'karma:build:start', 'watch' ] );
+  grunt.registerTask( 'dev', [ 'connect','jshint', 'karma:build:start', 'watch' ] );
 
   grunt.registerTask( 'default', [ 'build'] );
 
