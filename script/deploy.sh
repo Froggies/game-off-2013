@@ -5,52 +5,34 @@ BIN_DIR="bin"
 LOCAL_BRANCH="master"
 REMOTE_BRANCH="gh-pages"
 
-echo "Welcome to the deployement system, if you want to continu press [ENTER]:"
+echo "Welcome to the deployement system, if you want to continu press [ENTER], else ctrl+c to quit:"
 read next
 
 git status
 
-echo "Are you ok with you git status ? o/n :"
+echo "Are you ok with you git status ? o/ctrl+c :"
 read next
-
-if (next == "n"); then
-  echo "by by"
-  return
-fi
 
 bash -c "grunt ${GRUNT_CMD}"
 
-echo "Grunt compile was done, add -f bindir ? o/n :"
+echo "Grunt compile was done, add -f bindir ? o/ctrl+c :"
 read next
-
-if (next == "n"); then
-  echo "by by"
-  return
-fi
 
 git add -f "${BIN_DIR}/."
 
 git status
 
-echo "Are you ok with git status and then commit ? o/n :"
+echo "Are you ok with git status and then commit ? o/ctrl+c :"
 read next
-
-if (next == "n"); then
-  echo "by by"
-  return
-fi
 
 git commit -m "deploy bin"
 git checkout ${REMOTE_BRANCH}
 git merge ${LOCAL_BRANCH}
+git status
+git branch
 
-echo "You are on gh-pages branch who are merged, It's OK for you ? o/n :"
+echo "You are on gh-pages branch who are merged, It's OK for you ? o/ctrl+c :"
 read next
-
-if (next == "n"); then
-  echo "by by"
-  return
-fi
 
 bash -c "rm -rf !(${BIN_DIR}|.gitignore|node_modules)"
 
@@ -60,13 +42,8 @@ rmdir ${BIN_DIR}
 
 ls -al
 
-echo "We have deleted all dirs, it's good ? o/n :"
+echo "We have deleted all dirs, it's good ? o/ctrl+c :"
 read next
-
-if (next == "n"); then
-  echo "by by"
-  return
-fi
 
 git rm -r -f bin/.
 git rm -r app/.
@@ -85,24 +62,15 @@ git rm script/deploy.sh
 git add .
 
 git status
+git branch
 
-echo "We have prepared commit, it's ok ? o/n :"
+echo "We have prepared commit, it's ok ? o/ctrl+c :"
 read next
-
-if (next == "n"); then
-  echo "by by"
-  return
-fi
 
 git commit -m "deploy"
 
-echo "We push on origin ? o/n :"
+echo "We push on origin ? o/ctrl+c :"
 read next
-
-if (next == "n"); then
-  echo "by by"
-  return
-fi
 
 git push origin ${REMOTE_BRANCH}
 
