@@ -14,12 +14,10 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      <% vendorsScripts.forEach( function ( file ) { %> '<%= file %>',
-        
-      <% }); %>
-
-      <% testsScripts.forEach( function ( file ) { %> '<%= file %>',
-      <% }); %>
+      "app/vendor/underscore/underscore.min.js",
+      {pattern: "app/src/**/*.js", included:false},
+      {pattern: "test/**/*.spec.js", included:false},
+      "test/main.test.js"
     ],
 
 

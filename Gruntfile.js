@@ -110,31 +110,27 @@ module.exports = function ( grunt ) {
     },
 
     watch: {
-      files: [ '<%= app_files.js %>','<%= test_files.js %>','<%= vendor_files.js %>', '<%= app_files.assets %>', '<%= app_files.stylesheet %>', '<%= app_files.html %>' ],
-      tasks: ['build']
-    },
-
-    karmaconfig: {
-      unit: {
-        dir: '<%= build_dir %>',
-        src: [ 
-          '<%= vendor_files.js %>',
-          'app/src/**/*.js',
-          '<%= test_files.js %>'
-        ]
-      }
+      files: [ '<%= app_files.js %>', 
+               '<%= vendor_files.js %>', 
+               '<%= app_files.assets %>', 
+               '<%= app_files.stylesheet %>', 
+               '<%= app_files.html %>', 
+               '<%= test_files.js %>' 
+            ],
+      tasks: ['karma:build:run', 'build']
     },
 
     karma: {
       options: {
-        configFile: '<%= build_dir %>/karma.conf.js'
+        configFile: 'karma.conf.js'
       },
-      unit: {
+      build: {
         runnerPort: 9101,
         background: true
       },
-      continuous: {
-        singleRun: true
+      compile: {
+        singleRun: true,
+        background: false
       }
     },
 
@@ -142,11 +138,11 @@ module.exports = function ( grunt ) {
 
   grunt.initConfig( grunt.util._.extend( taskConfig, gruntConfig ) );
 
-  grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build', 'karmaconfig', 'karma:continuous'] );
+  grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build'] );
   
-  grunt.registerTask( 'compile', [ 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
+  grunt.registerTask( 'compile', [ 'karma:compile:start', 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
 
-  grunt.registerTask( 'dev', [ 'watch'] );
+  grunt.registerTask( 'dev', [ 'karma:build:start', 'karma:build:run', 'watch' ] );
 
   grunt.registerTask( 'default', [ 'build'] );
 
@@ -157,21 +153,9 @@ module.exports = function ( grunt ) {
     });
   }
 
-  function filterForJSWithoutTest ( files ) {
-    return files.filter( function ( file ) {
-      return !file.match( /test\.js$/ );
-    });
-  }
-
   function filterForLESS ( files ) {
     return files.filter( function ( file ) {
       return file.match( /\.less$/ ) || file.match( /\.css$/ );
-    });
-  }
-
-  function filterForTestFiles ( files ) {
-    return files.filter( function ( file ) {
-      return file.match( /.*.test\.js$/ ) || file.match( /.*.spec\.js$/ );
     });
   }
 
@@ -193,25 +177,6 @@ module.exports = function ( grunt ) {
             scripts: jsFiles,
             styles: lessFiles,
             version: grunt.config( 'pkg.version' )
-          }
-        });
-      }
-    });
-  });
-
-  grunt.registerMultiTask( 'karmaconfig', 'Process karma config templates', function () {
-    var jsFiles = filterForJSWithoutTest( this.filesSrc );
-    
-    var testsFiles = filterForTestFiles(this.filesSrc).map(function(file) {
-        return "../" + file;
-    });
-
-    grunt.file.copy( 'config/karma.conf.tpl.js', grunt.config( 'build_dir' ) + '/karma.conf.js', { 
-      process: function ( contents, path ) {
-        return grunt.template.process( contents, {
-          data: {
-            vendorsScripts: jsFiles,
-            testsScripts: testsFiles
           }
         });
       }
