@@ -20,6 +20,21 @@ define(['controller/GameController', 'view/GameView'], function() {
 			expect(game.view.controller).toBe(game);
 		});
 
+		it(' should display finish after 10 loops', function () {
+			for(var i=0; i<10; i++) {
+				game.loop();
+			}
+			expect(game.loop()).toBe('finish');
+		});	
+
+		it(' should create a backlog', function () {
+			expect(game.backlog).toBeDefined();
+		});	
+
+		it(' should create 5 columns', function () {
+			expect(game.columns.length).toBe(5);
+		});		
+
 	});
 
 });

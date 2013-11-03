@@ -6,14 +6,17 @@ var GameController = (function() {
 		this.fps = 1000;
 		this.nbLoop = 0;
 		this.timeout = undefined;
-		this.backlog = undefined;
 
 		this.view = new GameView(this);
 		this.backlog = new BacklogController();
+		this.columns = [new ColumnController(), new ColumnController(), new ColumnController(), new ColumnController(), new ColumnController()];
 	}
 
 	Game.prototype.start = function(element) {
 		this.view.draw(element);
+		for(var indexColumn=0; indexColumn < this.columns.length; indexColumn++) {
+			this.columns[indexColumn].start(this.view.container);
+		}
 		this.backlog.start(this.view.container);
 		this.resume();
 	};
@@ -38,6 +41,7 @@ var GameController = (function() {
 		if(this.backlog.cards.length > 10) {
 			this.pause();
 			window.alert('Game over');
+			return 'finish';
 		}
 	};
 
