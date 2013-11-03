@@ -34,7 +34,7 @@ git branch
 echo "You are on gh-pages branch who are merged, It's OK for you ? o/ctrl+c :"
 read next
 
-rm -rf !(bin|.gitignore|node_modules)
+eval "rm -rf !(${BIN_DIR}|.gitignore|node_modules)"
 
 mv ${BIN_DIR}/* ./ 
 
