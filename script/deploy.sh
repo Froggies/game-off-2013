@@ -35,23 +35,32 @@ echo "You are on gh-pages branch who are merged, It's OK for you ? o/ctrl+c :"
 read next
 
 rm -rf app/*
+rmdir app
 rm -rf build/*
+rmdir build
 rm -rf config/*
+rmdir config
 rm -rf screenshots/*
+rmdir screenshots
 rm -rf script/*
+rmdir script
 rm -rf test/*
+rmdir test
 rm -rf test-coverage/*
+rmdir test-coverage
+
 rm .bowerrc
 rm .editorconfig
-rm Gruntfile
+rm Gruntfile.js
 rm README.md
 rm bower.json
 rm karma.conf.js
 rm package.json
 
 rm -rf assets/*
+rmdir assets
 rm game-off-2013-0.1.0.css
-rm game-off-2013-01.0.js
+rm game-off-2013-0.1.0.js
 rm index.html
 
 mv ${BIN_DIR}/* ./ 
