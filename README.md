@@ -4,3 +4,6 @@ You are a tyrannical project chief and you have to affect tasks to your developp
 
 
 ![First Mockup](https://raw.github.com/Froggies/game-off-2013/master/screenshots/all.png)
+
+## Rules
+[Rules] (https://github.com/Froggies/game-off-2013/wiki/Rules)
