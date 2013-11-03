@@ -49,7 +49,10 @@ rm bower.json
 rm karma.conf.js
 rm package.json
 
-rm assets/*
+rm -rf assets/*
+rm game-off-2013-0.1.0.css
+rm game-off-2013-01.0.js
+rm index.html
 
 mv ${BIN_DIR}/* ./ 
 
