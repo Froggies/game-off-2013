@@ -163,7 +163,7 @@ module.exports = function ( grunt ) {
           it: false,
           expect: false,
           requirejs: false,
-          dump: false
+          dump: false 
         }
       }
     },
