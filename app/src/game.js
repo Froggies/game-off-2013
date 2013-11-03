@@ -11,12 +11,15 @@ var game = (function() {
 
 	function pause() {
 		window.clearInterval(timeout);
+		timeout = undefined;
 	}
 
 	function resume() {
-		timeout = window.setInterval(function() {
-			nbLoop = nbLoop + 1;
-		}, fps);
+		if(!timeout) {
+			timeout = window.setInterval(function() {
+				nbLoop = nbLoop + 1;
+			}, fps);
+		}
 	}
 
 
@@ -59,7 +62,7 @@ var game = (function() {
 			return {};
 		}
 
-	}
+	};
 
 })();
 
