@@ -34,7 +34,22 @@ git branch
 echo "You are on gh-pages branch who are merged, It's OK for you ? o/ctrl+c :"
 read next
 
-eval "rm -rf !(${BIN_DIR}|.gitignore|node_modules)"
+rm -rf app/*
+rm -rf build/*
+rm -rf config/*
+rm -rf screenshots/*
+rm -rf script/*
+rm -rf test/*
+rm -rf test-coverage/*
+rm .bowerrc
+rm .editorconfig
+rm Gruntfile
+rm README.md
+rm bower.json
+rm karma.conf.js
+rm package.json
+
+rm assets/*
 
 mv ${BIN_DIR}/* ./ 
 
