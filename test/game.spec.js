@@ -1,3 +1,5 @@
+/* jshint undef: false */
+
 define(['game'], function(game2) {
 
 	describe('in game', function() {

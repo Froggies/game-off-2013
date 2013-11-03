@@ -7,6 +7,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
 
   var gruntConfig = require( './config/gruntConfig.js' );
 
@@ -117,7 +118,7 @@ module.exports = function ( grunt ) {
                '<%= app_files.html %>', 
                '<%= test_files.js %>' 
             ],
-      tasks: ['karma:build:run', 'build']
+      tasks: ['jshint', 'karma:build:run', 'build']
     },
 
     karma: {
@@ -134,15 +135,48 @@ module.exports = function ( grunt ) {
       }
     },
 
+    jshint: {
+      files: [ '<%= app_files.js %>',  
+               '<%= test_files.js %>' 
+            ],
+      options: {
+        curly: true,
+        eqeqeq: true,
+        immed: true,
+        latedef: true,
+        newcap: true,
+        noarg: true,
+        sub: true,
+        boss: true,
+        eqnull: true,
+        strict: false,
+        browser : true,
+        undef: true,
+        indent: 2,
+        quotmark : 'single',
+        globals: {
+          /*tests functions exclude*/
+          define: false,
+          module: false,
+          describe: false,
+          beforeEach: false,
+          it: false,
+          expect: false,
+          requirejs: false,
+          dump: false
+        }
+      }
+    },
+
   };
 
   grunt.initConfig( grunt.util._.extend( taskConfig, gruntConfig ) );
 
   grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build'] );
   
-  grunt.registerTask( 'compile', [ 'karma:compile:start', 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
+  grunt.registerTask( 'compile', [ 'jshint', 'karma:compile:start', 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
 
-  grunt.registerTask( 'dev', [ 'karma:build:start', 'karma:build:run', 'watch' ] );
+  grunt.registerTask( 'dev', [ 'jshint', 'karma:build:start', 'watch' ] );
 
   grunt.registerTask( 'default', [ 'build'] );
 
