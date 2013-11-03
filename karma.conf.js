@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      "app/vendor/underscore/underscore.min.js",
+      "app/vendor/underscore/underscore.js",
       {pattern: "app/src/**/*.js", included:false},
       {pattern: "test/**/*.spec.js", included:false},
       "test/main.test.js"
@@ -26,10 +26,18 @@ module.exports = function(config) {
       
     ],
 
+    preprocessors : {
+      'app/src/**/*.js': 'coverage'
+    },
 
     // test results reporter to use
     // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
+
+    coverageReporter : {
+      type : 'html',
+      dir : 'test-coverage/'
+    },
 
 
     // web server port
