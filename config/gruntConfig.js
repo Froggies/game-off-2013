@@ -8,7 +8,7 @@ module.exports = {
     js: [ 'app/src/**/*.js' ],
     html: [ 'app/index.html' ],
     stylesheet: ['app/stylesheet/**/*.less'],
-    assets: ['app/assets'],
+    assets: ['app/assets/**/*'],
     less: 'app/stylesheet/main.less',
   },
 

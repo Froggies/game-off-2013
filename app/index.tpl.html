@@ -8,15 +8,16 @@
     <title></title>
   </head>
 	<body>
-		<div id="test"> </div>
+		<div id="test"> 
+			<img src="assets/img/all.png">
+
+		</div>
 		
     <% styles.forEach( function ( file ) { %>
-      <link rel="stylesheet" type="text/css" href="<%= file %>" />
-    <% }); %>
+      <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 
     <% scripts.forEach( function ( file ) { %>
-      <script type="text/javascript" src="<%= file %>"></script>
-    <% }); %>
+      <script type="text/javascript" src="<%= file %>"></script><% }); %>
 
 
 	</body>

@@ -5,6 +5,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-contrib-concat');  
   grunt.loadNpmTasks('grunt-recess');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   var gruntConfig = require( './config/gruntConfig.js' );
 
@@ -41,9 +42,9 @@ module.exports = function ( grunt ) {
       compile: {
         files: [
           {
-            src: [ '**' ],
+            src: [ '**/*' ],
             dest: '<%= compile_dir %>/assets',
-            cwd: '<%= build_dir %>/assets',
+            cwd: '<%= build_dir %>/app/assets',
             expand: true
           }
         ]
@@ -57,27 +58,16 @@ module.exports = function ( grunt ) {
         },
         src: [ 
           '<%= vendor_files.js %>', 
-          '<%= build_dir %>/app/src//**/*.js'   
+          '<%= build_dir %>/app/src/**/*.js'   
         ],
-        dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
+        dest: '<%= compile_dir %>/<%= pkg.name %>-<%= pkg.version %>.js'
       }
     },
 
     recess: {
-      build: {
-        src: [ '<%= app_files.less %>' ],
-        dest: '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css',
-        options: {
-          compile: true,
-          compress: false,
-          noUnderscores: false,
-          noIDs: false,
-          zeroUnits: false
-        }
-      },
       compile: {
-        src: [ '<%= recess.build.dest %>' ],
-        dest: '<%= recess.build.dest %>',
+        src: [ '<%= app_files.less %>' ],
+        dest: '<%= compile_dir %>/<%= pkg.name %>-<%= pkg.version %>.css',
         options: {
           compile: true,
           compress: true,
@@ -101,13 +91,26 @@ module.exports = function ( grunt ) {
 
     index: {
       build: {
-        dir: '<%= build_dir %>',
+        dir: '<%= build_dir %>/app',
         src: [
-          '<%= vendor_files.js %>',
+          '<%= build_dir %>/<%= vendor_files.js %>',
           '<%= build_dir %>/app/src/**/*.js',
           '<%= build_dir %>/app/stylesheet/**/*.less',
         ]
+      },
+      compile: {
+        dir: '<%= compile_dir %>',
+        src: [
+          '<%= concat.compile_js.dest %>',
+          '<%= vendor_files.css %>',
+          '<%= recess.compile.dest %>'
+        ]
       }
+    },
+
+    watch: {
+      files: [ '<%= app_files.js %>','<%= vendor_files.js %>', '<%= app_files.assets %>', '<%= app_files.stylesheet %>', '<%= app_files.html %>' ],
+      tasks: ['build']
     }
 
   };
@@ -115,6 +118,10 @@ module.exports = function ( grunt ) {
   grunt.initConfig( grunt.util._.extend( taskConfig, gruntConfig ) );
 
   grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build'] );
+  
+  grunt.registerTask( 'compile', [ 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
+
+  grunt.registerTask( 'dev', [ 'watch'] );
 
   grunt.registerTask( 'default', [ 'build'] );
 
@@ -127,12 +134,12 @@ module.exports = function ( grunt ) {
 
   function filterForLESS ( files ) {
     return files.filter( function ( file ) {
-      return file.match( /\.less$/ );
+      return file.match( /\.less$/ ) || file.match( /\.css$/ );
     });
   }
 
   grunt.registerMultiTask( 'index', 'Process index.html template', function () {
-    var dirRE = new RegExp( '^('+grunt.config('build_dir')+'|'+grunt.config('compile_dir')+')\/', 'g' );
+    var dirRE = new RegExp( '^('+this.data.dir+')\/', 'g' );
     
     var jsFiles = filterForJS( this.filesSrc ).map( function ( file ) {
       return file.replace( dirRE, '' );
@@ -142,7 +149,7 @@ module.exports = function ( grunt ) {
       return file.replace( dirRE, '' );
     });
 
-    grunt.file.copy('app/index.html', this.data.dir + '/index.html', { 
+    grunt.file.copy('app/index.tpl.html', this.data.dir + '/index.html', { 
       process: function ( contents, path ) {
         return grunt.template.process( contents, {
           data: {
