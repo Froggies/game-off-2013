@@ -20,11 +20,6 @@ define(['controller/GameController', 'view/GameView'], function() {
 			expect(game.view.controller).toBe(game);
 		});
 
-		it('start function should create a backlog', function () {
-			game.start();
-			expect(game.backlog).toBeDefined();
-		});
-
 	});
 
 });

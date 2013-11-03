@@ -6,6 +6,10 @@ var CardController = (function() {
 		this.view = new CardView(this);
 	}
 
+	Card.prototype.start = function(element) {
+		this.view.draw(element);
+	};
+
 	return Card;
 
 })();

@@ -10,6 +10,7 @@ var BacklogController = (function() {
 	Backlog.prototype.addCard = function() {
 		var card = new CardController();
 		this.cards.push(card);
+		card.start(this.view.container);
 		return card;
 	};
 
@@ -18,6 +19,10 @@ var BacklogController = (function() {
 		if (index > -1) {
 			this.cards.splice(index, 1);
 		}
+	};
+
+	Backlog.prototype.start = function(element) {
+		this.view.draw(element);
 	};
 
 	return Backlog;

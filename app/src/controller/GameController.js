@@ -3,16 +3,18 @@ var GameController = (function() {
 	'use strict';
 
 	function Game() {
-		this.fps = 50;
+		this.fps = 1000;
 		this.nbLoop = 0;
 		this.timeout = undefined;
 		this.backlog = undefined;
 
 		this.view = new GameView(this);
+		this.backlog = new BacklogController();
 	}
 
-	Game.prototype.start = function() {
-		this.backlog = new BacklogController();
+	Game.prototype.start = function(element) {
+		this.view.draw(element);
+		this.backlog.start(this.view.container);
 		this.resume();
 	};
 
@@ -23,9 +25,19 @@ var GameController = (function() {
 
 	Game.prototype.resume = function() {
 		if(this.timeout === undefined) {
+			var that = this;
 			this.timeout = window.setInterval(function() {
-				this.nbLoop = this.nbLoop + 1;
+				that.loop();
 			}, this.fps);
+		}
+	};
+
+	Game.prototype.loop = function() {
+		this.nbLoop = this.nbLoop + 1;
+		this.backlog.addCard();
+		if(this.backlog.cards.length > 10) {
+			this.pause();
+			window.alert('Game over');
 		}
 	};
 
