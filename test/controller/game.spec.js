@@ -1,4 +1,5 @@
-define(['controller/GameController', 'view/GameView'], function() {
+define(['controller/GameController', 'view/GameView', 'controller/ColumnController', 'view/ColumnView'],
+ function() {
 
 	describe('in game', function() {
 
