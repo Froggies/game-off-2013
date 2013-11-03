@@ -152,7 +152,7 @@ module.exports = function ( grunt ) {
         eqnull: true,
         strict: false,
         browser : true,
-        undef: true,
+        undef: false,
         indent: 2,
         quotmark : 'single',
         globals: {
