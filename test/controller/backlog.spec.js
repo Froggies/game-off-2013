@@ -1,4 +1,9 @@
-define(['controller/BacklogController', 'view/BacklogView'], function() {
+var dependencies = [
+	'controller/BacklogController', 'view/BacklogView', 
+	'util/UtilView'
+];
+
+define(dependencies, function() {
 
 	describe('in backlog', function() {
 

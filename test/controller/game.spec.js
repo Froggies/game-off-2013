@@ -5,8 +5,7 @@ var dependencies = [
 	'controller/RowController', 'view/RowView'
 ];
 
-define(dependencies,
- function() {
+define(dependencies, function() {
 
 	describe('in game', function() {
 

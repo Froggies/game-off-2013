@@ -1,4 +1,8 @@
-define(['controller/CardController', 'view/CardView'], function() {
+var dependencies = [
+	'controller/CardController', 'view/CardView'
+];
+
+define(dependencies, function() {
 
 	describe('in card', function() {
 

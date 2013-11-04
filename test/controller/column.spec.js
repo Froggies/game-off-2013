@@ -1,4 +1,8 @@
-define(['controller/ColumnController', 'view/ColumnView'], function() {
+var dependencies = [
+	'controller/ColumnController', 'view/ColumnView'
+];
+
+define(dependencies, function() {
 
 	describe('in column', function() {
 

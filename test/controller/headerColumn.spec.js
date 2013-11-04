@@ -1,4 +1,8 @@
-define(['controller/HeaderColumnController', 'view/HeaderColumnView'], function() {
+var dependencies = [
+	'controller/HeaderColumnController', 'view/HeaderColumnView'
+];
+
+define(dependencies, function() {
 
 	describe('in header column', function() {
 

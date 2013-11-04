@@ -1,4 +1,8 @@
-define(['controller/RowController', 'view/RowView'], function() {
+var dependencies = [
+	'controller/RowController', 'view/RowView'
+];
+
+define(dependencies, function() {
 
 	describe('in row', function() {
 
