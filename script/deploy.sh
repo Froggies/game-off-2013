@@ -26,8 +26,8 @@ echo "Are you ok with git status and then commit ? o/ctrl+c :"
 read next
 
 git commit -m "deploy bin"
-git checkout ${REMOTE_BRANCH}
-git merge ${LOCAL_BRANCH}
+git branch -D ${REMOTE_BRANCH}
+git checkout -b ${REMOTE_BRANCH}
 git status
 git branch
 
