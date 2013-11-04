@@ -1,4 +1,11 @@
-define(['controller/GameController', 'view/GameView', 'controller/ColumnController', 'view/ColumnView'],
+var dependencies = [
+	'controller/GameController', 'view/GameView', 
+	'controller/ColumnController', 'view/ColumnView',
+	'controller/HeaderColumnController', 'view/HeaderColumnView',
+	'controller/RowController', 'view/RowView'
+];
+
+define(dependencies,
  function() {
 
 	describe('in game', function() {

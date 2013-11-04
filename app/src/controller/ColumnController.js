@@ -2,15 +2,22 @@ var ColumnController = (function() {
 
 	'use strict';
 
+	var NB_ROW = 5;
+
 	function Column() {
 		this.view = new ColumnView(this);
-		this.cards = [new CardController(), new CardController(), new CardController(), new CardController(), new CardController()];
+		this.header = new HeaderColumnController();
+		this.rows = [];
+		for(var i=0; i<NB_ROW; i++) {
+			this.rows.push(new RowController());
+		}
 	}
 
 	Column.prototype.start = function(element) {
 		this.view.draw(element);
-		for(var indexCard=0; indexCard < this.cards.length; indexCard++) {
-			this.cards[indexCard].start(this.view.container);
+		this.header.start(this.view.container);
+		for(var i=0; i < this.rows.length; i++) {
+			this.rows[i].start(this.view.container);
 		}
 	};
 
