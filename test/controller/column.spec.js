@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in column', function() {
+	describe('a column', function() {
 
 		var column;
 
@@ -12,20 +12,56 @@ define(dependencies, function() {
 			column = new ColumnController();
 		});
 
-		it(' should have a view', function () {
+		it('should have a view', function () {
 			expect(column.view).toBeDefined();
 		});
 
-		it(' should have connect view with it', function () {
+		it('should have connect view with it', function () {
 			expect(column.view.controller).toBe(column);
 		});
 
-		it(' should have a header column', function () {
+		it('should have a header column', function () {
 			expect(column.header).toBeDefined();
 		});
 
-		it(' should have 5 rows', function () {
+		it('should have 5 rows', function () {
 			expect(column.rows.length).toBe(5);
+		});
+
+		it('should refuse card when it full', function () {
+			var card = new CardController();
+			expect(column.addCard(card)).toBe(false);
+		});
+
+		it('should active 1 new row', function () {
+			column.activeNextRow();
+			expect(column.rows[0].isActive).toBe(true);
+		});
+
+		it('should add card in first row', function () {
+			var card = new CardController();
+			column.activeNextRow();
+			column.addCard(card);
+			expect(column.rows[0].card).toBe(card);
+		});
+
+		it('should not add card when row is not activate', function () {
+			var card = new CardController();
+			column.activeNextRow();
+			column.addCard(card);
+			var card2 = new CardController();
+			column.addCard(card2);
+			expect(column.rows[1].card).toBeUndefined();
+		});
+
+		it('should add card in second row when first is full', function () {
+			var card = new CardController();
+			column.activeNextRow();
+			column.addCard(card);
+			var card2 = new CardController();
+			column.activeNextRow();
+			column.addCard(card2);
+			expect(column.rows[1].card).toBe(card2);
 		});
 
 	});

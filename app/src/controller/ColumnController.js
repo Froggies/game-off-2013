@@ -21,6 +21,25 @@ var ColumnController = (function() {
 		}
 	};
 
+	Column.prototype.activeNextRow = function() {
+		for(var i=0; i < this.rows.length; i++) {
+			if(this.rows[i].isActive === false) {
+				this.rows[i].activate();
+				return;
+			}
+		}
+	};
+
+	Column.prototype.addCard = function(card) {
+		for(var i=0; i < this.rows.length; i++) {
+			if(this.rows[i].canAcceptCard() === true) {
+				this.rows[i].addCard(card);
+				return true;
+			}
+		}
+		return false;
+	};
+
 	return Column;
 
 })();

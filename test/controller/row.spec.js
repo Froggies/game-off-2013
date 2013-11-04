@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in row', function() {
+	describe('a row', function() {
 
 		var row;
 
@@ -12,12 +12,17 @@ define(dependencies, function() {
 			row = new RowController();
 		});
 
-		it(' should have a view', function () {
+		it('should have a view', function () {
 			expect(row.view).toBeDefined();
 		});
 
-		it(' should have connect view with it', function () {
+		it('should have connect view with it', function () {
 			expect(row.view.controller).toBe(row);
+		});
+
+		it('should be active when set it', function () {
+			row.activate();
+			expect(row.isActive).toBe(true);
 		});
 
 	});

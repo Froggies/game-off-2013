@@ -4,10 +4,25 @@ var RowController = (function() {
 
 	function Row() {
 		this.view = new RowView(this);
+		this.isActive = false;
+		this.card = undefined;
 	}
 
 	Row.prototype.start = function(element) {
 		this.view.draw(element);
+	};
+
+	Row.prototype.activate = function() {
+		this.isActive = true;
+	};
+
+	Row.prototype.canAcceptCard = function(card) {
+		return this.isActive && this.card === undefined;
+	};
+
+	Row.prototype.addCard = function(card) {
+		this.card = card;
+		card.start(this.view.container);
 	};
 
 	return Row;

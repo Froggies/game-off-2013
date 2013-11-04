@@ -8,7 +8,6 @@ var UtilDragAndDrop = (function() {
       element.draggable = true;
       element.ondragstart = function(evt) {
         lastElementDragged = element;
-        console.log('drag start');
       };
     },
     makeUndraggable: function(element) {
@@ -18,18 +17,15 @@ var UtilDragAndDrop = (function() {
     makeDroppable: function(element) {
       element.ondragenter = function (evt) {
         event.preventDefault();
-        console.log('drag enter');
         return true;
       };
       element.ondragover = function(evt) {
-        console.log('drag over');
         return false;
       };
       element.ondrop = function (evt) {
         element.appendChild(lastElementDragged);
         UtilDragAndDrop.makeUndraggable(lastElementDragged);
         evt.stopPropagation();
-        console.log('drop');
         return false;
       };
     }
