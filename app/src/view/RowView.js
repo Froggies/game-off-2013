@@ -4,18 +4,12 @@ var RowView = (function() {
 
 	function Row(controller) {
 		this.controller = controller;
-		this.container = buildContainer();
+		this.container = UtilView.buildContainer('row');
 	}
 
 	Row.prototype.draw = function(element) {
 		element.appendChild(this.container);
 	};
-
-	function buildContainer() {
-		var div = document.createElement('div');
-		div.className = 'row';
-		return div;
-	}
 
 	return Row;
 

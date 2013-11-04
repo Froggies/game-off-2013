@@ -4,18 +4,12 @@ var HeaderColumnView = (function() {
 
 	function HeaderColumn(controller) {
 		this.controller = controller;
-		this.container = buildContainer();
+		this.container = UtilView.buildContainer('headerColumn');
 	}
 
 	HeaderColumn.prototype.draw = function(element) {
 		element.appendChild(this.container);
 	};
-
-	function buildContainer() {
-		var div = document.createElement('div');
-		div.className = 'headerColumn';
-		return div;
-	}
 
 	return HeaderColumn;
 

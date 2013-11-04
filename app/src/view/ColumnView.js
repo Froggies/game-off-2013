@@ -4,18 +4,12 @@ var ColumnView = (function() {
 
 	function ColumnView(controller) {
 		this.controller = controller;
-		this.container = buildContainer();
+		this.container = UtilView.buildContainer('column');
 	}
 
 	ColumnView.prototype.draw = function(element) {
 		element.appendChild(this.container);
 	};
-
-	function buildContainer() {
-		var div = document.createElement('div');
-		div.className = 'column';
-		return div;
-	}
 
 	return ColumnView;
 
