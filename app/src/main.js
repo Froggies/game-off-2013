@@ -7,6 +7,7 @@ window.onload = function() {
 	
 	var game = new GameController();
 	game.start(document.getElementsByTagName('body')[0]);
+	game.pause();
 
 	button.onclick = function() {
 		console.log('click');

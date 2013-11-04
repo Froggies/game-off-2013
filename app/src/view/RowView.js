@@ -5,6 +5,7 @@ var RowView = (function() {
 	function Row(controller) {
 		this.controller = controller;
 		this.container = UtilView.buildContainer('row');
+		UtilDragAndDrop.makeDroppable(this.container);
 	}
 
 	Row.prototype.draw = function(element) {
