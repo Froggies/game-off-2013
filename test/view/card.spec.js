@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in card', function() {
+	describe('a card', function() {
 
 		var card;
 
@@ -12,17 +12,17 @@ define(dependencies, function() {
 			card = new CardView();
 		});
 
-		it(' should have a container', function () {
+		it('should have a container', function () {
 			expect(card.container).toBeDefined();
 		});
 
-		it(' should draw in element', function () {
+		it('should draw in element', function () {
 			var div = document.createElement('div');
 			card.draw(div);
 			expect(div.children[0]).toBeDefined();
 		});
 
-		it(' should set correct className', function () {
+		it('should set correct className', function () {
 			var div = document.createElement('div');
 			card.draw(div);
 			expect(div.children[0].className).toBe('card');

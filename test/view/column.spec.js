@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in column', function() {
+	describe('a column', function() {
 
 		var column;
 
@@ -12,17 +12,17 @@ define(dependencies, function() {
 			column = new ColumnView();
 		});
 
-		it(' should have a container', function () {
+		it('should have a container', function () {
 			expect(column.container).toBeDefined();
 		});
 
-		it(' should draw in element', function () {
+		it('should draw in element', function () {
 			var div = document.createElement('div');
 			column.draw(div);
 			expect(div.children[0]).toBeDefined();
 		});
 
-		it(' should set correct className', function () {
+		it('should set correct className', function () {
 			var div = document.createElement('div');
 			column.draw(div);
 			expect(div.children[0].className).toBe('column');

@@ -11,25 +11,25 @@ define(dependencies, function() {
 		beforeEach(function() {
 		});
 
-		it(' should make draggable an element', function () {
+		it('should make draggable an element', function () {
 			UtilDragAndDrop.makeDraggable(element);
 			expect(element.draggable).toBe(true);
 		});
 
-		it(' should make undraggable an element', function () {
+		it('should make undraggable an element', function () {
 			UtilDragAndDrop.makeDraggable(element);
 			UtilDragAndDrop.makeUndraggable(element);
 			expect(element.draggable).toBe(false);
 		});
 
-		it(' should make droppable an element', function () {
+		it('should make droppable an element', function () {
 			UtilDragAndDrop.makeDroppable(element);
 			expect(element.ondragenter).toBeDefined();
 			expect(element.ondragover).toBeDefined();
 			expect(element.ondrop).toBeDefined();
 		});
 
-		it(' should move draggable element into droppable element on drop', function () {
+		it('should move draggable element into droppable element on drop', function () {
 			UtilDragAndDrop.makeDroppable(element);
 			var drag = document.createElement('div');
 			UtilDragAndDrop.makeDraggable(drag);

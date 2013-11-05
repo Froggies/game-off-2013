@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in row', function() {
+	describe('a row', function() {
 
 		var row;
 
@@ -12,17 +12,17 @@ define(dependencies, function() {
 			row = new RowView();
 		});
 
-		it(' should have a container', function () {
+		it('should have a container', function () {
 			expect(row.container).toBeDefined();
 		});
 
-		it(' should draw in element', function () {
+		it('should draw in element', function () {
 			var div = document.createElement('div');
 			row.draw(div);
 			expect(div.children[0]).toBeDefined();
 		});
 
-		it(' should set correct className', function () {
+		it('should set correct className', function () {
 			var div = document.createElement('div');
 			row.draw(div);
 			expect(div.children[0].className).toBe('row');

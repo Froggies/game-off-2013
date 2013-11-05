@@ -12,11 +12,11 @@ define(dependencies, function() {
 			card = new CardController();
 		});
 
-		it(' should have a view', function () {
+		it('should have a view', function () {
 			expect(card.view).toBeDefined();
 		});
 
-		it(' should have connect view with it', function () {
+		it('should have connect view with it', function () {
 			expect(card.view.controller).toBe(card);
 		});
 

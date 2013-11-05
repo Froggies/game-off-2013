@@ -7,7 +7,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in game', function() {
+	describe('a game', function() {
 
 		var game;
 
@@ -15,30 +15,30 @@ define(dependencies, function() {
 			game = new GameController();
 		});
 
-		it(' should have 0 nbLoop before start', function () {
+		it('should have 0 nbLoop before start', function () {
 			expect(game.nbLoop).toBe(0);
 		});
 
-		it(' should have a view', function () {
+		it('should have a view', function () {
 			expect(game.view).toBeDefined();
 		});
 
-		it(' should have connect view with it', function () {
+		it('should have connect view with it', function () {
 			expect(game.view.controller).toBe(game);
 		});
 
-		it(' should display finish after 10 loops', function () {
+		it('should display finish after 10 loops', function () {
 			for(var i=0; i<10; i++) {
 				game.loop();
 			}
 			expect(game.loop()).toBe('finish');
 		});	
 
-		it(' should create a backlog', function () {
+		it('should create a backlog', function () {
 			expect(game.backlog).toBeDefined();
 		});	
 
-		it(' should create 5 columns', function () {
+		it('should create 5 columns', function () {
 			expect(game.columns.length).toBe(5);
 		});		
 

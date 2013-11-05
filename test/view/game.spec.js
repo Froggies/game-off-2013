@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in game', function() {
+	describe('a game', function() {
 
 		var game;
 
@@ -12,17 +12,17 @@ define(dependencies, function() {
 			game = new GameView();
 		});
 
-		it(' should have a container', function () {
+		it('should have a container', function () {
 			expect(game.container).toBeDefined();
 		});
 
-		it(' should draw in element', function () {
+		it('should draw in element', function () {
 			var div = document.createElement('div');
 			game.draw(div);
 			expect(div.children[0]).toBeDefined();
 		});
 
-		it(' should set correct className', function () {
+		it('should set correct className', function () {
 			var div = document.createElement('div');
 			game.draw(div);
 			expect(div.children[0].className).toBe('game');

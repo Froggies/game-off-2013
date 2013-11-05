@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in backlog', function() {
+	describe('a backlog', function() {
 
 		var backlog;
 
@@ -12,17 +12,17 @@ define(dependencies, function() {
 			backlog = new BacklogView();
 		});
 
-		it(' should have a container', function () {
+		it('should have a container', function () {
 			expect(backlog.container).toBeDefined();
 		});
 
-		it(' should draw in element', function () {
+		it('should draw in element', function () {
 			var div = document.createElement('div');
 			backlog.draw(div);
 			expect(div.children[0]).toBeDefined();
 		});
 
-		it(' should set correct className', function () {
+		it('should set correct className', function () {
 			var div = document.createElement('div');
 			backlog.draw(div);
 			expect(div.children[0].className).toBe('backlog');

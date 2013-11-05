@@ -4,7 +4,7 @@ var dependencies = [
 
 define(dependencies, function() {
 
-	describe('in header column', function() {
+	describe('a header column', function() {
 
 		var headerColumn;
 
@@ -12,11 +12,11 @@ define(dependencies, function() {
 			headerColumn = new HeaderColumnController();
 		});
 
-		it(' should have a view', function () {
+		it('should have a view', function () {
 			expect(headerColumn.view).toBeDefined();
 		});
 
-		it(' should have connect view with it', function () {
+		it('should have connect view with it', function () {
 			expect(headerColumn.view.controller).toBe(headerColumn);
 		});
 
