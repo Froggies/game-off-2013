@@ -8,7 +8,7 @@ var ColumnController = (function() {
 		this.isActive = false;
 		this.header = new HeaderColumnController();
 		this.rows = [];
-		for(var i=0; i<Constants.NB_ROW; i++) {
+		for(var i=0; i<Constants.NB_ROWS; i++) {
 			this.rows.push(new RowController());
 		}
 	}
