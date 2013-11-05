@@ -4,7 +4,7 @@ var GameView = (function() {
 
 	function Game(controller) {
 		this.controller = controller;
-		this.container = UtilView.buildContainer('game');
+		this.container = ViewUtil.buildContainer('game');
 	}
 
 	Game.prototype.draw = function(element) {

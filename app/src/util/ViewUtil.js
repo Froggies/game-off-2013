@@ -1,4 +1,4 @@
-var UtilView = (function() {
+var ViewUtil = (function() {
 
   return {
 

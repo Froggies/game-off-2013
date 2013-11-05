@@ -4,9 +4,9 @@ var ColumnView = (function() {
 
 	function Column(controller) {
 		this.controller = controller;
-		this.container = UtilView.buildContainer('column inactive');
+		this.container = ViewUtil.buildContainer('column inactive');
 		var that = this;
-		UtilDragAndDrop.makeDroppable(this.container, function(elementDragged) {
+		DragAndDropUtil.makeDroppable(this.container, function(elementDragged) {
 			return controller.addCard(elementDragged.controller);
 		});
 	}

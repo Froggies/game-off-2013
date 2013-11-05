@@ -4,7 +4,7 @@ var BacklogView = (function() {
 
 	function Backlog(controller) {
 		this.controller = controller;
-		this.container = UtilView.buildContainer('backlog');
+		this.container = ViewUtil.buildContainer('backlog');
 	}
 
 	Backlog.prototype.draw = function(element) {

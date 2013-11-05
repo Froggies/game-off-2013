@@ -1,6 +1,6 @@
 var dependencies = [
 	'controller/BacklogController', 'view/BacklogView', 
-	'util/UtilView', 'util/UtilDragAndDrop'
+	'util/ViewUtil', 'util/DragAndDropUtil'
 ];
 
 define(dependencies, function() {

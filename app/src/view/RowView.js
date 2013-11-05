@@ -4,7 +4,7 @@ var RowView = (function() {
 
 	function Row(controller) {
 		this.controller = controller;
-		this.container = UtilView.buildContainer('row inactive');
+		this.container = ViewUtil.buildContainer('row inactive');
 	}
 
 	Row.prototype.draw = function(element) {

@@ -1,15 +1,15 @@
 var dependencies = [
-	'util/UtilDragAndDrop'
+	'util/DragAndDropUtil'
 ];
 
 function simulDrop(drag, drop, acceptDrop) {
-	UtilDragAndDrop.makeDroppable(drop, function(drag) {
+	DragAndDropUtil.makeDroppable(drop, function(drag) {
 		if(acceptDrop === true) {
 			drop.appendChild(drag.container);
 		}
 		return acceptDrop;
 	});
-	UtilDragAndDrop.makeDraggable(drag);
+	DragAndDropUtil.makeDraggable(drag);
 	drag.container.ondragstart();
 	drop.ondrop({
 		stopPropagation: function(){}
@@ -27,12 +27,12 @@ define(dependencies, function() {
 		});
 
 		it('should make draggable an element', function () {
-			UtilDragAndDrop.makeDraggable(element);
+			DragAndDropUtil.makeDraggable(element);
 			expect(element.container.draggable).toBe(true);
 		});
 
 		it('should make droppable an element', function () {
-			UtilDragAndDrop.makeDroppable(element);
+			DragAndDropUtil.makeDroppable(element);
 			expect(element.ondragenter).toBeDefined();
 			expect(element.ondragover).toBeDefined();
 			expect(element.ondrop).toBeDefined();

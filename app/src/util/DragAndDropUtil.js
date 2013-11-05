@@ -1,4 +1,4 @@
-var UtilDragAndDrop = (function() {
+var DragAndDropUtil = (function() {
 
   var lastElementDragged;//one at same time... normally :D
 
