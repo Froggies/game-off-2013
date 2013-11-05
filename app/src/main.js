@@ -31,6 +31,20 @@ window.onload = function() {
 	};
 	divButtons.appendChild(button);
 
+	button = document.createElement('button');
+	button.innerHTML = 'Pause';
+	button.onclick = function() {
+		game.pause();
+	};
+	divButtons.appendChild(button);
+
+	button = document.createElement('button');
+	button.innerHTML = 'Resume';
+	button.onclick = function() {
+		game.resume();
+	};
+	divButtons.appendChild(button);
+
 	divButtons.appendChild(document.createElement('br'));
 
 	for(var i=0; i<5; i++) {
@@ -56,6 +70,7 @@ window.onload = function() {
 	game.start(document.getElementsByTagName('body')[0]);
 	game.columns[0].activate();
 	game.columns[0].activeNextRow();
-	game.pause();
+
+	window.alert('Start !!??');
 
 };

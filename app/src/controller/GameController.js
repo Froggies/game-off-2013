@@ -5,7 +5,7 @@ var GameController = (function() {
 	var NB_COLUMNS = 5;
 
 	function Game() {
-		this.fps = 1000;
+		this.fps = 3000;
 		this.nbLoop = 0;
 		this.timeout = undefined;
 
