@@ -12,12 +12,13 @@ var DragAndDropUtil = (function() {
     makeDraggable: function(element) {
       element.container.draggable = true;
       element.container.ondragstart = function(evt) {
+        evt.dataTransfer.setData('text/plain', '');//FF force to have it !?
         lastElementDragged = element;
       };
     },
     makeDroppable: function(element, callback) {
       element.ondragenter = function (evt) {
-        event.preventDefault();
+        evt.preventDefault();
         return true;
       };
       element.ondragover = function(evt) {

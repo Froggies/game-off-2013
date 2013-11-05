@@ -10,7 +10,7 @@ function simulDrop(drag, drop, acceptDrop) {
 		return acceptDrop;
 	});
 	DragAndDropUtil.makeDraggable(drag);
-	drag.container.ondragstart();
+	drag.container.ondragstart({dataTransfer: {setData: function() {}}});
 	drop.ondrop({
 		stopPropagation: function(){}
 	});
