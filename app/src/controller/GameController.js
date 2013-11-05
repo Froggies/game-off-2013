@@ -2,17 +2,14 @@ var GameController = (function() {
 
 	'use strict';
 
-	var NB_COLUMNS = 5;
-
 	function Game() {
-		this.fps = 3000;
 		this.nbLoop = 0;
 		this.timeout = undefined;
 
 		this.view = new GameView(this);
 		this.backlog = new BacklogController();
 		this.columns = [];
-		for(var i=0; i<NB_COLUMNS; i++) {
+		for(var i=0; i<Constants.NB_COLUMNS; i++) {
 			this.columns.push(new ColumnController(this));
 		}
 	}
@@ -36,7 +33,7 @@ var GameController = (function() {
 			var that = this;
 			this.timeout = window.setInterval(function() {
 				that.loop();
-			}, this.fps);
+			}, Constants.FPS);
 		}
 	};
 

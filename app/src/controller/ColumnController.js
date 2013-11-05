@@ -2,15 +2,13 @@ var ColumnController = (function() {
 
 	'use strict';
 
-	var NB_ROW = 5;
-
 	function Column(game) {
 		this.game = game;
 		this.view = new ColumnView(this);
 		this.isActive = false;
 		this.header = new HeaderColumnController();
 		this.rows = [];
-		for(var i=0; i<NB_ROW; i++) {
+		for(var i=0; i<Constants.NB_ROW; i++) {
 			this.rows.push(new RowController());
 		}
 	}

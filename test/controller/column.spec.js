@@ -1,6 +1,7 @@
 var dependencies = [
 	'controller/ColumnController', 'view/ColumnView',
-	'controller/GameController', 'view/GameView'
+	'controller/GameController', 'view/GameView',
+	'constants'
 ];
 
 define(dependencies, function() {
