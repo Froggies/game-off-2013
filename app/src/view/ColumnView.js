@@ -2,16 +2,24 @@ var ColumnView = (function() {
 
 	'use strict';
 
-	function ColumnView(controller) {
+	function Column(controller) {
 		this.controller = controller;
-		this.container = UtilView.buildContainer('column');
+		this.container = UtilView.buildContainer('column inactive');
+		var that = this;
+		UtilDragAndDrop.makeDroppable(this.container, function(elementDragged) {
+			return controller.addCard(elementDragged.controller);
+		});
 	}
 
-	ColumnView.prototype.draw = function(element) {
+	Column.prototype.draw = function(element) {
 		element.appendChild(this.container);
 	};
 
-	return ColumnView;
+	Column.prototype.activate = function() {
+		this.container.className = 'column active';
+	};
+
+	return Column;
 
 })();
 

@@ -14,6 +14,7 @@ var RowController = (function() {
 
 	Row.prototype.activate = function() {
 		this.isActive = true;
+		this.view.activate();
 	};
 
 	Row.prototype.canAcceptCard = function(card) {

@@ -2,24 +2,33 @@ var dependencies = [
 	'util/UtilDragAndDrop'
 ];
 
+function simulDrop(drag, drop, acceptDrop) {
+	UtilDragAndDrop.makeDroppable(drop, function(drag) {
+		if(acceptDrop === true) {
+			drop.appendChild(drag.container);
+		}
+		return acceptDrop;
+	});
+	UtilDragAndDrop.makeDraggable(drag);
+	drag.container.ondragstart();
+	drop.ondrop({
+		stopPropagation: function(){}
+	});
+}
+
 define(dependencies, function() {
 
 	describe('in util drag and drop', function() {
 
-		var element = document.createElement('div');
+		var element;
 
 		beforeEach(function() {
+			element = {container: document.createElement('div')};
 		});
 
 		it('should make draggable an element', function () {
 			UtilDragAndDrop.makeDraggable(element);
-			expect(element.draggable).toBe(true);
-		});
-
-		it('should make undraggable an element', function () {
-			UtilDragAndDrop.makeDraggable(element);
-			UtilDragAndDrop.makeUndraggable(element);
-			expect(element.draggable).toBe(false);
+			expect(element.container.draggable).toBe(true);
 		});
 
 		it('should make droppable an element', function () {
@@ -30,15 +39,22 @@ define(dependencies, function() {
 		});
 
 		it('should move draggable element into droppable element on drop', function () {
-			UtilDragAndDrop.makeDroppable(element);
-			var drag = document.createElement('div');
-			UtilDragAndDrop.makeDraggable(drag);
-			expect(element.children.length).toBe(0);
-			drag.ondragstart();
-			element.ondrop({
-				stopPropagation: function(){}
-			});
-			expect(element.children[0]).toBe(drag);
+			var drop = document.createElement('div');
+			simulDrop(element, drop, true);
+			expect(drop.children[0]).toBe(element.container);
+		});
+
+		it('should make undraggable the element was dropped and accepted', function () {
+			var drop = document.createElement('div');
+			simulDrop(element, drop, true);
+			expect(element.container.draggable).toBe(false);
+		});
+
+		it('should refuse an element', function () {
+			var drop = document.createElement('div');
+			simulDrop(element, drop, false);
+			expect(drop.children.length).toBe(0);
+			expect(element.container.draggable).toBe(true);
 		});
 
 	});

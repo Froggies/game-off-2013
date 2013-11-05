@@ -2,6 +2,8 @@ var GameController = (function() {
 
 	'use strict';
 
+	var NB_COLUMNS = 5;
+
 	function Game() {
 		this.fps = 1000;
 		this.nbLoop = 0;
@@ -9,7 +11,10 @@ var GameController = (function() {
 
 		this.view = new GameView(this);
 		this.backlog = new BacklogController();
-		this.columns = [new ColumnController(), new ColumnController(), new ColumnController(), new ColumnController(), new ColumnController()];
+		this.columns = [];
+		for(var i=0; i<NB_COLUMNS; i++) {
+			this.columns.push(new ColumnController(this));
+		}
 	}
 
 	Game.prototype.start = function(element) {
@@ -33,6 +38,10 @@ var GameController = (function() {
 				that.loop();
 			}, this.fps);
 		}
+	};
+
+	Game.prototype.deleteCardInBacklog = function(card) {
+		this.backlog.removeCard(card);
 	};
 
 	Game.prototype.loop = function() {

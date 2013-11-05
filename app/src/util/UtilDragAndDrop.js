@@ -2,19 +2,20 @@ var UtilDragAndDrop = (function() {
 
   var lastElementDragged;//one at same time... normally :D
 
+  function makeUndraggable(element) {
+    element.container.draggable = false;
+    element.container.ondragstart = undefined;
+  }
+
   return {
 
     makeDraggable: function(element) {
-      element.draggable = true;
-      element.ondragstart = function(evt) {
+      element.container.draggable = true;
+      element.container.ondragstart = function(evt) {
         lastElementDragged = element;
       };
     },
-    makeUndraggable: function(element) {
-      element.draggable = false;
-      element.ondragstart = undefined;
-    },
-    makeDroppable: function(element) {
+    makeDroppable: function(element, callback) {
       element.ondragenter = function (evt) {
         event.preventDefault();
         return true;
@@ -23,9 +24,12 @@ var UtilDragAndDrop = (function() {
         return false;
       };
       element.ondrop = function (evt) {
-        element.appendChild(lastElementDragged);
-        UtilDragAndDrop.makeUndraggable(lastElementDragged);
         evt.stopPropagation();
+        if(callback !== undefined) {
+          if(callback(lastElementDragged) === true) {
+            makeUndraggable(lastElementDragged);
+          }
+        }
         return false;
       };
     }

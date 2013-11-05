@@ -5,7 +5,7 @@ var CardView = (function() {
 	function Card(controller) {
 		this.controller = controller;
 		this.container = UtilView.buildContainer('card');
-		UtilDragAndDrop.makeDraggable(this.container);
+		UtilDragAndDrop.makeDraggable(this);
 	}
 
 	Card.prototype.draw = function(element) {

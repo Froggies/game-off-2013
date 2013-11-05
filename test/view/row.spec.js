@@ -25,7 +25,15 @@ define(dependencies, function() {
 		it('should set correct className', function () {
 			var div = document.createElement('div');
 			row.draw(div);
-			expect(div.children[0].className).toBe('row');
+			expect(div.children[0].className).toContain('row');
+		});
+
+		it('should have different className if active or inactive', function () {
+			var div = document.createElement('div');
+			row.draw(div);
+			expect(div.children[0].className).toBe('row inactive');
+			row.activate();
+			expect(div.children[0].className).toBe('row active');
 		});
 
 	});

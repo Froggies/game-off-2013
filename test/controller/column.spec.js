@@ -1,5 +1,6 @@
 var dependencies = [
-	'controller/ColumnController', 'view/ColumnView'
+	'controller/ColumnController', 'view/ColumnView',
+	'controller/GameController', 'view/GameView'
 ];
 
 define(dependencies, function() {
@@ -9,7 +10,7 @@ define(dependencies, function() {
 		var column;
 
 		beforeEach(function() {
-			column = new ColumnController();
+			column = new ColumnController({deleteCardInBacklog: function(){}});
 		});
 
 		it('should have a view', function () {
@@ -31,6 +32,15 @@ define(dependencies, function() {
 		it('should refuse card when it full', function () {
 			var card = new CardController();
 			expect(column.addCard(card)).toBe(false);
+		});
+
+		it('should be inactive at start', function () {
+			expect(column.isActive).toBe(false);
+		});
+
+		it('should be active after activate call', function () {
+			column.activate();
+			expect(column.isActive).toBe(true);
 		});
 
 		it('should active 1 new row', function () {
