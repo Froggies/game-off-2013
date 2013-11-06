@@ -16,10 +16,10 @@ var GameController = (function() {
 
 	Game.prototype.start = function(element) {
 		this.view.draw(element);
+		this.backlog.start(this.view.container);
 		for(var indexColumn=0; indexColumn < this.columns.length; indexColumn++) {
 			this.columns[indexColumn].start(this.view.container);
 		}
-		this.backlog.start(this.view.container);
 		this.resume();
 	};
 

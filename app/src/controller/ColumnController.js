@@ -18,7 +18,7 @@ var ColumnController = (function() {
 		this.header.start(this.view.container);
 		_.each(this.rows, function(row) {
 			row.start(this.view.container);
-		});
+		}, this);
 	};
 
 	Column.prototype.activate = function() {

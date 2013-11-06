@@ -34,7 +34,7 @@ define(dependencies, function() {
 		});
 
 		it('should display type', function () {
-			expect(card.container.innerHTML).toBe(type);
+			expect(card.container.innerHTML).toContain(type);
 		});
 
 	});

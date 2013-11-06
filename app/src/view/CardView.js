@@ -5,7 +5,7 @@ var CardView = (function() {
 	function Card(controller) {
 		this.controller = controller;
 		this.container = ViewUtil.buildContainer('card');
-		this.container.innerHTML = controller.type;
+		this.container.innerHTML = controller.type + ' ' + controller.complexity + ' ' + controller.time;
 		DragAndDropUtil.makeDraggable(this);
 	}
 
