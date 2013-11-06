@@ -20,7 +20,7 @@ window.onload = function() {
 	button = document.createElement('button');
 	button.innerHTML = 'Add card';
 	button.onclick = function() {
-		game.backlog.addCard();
+		game.backlog.addCard(CardUtil.buildCard());
 	};
 	divButtons.appendChild(button);
 

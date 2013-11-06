@@ -15,6 +15,10 @@ var RowView = (function() {
 		this.container.className = 'row active';
 	};
 
+	Row.prototype.clear = function() {
+		this.container.innerHTML = '';
+	};
+
 	return Row;
 
 })();

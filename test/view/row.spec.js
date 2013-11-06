@@ -36,6 +36,14 @@ define(dependencies, function() {
 			expect(div.children[0].className).toBe('row active');
 		});
 
+		it('should be empty when clear called', function () {
+			var div = document.createElement('div');
+			row.draw(div);
+			row.container.appendChild(document.createElement('div'));
+			row.clear();
+			expect(row.container.innerHTML).toBe('');
+		});
+
 	});
 
 });

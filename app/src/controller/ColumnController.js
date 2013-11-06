@@ -16,9 +16,9 @@ var ColumnController = (function() {
 	Column.prototype.start = function(element) {
 		this.view.draw(element);
 		this.header.start(this.view.container);
-		for(var i=0; i < this.rows.length; i++) {
-			this.rows[i].start(this.view.container);
-		}
+		_.each(this.rows, function(row) {
+			row.start(this.view.container);
+		});
 	};
 
 	Column.prototype.activate = function() {
@@ -27,12 +27,19 @@ var ColumnController = (function() {
 	};
 
 	Column.prototype.activeNextRow = function() {
-		for(var i=0; i < this.rows.length; i++) {
-			if(this.rows[i].isActive === false) {
-				this.rows[i].activate();
-				return;
-			}
+		var potentielRow = _.find(this.rows, function(row) {
+			return row.isActive === false;
+		});
+		if(potentielRow !== undefined) {
+			potentielRow.activate();
 		}
+	};
+
+	Column.prototype.newCurrentCard = function() {
+		var that = this;
+		window.setTimeout(function() {
+			that.timeFinish();
+		}, this.rows[0].card.time * 1000);
 	};
 
 	Column.prototype.addCard = function(card) {
@@ -40,10 +47,28 @@ var ColumnController = (function() {
 			if(this.rows[i].canAcceptCard() === true) {
 				this.rows[i].addCard(card);
 				this.game.deleteCardInBacklog(card);
+				if(i === 0) {
+					this.newCurrentCard();
+				}
 				return true;
 			}
 		}
 		return false;
+	};
+
+	Column.prototype.timeFinish = function() {
+		this.rows[0].removeCard();
+		var previousRow;
+		_.each(this.rows, function(row) {
+			if(row.card !== undefined && previousRow !== undefined) {
+				previousRow.addCard(row.card);
+				row.removeCard();
+				if(previousRow === this.rows[0]) {
+					this.newCurrentCard();
+				}
+			}
+			previousRow = row;
+		}, this);
 	};
 
 	return Column;

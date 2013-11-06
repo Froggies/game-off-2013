@@ -7,9 +7,14 @@ define(dependencies, function() {
 	describe('a card', function() {
 
 		var card;
+		var type = 'fake';
+		var complexity = 0.5;
 
 		beforeEach(function() {
-			card = new CardView();
+			card = new CardView({
+				type: type, 
+				complexity: complexity
+			});
 		});
 
 		it('should have a container', function () {
@@ -26,6 +31,10 @@ define(dependencies, function() {
 			var div = document.createElement('div');
 			card.draw(div);
 			expect(div.children[0].className).toBe('card');
+		});
+
+		it('should display type', function () {
+			expect(card.container.innerHTML).toBe(type);
 		});
 
 	});

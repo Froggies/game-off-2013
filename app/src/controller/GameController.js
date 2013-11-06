@@ -43,7 +43,7 @@ var GameController = (function() {
 
 	Game.prototype.loop = function() {
 		this.nbLoop = this.nbLoop + 1;
-		this.backlog.addCard();
+		this.backlog.addCard(CardUtil.buildCard());
 		if(this.backlog.cards.length > 10) {
 			this.pause();
 			window.alert('Game over');

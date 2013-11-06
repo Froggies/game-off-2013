@@ -75,6 +75,43 @@ define(dependencies, function() {
 			expect(column.rows[1].card).toBe(card2);
 		});
 
+		it('should remove current card when time is finish', function () {
+			var card = new CardController();
+			column.activeNextRow();
+			column.addCard(card);
+			column.timeFinish();
+			expect(column.rows[0].card).toBeUndefined();
+		});
+
+		it('should move others cards to the top', function () {
+			var card = new CardController();
+			column.activeNextRow();
+			column.addCard(card);
+			var card2 = new CardController();
+			column.activeNextRow();
+			column.addCard(card2);
+			var card3 = new CardController();
+			column.activeNextRow();
+			column.addCard(card3);
+			column.timeFinish();
+			expect(column.rows[0].card).toBe(card2);
+			expect(column.rows[1].card).toBe(card3);
+			expect(column.rows[2].card).toBeUndefined();
+		});
+
+		it('should remove current card when card time is finish', function () {
+			var card = new CardController('', 0, 0);
+			column.activeNextRow();
+			column.addCard(card);
+			column.newCurrentCard();
+			waitsFor(function() {
+				return column.rows[0].card === undefined;
+			}, 'should be delete card', 1);
+			runs(function() {
+				expect(column.rows[0].card).toBeUndefined();
+			});
+		});
+
 	});
 
 });

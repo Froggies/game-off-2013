@@ -25,6 +25,18 @@ define(dependencies, function() {
 			expect(row.isActive).toBe(true);
 		});
 
+		it('should add a card', function () {
+			var card = new CardController();
+			row.addCard(card);
+			expect(row.card).toBe(card);
+		});
+
+		it('should delete this card', function () {
+			row.addCard(new CardController());
+			row.removeCard();
+			expect(row.card).toBeUndefined();
+		});
+
 	});
 
 });

@@ -26,6 +26,11 @@ var RowController = (function() {
 		card.start(this.view.container);
 	};
 
+	Row.prototype.removeCard = function() {
+		this.card = undefined;
+		this.view.clear();
+	};
+
 	return Row;
 
 })();

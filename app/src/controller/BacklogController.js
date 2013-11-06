@@ -7,11 +7,9 @@ var BacklogController = (function() {
 		this.cards = [];
 	}
 
-	Backlog.prototype.addCard = function() {
-		var card = new CardController();
+	Backlog.prototype.addCard = function(card) {
 		this.cards.push(card);
 		card.start(this.view.container);
-		return card;
 	};
 
 	Backlog.prototype.removeCard = function(card) {
