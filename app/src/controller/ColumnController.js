@@ -57,6 +57,7 @@ var ColumnController = (function() {
 	};
 
 	Column.prototype.timeFinish = function() {
+		this.game.incrementeScore(this.rows[0].card.complexity);
 		this.rows[0].removeCard();
 		var previousRow;
 		_.each(this.rows, function(row) {

@@ -1,6 +1,7 @@
 var dependencies = [
 	'controller/ColumnController', 'view/ColumnView',
 	'controller/GameController', 'view/GameView',
+	'controller/ScoreController', 'view/ScoreView',
 	'constants'
 ];
 
@@ -11,7 +12,10 @@ define(dependencies, function() {
 		var column;
 
 		beforeEach(function() {
-			column = new ColumnController({deleteCardInBacklog: function(){}});
+			column = new ColumnController({
+				deleteCardInBacklog: function(){}, 
+				incrementeScore: function(){}
+			});
 		});
 
 		it('should have a view', function () {
@@ -50,47 +54,39 @@ define(dependencies, function() {
 		});
 
 		it('should add card in first row', function () {
-			var card = new CardController();
+			var card = CardUtil.buildCard();
 			column.activeNextRow();
 			column.addCard(card);
 			expect(column.rows[0].card).toBe(card);
 		});
 
 		it('should not add card when row is not activate', function () {
-			var card = new CardController();
+			var card = CardUtil.buildCard();
 			column.activeNextRow();
 			column.addCard(card);
-			var card2 = new CardController();
+			var card2 = CardUtil.buildCard();
 			column.addCard(card2);
 			expect(column.rows[1].card).toBeUndefined();
 		});
 
 		it('should add card in second row when first is full', function () {
-			var card = new CardController();
+			var card = CardUtil.buildCard();
 			column.activeNextRow();
 			column.addCard(card);
-			var card2 = new CardController();
+			var card2 = CardUtil.buildCard();
 			column.activeNextRow();
 			column.addCard(card2);
 			expect(column.rows[1].card).toBe(card2);
 		});
 
-		it('should remove current card when time is finish', function () {
-			var card = new CardController();
-			column.activeNextRow();
-			column.addCard(card);
-			column.timeFinish();
-			expect(column.rows[0].card).toBeUndefined();
-		});
-
 		it('should move others cards to the top', function () {
-			var card = new CardController();
+			var card = CardUtil.buildCard();
 			column.activeNextRow();
 			column.addCard(card);
-			var card2 = new CardController();
+			var card2 = CardUtil.buildCard();
 			column.activeNextRow();
 			column.addCard(card2);
-			var card3 = new CardController();
+			var card3 = CardUtil.buildCard();
 			column.activeNextRow();
 			column.addCard(card3);
 			column.timeFinish();
@@ -100,10 +96,10 @@ define(dependencies, function() {
 		});
 
 		it('should remove current card when card time is finish', function () {
-			var card = new CardController('', 0, 0);
+			var card = CardUtil.buildCard();
+			card.time = 0;
 			column.activeNextRow();
 			column.addCard(card);
-			column.newCurrentCard();
 			waitsFor(function() {
 				return column.rows[0].card === undefined;
 			}, 'should be delete card', 1);
