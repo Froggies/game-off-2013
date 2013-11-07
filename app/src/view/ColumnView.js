@@ -15,6 +15,10 @@ var ColumnView = (function() {
 		element.appendChild(this.container);
 	};
 
+	Column.prototype.refreshCanBeActivate = function() {
+		this.container.className = 'column canBeActive ' + this.controller.canBeActivate;
+	};
+
 	Column.prototype.activate = function() {
 		this.container.className = 'column active';
 	};

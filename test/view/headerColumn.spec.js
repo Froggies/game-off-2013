@@ -1,5 +1,6 @@
 var dependencies = [
-	'view/HeaderColumnView'
+	'controller/ColumnController', 'view/ColumnView',
+	'controller/HeaderColumnController', 'view/HeaderColumnView'
 ];
 
 define(dependencies, function() {
@@ -9,7 +10,7 @@ define(dependencies, function() {
 		var headerColumn;
 
 		beforeEach(function() {
-			headerColumn = new HeaderColumnView();
+			headerColumn = new HeaderColumnView({});
 		});
 
 		it('should have a container', function () {

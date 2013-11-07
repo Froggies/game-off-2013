@@ -35,7 +35,7 @@ var GameController = (function() {
 			var that = this;
 			this.timeout = window.setInterval(function() {
 				that.loop();
-			}, Constants.FPS);
+			}, GameUtil.calculTimeNewCard(this.score.score));
 		}
 	};
 
@@ -46,24 +46,13 @@ var GameController = (function() {
 	Game.prototype.incrementeScore = function(score) {
 		this.score.incrementeBy(score);
 		if(ScoreUtil.isNextLevel(this.score.score, this.score.level) === true) {
+			this.pause();//TODO rework update time card backlog
+			this.resume();//TODO rework update time card backlog
 			this.score.level = this.score.level + 1;
-			this.score.incrementeBy(0);
-			var column = _.find(this.columns, function(column) {
-				return column.isActive === false;
-			}, this);
-			if(column !== undefined) {
-				column.activate();
-				column.activeNextRow();
-			} else {
-				var columnWithRowInactive = _.find(this.columns, function(column) {
-					return _.find(column.rows, function(row) {
-						return row.isActive === false;
-					});
-				}, this);
-				if(columnWithRowInactive !== undefined) {
-					columnWithRowInactive.activeNextRow();
-				}
-			}
+			this.score.incrementeBy(0);//TODO rework refresh view method
+			_.each(this.columns, function(column) {
+				column.setCanBeActivate(true);
+			});
 		}
 	};
 
@@ -75,6 +64,12 @@ var GameController = (function() {
 			window.alert('Game over');
 			return 'finish';
 		}
+	};
+
+	Game.prototype.columnIsActivated = function() {
+		_.each(this.columns, function(column) {
+			column.setCanBeActivate(false);
+		});
 	};
 
 	return Game;

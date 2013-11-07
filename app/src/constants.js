@@ -1,5 +1,6 @@
 var Constants = {
-	FPS: 3000,
+	FPS: 2000,
+	FPS_MIN: 500,
 	NB_COLUMNS: 5,
 	NB_ROWS: 5,
 	CARD_TYPE: ['bug', 'feature', 'ie', 'options'],

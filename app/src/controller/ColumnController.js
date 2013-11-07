@@ -6,7 +6,8 @@ var ColumnController = (function() {
 		this.game = game;
 		this.view = new ColumnView(this);
 		this.isActive = false;
-		this.header = new HeaderColumnController();
+		this.canBeActivate = false;
+		this.header = new HeaderColumnController(this);
 		this.rows = [];
 		for(var i=0; i<Constants.NB_ROWS; i++) {
 			this.rows.push(new RowController());
@@ -21,17 +22,32 @@ var ColumnController = (function() {
 		}, this);
 	};
 
+	Column.prototype.setCanBeActivate = function(bool) {
+		this.canBeActivate = bool;
+		this.view.refreshCanBeActivate();
+		this.header.setCanBeActivate(bool);
+	};
+
 	Column.prototype.activate = function() {
-		this.isActive = true;
-		this.view.activate();
+		if(this.canBeActivate === true) {
+			this.isActive = true;
+			this.canBeActivate = false;
+			this.view.refreshCanBeActivate();
+			this.header.setCanBeActivate(false);
+			this.view.activate();
+			this.activeNextRow();
+			this.game.columnIsActivated();
+		}
 	};
 
 	Column.prototype.activeNextRow = function() {
-		var potentielRow = _.find(this.rows, function(row) {
-			return row.isActive === false;
-		});
-		if(potentielRow !== undefined) {
-			potentielRow.activate();
+		if(this.isActive === true) {
+			var potentielRow = _.find(this.rows, function(row) {
+				return row.isActive === false;
+			});
+			if(potentielRow !== undefined) {
+				potentielRow.activate();
+			}
 		}
 	};
 

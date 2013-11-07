@@ -3,7 +3,7 @@ var ScoreUtil = (function() {
   return {
 
     isNextLevel: function(score, level) {
-      return (score / 3) > level + 2;
+			return Math.sqrt(score, 0.5) > level;
     }
 
   };

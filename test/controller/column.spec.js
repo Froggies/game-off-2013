@@ -14,7 +14,8 @@ define(dependencies, function() {
 		beforeEach(function() {
 			column = new ColumnController({
 				deleteCardInBacklog: function(){}, 
-				incrementeScore: function(){}
+				incrementeScore: function(){},
+				columnIsActivated: function(){}
 			});
 		});
 
@@ -43,18 +44,23 @@ define(dependencies, function() {
 			expect(column.isActive).toBe(false);
 		});
 
-		it('should be active after activate call', function () {
+		it('should be active after activate call and canBeActivate is true', function () {
+			column.setCanBeActivate(true);
 			column.activate();
 			expect(column.isActive).toBe(true);
 		});
 
 		it('should active 1 new row', function () {
+			column.setCanBeActivate(true);
+			column.activate();
 			column.activeNextRow();
 			expect(column.rows[0].isActive).toBe(true);
 		});
 
 		it('should add card in first row', function () {
 			var card = CardUtil.buildCard();
+			column.setCanBeActivate(true);
+			column.activate();
 			column.activeNextRow();
 			column.addCard(card);
 			expect(column.rows[0].card).toBe(card);
@@ -62,7 +68,8 @@ define(dependencies, function() {
 
 		it('should not add card when row is not activate', function () {
 			var card = CardUtil.buildCard();
-			column.activeNextRow();
+			column.setCanBeActivate(true);
+			column.activate();
 			column.addCard(card);
 			var card2 = CardUtil.buildCard();
 			column.addCard(card2);
@@ -71,6 +78,8 @@ define(dependencies, function() {
 
 		it('should add card in second row when first is full', function () {
 			var card = CardUtil.buildCard();
+			column.setCanBeActivate(true);
+			column.activate();
 			column.activeNextRow();
 			column.addCard(card);
 			var card2 = CardUtil.buildCard();
@@ -81,6 +90,8 @@ define(dependencies, function() {
 
 		it('should move others cards to the top', function () {
 			var card = CardUtil.buildCard();
+			column.setCanBeActivate(true);
+			column.activate();
 			column.activeNextRow();
 			column.addCard(card);
 			var card2 = CardUtil.buildCard();
