@@ -18,17 +18,17 @@ define(dependencies, function() {
 
 		it('should give a time for a card', function () {
 			var time = CardUtil.randomTime(1);
-			//expect(time >= 2 && time <= 10).toBeTruthy();
+			expect(time >= 2 && time <= 10).toBeTruthy();
 		});
 
 		it('should give a time for a card', function () {
 			var time = CardUtil.randomTime(2);
-			//expect(time >= 4 && time <= 12).toBeTruthy();
+			expect(time >= 4 && time <= 12).toBeTruthy();
 		});
 
 		it('should give a time for a card', function () {
 			var time = CardUtil.randomTime(5);
-			//expect(time >= 10 && time <= 18).toBeTruthy();
+			expect(time >= 10 && time <= 18).toBeTruthy();
 		});
 
 	});

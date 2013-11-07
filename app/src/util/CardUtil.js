@@ -8,7 +8,7 @@ var CardUtil = (function() {
       return new CardController(type, complexity, CardUtil.randomTime(complexity));
     },
     randomTime: function(complexity) {
-			return complexity * 1.2 + _.random(0, 8);
+			return complexity * 2 + _.random(0, 8);
 		}
 
   };
