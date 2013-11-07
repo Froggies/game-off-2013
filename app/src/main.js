@@ -1,6 +1,8 @@
 window.onload = function() {
 
 	var game = new GameController();
+	game.start(document.getElementsByTagName('body')[0]);
+	
 	var button;
 
 	function addListen(button, i) {
@@ -67,7 +69,6 @@ window.onload = function() {
 
 	document.getElementsByTagName('body')[0].appendChild(divButtons);
 	
-	game.start(document.getElementsByTagName('body')[0]);
 	game.columns[0].activate();
 	game.columns[0].activeNextRow();
 
