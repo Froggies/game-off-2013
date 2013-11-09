@@ -27,8 +27,8 @@ define(dependencies, function() {
 			expect(game.view.controller).toBe(game);
 		});
 
-		it('should display finish after 10 loops', function () {
-			for(var i=0; i<10; i++) {
+		it('should display finish after NB_CARDS_IN_BACKLOG_MAX loops', function () {
+			for(var i=0; i<Constants.NB_CARDS_IN_BACKLOG_MAX; i++) {
 				game.loop();
 			}
 			expect(game.loop()).toBe('finish');
