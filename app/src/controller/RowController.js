@@ -31,6 +31,20 @@ var RowController = (function() {
 		this.view.clear();
 	};
 
+	Row.prototype.search3cardsAdjacent = function(prevRow, nextRow) {
+		if(prevRow !== undefined && nextRow !== undefined &&
+			prevRow.card !== undefined && nextRow.card !== undefined) {
+			if(prevRow.card.type === this.card.type && this.card.type === nextRow.card.type) {
+				var points = prevRow.card.complexity + this.card.complexity + nextRow.card.complexity;
+				prevRow.removeCard();
+				this.removeCard();
+				nextRow.removeCard();
+				return points;
+			}
+		}
+		return false;
+	};
+
 	return Row;
 
 })();

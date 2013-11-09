@@ -53,17 +53,21 @@ var ColumnController = (function() {
 	};
 
 	Column.prototype.newCurrentCard = function() {
-		var that = this;
-		this.cardTimeout = window.setTimeout(function() {
-			var card = that.rows[0].card;
-			card.time = card.time - 0.1;
-			card.refreshView();
-			if(card.time <= 0) {
-				that.timeFinish();
-			} else {
-				that.newCurrentCard();
-			}
-		}, 100);
+		if(this.rows[0].card !== undefined) {
+			var that = this;
+			this.cardTimeout = window.setTimeout(function() {
+				var card = that.rows[0].card;
+				if(card !== undefined) {
+					card.time = card.time - 0.1;
+					card.refreshView();
+					if(card.time <= 0) {
+						that.timeFinish();
+					} else {
+						that.newCurrentCard();
+					}
+				}
+			}, 100);
+		}
 	};
 
 	Column.prototype.addCard = function(card) {
@@ -105,6 +109,42 @@ var ColumnController = (function() {
 		if(this.cardTimeout === undefined && this.rows[0].card !== undefined) {
 			this.newCurrentCard();
 		}
+	};
+
+	Column.prototype.search3cardsAdjacent = function(prevColumn, nextColumn) {
+		var prevRow, nextRow;
+		if(this.rows[0].card !== undefined) {
+			for (var i = 0; i < this.rows.length; i++) {
+				var row = this.rows[i];
+				var index = _.indexOf(this.rows, row);
+				if(index < this.rows.length) {
+					nextRow = this.rows[index+1];
+				}
+				//first search in ligne
+				var points = row.search3cardsAdjacent(prevRow, nextRow);
+				if(points !== false) {
+					return points;
+				}
+				//second search in column
+				if(prevColumn !== undefined && nextColumn !== undefined) {
+					if(prevColumn.rows[index].card !== undefined &&
+						nextColumn.rows[index].card !== undefined) {
+						if(prevColumn.rows[index].card.type === this.rows[index].card.type &&
+							nextColumn.rows[index].card.type === this.rows[index].card.type) {
+							points = prevColumn.rows[index].card.complexity;
+							points = points + this.rows[index].card.complexity;
+							points = points + nextColumn.rows[index].card.complexity;
+							prevColumn.rows[index].removeCard();
+							this.rows[index].removeCard();
+							nextColumn.rows[index].removeCard();
+							return points;
+						}
+					}
+				}
+				prevRow = row;
+			}
+		}
+		return false;
 	};
 
 	return Column;

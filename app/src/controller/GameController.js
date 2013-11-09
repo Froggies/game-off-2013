@@ -47,6 +47,27 @@ var GameController = (function() {
 
 	Game.prototype.deleteCardInBacklog = function(card) {
 		this.backlog.removeCard(card);
+		while(this.search3cardsAdjacent() === true) {
+			this.search3cardsAdjacent();
+		}
+	};
+
+	Game.prototype.search3cardsAdjacent = function() {
+		var prevColumn, nextColumn;
+		for (var i = 0; i < this.columns.length; i++) {
+			var column = this.columns[i];
+			var indexColumn = _.indexOf(this.columns, column);
+			if(indexColumn < this.columns.length) {
+				nextColumn = this.columns[indexColumn+1];
+			}
+			var points = column.search3cardsAdjacent(prevColumn, nextColumn); 
+			if(points !== false) {
+				this.incrementeScore(points);
+				return true;
+			}
+			prevColumn = column;
+		}
+		return false;
 	};
 
 	Game.prototype.incrementeScore = function(score) {
