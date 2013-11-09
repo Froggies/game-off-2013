@@ -36,7 +36,7 @@ define(dependencies, function() {
 		});
 
 		it('should refuse card when it full', function () {
-			var card = new CardController();
+			var card = CardUtil.buildCard();
 			expect(column.addCard(card)).toBe(false);
 		});
 

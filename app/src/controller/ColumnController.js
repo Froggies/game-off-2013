@@ -54,8 +54,15 @@ var ColumnController = (function() {
 	Column.prototype.newCurrentCard = function() {
 		var that = this;
 		window.setTimeout(function() {
-			that.timeFinish();
-		}, this.rows[0].card.time * 1000);
+			var card = that.rows[0].card;
+			card.time = card.time - 0.1;
+			that.rows[0].card.refreshView();
+			if(card.time <= 0) {
+				that.timeFinish();
+			} else {
+				that.newCurrentCard();
+			}
+		}, 100);
 	};
 
 	Column.prototype.addCard = function(card) {

@@ -13,7 +13,8 @@ define(dependencies, function() {
 		beforeEach(function() {
 			card = new CardView({
 				type: type, 
-				complexity: complexity
+				complexity: complexity,
+				time: 0
 			});
 		});
 
@@ -34,6 +35,8 @@ define(dependencies, function() {
 		});
 
 		it('should display type', function () {
+			var div = document.createElement('div');
+			card.draw(div);
 			expect(card.container.innerHTML).toContain(type);
 		});
 

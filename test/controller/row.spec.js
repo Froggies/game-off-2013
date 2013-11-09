@@ -26,13 +26,13 @@ define(dependencies, function() {
 		});
 
 		it('should add a card', function () {
-			var card = new CardController();
+			var card = CardUtil.buildCard();
 			row.addCard(card);
 			expect(row.card).toBe(card);
 		});
 
 		it('should delete this card', function () {
-			row.addCard(new CardController());
+			row.addCard(CardUtil.buildCard());
 			row.removeCard();
 			expect(row.card).toBeUndefined();
 		});
