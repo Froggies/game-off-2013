@@ -26,11 +26,12 @@ var CardView = (function() {
 			complexityView = complexityView + '*';
 		}
 		this.complexityContainer.innerHTML = complexityView;
-		this.refresh();
+		this.timeContainer.style.display = 'none';
 		element.appendChild(this.container);
 	};
 
 	Card.prototype.refresh = function() {
+		this.timeContainer.style.display = 'block';
 		var percent = (this.controller.time * 100) / this.controller.initialTime;
 		this.ellapsedTimeContainer.style.width = percent + '%';
 	};
