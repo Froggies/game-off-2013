@@ -5,10 +5,9 @@ var HeaderColumnView = (function() {
 	function HeaderColumn(controller) {
 		this.controller = controller;
 		this.container = ViewUtil.buildContainer('headerColumn');
-		var that = this;
-		this.container.onclick = function() {
-			that.onClick();
-		};
+		ClickUtil.listen(this.container, function() {
+			this.onClick();
+		}, this);
 	}
 
 	HeaderColumn.prototype.draw = function(element) {

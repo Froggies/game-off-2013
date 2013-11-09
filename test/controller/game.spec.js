@@ -4,6 +4,7 @@ var dependencies = [
 	'controller/HeaderColumnController', 'view/HeaderColumnView',
 	'controller/RowController', 'view/RowView',
 	'controller/BacklogController', 'view/BacklogView'
+	'util/ClickUtil'
 ];
 
 define(dependencies, function() {

@@ -54,19 +54,18 @@ var ColumnController = (function() {
 
 	Column.prototype.newCurrentCard = function() {
 		if(this.rows[0].card !== undefined) {
-			var that = this;
-			this.cardTimeout = window.setTimeout(function() {
-				var card = that.rows[0].card;
+			this.cardTimeout = TimeoutUtil.timeout(function() {
+				var card = this.rows[0].card;
 				if(card !== undefined) {
 					card.time = card.time - 0.1;
 					card.refreshView();
 					if(card.time <= 0) {
-						that.timeFinish();
+						this.timeFinish();
 					} else {
-						that.newCurrentCard();
+						this.newCurrentCard();
 					}
 				}
-			}, 100);
+			}, 100, this);
 		}
 	};
 

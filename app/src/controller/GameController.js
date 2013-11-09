@@ -35,10 +35,9 @@ var GameController = (function() {
 
 	Game.prototype.resume = function() {
 		if(this.timeout === undefined) {
-			var that = this;
-			this.timeout = window.setInterval(function() {
-				that.loop();
-			}, GameUtil.calculTimeNewCard(this.score.score));
+			this.timeout = TimeoutUtil.interval(function() {
+				this.loop();
+			}, GameUtil.calculTimeNewCard(this.score.score), this);
 			_.each(this.columns, function(column) {
 				column.resume();
 			});
