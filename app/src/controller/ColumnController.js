@@ -9,6 +9,7 @@ var ColumnController = (function() {
 		this.canBeActivate = false;
 		this.header = new HeaderColumnController(this);
 		this.rows = [];
+		this.cardTimeout = undefined;
 		for(var i=0; i<Constants.NB_ROWS; i++) {
 			this.rows.push(new RowController());
 		}
@@ -53,10 +54,10 @@ var ColumnController = (function() {
 
 	Column.prototype.newCurrentCard = function() {
 		var that = this;
-		window.setTimeout(function() {
+		this.cardTimeout = window.setTimeout(function() {
 			var card = that.rows[0].card;
 			card.time = card.time - 0.1;
-			that.rows[0].card.refreshView();
+			card.refreshView();
 			if(card.time <= 0) {
 				that.timeFinish();
 			} else {
@@ -93,6 +94,17 @@ var ColumnController = (function() {
 			}
 			previousRow = row;
 		}, this);
+	};
+
+	Column.prototype.pause = function() {
+		window.clearInterval(this.cardTimeout);
+		this.cardTimeout = undefined;
+	};
+
+	Column.prototype.resume = function() {
+		if(this.cardTimeout === undefined && this.rows[0].card !== undefined) {
+			this.newCurrentCard();
+		}
 	};
 
 	return Column;
