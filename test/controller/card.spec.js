@@ -1,5 +1,5 @@
 var dependencies = [
-	'controller/CardController', 'view/CardView'
+	'controller/CardController', 'view/CardView', 'util/ViewUtil'
 ];
 
 define(dependencies, function() {

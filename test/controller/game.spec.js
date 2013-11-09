@@ -2,7 +2,8 @@ var dependencies = [
 	'controller/GameController', 'view/GameView', 
 	'controller/ColumnController', 'view/ColumnView',
 	'controller/HeaderColumnController', 'view/HeaderColumnView',
-	'controller/RowController', 'view/RowView'
+	'controller/RowController', 'view/RowView',
+	'controller/BacklogController', 'view/BacklogView'
 ];
 
 define(dependencies, function() {
