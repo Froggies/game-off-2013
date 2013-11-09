@@ -3,7 +3,7 @@ var GameUtil = (function() {
   return {
 
     calculTimeNewCard: function(score) {
-			var time = (-2.307 * score) + Constants.FPS;
+			var time = (-1.109 * score) + Constants.FPS;
 			if(time > Constants.FPS_MIN) {
 				return time;
 			} else {
