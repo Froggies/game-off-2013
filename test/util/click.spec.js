@@ -16,12 +16,7 @@ define(dependencies, function() {
 				this.ok = true;
 			}, context);
 			div.onclick();
-			waitsFor(function() {
-				return context.ok;
-			}, 'context.ok should be true', 1);
-			runs(function() {
-				expect(context.ok).toBeTruthy();
-			});
+			expect(context.ok).toBeTruthy();
 		});
 
 	});
