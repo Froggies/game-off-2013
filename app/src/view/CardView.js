@@ -21,11 +21,11 @@ var CardView = (function() {
 		var indexOfComplexity = _.find(Constants.CARD_COMPLEXITY, function(c) {
 			return c === this.controller.complexity;
 		}, this);
-		var complexityView = '';
 		for (var i = 0; i < indexOfComplexity; i++) {
-			complexityView = complexityView + '*';
+			var star = document.createElement('span');
+			star.className = 'star';
+			this.complexityContainer.appendChild(star);
 		}
-		this.complexityContainer.innerHTML = complexityView;
 		this.timeContainer.style.display = 'none';
 		element.appendChild(this.container);
 	};
