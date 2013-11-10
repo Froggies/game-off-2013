@@ -5,6 +5,11 @@ module.exports = {
 
   
   app_files: {
+    first: [ 
+      '<%= build_dir %>/app/src/util/ObjectUtil.js',
+      '<%= build_dir %>/app/src/controller/AbstractController.js',
+      '<%= build_dir %>/app/src/view/AbstractView.js'
+    ],
     js: [ 'app/src/**/*.js' ],
     html: [ 'app/index.tpl.html' ],
     stylesheet: ['app/stylesheet/**/*.less'],
