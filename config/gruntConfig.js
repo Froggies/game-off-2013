@@ -6,7 +6,7 @@ module.exports = {
   
   app_files: {
     js: [ 'app/src/**/*.js' ],
-    html: [ 'app/index.html' ],
+    html: [ 'app/index.tpl.html' ],
     stylesheet: ['app/stylesheet/**/*.less'],
     assets: ['app/assets/**/*'],
     less: 'app/stylesheet/main.less',

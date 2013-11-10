@@ -117,7 +117,6 @@ module.exports = function ( grunt ) {
                '<%= vendor_files.js %>', 
                '<%= app_files.assets %>', 
                '<%= app_files.stylesheet %>', 
-               '<%= app_files.html %>', 
                '<%= test_files.js %>' 
             ],
       tasks: ['jshint', 'karma:build:run', 'build']
