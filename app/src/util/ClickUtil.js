@@ -8,6 +8,10 @@ var ClickUtil = (function() {
       return element.onclick = function() {
 				callback.call(context);
       };
+    },
+    listenDomElement: function(id, callback, context) {
+			var element = document.getElementById(id);
+			return ClickUtil.listen(element, callback, context);
     }
 
   };

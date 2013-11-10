@@ -1,18 +1,21 @@
 window.onload = function() {
 
+	var globalContainer = document.getElementById('globalContainer');
+
 	var game = new GameController();
-	game.start(document.getElementsByTagName('body')[0]);
+	game.start(globalContainer);
+
+	new PopupController(
+		game, 
+		document.getElementById('glass'), 
+		document.getElementById('firstPopup'),
+		document.getElementById('helpPopup'),
+		document.getElementById('chooseUserPopup')
+	);
 
 	var button;
 
 	var divButtons = document.createElement('div');
-
-	button = document.createElement('button');
-	button.innerHTML = 'Add card';
-	button.onclick = function() {
-		game.backlog.addCard(CardUtil.buildCard());
-	};
-	divButtons.appendChild(button);
 
 	button = document.createElement('button');
 	button.innerHTML = 'Pause';
@@ -28,11 +31,10 @@ window.onload = function() {
 	};
 	divButtons.appendChild(button);
 
-	document.getElementsByTagName('body')[0].appendChild(divButtons);
+	globalContainer.appendChild(divButtons);
 	
 	game.columns[0].setCanBeActivate(true);
 	game.columns[0].activate();
-
-	window.alert('Start !!??');
+	game.pause();
 
 };
