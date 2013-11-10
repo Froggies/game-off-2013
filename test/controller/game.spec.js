@@ -3,8 +3,8 @@ var dependencies = [
 	'controller/ColumnController', 'view/ColumnView',
 	'controller/HeaderColumnController', 'view/HeaderColumnView',
 	'controller/RowController', 'view/RowView',
-	'controller/BacklogController', 'view/BacklogView'
-	'util/ClickUtil'
+	'controller/BacklogController', 'view/BacklogView',
+	'util/ClickUtil', 'util/GameUtil'
 ];
 
 define(dependencies, function() {
@@ -43,6 +43,37 @@ define(dependencies, function() {
 		it('should create 5 columns', function () {
 			expect(game.columns.length).toBe(5);
 		});		
+
+		function initColumnWith1Card(column, cardType) {
+			var card = CardUtil.buildCard();
+			card.type = cardType;
+			column.setCanBeActivate(true);
+			column.activate();
+			column.activeNextRow();
+			column.addCard(card);
+		}
+
+		it('should remove 3 cards when same cards type is adjacents multiple times', function () {
+			_.each(game.columns, function(column) {
+				initColumnWith1Card(column, 'fake');
+			});
+			var column = game.columns[0];
+			var card1 = CardUtil.buildCard();
+			card1.type = 'fake2';
+			column.activeNextRow();
+			column.addCard(card1);
+			var card2 = CardUtil.buildCard();
+			card2.type = 'fake2';
+			column.activeNextRow();
+			column.addCard(card2);
+			var card3 = CardUtil.buildCard();
+			card3.type = 'fake2';
+			column.activeNextRow();
+			column.addCard(card3);
+
+			game.deleteCardInBacklog();
+			expect(game.columns[0].rows[0].card).toBeUndefined();
+		});
 
 	});
 

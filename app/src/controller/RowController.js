@@ -22,8 +22,10 @@ var RowController = (function() {
 	};
 
 	Row.prototype.addCard = function(card) {
-		this.card = card;
-		card.start(this.view.container);
+		if(this.canAcceptCard() === true) {
+			this.card = card;
+			card.start(this.view.container);
+		}
 	};
 
 	Row.prototype.removeCard = function() {
@@ -32,7 +34,7 @@ var RowController = (function() {
 	};
 
 	Row.prototype.search3cardsAdjacent = function(prevRow, nextRow) {
-		if(prevRow !== undefined && nextRow !== undefined &&
+		if(this.card !== undefined && prevRow !== undefined && nextRow !== undefined &&
 			prevRow.card !== undefined && nextRow.card !== undefined) {
 			if(prevRow.card.type === this.card.type && this.card.type === nextRow.card.type) {
 				var points = prevRow.card.complexity + this.card.complexity + nextRow.card.complexity;

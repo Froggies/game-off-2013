@@ -38,6 +38,8 @@ var ColumnController = (function() {
 			this.view.activate();
 			this.activeNextRow();
 			this.game.columnIsActivated();
+		} else {
+			throw new Exception('You must setCanBeActivate(true) before call activate');
 		}
 	};
 
@@ -49,6 +51,8 @@ var ColumnController = (function() {
 			if(potentielRow !== undefined) {
 				potentielRow.activate();
 			}
+		} else {
+			throw new Exception('You must call activate before activaNextRow');
 		}
 	};
 
@@ -85,7 +89,12 @@ var ColumnController = (function() {
 
 	Column.prototype.timeFinish = function() {
 		this.game.incrementeScore(this.rows[0].card.complexity);
+		this.game.search3cardsAdjacent();
 		this.rows[0].removeCard();
+		this.moveCardsByOnRow();
+	};
+
+	Column.prototype.moveCardsByOnRow = function() {
 		var previousRow;
 		_.each(this.rows, function(row) {
 			if(row.card !== undefined && previousRow !== undefined) {
@@ -112,36 +121,38 @@ var ColumnController = (function() {
 
 	Column.prototype.search3cardsAdjacent = function(prevColumn, nextColumn) {
 		var prevRow, nextRow;
-		if(this.rows[0].card !== undefined) {
-			for (var i = 0; i < this.rows.length; i++) {
-				var row = this.rows[i];
-				var index = _.indexOf(this.rows, row);
-				if(index < this.rows.length) {
-					nextRow = this.rows[index+1];
-				}
-				//first search in ligne
-				var points = row.search3cardsAdjacent(prevRow, nextRow);
-				if(points !== false) {
-					return points;
-				}
-				//second search in column
-				if(prevColumn !== undefined && nextColumn !== undefined) {
-					if(prevColumn.rows[index].card !== undefined &&
-						nextColumn.rows[index].card !== undefined) {
-						if(prevColumn.rows[index].card.type === this.rows[index].card.type &&
-							nextColumn.rows[index].card.type === this.rows[index].card.type) {
-							points = prevColumn.rows[index].card.complexity;
-							points = points + this.rows[index].card.complexity;
-							points = points + nextColumn.rows[index].card.complexity;
-							prevColumn.rows[index].removeCard();
-							this.rows[index].removeCard();
-							nextColumn.rows[index].removeCard();
-							return points;
-						}
+		for (var index = 0; index < this.rows.length; index++) {
+			var row = this.rows[index];
+			if(index < this.rows.length) {
+				nextRow = this.rows[index+1];
+			}
+			//first search in ligne
+			var points = row.search3cardsAdjacent(prevRow, nextRow);
+			if(points !== false) {
+				this.moveCardsByOnRow();
+				this.moveCardsByOnRow();
+				this.moveCardsByOnRow();
+				return points;
+			}
+			//second search in column
+			if(prevColumn !== undefined && nextColumn !== undefined) {
+				var prevCard = prevColumn.rows[index].card;
+				var card = this.rows[index].card;
+				var nextCard = nextColumn.rows[index].card;
+				if(prevCard !== undefined && card !== undefined && nextCard !== undefined) {
+					if(prevCard.type === card.type && card.type === nextCard.type) {
+						points = prevCard.complexity  + card.complexity + nextCard.complexity;
+						prevColumn.rows[index].removeCard();
+						prevColumn.moveCardsByOnRow();
+						this.rows[index].removeCard();
+						this.moveCardsByOnRow();
+						nextColumn.rows[index].removeCard();
+						nextColumn.moveCardsByOnRow();
+						return points;
 					}
 				}
-				prevRow = row;
 			}
+			prevRow = row;
 		}
 		return false;
 	};

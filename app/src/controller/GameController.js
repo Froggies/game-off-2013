@@ -46,16 +46,15 @@ var GameController = (function() {
 
 	Game.prototype.deleteCardInBacklog = function(card) {
 		this.backlog.removeCard(card);
-		while(this.search3cardsAdjacent() === true) {
-			this.search3cardsAdjacent();
+		if(this.search3cardsAdjacent() === true) {
+			this.deleteCardInBacklog();
 		}
 	};
 
 	Game.prototype.search3cardsAdjacent = function() {
 		var prevColumn, nextColumn;
-		for (var i = 0; i < this.columns.length; i++) {
-			var column = this.columns[i];
-			var indexColumn = _.indexOf(this.columns, column);
+		for (var indexColumn = 0; indexColumn < this.columns.length; indexColumn++) {
+			var column = this.columns[indexColumn];
 			if(indexColumn < this.columns.length) {
 				nextColumn = this.columns[indexColumn+1];
 			}
