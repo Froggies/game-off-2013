@@ -8,21 +8,21 @@ var ObjectUtil = (function() {
 
     // inheritance utility, took from coffe script project
     // http://coffeescript.org
-    inherit: function(child, parent) { 
-      for (var key in parent) { 
+    inherit: function(child, parent) {
+      for (var key in parent) {
         if (__hasProp.call(parent, key)) {
           child[key] = parent[key];
         }
-      } 
+      }
 
-      function Ctor() { 
+      function Ctor() {
         this.constructor = child;
-      } 
+      }
 
-      Ctor.prototype = parent.prototype; 
-      child.prototype = new Ctor(); 
-      child.parent = parent.prototype; 
-      return child; 
+      Ctor.prototype = parent.prototype;
+      child.prototype = new Ctor();
+      child.parent = parent.prototype;
+      return child;
     }
 
   };
