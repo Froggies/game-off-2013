@@ -15,6 +15,8 @@ var GameController = (function() {
 		}
 	}
 
+	ObjectUtil.inherit(Game, AbstractController);
+
 	Game.prototype.start = function(element) {
 		this.view.draw(element);
 		this.score.start(this.view.container);

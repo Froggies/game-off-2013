@@ -10,9 +10,7 @@ var CardController = (function() {
 		this.view = new CardView(this);
 	}
 
-	Card.prototype.start = function(element) {
-		this.view.draw(element);
-	};
+	ObjectUtil.inherit(Card, AbstractController);
 
 	Card.prototype.refreshView = function() {
 		this.view.refresh();

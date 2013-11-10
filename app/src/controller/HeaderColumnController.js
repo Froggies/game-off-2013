@@ -9,9 +9,7 @@ var HeaderColumnController = (function() {
 		this.view = new HeaderColumnView(this);
 	}
 
-	HeaderColumn.prototype.start = function(element) {
-		this.view.draw(element);
-	};
+	ObjectUtil.inherit(HeaderColumn, AbstractController);
 
 	HeaderColumn.prototype.setCanBeActivate = function(bool) {
 		this.canBeActivate = bool;

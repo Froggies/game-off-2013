@@ -3,9 +3,11 @@ var ScoreView = (function() {
 	'use strict';
 
 	function Score(controller) {
-		this.controller = controller;
+		Score.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('score');
 	}
+
+	ObjectUtil.inherit(Score, AbstractView);
 
 	Score.prototype.draw = function(element) {
 		element.appendChild(this.container);

@@ -61,6 +61,7 @@ module.exports = function ( grunt ) {
         },
         src: [ 
           '<%= vendor_files.js %>', 
+          '<%= build_dir %>/app/src/util/ObjectUtil.js',
           '<%= build_dir %>/app/src/**/*.js'   
         ],
         dest: '<%= compile_dir %>/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -97,6 +98,7 @@ module.exports = function ( grunt ) {
         dir: '<%= build_dir %>/app',
         src: [
           '<%= build_dir %>/<%= vendor_files.js %>',
+          '<%= build_dir %>/app/src/util/ObjectUtil.js',
           '<%= build_dir %>/app/src/**/*.js',
           '<%= build_dir %>/app/stylesheet/**/*.less',
         ]

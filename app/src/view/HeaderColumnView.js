@@ -3,16 +3,14 @@ var HeaderColumnView = (function() {
 	'use strict';
 
 	function HeaderColumn(controller) {
-		this.controller = controller;
+		HeaderColumn.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('headerColumn');
 		ClickUtil.listen(this.container, function() {
 			this.onClick();
 		}, this);
 	}
 
-	HeaderColumn.prototype.draw = function(element) {
-		element.appendChild(this.container);
-	};
+	ObjectUtil.inherit(HeaderColumn, AbstractView);
 
 	HeaderColumn.prototype.refreshCanBeActivate = function() {
 		this.container.className = 'headerColumn canBeActive ' + this.controller.canBeActivate;

@@ -3,13 +3,11 @@ var RowView = (function() {
 	'use strict';
 
 	function Row(controller) {
-		this.controller = controller;
+		Row.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('row inactive');
 	}
 
-	Row.prototype.draw = function(element) {
-		element.appendChild(this.container);
-	};
+	ObjectUtil.inherit(Row, AbstractView);
 
 	Row.prototype.activate = function() {
 		this.container.className = 'row active';

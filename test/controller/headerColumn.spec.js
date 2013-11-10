@@ -1,6 +1,6 @@
 var dependencies = [
 	'controller/ColumnController', 'view/ColumnView',
-	'controller/HeaderColumnController', 'view/HeaderColumnView'
+	'controller/HeaderColumnController', 'view/HeaderColumnView',
 ];
 
 define(dependencies, function() {

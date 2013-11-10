@@ -1,4 +1,5 @@
 var dependencies = [
+	'util/ObjectUtil', 'controller/AbstractController',
 	'controller/BacklogController', 'view/BacklogView', 
 	'util/ViewUtil', 'util/DragAndDropUtil'
 ];

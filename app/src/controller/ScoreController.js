@@ -8,9 +8,7 @@ var ScoreController = (function() {
 		this.level = 0;
 	}
 
-	Score.prototype.start = function(element) {
-		this.view.draw(element);
-	};
+	ObjectUtil.inherit(Score, AbstractController);
 
 	Score.prototype.incrementeBy = function(score) {
 		this.score = this.score + score;

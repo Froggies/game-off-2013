@@ -3,13 +3,11 @@ var GameView = (function() {
 	'use strict';
 
 	function Game(controller) {
-		this.controller = controller;
+		Game.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('game');
 	}
 
-	Game.prototype.draw = function(element) {
-		element.appendChild(this.container);
-	};
+	ObjectUtil.inherit(Game, AbstractView);
 
 	return Game;
 

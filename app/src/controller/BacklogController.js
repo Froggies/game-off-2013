@@ -7,6 +7,8 @@ var BacklogController = (function() {
 		this.cards = [];
 	}
 
+	ObjectUtil.inherit(Backlog, AbstractController);
+
 	Backlog.prototype.addCard = function(card) {
 		this.cards.push(card);
 		card.start(this.view.container);
@@ -17,10 +19,6 @@ var BacklogController = (function() {
 		if (index > -1) {
 			this.cards.splice(index, 1);
 		}
-	};
-
-	Backlog.prototype.start = function(element) {
-		this.view.draw(element);
 	};
 
 	return Backlog;

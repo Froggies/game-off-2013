@@ -3,7 +3,7 @@ var CardView = (function() {
 	'use strict';
 
 	function Card(controller) {
-		this.controller = controller;
+		Card.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('card');
 		this.typeContainer = ViewUtil.buildContainer('type');
 		this.complexityContainer = ViewUtil.buildContainer('complexity');
@@ -15,6 +15,8 @@ var CardView = (function() {
 		this.container.appendChild(this.timeContainer);
 		DragAndDropUtil.makeDraggable(this);
 	}
+
+	ObjectUtil.inherit(Card, AbstractView);
 
 	Card.prototype.draw = function(element) {
 		this.typeContainer.innerHTML = this.controller.type;

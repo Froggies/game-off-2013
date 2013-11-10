@@ -1,5 +1,5 @@
 var dependencies = [
-	'controller/RowController', 'view/RowView'
+	'controller/RowController', 'view/RowView',
 ];
 
 define(dependencies, function() {

@@ -8,9 +8,7 @@ var RowController = (function() {
 		this.card = undefined;
 	}
 
-	Row.prototype.start = function(element) {
-		this.view.draw(element);
-	};
+	ObjectUtil.inherit(Row, AbstractController);
 
 	Row.prototype.activate = function() {
 		this.isActive = true;

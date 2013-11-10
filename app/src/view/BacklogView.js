@@ -3,13 +3,11 @@ var BacklogView = (function() {
 	'use strict';
 
 	function Backlog(controller) {
-		this.controller = controller;
+		Backlog.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('backlog');
 	}
 
-	Backlog.prototype.draw = function(element) {
-		element.appendChild(this.container);
-	};
+	ObjectUtil.inherit(Backlog, AbstractView);
 
 	return Backlog;
 

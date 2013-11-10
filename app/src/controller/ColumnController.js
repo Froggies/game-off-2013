@@ -15,6 +15,8 @@ var ColumnController = (function() {
 		}
 	}
 
+	ObjectUtil.inherit(Column, AbstractController);
+
 	Column.prototype.start = function(element) {
 		this.view.draw(element);
 		this.header.start(this.view.container);
