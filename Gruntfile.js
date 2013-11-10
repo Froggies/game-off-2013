@@ -200,7 +200,7 @@ module.exports = function ( grunt ) {
 
   function filterForLESS ( files ) {
     return files.filter( function ( file ) {
-      return file.match( /\.less$/ ) || file.match( /\.css$/ );
+      return file.match( /main\.less$/ ) || file.match( /\.css$/ );
     });
   }
 
