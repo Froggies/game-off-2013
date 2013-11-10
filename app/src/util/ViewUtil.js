@@ -1,5 +1,7 @@
 var ViewUtil = (function() {
 
+	'use strict';
+
   return {
 
     buildContainer: function(className) {

@@ -1,5 +1,7 @@
 var GameUtil = (function() {
 
+	'use strict';
+
   return {
 
     calculTimeNewCard: function(score) {

@@ -1,5 +1,7 @@
 var DragAndDropUtil = (function() {
 
+  'use strict';
+
   var lastElementDragged;//one at same time... normally :D
 
   function makeUndraggable(element) {

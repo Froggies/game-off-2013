@@ -1,5 +1,7 @@
 var TimeoutUtil = (function() {
 
+  'use strict';
+
   return {
 
     timeout: function(callback, time, context) {

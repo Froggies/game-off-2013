@@ -1,5 +1,7 @@
 var ClickUtil = (function() {
 
+	'use strict';
+
   return {
 
     listen: function(element, callback, context) {

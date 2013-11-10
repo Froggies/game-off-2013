@@ -1,5 +1,7 @@
 var CardUtil = (function() {
 
+  'use strict';
+
   return {
 
     buildCard: function() {

@@ -1,5 +1,7 @@
 var ScoreUtil = (function() {
 
+	'use strict';
+
   return {
 
     isNextLevel: function(score, level) {
