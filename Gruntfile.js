@@ -112,7 +112,8 @@ module.exports = function ( grunt ) {
     },
 
     watch: {
-      files: [ '<%= app_files.js %>', 
+      files: [ '<%= app_files.html %>', 
+               '<%= app_files.js %>', 
                '<%= vendor_files.js %>', 
                '<%= app_files.assets %>', 
                '<%= app_files.stylesheet %>', 
