@@ -8,6 +8,8 @@ var ObjectUtil = (function() {
 
     // inheritance utility, took from coffe script project
     // http://coffeescript.org
+
+    // Must be called before first prototype child method
     inherit: function(child, parent) {
       for (var key in parent) {
         if (__hasProp.call(parent, key)) {
