@@ -4,6 +4,7 @@ var dependencies = [
 	'controller/HeaderColumnController', 'view/HeaderColumnView',
 	'controller/RowController', 'view/RowView',
 	'controller/BacklogController', 'view/BacklogView',
+	'controller/UserController', 'view/UserView',
 	'util/ClickUtil', 'util/GameUtil',
 ];
 

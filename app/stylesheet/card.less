@@ -14,11 +14,15 @@
 }
 
 .card .complexity .star:before {
-	content: '*';
+	content: '★';
 }
 
-.card .complexity .star {
+.card .complexity .star.active {
+	color: #FBE600;
+}
 
+.card .complexity .star.inactive {
+	color: #CCC;
 }
 
 .card .time {

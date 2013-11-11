@@ -14,20 +14,19 @@ var CardView = (function() {
 		this.timeContainer.appendChild(this.ellapsedTimeContainer);
 		this.container.appendChild(this.timeContainer);
 		DragAndDropUtil.makeDraggable(this);
+		this.typeContainer.innerHTML = this.controller.type;
+		for (var i = 0; i < Constants.CARD_COMPLEXITY.length; i++) {
+			if(this.controller.complexity > Constants.CARD_COMPLEXITY[i]) {
+				this.complexityContainer.appendChild(ViewUtil.buildElement('star active', 'span'));
+			} else {
+				this.complexityContainer.appendChild(ViewUtil.buildElement('star inactive', 'span'));
+			}
+		}
 	}
 
 	ObjectUtil.inherit(Card, AbstractView);
 
 	Card.prototype.draw = function(element) {
-		this.typeContainer.innerHTML = this.controller.type;
-		var indexOfComplexity = _.find(Constants.CARD_COMPLEXITY, function(c) {
-			return c === this.controller.complexity;
-		}, this);
-		for (var i = 0; i < indexOfComplexity; i++) {
-			var star = document.createElement('span');
-			star.className = 'star';
-			this.complexityContainer.appendChild(star);
-		}
 		this.timeContainer.style.display = 'none';
 		element.appendChild(this.container);
 	};

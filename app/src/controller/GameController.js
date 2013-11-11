@@ -9,6 +9,7 @@ var GameController = (function() {
 		this.view = new GameView(this);
 		this.backlog = new BacklogController();
 		this.score = new ScoreController();
+		this.user = new UserController(this);
 		this.columns = [];
 		for(var i=0; i<Constants.NB_COLUMNS; i++) {
 			this.columns.push(new ColumnController(this));
@@ -19,10 +20,12 @@ var GameController = (function() {
 
 	Game.prototype.start = function(element) {
 		this.view.draw(element);
-		this.score.start(this.view.container);
+		this.score.start(this.user.view.containerScore);
 		this.backlog.start(this.view.container);
+		this.user.start(this.view.container);
+		this.view.drawColumnsContainer();
 		for(var indexColumn=0; indexColumn < this.columns.length; indexColumn++) {
-			this.columns[indexColumn].start(this.view.container);
+			this.columns[indexColumn].start(this.view.getColumnsContainer());
 		}
 		this.resume();
 	};
@@ -38,7 +41,9 @@ var GameController = (function() {
 	Game.prototype.resume = function() {
 		if(this.timeout === undefined) {
 			this.timeout = TimeoutUtil.interval(function() {
-				this.loop();
+				if(this.loop() === 'finish') {
+					window.clearInterval(this.timeout);
+				}
 			}, GameUtil.calculTimeNewCard(this.score.score), this);
 			_.each(this.columns, function(column) {
 				column.resume();
@@ -87,8 +92,7 @@ var GameController = (function() {
 		this.nbLoop = this.nbLoop + 1;
 		this.backlog.addCard(CardUtil.buildCard());
 		if(this.backlog.cards.length > Constants.NB_CARDS_IN_BACKLOG_MAX) {
-			this.pause();
-			window.alert('Game over');
+			this.score.loose();
 			return 'finish';
 		}
 	};

@@ -1,5 +1,5 @@
 var dependencies = [
-	'view/CardView'
+	'view/CardView', 'util/ViewUtil'
 ];
 
 define(dependencies, function() {
