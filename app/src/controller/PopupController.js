@@ -2,30 +2,23 @@ var PopupController = (function() {
 
 	'use strict';
 
-	function Popup(game, glassElement, firstPopupElement, helpPopupElement, chooseUserPopupElement) {
+	function Popup(game, glassElement, popupContainer) {
 		this.game = game;
 		this.glassElement = glassElement;
-		this.firstPopupElement = firstPopupElement;
-		ClickUtil.listenDomElement('firstPopupHelpButton', function() {
-			this.displayHelpPopup();
-		}, this);
-		ClickUtil.listenDomElement('firstPopupStartButton', function() {
-			this.displayChooseUserPopup();
-		}, this);
-		this.helpPopupElement = helpPopupElement;
-		ClickUtil.listenDomElement('helpPopupBackButton', function() {
-			this.displayFirstPopup();
-		}, this);
-		this.chooseUserPopupElement = chooseUserPopupElement;
-		ClickUtil.listenDomElement('chooseUserPopupDev1Button', function() {
-			this.startGame();
-		}, this);
-		ClickUtil.listenDomElement('chooseUserPopupBackButton', function() {
-			this.displayFirstPopup();
-		}, this);
+		this.popupContainer = popupContainer;
+		this.firstPopup = new FirstPopupController(this);
+		this.helpPopup = new HelpPopupController(this);
+		this.chooseUserPopup = new ChooseUserPopupController(this);
 		this.view = new PopupView(this);
+		this.start(popupContainer);
 		this.displayFirstPopup();
 	}
+
+	Popup.prototype.start = function(element) {
+		this.firstPopup.start(this.popupContainer);
+		this.helpPopup.start(this.popupContainer);
+		this.chooseUserPopup.start(this.popupContainer);
+	};
 
 	Popup.prototype.startGame = function() {
 		this.view.hidePopup();

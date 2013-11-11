@@ -8,9 +8,7 @@ window.onload = function() {
 	var popups = new PopupController(
 		game, 
 		document.getElementById('glass'), 
-		document.getElementById('firstPopup'),
-		document.getElementById('helpPopup'),
-		document.getElementById('chooseUserPopup')
+		document.getElementsByTagName('body')[0]
 	);
 
 	game.columns[0].setCanBeActivate(true);

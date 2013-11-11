@@ -6,7 +6,11 @@ var ClickUtil = (function() {
 
     listen: function(element, callback, context) {
       return element.onclick = function() {
-				callback.call(context);
+        if(context !== undefined) {
+          callback.call(context);
+        } else {
+          callback();
+        }
       };
     },
     listenDomElement: function(id, callback, context) {

@@ -18,9 +18,23 @@ var ViewUtil = (function() {
       img.src = url;
       return img;
     },
-    buildButton: function(label) {
+    buildButton: function(label, onClick, onClickContext) {
       var button = buildElement('button');
       button.innerHTML = label;
+      if(onClick !== undefined) {
+        ClickUtil.listen(button, onClick, onClickContext);
+      }
+      return button;
+    },
+    buildButtonImg: function(url, label, onClick, onClickContext) {
+      var button = ViewUtil.buildButton('', onClick, onClickContext);
+      var img = ViewUtil.buildImg(url);
+      button.appendChild(img);
+      if(label !== '') {
+        var l = buildElement('div');
+        l.innerHTML = label;
+        button.appendChild(l);
+      }
       return button;
     },
     buildElement: function(className, type) {
