@@ -11,7 +11,7 @@ var BacklogController = (function() {
 
 	Backlog.prototype.addCard = function(card) {
 		this.cards.push(card);
-		card.start(this.view.container);
+		card.start(this.view.cardsContainer);
 		var interval = TimeoutUtil.interval(function() {
 			var element = card.view.container;
 			var top= (window.getComputedStyle ?
@@ -24,6 +24,7 @@ var BacklogController = (function() {
 				window.clearInterval(interval);
 			}
 		}, 50, this);
+		this.view.updateGauge();
 	};
 
 	Backlog.prototype.removeCard = function(card) {
@@ -31,6 +32,7 @@ var BacklogController = (function() {
 		if (index > -1) {
 			this.cards.splice(index, 1);
 		}
+		this.view.updateGauge();
 	};
 
 	return Backlog;
