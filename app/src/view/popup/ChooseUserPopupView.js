@@ -10,23 +10,28 @@ var ChooseUserPopupView = (function() {
 		this.title.innerHTML = 'Choose your player !';
 		this.container.appendChild(this.title);
 
-		this.container.appendChild(ViewUtil.buildButtonImg(
+		this.content = ViewUtil.buildContainer('content');
+		this.content.appendChild(ViewUtil.buildButtonImg(
 			'assets/img/dev1.png', 
 			'Dev1', 
 			controller.onGoDev1, controller
 		));
-
-		this.container.appendChild(ViewUtil.buildButtonImg(
+		this.content.appendChild(ViewUtil.buildButtonImg(
 			'assets/img/github.png', 
 			'Connect Github', 
 			controller.onGoGithub, controller
 		));
+		this.container.appendChild(this.content);
 
-		this.container.appendChild(ViewUtil.buildButton(
+		this.footer = ViewUtil.buildElement('footer', 'footer');
+		this.footer.appendChild(ViewUtil.buildButton(
 			'Back', 
 			controller.onGoBack, 
 			controller
 		));
+		this.container.appendChild(this.footer);
+
+		
 	}
 
 	ObjectUtil.inherit(Popup, AbstractView);

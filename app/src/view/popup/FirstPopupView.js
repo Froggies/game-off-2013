@@ -5,15 +5,21 @@ var FirstPopupView = (function() {
 	function Popup(controller) {
 		Popup.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('popup firstPopup');
+		
 		this.title = ViewUtil.buildElement('title', 'h1');
 		this.title.innerHTML = 'Welcome in the Game !';
 		this.container.appendChild(this.title);
-		this.buttonHelp = ViewUtil.buildButton('Help');
-		this.container.appendChild(this.buttonHelp);
-		ClickUtil.listen(this.buttonHelp, controller.onGoHelp, controller);
-		this.buttonStart = ViewUtil.buildButton('Start');
-		this.container.appendChild(this.buttonStart);
-		ClickUtil.listen(this.buttonStart, controller.onGoStart, controller);
+
+		this.footer = ViewUtil.buildElement('footer', 'footer');
+		this.footer.appendChild(ViewUtil.buildButton(
+			'Help', 
+			controller.onGoHelp, controller
+		));
+		this.footer.appendChild(ViewUtil.buildButton(
+			'Start', 
+			controller.onGoStart, controller
+		));
+		this.container.appendChild(this.footer);
 	}
 
 	ObjectUtil.inherit(Popup, AbstractView);
