@@ -10,6 +10,7 @@ define(dependencies, function() {
 	describe('a column', function() {
 
 		var column;
+		var level = 0;
 
 		function buildNewColumn() {
 			return new ColumnController({
@@ -51,7 +52,7 @@ define(dependencies, function() {
 		});
 
 		it('should refuse card when it full', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			expect(column.addCard(card)).toBe(false);
 		});
 
@@ -75,39 +76,39 @@ define(dependencies, function() {
 		});
 
 		it('should add card in first row', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			activeColumnAnd1Row();
 			column.addCard(card);
 			expect(column.rows[0].card).toBe(card);
 		});
 
 		it('should not add card when row is not activate', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			activeColumn();
 			column.addCard(card);
-			var card2 = CardUtil.buildCard();
+			var card2 = CardUtil.buildCard(level);
 			column.addCard(card2);
 			expect(column.rows[1].card).toBeUndefined();
 		});
 
 		it('should add card in second row when first is full', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			activeColumnAnd1Row();
 			column.addCard(card);
-			var card2 = CardUtil.buildCard();
+			var card2 = CardUtil.buildCard(level);
 			column.activeNextRow();
 			column.addCard(card2);
 			expect(column.rows[1].card).toBe(card2);
 		});
 
 		it('should move others cards to the top', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			activeColumnAnd1Row();
 			column.addCard(card);
-			var card2 = CardUtil.buildCard();
+			var card2 = CardUtil.buildCard(level);
 			column.activeNextRow();
 			column.addCard(card2);
-			var card3 = CardUtil.buildCard();
+			var card3 = CardUtil.buildCard(level);
 			column.activeNextRow();
 			column.addCard(card3);
 			column.timeFinish();
@@ -117,7 +118,7 @@ define(dependencies, function() {
 		});
 
 		it('should remove current card when card time is finish', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			card.time = 0;
 			activeColumnAnd1Row();
 			column.addCard(card);
@@ -130,7 +131,7 @@ define(dependencies, function() {
 		});
 
 		function buildColumnWith3IdenticalCards() {
-			var cards = [CardUtil.buildCard(), CardUtil.buildCard(), CardUtil.buildCard()];
+			var cards = [CardUtil.buildCard(level), CardUtil.buildCard(level), CardUtil.buildCard(level)];
 			activeColumn();
 			_.each(cards, function(card) {
 				card.type = 'fake';
@@ -147,7 +148,7 @@ define(dependencies, function() {
 
 		it('should remove 3 cards when same cards type is adjacents on same column and move other cards to the top', function () {
 			buildColumnWith3IdenticalCards();
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			card.type = 'other';
 			column.activeNextRow();
 			column.addCard(card);
@@ -156,7 +157,7 @@ define(dependencies, function() {
 		});
 
 		function initColumnWith1Card(column, cardType) {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			card.type = cardType;
 			column.setCanBeActivate(true);
 			column.activate();
@@ -179,14 +180,14 @@ define(dependencies, function() {
 
 		it('should remove 3 cards when same cards type is adjacents on same ligne and move to top others', function () {
 			initColumnWith1Card(column, 'fake');
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			card.type = 'other';
 			column.activeNextRow();
 			column.addCard(card);
 
 			var prevColumn = buildNewColumn();
 			initColumnWith1Card(prevColumn, 'fake');
-			var card2 = CardUtil.buildCard();
+			var card2 = CardUtil.buildCard(level);
 			card2.type = 'other';
 			prevColumn.activeNextRow();
 			prevColumn.addCard(card2);

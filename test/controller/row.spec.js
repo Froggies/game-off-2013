@@ -7,6 +7,7 @@ define(dependencies, function() {
 	describe('a row', function() {
 
 		var row;
+		var level = 0;
 
 		beforeEach(function() {
 			row = new RowController();
@@ -26,7 +27,7 @@ define(dependencies, function() {
 		});
 
 		it('should add a card', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			row.activate();
 			row.addCard(card);
 			expect(row.card).toBe(card);
@@ -34,7 +35,7 @@ define(dependencies, function() {
 
 		it('should delete a card', function () {
 			row.activate();
-			row.addCard(CardUtil.buildCard());
+			row.addCard(CardUtil.buildCard(level));
 			row.removeCard();
 			expect(row.card).toBeUndefined();
 		});
@@ -44,17 +45,17 @@ define(dependencies, function() {
 		});
 
 		it('should find 3 cards adjacents, remove it and return points', function () {
-			var card1 = CardUtil.buildCard();
+			var card1 = CardUtil.buildCard(level);
 			card1.type = 'fake';
 			row.activate();
 			row.addCard(card1);
 			var prevRow = new RowController();
-			var card2 = CardUtil.buildCard();
+			var card2 = CardUtil.buildCard(level);
 			card2.type = 'fake';
 			prevRow.activate();
 			prevRow.addCard(card2);
 			var nextRow = new RowController();
-			var card3 = CardUtil.buildCard();
+			var card3 = CardUtil.buildCard(level);
 			card3.type = 'fake';
 			nextRow.activate();
 			nextRow.addCard(card3);

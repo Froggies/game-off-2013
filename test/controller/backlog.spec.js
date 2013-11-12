@@ -9,6 +9,7 @@ define(dependencies, function() {
 	describe('in backlog', function() {
 
 		var backlog;
+		var level = 0;
 
 		beforeEach(function() {
 			backlog = new BacklogController();
@@ -27,23 +28,23 @@ define(dependencies, function() {
 		});
 
 		it(' should have 1 card after call addCard', function () {
-			backlog.addCard(CardUtil.buildCard());
+			backlog.addCard(CardUtil.buildCard(level));
 			expect(backlog.cards.length).toBe(1);
 		});
 
 		it(' should have 0 card after call removeCard', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			backlog.addCard(card);
 			backlog.removeCard(card);
 			expect(backlog.cards.length).toBe(0);
 		});
 
 		it(' should remove specific card', function () {
-			var card = CardUtil.buildCard();
+			var card = CardUtil.buildCard(level);
 			backlog.addCard(card);
-			var cardToRemove = CardUtil.buildCard();
+			var cardToRemove = CardUtil.buildCard(level);
 			backlog.addCard(cardToRemove);
-			var card2 = CardUtil.buildCard();
+			var card2 = CardUtil.buildCard(level);
 			backlog.addCard(card2);
 			backlog.removeCard(cardToRemove);
 			expect(backlog.cards.length).toBe(2);

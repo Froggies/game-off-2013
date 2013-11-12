@@ -90,7 +90,7 @@ var GameController = (function() {
 
 	Game.prototype.loop = function() {
 		this.nbLoop = this.nbLoop + 1;
-		this.backlog.addCard(CardUtil.buildCard());
+		this.backlog.addCard(CardUtil.buildCard(this.score.level));
 		if(this.backlog.cards.length > Constants.NB_CARDS_IN_BACKLOG_MAX) {
 			this.score.loose();
 			return 'finish';
