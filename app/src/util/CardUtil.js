@@ -8,7 +8,7 @@ var CardUtil = (function() {
 			var type = Constants.CARD_TYPE[_.random(0, Constants.CARD_TYPE.length-1)];
 			var complexity;
       if(level < 5) {
-        complexity = Constants.CARD_COMPLEXITY[_.random(0, Constants.CARD_COMPLEXITY.length/2)];
+        complexity = Constants.CARD_COMPLEXITY[_.random(0, 4)];
       } else {
         complexity = Constants.CARD_COMPLEXITY[_.random(0, Constants.CARD_COMPLEXITY.length-1)];
       }
