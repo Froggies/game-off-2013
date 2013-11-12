@@ -10,6 +10,10 @@ var FirstPopupView = (function() {
 		this.title.innerHTML = 'Welcome in the Game !';
 		this.container.appendChild(this.title);
 
+		this.content = ViewUtil.buildContainer('content');
+		this.content.innerHTML = 'You are a tyrannical project chief and you have to affect tasks to your developpers. You have to make evolve your team, to cope with change, to treat a large amount of tasks, before the backlog blows up.';
+		this.container.appendChild(this.content);
+
 		this.footer = ViewUtil.buildElement('footer', 'footer');
 		this.footer.appendChild(ViewUtil.buildButton(
 			'Help', 
