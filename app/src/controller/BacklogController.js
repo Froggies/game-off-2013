@@ -2,7 +2,8 @@ var BacklogController = (function() {
 
 	'use strict';
 
-	function Backlog() {
+	function Backlog(game) {
+    this.game = game;
 		this.view = new BacklogView(this);
 		this.cards = [];
 	}
@@ -34,6 +35,20 @@ var BacklogController = (function() {
 		}
 		this.view.updateGauge();
 	};
+
+  Backlog.prototype.removeAllCards = function() {
+    _.each(this.cards, function(card) {
+      this.view.cardsContainer.removeChild(card.view.container);
+    }, this);
+    this.cards = [];
+    this.view.updateGauge();
+  };
+
+  Backlog.prototype.pause = function() {
+  };
+
+  Backlog.prototype.resume = function() {
+  };
 
 	return Backlog;
 

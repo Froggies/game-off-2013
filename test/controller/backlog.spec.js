@@ -1,4 +1,5 @@
 var dependencies = [
+	'constants',
 	'util/ObjectUtil', 'controller/AbstractController',
 	'controller/BacklogController', 'view/BacklogView', 
 	'util/ViewUtil', 'util/DragAndDropUtil'
@@ -10,9 +11,10 @@ define(dependencies, function() {
 
 		var backlog;
 		var level = 0;
+		var game = {nbCardsInBacklogMax: Constants.NB_CARDS_IN_BACKLOG_MAX};
 
 		beforeEach(function() {
-			backlog = new BacklogController();
+			backlog = new BacklogController(game);
 		});
 
 		it(' should have a view', function () {

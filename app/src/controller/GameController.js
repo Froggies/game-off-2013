@@ -7,13 +7,16 @@ var GameController = (function() {
 		this.timeout = undefined;
 
 		this.view = new GameView(this);
-		this.backlog = new BacklogController();
+		this.backlog = new BacklogController(this);
 		this.score = new ScoreController();
 		this.user = new UserController(this);
 		this.columns = [];
+		this.hasChooseBonus = false;
+		this.nbCardsInBacklogMax = Constants.NB_CARDS_IN_BACKLOG_MAX;
 		for(var i=0; i<Constants.NB_COLUMNS; i++) {
 			this.columns.push(new ColumnController(this));
 		}
+		this.bonus = new BonusController(this);
 	}
 
 	ObjectUtil.inherit(Game, AbstractController);
@@ -27,12 +30,14 @@ var GameController = (function() {
 		for(var indexColumn=0; indexColumn < this.columns.length; indexColumn++) {
 			this.columns[indexColumn].start(this.view.getColumnsContainer());
 		}
+		this.bonus.start(this.view.container);
 		this.resume();
 	};
 
 	Game.prototype.pause = function() {
 		window.clearInterval(this.timeout);
 		this.timeout = undefined;
+    this.backlog.pause();
 		_.each(this.columns, function(column) {
 			column.pause();
 		});
@@ -45,6 +50,7 @@ var GameController = (function() {
 					window.clearInterval(this.timeout);
 				}
 			}, GameUtil.calculTimeNewCard(this.score.score), this);
+      this.backlog.resume();
 			_.each(this.columns, function(column) {
 				column.resume();
 			});
@@ -82,16 +88,22 @@ var GameController = (function() {
 			this.resume();//TODO rework update time card backlog
 			this.score.level = this.score.level + 1;
 			this.score.incrementeBy(0);//TODO rework refresh view method
+			this.hasChooseBonus = false;
 			_.each(this.columns, function(column) {
 				column.setCanBeActivate(true);
 			});
+		}
+		if(this.score.level > 0 && this.score.level % 3 === 0 && this.hasChooseBonus === false) {
+			this.hasChooseBonus = true;
+			this.pause();
+			this.popupController.displayChooseBonusPopup();
 		}
 	};
 
 	Game.prototype.loop = function() {
 		this.nbLoop = this.nbLoop + 1;
 		this.backlog.addCard(CardUtil.buildCard(this.score.level));
-		if(this.backlog.cards.length > Constants.NB_CARDS_IN_BACKLOG_MAX) {
+		if(this.backlog.cards.length > this.nbCardsInBacklogMax) {
 			this.score.loose();
 			return 'finish';
 		}

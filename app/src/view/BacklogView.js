@@ -22,7 +22,8 @@ var BacklogView = (function() {
 	ObjectUtil.inherit(Backlog, AbstractView);
 
 	Backlog.prototype.updateGauge = function() {
-		var percent = (this.controller.cards.length * 100) / Constants.NB_CARDS_IN_BACKLOG_MAX;
+		var percent = (this.controller.cards.length * 100) / this.controller.game.nbCardsInBacklogMax;
+		this.title.innerHTML = 'Backlog : ' + this.controller.cards.length + '/' + this.controller.game.nbCardsInBacklogMax;
 		ViewUtil.removeClassName(this.gauge, 'relax');
 		ViewUtil.removeClassName(this.gauge, 'nervous');
 		ViewUtil.removeClassName(this.gauge, 'dead');

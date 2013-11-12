@@ -9,6 +9,7 @@ var PopupController = (function() {
 		this.firstPopup = new FirstPopupController(this);
 		this.helpPopup = new HelpPopupController(this);
 		this.chooseUserPopup = new ChooseUserPopupController(this);
+		this.chooseBonusPopup = new ChooseBonusPopupController(this);
 		this.view = new PopupView(this);
 		this.start(popupContainer);
 		this.displayFirstPopup();
@@ -18,6 +19,7 @@ var PopupController = (function() {
 		this.firstPopup.start(this.popupContainer);
 		this.helpPopup.start(this.popupContainer);
 		this.chooseUserPopup.start(this.popupContainer);
+		this.chooseBonusPopup.start(this.popupContainer);
 	};
 
 	Popup.prototype.startGame = function() {
@@ -35,6 +37,10 @@ var PopupController = (function() {
 
 	Popup.prototype.displayChooseUserPopup = function() {
 		this.view.displayChooseUserPopup();
+	};
+
+	Popup.prototype.displayChooseBonusPopup = function() {
+		this.view.displayChooseBonusPopup();
 	};
 
 	return Popup;
