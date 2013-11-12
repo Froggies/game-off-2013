@@ -12,6 +12,18 @@ var BacklogController = (function() {
 	Backlog.prototype.addCard = function(card) {
 		this.cards.push(card);
 		card.start(this.view.container);
+		var interval = TimeoutUtil.interval(function() {
+			var element = card.view.container;
+			var top= (window.getComputedStyle ?
+				window.getComputedStyle(element, null).getPropertyValue('top') :
+				element.currentStyle ? element.currentStyle.top : '0'
+			);
+			top = parseFloat(top.split('px')[0], 10);
+			element.style.top = (top - 1.25) + 'px';
+			if(top <= 0) {
+				window.clearInterval(interval);
+			}
+		}, 50, this);
 	};
 
 	Backlog.prototype.removeCard = function(card) {
