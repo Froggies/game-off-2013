@@ -24,10 +24,15 @@ var DragAndDropUtil = (function() {
         return true;
       };
       element.ondragover = function(evt) {
+        ViewUtil.addClassName(element, 'dragOver');
         return false;
+      };
+      element.ondragleave = function(evt) {
+        ViewUtil.removeClassName(element, 'dragOver');
       };
       element.ondrop = function (evt) {
         evt.stopPropagation();
+        ViewUtil.removeClassName(element, 'dragOver');
         if(callback !== undefined) {
           if(callback(lastElementDragged) === true) {
             makeUndraggable(lastElementDragged);

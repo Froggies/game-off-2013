@@ -14,7 +14,11 @@ var ColumnView = (function() {
 	ObjectUtil.inherit(Column, AbstractView);
 
 	Column.prototype.refreshCanBeActivate = function() {
-		this.container.className = 'column canBeActive ' + this.controller.canBeActivate;
+		if(this.controller.isActive === true && this.controller.canBeActivate === false) {
+			this.container.className = 'column active';
+		} else {
+			this.container.className = 'column canBeActive ' + this.controller.canBeActivate;
+		}
 	};
 
 	Column.prototype.activate = function() {

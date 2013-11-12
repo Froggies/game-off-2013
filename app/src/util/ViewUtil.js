@@ -8,6 +8,12 @@ var ViewUtil = (function() {
 
   return {
 
+    addClassName: function(element, className) {
+      element.classList.add(className);
+    },
+    removeClassName: function(element, className) {
+      element.classList.remove(className);
+    },
     buildContainer: function(className) {
       var div = buildElement('div');
       div.className = className;
