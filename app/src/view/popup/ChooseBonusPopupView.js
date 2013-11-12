@@ -80,8 +80,6 @@ var ChooseBonusPopupView = (function() {
 			controller
 		));
 		this.container.appendChild(this.footer);
-
-		
 	}
 
 	ObjectUtil.inherit(Popup, AbstractView);
