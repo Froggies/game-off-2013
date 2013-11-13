@@ -11,7 +11,7 @@
 @import "bonus.less";
 
 body {
-	text-align: center;
+	position: relative;
 	background-color: #ccc;
 }
 
@@ -23,6 +23,14 @@ body {
 	display: inline-block;
 	text-align: left;
 	overflow: hidden;
+	/*vertical align middle trick*/
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	/*half width*/
+	margin-top: -300px;
+	/*half height*/
+	margin-left: -500px;
 }
 
 button {
