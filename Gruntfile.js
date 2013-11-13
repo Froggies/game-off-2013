@@ -71,7 +71,7 @@ module.exports = function ( grunt ) {
     recess: {
       compile: {
         src: [ '<%= app_files.less %>' ],
-        dest: '<%= compile_dir %>/<%= pkg.name %>-<%= pkg.version %>.css',
+        dest: '<%= compile_dir %>/stylesheet/<%= pkg.name %>-<%= pkg.version %>.css',
         options: {
           compile: true,
           compress: true,
