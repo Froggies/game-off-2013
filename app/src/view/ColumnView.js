@@ -16,8 +16,12 @@ var ColumnView = (function() {
 	Column.prototype.refreshCanBeActivate = function() {
 		if(this.controller.isActive === true && this.controller.canBeActivate === false) {
 			this.container.className = 'column active';
-		} else {
+		} else if(this.controller.isActive === false && this.controller.canBeActivate === true) {
 			this.container.className = 'column canBeActive ' + this.controller.canBeActivate;
+		} else if(this.controller.isActive === true && this.controller.canBeActivate === true) {
+			this.container.className = 'column active canBeActive true';
+		} else {
+			this.container.className = 'column inactive canBeActive false';
 		}
 	};
 
