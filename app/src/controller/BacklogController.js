@@ -52,10 +52,10 @@ var BacklogController = (function() {
           );
           top = parseFloat(top.split('px')[0], 10);
           if(top > 0) {
-            element.style.top = (top - 1.25) + 'px';
+            element.style.top = (top - Constants.CARD_BACKLOG_TOP_BY) + 'px';
           }
         }, this);
-      }, 50, this);
+      }, 10, this);
     }
   };
 
