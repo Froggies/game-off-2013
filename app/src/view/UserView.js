@@ -8,13 +8,13 @@ var UserView = (function() {
 		this.spanHelper = ViewUtil.buildElement('helper', 'span');
 		this.container.appendChild(this.spanHelper);
 		this.avatar = ViewUtil.buildImg('assets/img/dev1.png');
-		this.container.appendChild(this.avatar);
+    this.container.appendChild(this.avatar);
 		this.containerScore = ViewUtil.buildContainer('userScore');
 		this.container.appendChild(this.containerScore);
 		this.pauseButton = ViewUtil.buildButton('||');
 		ClickUtil.listen(this.pauseButton, function() {
-			//this.controller.pause();
-			window.alert('Seriously ? You think business can take a break ?');
+			this.controller.pause();
+			this.controller.game.popupController.displayPausePopup();
 		}, this);
 		this.container.appendChild(this.pauseButton);
 	}
@@ -23,7 +23,6 @@ var UserView = (function() {
 
 	User.prototype.draw = function(element) {
 		User.parent.draw.apply(this, arguments);
-
 		this.refresh();
 	};
 

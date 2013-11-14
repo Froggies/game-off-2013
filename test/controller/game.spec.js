@@ -6,7 +6,7 @@ var dependencies = [
 	'controller/BacklogController', 'view/BacklogView',
 	'controller/UserController', 'view/UserView',
 	'controller/BonusController', 'view/BonusView',
-	'util/ClickUtil', 'util/GameUtil',
+	'util/ClickUtil', 'util/GameUtil', 'util/LangUtil'
 ];
 
 define(dependencies, function() {
