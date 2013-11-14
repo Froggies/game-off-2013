@@ -13,7 +13,8 @@ var UserView = (function() {
 		this.container.appendChild(this.containerScore);
 		this.pauseButton = ViewUtil.buildButton('||');
 		ClickUtil.listen(this.pauseButton, function() {
-			this.controller.pause();
+			//this.controller.pause();
+			window.alert('Seriously ? You think business can take a break ?');
 		}, this);
 		this.container.appendChild(this.pauseButton);
 	}
