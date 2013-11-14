@@ -1,51 +1,44 @@
 .headerColumn {
-	width: 15%;
-	height: 50px;
-	background-color: #FFF;
+	width: 100px;
+	height: 75px;
 	display: inline-block;
-	border: 1px solid #222222;
-	background-image: url(../assets/img/dev1.png);
-	background-position: left top;
-	background-repeat: no-repeat;
+	border: 3px solid #6f6f6f;
+	background-color: #6f6f6f;
+	border-radius:2px;
+}
+.column.active .headerColumn {
+	background-image: url(../assets/img/dev-card-bg.png);
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
 }
 
 .headerColumn.canBeActive.true {
-	background-image: url(../assets/img/dev1Plus.png);
-	animation-name: canBeActive;
-	animation-duration: 0.5s;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
-	-webkit-animation-name: canBeActive;
-	-webkit-animation-duration: 0.5s;
-	-webkit-animation-iteration-count: infinite;
-	-webkit-animation-timing-function: linear;
-	text-align: right;
-	color: red;
-	font-weight: bold;
 }
 
 .headerColumn.canBeActive.true:after {
-	content: 'Click me !';
+	content: '+';
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	font-size: 4em;
+    animation: canBeActive 0.5s linear infinite;
+    -webkit-animation: canBeActive 0.5s linear infinite;
+    -moz-animation:    canBeActive 0.5s linear infinite;
 }
 
 @keyframes canBeActive {
 	0% {
-		background-image: url(../assets/img/dev1Plus.png);
-		background-color: #067606;
+		color: #6f6f6f;
 	}
 	50% {
-		background-image: url(../assets/img/dev1.png);
-		background-color: #FFF;
+		color: #000;
 	}
 }
 
 @-webkit-keyframes canBeActive {
 	0% {
-		background-image: url(../assets/img/dev1Plus.png);
-		background-color: #067606;
+		color: #6f6f6f;
 	}
 	50% {
-		background-image: url(../assets/img/dev1.png);
-		background-color: #FFF;
+		color: #000;
 	}
 }

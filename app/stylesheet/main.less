@@ -16,25 +16,39 @@ body {
 }
 
 .globalContainer {
-	background-color: #999287;
-	border: 1px solid #fff;
 	width: 1000px;
 	height: 600px;
-	display: inline-block;
 	text-align: left;
 	overflow: hidden;
-	/*vertical align middle trick*/
 	position: absolute;
-	top: 50%;
-	left: 50%;
-	/*half width*/
-	margin-top: -300px;
-	/*half height*/
-	margin-left: -500px;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	margin:auto;
 }
 
-button {
-	width: 150px;
-	height: 50px;
-	border-radius: 10px;
+button{
+	position: relative;
+	border:none;
+
+    color: #444;
+    text-decoration: none;
+    background-color: #FFF;
+    font-size: 1.2em;
+    display: inline-block;
+
+    padding: 10px 20px;
+    margin: 10px;
+
+    border-radius: 2px;
+
+	text-align: center;
+	cursor: pointer;
+}
+
+button:hover,button:focus{
+    background-color: #ffb802;
+}
+button:active{
 }

@@ -11,7 +11,7 @@ var UserView = (function() {
 		this.container.appendChild(this.avatar);
 		this.containerScore = ViewUtil.buildContainer('userScore');
 		this.container.appendChild(this.containerScore);
-		this.pauseButton = ViewUtil.buildButton('Pause');
+		this.pauseButton = ViewUtil.buildButton('||');
 		ClickUtil.listen(this.pauseButton, function() {
 			this.controller.pause();
 		}, this);
