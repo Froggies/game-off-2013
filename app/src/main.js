@@ -11,6 +11,8 @@ window.onload = function() {
 		document.getElementsByTagName('body')[0]
 	);
 
+	popups.start();
+
 	game.popupController = popups;
 
 	game.columns[0].setCanBeActivate(true);

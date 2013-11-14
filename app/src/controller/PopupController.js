@@ -5,12 +5,14 @@ var PopupController = (function() {
 	function Popup(game, glassElement, popupContainer) {
 		this.game = game;
 		this.glassElement = glassElement;
+		this.popupContainer = popupContainer;
 		this.chooseBonusPopup = new ChooseBonusPopupController(this);
 		this.view = new PopupView(this);
 	}
 
-	Popup.prototype.start = function(element) {
+	Popup.prototype.start = function() {
 		this.chooseBonusPopup.start(this.popupContainer);
+		this.view.hidePopup();
 	};
 
 	Popup.prototype.startGame = function() {
