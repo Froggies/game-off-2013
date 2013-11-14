@@ -25,6 +25,10 @@ var ColumnView = (function() {
 		this.container.className = 'column active';
 	};
 
+	Column.prototype.addDiv = function() {
+    this.container.appendChild(ViewUtil.buildContainer('dev'));
+  };
+
 	return Column;
 
 })();

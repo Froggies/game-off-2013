@@ -5,8 +5,9 @@ var HeaderColumnView = (function() {
 	function HeaderColumn(controller) {
 		HeaderColumn.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('headerColumn');
+		
 		ClickUtil.listen(this.container, function() {
-			this.onClick();
+			this.onClick(); 
 		}, this);
 	}
 

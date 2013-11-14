@@ -20,6 +20,7 @@ var ColumnController = (function() {
 	Column.prototype.start = function(element) {
 		this.view.draw(element);
 		this.header.start(this.view.container);
+		this.view.addDiv();
 		_.each(this.rows, function(row) {
 			row.start(this.view.container);
 		}, this);

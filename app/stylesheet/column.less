@@ -1,14 +1,12 @@
 .columns {
-	margin: 20px 180px 20px 20px;
+	padding: 70px 180px 10px 30px;
 }
 
 .column {
-	vertical-align: top;
-	padding:0 0 10px 0;
+	margin-bottom: -6px;
 }
 
 .column.canBeActive.true {
-	
 }
 
 .column.active {
@@ -20,4 +18,17 @@
 }
 
 .column.inactive {
+}
+
+.dev {
+	display:inline-block;
+	width:112px;
+	height:105px;
+	background-image: url(../assets/img/nogeek.png);
+	background-repeat: no-repeat;
+	background-position: center right;
+	vertical-align: middle;
+}
+.column.active .dev{
+	background-image: url(../assets/img/geek.png);
 }
