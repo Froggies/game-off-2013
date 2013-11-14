@@ -22,6 +22,7 @@ var PopupView = (function() {
 		this.hidePopup();
 		this.controller.glassElement.style.display = 'block';
 		this.controller.pausePopup.view.container.style.display = 'block';
+		this.controller.pausePopup.view.show();
 	};
 
 	return Popup;
