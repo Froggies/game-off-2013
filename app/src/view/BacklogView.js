@@ -7,7 +7,7 @@ var BacklogView = (function() {
 		this.container = ViewUtil.buildContainer('backlog');
 
 		this.title = ViewUtil.buildContainer('title');
-		this.title.innerHTML = 'Backlog';
+		this.title.innerHTML = LangUtil.get('backlog');
 		this.container.appendChild(this.title);
 
 		this.gaugeContainer = ViewUtil.buildContainer('gaugeContainer');
@@ -23,7 +23,7 @@ var BacklogView = (function() {
 
 	Backlog.prototype.updateGauge = function() {
 		var percent = (this.controller.cards.length * 100) / this.controller.game.nbCardsInBacklogMax;
-		this.title.innerHTML = 'Backlog : ' + this.controller.cards.length + '/' + this.controller.game.nbCardsInBacklogMax;
+		this.title.innerHTML = LangUtil.get('backlog') + ' : ' + this.controller.cards.length + '/' + this.controller.game.nbCardsInBacklogMax;
 		ViewUtil.removeClassName(this.gauge, 'relax');
 		ViewUtil.removeClassName(this.gauge, 'nervous');
 		ViewUtil.removeClassName(this.gauge, 'dead');

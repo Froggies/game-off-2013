@@ -7,7 +7,7 @@ var ChooseBonusPopupView = (function() {
 		this.container = ViewUtil.buildContainer('popup chooseBonusPopup');
 
 		this.title = ViewUtil.buildElement('title', 'h1');
-		this.title.innerHTML = 'Choose a bonus !';
+		this.title.innerHTML = LangUtil.get('chooseBonusPopupTitle');
 		this.container.appendChild(this.title);
 
 		this.content = ViewUtil.buildContainer('content');
@@ -75,7 +75,7 @@ var ChooseBonusPopupView = (function() {
 
 		this.footer = ViewUtil.buildElement('footer', 'footer');
 		this.footer.appendChild(ViewUtil.buildButton(
-			'No thanks !', 
+			LangUtil.get('chooseBonusPopupClose'), 
 			controller.onNoChoose, 
 			controller
 		));

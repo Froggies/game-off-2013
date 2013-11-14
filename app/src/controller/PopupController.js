@@ -7,11 +7,17 @@ var PopupController = (function() {
 		this.glassElement = glassElement;
 		this.popupContainer = popupContainer;
 		this.chooseBonusPopup = new ChooseBonusPopupController(this);
+		this.pausePopup = new PausePopupController(this);
 		this.view = new PopupView(this);
 	}
 
 	Popup.prototype.start = function() {
 		this.chooseBonusPopup.start(this.popupContainer);
+		this.pausePopup.start(this.popupContainer);
+		this.view.hidePopup();
+	};
+
+	Popup.prototype.hide = function() {
 		this.view.hidePopup();
 	};
 
@@ -22,6 +28,10 @@ var PopupController = (function() {
 
 	Popup.prototype.displayChooseBonusPopup = function() {
 		this.view.displayChooseBonusPopup();
+	};
+
+	Popup.prototype.displayPausePopup = function() {
+		this.view.displayPausePopup();
 	};
 
 	return Popup;

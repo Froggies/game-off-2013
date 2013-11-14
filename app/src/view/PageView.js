@@ -13,19 +13,19 @@ var PageView = (function() {
 		var b = document.createElement('button');
 		this.container.className = 'page firstPage';
 		this.container.innerHTML = [
-			'<h1 class="title">', 'Welcome in the Game !', '</h1>',
+			'<h1 class="title">', LangUtil.get('firstPageTile'), '</h1>',
 			'<div class="content">',
-			'You are a tyrannical project chief and you have to affect tasks to your developpers. You have to make evolve your team, to cope with change, to treat a large amount of tasks, before the backlog blows up.',
+			LangUtil.get('firstPageDescription'),
 			'</div>',
 			'<footer class="footer">', '', '</footer>'
 		].join('');
 		var footer = this.container.getElementsByTagName('footer')[0];
 		footer.appendChild(ViewUtil.buildButton(
-			'Help', 
+			LangUtil.get('firstPageHelp'), 
 			this.controller.showHelpPage, this.controller
 		));
 		footer.appendChild(ViewUtil.buildButton(
-			'Start', 
+			LangUtil.get('firstPageStart'), 
 			this.controller.showChooseUserPage, this.controller
 		));
 	};
@@ -33,7 +33,7 @@ var PageView = (function() {
 	Page.prototype.showHelpPage = function() {
 		this.container.className = 'page helpPage';
 		this.container.innerHTML = [
-			'<h1 class="title">', 'Help', '</h1>',
+			'<h1 class="title">', LangUtil.get('helpPageTitle'), '</h1>',
 			'<div class="content">',
 			'<ul>',
 			'<li>d&d card from backlog to dev</li>',
@@ -45,7 +45,7 @@ var PageView = (function() {
 		].join('');
 		var footer = this.container.getElementsByTagName('footer')[0];
 		footer.appendChild(ViewUtil.buildButton(
-			'Back', 
+			LangUtil.get('helpPageBack'), 
 			this.controller.showFirstPage, this.controller
 		));
 	};
@@ -53,7 +53,7 @@ var PageView = (function() {
 	Page.prototype.showChooseUserPage = function() {
 		this.container.className = 'page chooseUserPage';
 		this.container.innerHTML = [
-			'<h1 class="title">', 'Choose your player !', '</h1>',
+			'<h1 class="title">', LangUtil.get('chooseUserPageTitle'), '</h1>',
 			'<div class="content"></div>',
 			'<footer class="footer">', '', '</footer>'
 		].join('');
@@ -65,12 +65,12 @@ var PageView = (function() {
 		));
 		content.appendChild(ViewUtil.buildButtonImg(
 			'assets/img/github.png', 
-			'Connect Github', 
+			'Github', 
 			this.controller.startGame, this.controller
 		));
 		var footer = this.container.getElementsByTagName('footer')[0];
 		footer.appendChild(ViewUtil.buildButton(
-			'Back', 
+			LangUtil.get('chooseUserPageBack'), 
 			this.controller.showFirstPage, this.controller
 		));
 	};
