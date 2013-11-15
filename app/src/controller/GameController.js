@@ -3,19 +3,18 @@ var GameController = (function() {
 	'use strict';
 
 	function Game() {
-		this.nbLoop = 0;
 		this.timeout = undefined;
-
-		this.view = new GameView(this);
-		this.backlog = new BacklogController(this);
-		this.score = new ScoreController();
-		this.user = new UserController(this);
 		this.columns = [];
 		this.hasChooseBonus = false;
 		this.nbCardsInBacklogMax = Constants.NB_CARDS_IN_BACKLOG_MAX;
 		for(var i=0; i<Constants.NB_COLUMNS; i++) {
 			this.columns.push(new ColumnController(this));
 		}
+
+		this.view = new GameView(this);
+		this.backlog = new BacklogController(this);
+		this.score = new ScoreController();
+		this.user = new UserController(this);
 		this.bonus = new BonusController(this);
 	}
 
@@ -30,7 +29,7 @@ var GameController = (function() {
 		for(var indexColumn=0; indexColumn < this.columns.length; indexColumn++) {
 			this.columns[indexColumn].start(this.view.getColumnsContainer());
 		}
-		this.bonus.start(this.view.container);
+		this.bonus.start(this.user.view.containerScore);
 		this.resume();
 	};
 
@@ -101,7 +100,6 @@ var GameController = (function() {
 	};
 
 	Game.prototype.loop = function() {
-		this.nbLoop = this.nbLoop + 1;
 		this.backlog.addCard(CardUtil.buildCard(this.score.level));
 		if(this.backlog.cards.length > this.nbCardsInBacklogMax) {
 			this.score.loose();
