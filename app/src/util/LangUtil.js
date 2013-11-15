@@ -77,6 +77,9 @@ var LangUtil = (function() {
   if(currentLang === undefined || currentLang === null) {
     currentLang = 'en';
   }
+  if(currentLang !== 'en' && currentLang !== 'fr') {
+    currentLang = 'en';
+  }
 
   return {
 
