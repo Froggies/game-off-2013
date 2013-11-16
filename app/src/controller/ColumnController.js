@@ -92,7 +92,7 @@ var ColumnController = (function() {
 	};
 
 	Column.prototype.timeFinish = function() {
-		this.game.incrementeScore(this.rows[0].card.complexity);
+		this.game.incrementeScore(this.rows[0].card.complexity * 11.59);
 		this.game.search3cardsAdjacent();
 		this.rows[0].removeCard();
 		this.moveCardsByOnRow();

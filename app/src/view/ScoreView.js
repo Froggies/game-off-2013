@@ -32,12 +32,14 @@ var ScoreView = (function() {
 		if(this.scoreInterval === undefined) {
 			this.scoreInterval = TimeoutUtil.interval(function() {
 				this.tempScore = this.tempScore + 1;
-				this.containerScore.innerHTML = this.tempScore + ' $';
+				if(this.tempScore <= this.controller.score) {
+					this.containerScore.innerHTML = this.tempScore + ' $';
+				}
 				if(this.tempScore >= this.controller.score) {
 					window.clearInterval(this.scoreInterval);
 					this.scoreInterval = undefined;
 				}
-			}, 300, this);
+			}, Constants.SCORE_TIME_SHOW, this);
 		}
 	};
 

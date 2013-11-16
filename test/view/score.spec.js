@@ -33,6 +33,7 @@ define(dependencies, function() {
 			var div = document.createElement('div');
 			score.draw(div);
 			score.updateScore();
+			fakeController.score = 1;
 			waitsFor(function() {
 				return score.tempScore > 0;
 			}, 'should increment tempScore', 1000);
