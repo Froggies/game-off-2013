@@ -19,6 +19,9 @@ var PageView = (function() {
 			'</div>',
 			'<footer class="footer">', '', '</footer>'
 		].join('');
+    var title = this.container.getElementsByTagName('h1')[0];
+    var lang = new LangController();
+		lang.start(title);
 		var footer = this.container.getElementsByTagName('footer')[0];
 		footer.appendChild(ViewUtil.buildButton(
 			LangUtil.get('firstPageHelp'), 

@@ -22,7 +22,4 @@ window.onload = function() {
 	page.start(globalContainer);
 	page.showFirstPage();
 
-	var lang = new LangController();
-	lang.start(document.getElementsByTagName('body')[0]);
-
 };
