@@ -31,14 +31,18 @@ var PausePopupView = (function() {
 	ObjectUtil.inherit(Popup, AbstractView);
 
 	Popup.prototype.show = function() {
-		var time = 3000; 
-		var interval = TimeoutUtil.interval(function() {
+		var time = 3000;
+		if(this.interval !== undefined) {
+			window.clearInterval(this.interval);
+		}
+		this.ellapsedTimeContainer.style.width = '100%';
+		this.interval = TimeoutUtil.interval(function() {
 			var percent = (time * 100) / 3000;
 			this.ellapsedTimeContainer.style.width = percent + '%';
 			time = time - 100;
 			if(time <= 0) {
 				this.controller.onClose();
-				window.clearInterval(interval);
+				window.clearInterval(this.interval);
 			}
 		}, 100, this);
 	};
