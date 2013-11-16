@@ -13,10 +13,6 @@ var UserController = (function() {
 		this.view.refresh();
 	};
 
-	User.prototype.pause = function() {
-		this.game.pause();
-	};
-
 	return User;
 
 })();

@@ -13,23 +13,19 @@ var GameController = (function() {
 
 		this.view = new GameView(this);
 		this.backlog = new BacklogController(this);
-		this.score = new ScoreController();
-		this.user = new UserController(this);
-		this.bonus = new BonusController(this);
+		this.header = new HeaderController(this);
 	}
 
 	ObjectUtil.inherit(Game, AbstractController);
 
 	Game.prototype.start = function(element) {
 		this.view.draw(element);
-		this.score.start(this.user.view.containerScore);
 		this.backlog.start(this.view.container);
-		this.user.start(this.view.container);
+		this.header.start(this.view.container);
 		this.view.drawColumnsContainer();
 		for(var indexColumn=0; indexColumn < this.columns.length; indexColumn++) {
 			this.columns[indexColumn].start(this.view.getColumnsContainer());
 		}
-		this.bonus.start(this.user.view.containerScore);
 		this.resume();
 	};
 
@@ -48,7 +44,7 @@ var GameController = (function() {
 				if(this.loop() === 'finish') {
 					window.clearInterval(this.timeout);
 				}
-			}, GameUtil.calculTimeNewCard(this.score.score), this);
+			}, GameUtil.calculTimeNewCard(this.header.score.score), this);
       this.backlog.resume();
 			_.each(this.columns, function(column) {
 				column.resume();
@@ -81,18 +77,18 @@ var GameController = (function() {
 	};
 
 	Game.prototype.incrementeScore = function(score) {
-		this.score.incrementeBy(score);
-		if(ScoreUtil.isNextLevel(this.score.score, this.score.level) === true) {
+		this.header.score.incrementeBy(score);
+		if(ScoreUtil.isNextLevel(this.header.score.score, this.header.score.level) === true) {
 			this.pause();//TODO rework update time card backlog
 			this.resume();//TODO rework update time card backlog
-			this.score.level = this.score.level + 1;
-			this.score.incrementeBy(0);//TODO rework refresh view method
+			this.header.score.level = this.header.score.level + 1;
+			this.header.score.incrementeBy(0);//TODO rework refresh view method
 			this.hasChooseBonus = false;
 			_.each(this.columns, function(column) {
 				column.setCanBeActivate(true);
 			});
 		}
-		if(this.score.level > 0 && this.score.level % 3 === 0 && this.hasChooseBonus === false) {
+		if(this.header.score.level > 0 && this.header.score.level % 3 === 0 && this.hasChooseBonus === false) {
 			this.hasChooseBonus = true;
 			this.pause();
 			this.popupController.displayChooseBonusPopup();
@@ -100,9 +96,9 @@ var GameController = (function() {
 	};
 
 	Game.prototype.loop = function() {
-		this.backlog.addCard(CardUtil.buildCard(this.score.level));
+		this.backlog.addCard(CardUtil.buildCard(this.header.score.level));
 		if(this.backlog.cards.length > this.nbCardsInBacklogMax) {
-			this.score.loose();
+			this.header.score.loose();
 			return 'finish';
 		}
 	};

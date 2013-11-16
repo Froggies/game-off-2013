@@ -9,14 +9,6 @@ var UserView = (function() {
 		this.container.appendChild(this.spanHelper);
 		this.avatar = ViewUtil.buildImg('assets/img/dev1.png');
     this.container.appendChild(this.avatar);
-		this.containerScore = ViewUtil.buildContainer('userScore');
-		this.container.appendChild(this.containerScore);
-		this.pauseButton = ViewUtil.buildButton('||');
-		ClickUtil.listen(this.pauseButton, function() {
-			this.controller.pause();
-			this.controller.game.popupController.displayPausePopup();
-		}, this);
-		this.container.appendChild(this.pauseButton);
 	}
 
 	ObjectUtil.inherit(User, AbstractView);

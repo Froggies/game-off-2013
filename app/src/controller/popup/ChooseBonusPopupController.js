@@ -10,32 +10,32 @@ var ChooseBonusPopupController = (function() {
   ObjectUtil.inherit(Popup, AbstractController);
 
   Popup.prototype.onChooseBacklogCardsImprovement = function() {
-    this.popupController.game.bonus.activateBacklogCardsImprovement();
+    this.popupController.game.header.bonus.activateBacklogCardsImprovement();
     this.onNoChoose();
   };
 
   Popup.prototype.onChooseEmptyBacklog = function() {
-    this.popupController.game.bonus.activateEmptyBacklog();
+    this.popupController.game.header.bonus.activateEmptyBacklog();
     this.onNoChoose();
   };
 
   Popup.prototype.onChooseCardTimeMinus = function() {
-    this.popupController.game.bonus.activateCardTimeMinus();
+    this.popupController.game.header.bonus.activateCardTimeMinus();
     this.onNoChoose();
   };
 
   Popup.prototype.onChooseNewDev = function() {
-    this.popupController.game.bonus.activateNewDev();
+    this.popupController.game.header.bonus.activateNewDev();
     this.onNoChoose();
   };
 
   Popup.prototype.onChooseNewTask = function() {
-    this.popupController.game.bonus.activateNewTask();
+    this.popupController.game.header.bonus.activateNewTask();
     this.onNoChoose();
   };
 
   Popup.prototype.onChooseLifeImprovement = function() {
-    this.popupController.game.bonus.activateLifeImprovement();
+    this.popupController.game.header.bonus.activateLifeImprovement();
     this.onNoChoose();
   };
 
