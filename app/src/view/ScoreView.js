@@ -29,7 +29,9 @@ var ScoreView = (function() {
 
 	Score.prototype.updateScore = function() {
 		this.containerScore.innerHTML = this.controller.score + ' $';
-		this.containerLevel.innerHTML = 'level : ' + this.controller.level;
+	};
+
+	Score.prototype.updateLife = function() {
 		var index = 0;
 		_.each(this.containerLife.children, function(element) {
 			if(this.controller.nbLife > index) {
@@ -39,6 +41,10 @@ var ScoreView = (function() {
 			}
 			index = index + 1;
 		}, this);
+	};
+
+	Score.prototype.updateLevel = function() {
+		this.containerLevel.innerHTML = 'level : ' + this.controller.level;
 	};
 
 	return Score;

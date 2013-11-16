@@ -81,8 +81,7 @@ var GameController = (function() {
 		if(ScoreUtil.isNextLevel(this.header.score.score, this.header.score.level) === true) {
 			this.pause();//TODO rework update time card backlog
 			this.resume();//TODO rework update time card backlog
-			this.header.score.level = this.header.score.level + 1;
-			this.header.score.incrementeBy(0);//TODO rework refresh view method
+			this.header.score.updateLevel();
 			this.hasChooseBonus = false;
 			_.each(this.columns, function(column) {
 				column.setCanBeActivate(true);
