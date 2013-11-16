@@ -14,8 +14,8 @@ var HeaderController = (function() {
 
 	Header.prototype.start = function(element) {
 		this.view.draw(element);
-		this.score.start(this.view.container);
 		this.user.start(this.view.container);
+		this.score.start(this.view.container);
 		this.bonus.start(this.view.container);
 	};
 

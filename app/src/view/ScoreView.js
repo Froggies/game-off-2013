@@ -9,6 +9,7 @@ var ScoreView = (function() {
 		this.container.appendChild(this.containerScore);
 		this.containerLevel = ViewUtil.buildContainer('level');
 		this.container.appendChild(this.containerLevel);
+		this.updateLevel();
 		this.containerLife = ViewUtil.buildContainer('life');
 		this.container.appendChild(this.containerLife);
 		for (var i = 0; i < Constants.NB_LIFE; i++) {

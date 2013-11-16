@@ -5,8 +5,6 @@ var UserView = (function() {
 	function User(controller) {
 		User.parent.constructor.apply(this, arguments);
 		this.container = ViewUtil.buildContainer('user');
-		this.spanHelper = ViewUtil.buildElement('helper', 'span');
-		this.container.appendChild(this.spanHelper);
 		this.avatar = ViewUtil.buildImg('assets/img/dev1.png');
     this.container.appendChild(this.avatar);
 	}
