@@ -2,6 +2,20 @@ var LangUtil = (function() {
 
   'use strict';
 
+  var currentLang = navigator.language.substring(0,2);
+  var potentialLang = window.location.hash.substring(1);
+  if(potentialLang === 'en') {
+    currentLang = 'en';
+  } else if(potentialLang === 'fr') {
+    currentLang = 'fr';
+  }
+  if(currentLang === undefined || currentLang === null) {
+    currentLang = 'en';
+  }
+  if(currentLang !== 'en' && currentLang !== 'fr') {
+    currentLang = 'en';
+  }
+
   var lang = {
     en: {
       /****************************\
@@ -72,14 +86,6 @@ var LangUtil = (function() {
       chooseBonusPopupClose: 'Non merci !'
     }
   };
-
-  var currentLang = navigator.language.substring(0,2);
-  if(currentLang === undefined || currentLang === null) {
-    currentLang = 'en';
-  }
-  if(currentLang !== 'en' && currentLang !== 'fr') {
-    currentLang = 'en';
-  }
 
   return {
 
