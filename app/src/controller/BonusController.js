@@ -10,27 +10,27 @@ var BonusController = (function() {
   ObjectUtil.inherit(Bonus, AbstractController);
 
   Bonus.prototype.activateBacklogCardsImprovement = function() {
-    this.view.activeBacklogCardsImprovement();
+    this.view.activateBacklogCardsImprovement();
   };
 
   Bonus.prototype.activateEmptyBacklog = function() {
-    ViewUtil.activeButton(this.view.buttonEmptyBacklog);
+    this.view.activateEmptyBacklog();
   };
 
   Bonus.prototype.activateCardTimeMinus = function() {
-    ViewUtil.activeButton(this.buttonCardTimeMinus);
+    this.view.activateCardTimeMinus();
   };
 
   Bonus.prototype.activateNewDev = function() {
-    ViewUtil.activeButton(this.buttonNewDev);
+    this.view.activateNewDev();
   };
 
   Bonus.prototype.activateNewTask = function() {
-    ViewUtil.activeButton(this.buttonNewTask);
+    this.view.activateNewTask();
   };
 
   Bonus.prototype.activateLifeImprovement = function() {
-    ViewUtil.activeButton(this.buttonLifeImprovement);
+    this.view.activateLifeImprovement();
   };
 
 	return Bonus;

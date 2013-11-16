@@ -15,20 +15,28 @@ var BonusView = (function() {
 
 	ObjectUtil.inherit(Bonus, AbstractView);
 
+  function initButton(container, button) {
+    ViewUtil.inactiveButton(button);
+    button.className = 'noActive';
+    container.appendChild(button);
+  }
+
+  function inactiveButtonDuring(button, time) {
+    ViewUtil.inactiveButton(button);
+    TimeoutUtil.timeout(function() {
+      ViewUtil.activeButton(button);
+    }, time);
+  }
+
 	Bonus.prototype.addBacklogCardsImprovement = function() {
     this.buttonBacklogCardsImprovement = ViewUtil.buildButton('nb cards backlog ++', function() {
       this.controller.game.nbCardsInBacklogMax = this.controller.game.nbCardsInBacklogMax + 1;
-      ViewUtil.inactiveButton(this.buttonBacklogCardsImprovement);
-      TimeoutUtil.timeout(function() {
-        ViewUtil.activeButton(this.buttonBacklogCardsImprovement);
-      }, 60 * 1000 * 1, this);
+      inactiveButtonDuring(this.buttonBacklogCardsImprovement, 60 * 1000 * 1);
     }, this);
-    ViewUtil.inactiveButton(this.buttonBacklogCardsImprovement);
-    this.buttonBacklogCardsImprovement.className = 'noActive';
-    this.container.appendChild(this.buttonBacklogCardsImprovement);
+    initButton(this.container, this.buttonBacklogCardsImprovement);
   };
 
-  Bonus.prototype.activeBacklogCardsImprovement = function() {
+  Bonus.prototype.activateBacklogCardsImprovement = function() {
     this.buttonBacklogCardsImprovement.className = '';
     ViewUtil.activeButton(this.buttonBacklogCardsImprovement);
   };
@@ -36,17 +44,12 @@ var BonusView = (function() {
   Bonus.prototype.addEmptyBacklog = function() {
     this.buttonEmptyBacklog = ViewUtil.buildButton('Empty backlog', function() {
       this.controller.game.backlog.removeAllCards();
-      ViewUtil.inactiveButton(this.buttonEmptyBacklog);
-      TimeoutUtil.timeout(function() {
-        ViewUtil.activeButton(this.buttonEmptyBacklog);
-      }, 60 * 1000 * 5, this);
+      inactiveButtonDuring(this.buttonEmptyBacklog, 60 * 1000 * 5);
     }, this);
-    ViewUtil.inactiveButton(this.buttonEmptyBacklog);
-    this.buttonEmptyBacklog.className = 'noActive';
-    this.container.appendChild(this.buttonEmptyBacklog);
+    initButton(this.container, this.buttonEmptyBacklog);
   };
 
-  Bonus.prototype.activeEmptyBacklog = function() {
+  Bonus.prototype.activateEmptyBacklog = function() {
     this.buttonEmptyBacklog.className = '';
     ViewUtil.activeButton(this.buttonEmptyBacklog);
   };
@@ -60,17 +63,12 @@ var BonusView = (function() {
           }
         });
       });
-      ViewUtil.inactiveButton(this.buttonCardTimeMinus);
-      TimeoutUtil.timeout(function() {
-        ViewUtil.activeButton(this.buttonCardTimeMinus);
-      }, 60 * 1000 * 2, this);
+      inactiveButtonDuring(this.buttonCardTimeMinus, 60 * 1000 * 2);
     }, this);
-    ViewUtil.inactiveButton(this.buttonCardTimeMinus);
-    this.buttonCardTimeMinus.className = 'noActive';
-    this.container.appendChild(this.buttonCardTimeMinus);
+    initButton(this.container, this.buttonCardTimeMinus);
   };
 
-  Bonus.prototype.activeCardTimeMinus = function() {
+  Bonus.prototype.activateCardTimeMinus = function() {
     this.buttonCardTimeMinus.className = '';
     ViewUtil.activeButton(this.buttonCardTimeMinus);
   };
@@ -85,17 +83,12 @@ var BonusView = (function() {
         }
         return false;
       });
-      ViewUtil.inactiveButton(this.buttonNewDev);
-      TimeoutUtil.timeout(function() {
-        ViewUtil.activeButton(this.buttonNewDev);
-      }, 60 * 1000 * 1, this);
+      inactiveButtonDuring(this.buttonNewDev, 60 * 1000 * 1);
     }, this);
-    ViewUtil.inactiveButton(this.buttonNewDev);
-    this.buttonNewDev.className = 'noActive';
-    this.container.appendChild(this.buttonNewDev);
+    initButton(this.container, this.buttonNewDev);
   };
 
-  Bonus.prototype.activeNewDev = function() {
+  Bonus.prototype.activateNewDev = function() {
     this.buttonNewDev.className = '';
     ViewUtil.activeButton(this.buttonNewDev);
   };
@@ -115,36 +108,26 @@ var BonusView = (function() {
         }
         return false;
       });
-      ViewUtil.inactiveButton(this.buttonNewTask);
-      TimeoutUtil.timeout(function() {
-        ViewUtil.activeButton(this.buttonNewTask);
-      }, 60 * 1000 * 2, this);
+      inactiveButtonDuring(this.buttonNewTask, 60 * 1000 * 2);
     }, this);
-    ViewUtil.inactiveButton(this.buttonNewTask);
-    this.buttonNewTask.className = 'noActive';
-    this.container.appendChild(this.buttonNewTask);
+    initButton(this.container, this.buttonNewTask);
   };
 
-  Bonus.prototype.activeNewTask = function() {
+  Bonus.prototype.activateNewTask = function() {
     this.buttonNewTask.className = '';
     ViewUtil.activeButton(this.buttonNewTask);
   };
 
   Bonus.prototype.addLifeImprovement = function() {
     this.buttonLifeImprovement = ViewUtil.buildButton('Life ++', function() {
-      this.controller.game.score.nbLife = this.controller.game.score.nbLife + 1;
-      this.controller.game.score.view.updateScore();
-      ViewUtil.inactiveButton(this.buttonLifeImprovement);
-      TimeoutUtil.timeout(function() {
-        ViewUtil.activeButton(this.buttonLifeImprovement);
-      }, 60 * 1000 * 1, this);
+      this.controller.game.header.score.nbLife = this.controller.game.header.score.nbLife + 1;
+      this.controller.game.header.score.view.updateScore();
+      inactiveButtonDuring(this.buttonLifeImprovement, 60 * 1000 * 1);
     }, this);
-    ViewUtil.inactiveButton(this.buttonLifeImprovement);
-    this.buttonLifeImprovement.className = 'noActive';
-    this.container.appendChild(this.buttonLifeImprovement);
+    initButton(this.container, this.buttonLifeImprovement);
   };
 
-  Bonus.prototype.activeLifeImprovement = function() {
+  Bonus.prototype.activateLifeImprovement = function() {
     this.buttonLifeImprovement.className = '';
     ViewUtil.activeButton(this.buttonLifeImprovement);
   };
