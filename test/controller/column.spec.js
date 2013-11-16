@@ -200,6 +200,29 @@ define(dependencies, function() {
 			expect(prevColumn.rows[0].card).toBe(card2);
 		});
 
+		it('should not accept card if in pause', function () {
+			activeColumnAnd1Row();
+			column.pause();
+			var card = CardUtil.buildCard(level);
+			expect(column.addCard(card)).toBe(false);
+		});
+
+		it('should not decrease time card if in pause', function () {
+			activeColumnAnd1Row();
+			var card = CardUtil.buildCard(level);
+			card.time = 1000;
+			column.addCard(card);
+			column.pause();
+			var startTime = new Date().getTime();
+			waitsFor(function() {
+				var time = new Date().getTime();
+				return time - startTime <= 200;
+			}, 'should be not update card time', 1000);
+			runs(function() {
+				expect(column.rows[0].card.time).toBe(1000);
+			});
+		});
+
 	});
 
 });

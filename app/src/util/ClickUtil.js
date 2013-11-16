@@ -12,10 +12,6 @@ var ClickUtil = (function() {
           callback();
         }
       };
-    },
-    listenDomElement: function(id, callback, context) {
-			var element = document.getElementById(id);
-			return ClickUtil.listen(element, callback, context);
     }
 
   };

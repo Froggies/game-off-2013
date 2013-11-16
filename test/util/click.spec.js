@@ -9,6 +9,16 @@ define(dependencies, function() {
 		beforeEach(function() {
 		});
 
+		it('should exec function with no special context', function () {
+			var context = {ok: false};
+			var div = document.createElement('div');
+			ClickUtil.listen(div, function() {
+				context.ok = true;
+			});
+			div.onclick();
+			expect(context.ok).toBeTruthy();
+		});
+
 		it('should exec function in special context', function () {
 			var context = {ok: false};
 			var div = document.createElement('div');

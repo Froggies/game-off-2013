@@ -10,6 +10,7 @@ var ColumnController = (function() {
 		this.header = new HeaderColumnController(this);
 		this.rows = [];
 		this.cardTimeout = undefined;
+		this.isPause = false;
 		for(var i=0; i<Constants.NB_ROWS; i++) {
 			this.rows.push(new RowController());
 		}
@@ -55,12 +56,12 @@ var ColumnController = (function() {
 				potentielRow.activate();
 			}
 		} else {
-			throw new Exception('You must call activate before activaNextRow');
+			throw new Exception('You must call activate before activeNextRow');
 		}
 	};
 
 	Column.prototype.newCurrentCard = function() {
-		if(this.rows[0].card !== undefined) {
+		if(this.rows[0].card !== undefined && this.isPause === false) {
 			this.cardTimeout = TimeoutUtil.timeout(function() {
 				var card = this.rows[0].card;
 				if(card !== undefined) {
@@ -77,7 +78,7 @@ var ColumnController = (function() {
 	};
 
 	Column.prototype.addCard = function(card) {
-		for(var i=0; i < this.rows.length; i++) {
+		for(var i=0; i < this.rows.length && this.isPause === false; i++) {
 			if(this.rows[i].canAcceptCard() === true) {
 				this.rows[i].addCard(card);
 				this.game.deleteCardInBacklog(card);
@@ -112,11 +113,13 @@ var ColumnController = (function() {
 	};
 
 	Column.prototype.pause = function() {
+		this.isPause = true;
 		window.clearInterval(this.cardTimeout);
 		this.cardTimeout = undefined;
 	};
 
 	Column.prototype.resume = function() {
+		this.isPause = false;
 		if(this.cardTimeout === undefined && this.rows[0].card !== undefined) {
 			this.newCurrentCard();
 		}

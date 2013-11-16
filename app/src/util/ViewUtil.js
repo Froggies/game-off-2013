@@ -47,6 +47,12 @@ var ViewUtil = (function() {
       var element = buildElement(type);
       element.className = className;
       return element;
+    },
+    activeButton: function(button) {
+      button.removeAttribute('disabled');
+    },
+    inactiveButton: function(button) {
+      button.setAttribute('disabled', 'disabled');
     }
 
   };
