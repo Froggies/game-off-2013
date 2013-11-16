@@ -10,15 +10,15 @@ define(dependencies, function() {
 		});
 
 		it('should return true when i have a score of 6 and a level of 0', function () {
-			expect(ScoreUtil.isNextLevel(6, 0)).toBeTruthy();
+			expect(ScoreUtil.isNextLevel(6 * Constants.SCORE_FACTOR, 0)).toBeTruthy();
 		});
 
 		it('should return true when i have a score of 15 and a level of 1', function () {
-			expect(ScoreUtil.isNextLevel(15, 3)).toBeTruthy();
+			expect(ScoreUtil.isNextLevel(15 * Constants.SCORE_FACTOR, 3)).toBeTruthy();
 		});
 
 		it('should return false when i have a score of 15 and a level of 5', function () {
-			expect(ScoreUtil.isNextLevel(15, 5)).toBe(false);
+			expect(ScoreUtil.isNextLevel(15 * Constants.SCORE_FACTOR, 5)).toBe(false);
 		});
 
 	});

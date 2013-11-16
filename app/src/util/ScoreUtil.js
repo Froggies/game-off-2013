@@ -5,7 +5,8 @@ var ScoreUtil = (function() {
   return {
 
     isNextLevel: function(score, level) {
-			return Math.sqrt(score, 0.5) > level;
+			var s = score / Constants.SCORE_FACTOR;
+			return Math.sqrt(s, 0.5) > level;
     }
 
   };

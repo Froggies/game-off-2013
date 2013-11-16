@@ -5,7 +5,6 @@ var GameController = (function() {
 	function Game() {
 		this.timeout = undefined;
 		this.columns = [];
-		this.hasChooseBonus = false;
 		this.nbCardsInBacklogMax = Constants.NB_CARDS_IN_BACKLOG_MAX;
 		for(var i=0; i<Constants.NB_COLUMNS; i++) {
 			this.columns.push(new ColumnController(this));
@@ -77,20 +76,19 @@ var GameController = (function() {
 	};
 
 	Game.prototype.incrementeScore = function(score) {
-		this.header.score.incrementeBy(score);
+		this.header.score.incrementeBy(score * Constants.SCORE_FACTOR);
 		if(ScoreUtil.isNextLevel(this.header.score.score, this.header.score.level) === true) {
 			this.pause();//TODO rework update time card backlog
 			this.resume();//TODO rework update time card backlog
 			this.header.score.updateLevel();
-			this.hasChooseBonus = false;
-			_.each(this.columns, function(column) {
-				column.setCanBeActivate(true);
-			});
-		}
-		if(this.header.score.level > 0 && this.header.score.level % 3 === 0 && this.hasChooseBonus === false) {
-			this.hasChooseBonus = true;
-			this.pause();
-			this.popupController.displayChooseBonusPopup();
+			if(this.header.score.level % Constants.NB_LVL_BONUS === 0) {
+				this.pause();
+				this.popupController.displayChooseBonusPopup();
+			} else {
+				_.each(this.columns, function(column) {
+					column.setCanBeActivate(true);
+				});
+			}
 		}
 	};
 

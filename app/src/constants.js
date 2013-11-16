@@ -11,5 +11,7 @@ var Constants = {
 	],
 	CARD_COMPLEXITY: [0, 0.5, 1, 2, 3, 5, 8, 13],//, 21, 50, 100]
 	CARD_BACKLOG_TOP_BY: 0.55,//speed of cards in backlog, greater is speeder
-	SCORE_TIME_SHOW: 300//show +1 score every msc
+	SCORE_TIME_SHOW: 10,//show +1 score every msc
+	SCORE_FACTOR: 86.56,//display big score (score * factor)
+	NB_LVL_BONUS: 10//each nb level display bonus popup 
 };
