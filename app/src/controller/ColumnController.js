@@ -8,9 +8,9 @@ var ColumnController = (function() {
 		this.isActive = false;
 		this.canBeActivate = false;
 		this.header = new HeaderColumnController(this);
-		this.rows = [];
 		this.cardTimeout = undefined;
 		this.isPause = false;
+		this.rows = [];
 		for(var i=0; i<Constants.NB_ROWS; i++) {
 			this.rows.push(new RowController());
 		}

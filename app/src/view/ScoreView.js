@@ -18,17 +18,27 @@ var ScoreView = (function() {
 				this.containerLife.appendChild(ViewUtil.buildContainer('inactive'));
 			}
 		}
+		this.tempScore = 0;
 	}
 
 	ObjectUtil.inherit(Score, AbstractView);
 
 	Score.prototype.draw = function(element) {
 		element.appendChild(this.container);
-		this.updateScore();
+		this.containerScore.innerHTML = '0 $';
 	};
 
 	Score.prototype.updateScore = function() {
-		this.containerScore.innerHTML = this.controller.score + ' $';
+		if(this.scoreInterval === undefined) {
+			this.scoreInterval = TimeoutUtil.interval(function() {
+				this.tempScore = this.tempScore + 1;
+				this.containerScore.innerHTML = this.tempScore + ' $';
+				if(this.tempScore >= this.controller.score) {
+					window.clearInterval(this.scoreInterval);
+					this.scoreInterval = undefined;
+				}
+			}, 300, this);
+		}
 	};
 
 	Score.prototype.updateLife = function() {

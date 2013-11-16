@@ -33,17 +33,32 @@ define(dependencies, function() {
 			var div = document.createElement('div');
 			score.draw(div);
 			score.updateScore();
-			expect(score.container.innerHTML).toContain('0 $');
+			waitsFor(function() {
+				return score.tempScore > 0;
+			}, 'should increment tempScore', 1000);
+			runs(function() {
+				expect(score.container.innerHTML).toContain('1 $');
+			});
 		});
 
 		it('should update score', function () {
 			var div = document.createElement('div');
 			score.draw(div);
 			score.updateScore();
-			expect(score.container.innerHTML).toContain('0 $');
-			fakeController.score = 100;
+			waitsFor(function() {
+				return score.tempScore > 0;
+			}, 'should increment tempScore', 1000);
+			runs(function() {
+				expect(score.container.innerHTML).toContain('1 $');
+			});
+			fakeController.score = 5;
 			score.updateScore();
-			expect(score.container.innerHTML).toContain('100 $');
+			waitsFor(function() {
+				return score.tempScore >= 5;
+			}, 'should increment tempScore', 1500);
+			runs(function() {
+				expect(score.container.innerHTML).toContain('5 $');
+			});
 		});
 
 	});

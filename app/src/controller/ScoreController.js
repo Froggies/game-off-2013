@@ -14,7 +14,6 @@ var ScoreController = (function() {
 	Score.prototype.incrementeBy = function(score) {
 		this.score = this.score + score;
 		this.view.updateScore();
-		this.view.updateLevel();
 	};
 
 	Score.prototype.updateLevel = function() {
