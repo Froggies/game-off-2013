@@ -17,7 +17,7 @@ define(dependencies, function() {
 		var game;
 
 		beforeEach(function() {
-			game = new GameController();
+			game = new GameController('');
 		});
 
 		it('should have a view', function () {

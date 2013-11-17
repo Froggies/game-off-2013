@@ -32,14 +32,11 @@ var ViewUtil = (function() {
       }
       return button;
     },
-    buildButtonImg: function(url, label, onClick, onClickContext) {
+    buildButtonImg: function(classes, label, onClick, onClickContext) {
       var button = ViewUtil.buildButton('', onClick, onClickContext);
-      var img = ViewUtil.buildImg(url);
-      button.appendChild(img);
+      button.className = classes;
       if(label !== '') {
-        var l = buildElement('div');
-        l.innerHTML = label;
-        button.appendChild(l);
+        button.innerHTML = label;
       }
       return button;
     },

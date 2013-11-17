@@ -1,19 +1,19 @@
 var UserController = (function() {
 
-	'use strict';
+  'use strict';
 
-	function User(game) {
-		this.view = new UserView(this);
-		this.game = game;
-	}
+  function User(game) {
+    this.game = game;
+    this.view = new UserView(this);
+  }
 
-	ObjectUtil.inherit(User, AbstractController);
+  ObjectUtil.inherit(User, AbstractController);
 
-	User.prototype.refreshView = function() {
-		this.view.refresh();
-	};
+  User.prototype.refreshView = function() {
+    this.view.refresh();
+  };
 
-	return User;
+  return User;
 
 })();
 
