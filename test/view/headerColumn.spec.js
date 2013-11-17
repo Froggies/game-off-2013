@@ -10,7 +10,7 @@ define(dependencies, function() {
 		var headerColumn;
 
 		beforeEach(function() {
-			headerColumn = new HeaderColumnView({});
+			headerColumn = new HeaderColumnView({}, '');
 		});
 
 		it('should have a container', function () {
@@ -26,7 +26,7 @@ define(dependencies, function() {
 		it('should set correct className', function () {
 			var div = document.createElement('div');
 			headerColumn.draw(div);
-			expect(div.children[0].className).toBe('headerColumn');
+			expect(div.children[0].className).toContain('headerColumn');
 		});
 
 	});

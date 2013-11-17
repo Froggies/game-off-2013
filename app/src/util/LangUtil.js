@@ -36,6 +36,12 @@ var LangUtil = (function() {
       chooseUserPageTitle: 'Choose your player !',
       chooseUserPageBack: 'Back',
       /****************************\
+      |***** GITHUB USER PAGE *****|
+      \****************************/
+      githubPageTitle: 'Github !',
+      githubPageToken: 'Token : ',
+      githubPageBack: 'Back',
+      /****************************\
       |**** CHOOSE BONUS POPUP ****|
       \****************************/
       chooseBonusPopupTitle: 'Choose a bonus !',
@@ -69,6 +75,12 @@ var LangUtil = (function() {
       \****************************/
       chooseUserPageTitle: 'Choisis ton joueur !',
       chooseUserPageBack: 'Retour',
+      /****************************\
+      |***** GITHUB USER PAGE *****|
+      \****************************/
+      githubPageTitle: 'Github !',
+      githubPageToken: 'Token : ',
+      githubPageBack: 'Retour',
       /****************************\
       |**** CHOOSE BONUS POPUP ****|
       \****************************/

@@ -1,25 +1,25 @@
 var UserView = (function() {
 
-	'use strict';
+  'use strict';
 
-	function User(controller) {
-		User.parent.constructor.apply(this, arguments);
-		this.container = ViewUtil.buildContainer('user');
-		this.avatar = ViewUtil.buildImg('assets/img/dev1.png');
+  function User(controller) {
+    User.parent.constructor.apply(this, arguments);
+    this.container = ViewUtil.buildContainer('user');
+    this.avatar = ViewUtil.buildContainer('logo ' + this.controller.game.team);
     this.container.appendChild(this.avatar);
-	}
+  }
 
-	ObjectUtil.inherit(User, AbstractView);
+  ObjectUtil.inherit(User, AbstractView);
 
-	User.prototype.draw = function(element) {
-		User.parent.draw.apply(this, arguments);
-		this.refresh();
-	};
+  User.prototype.draw = function(element) {
+    User.parent.draw.apply(this, arguments);
+    this.refresh();
+  };
 
-	User.prototype.refresh = function() {
-	};
+  User.prototype.refresh = function() {
+  };
 
-	return User;
+  return User;
 
 })();
 

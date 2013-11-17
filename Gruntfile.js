@@ -55,9 +55,15 @@ module.exports = function ( grunt ) {
     },
 
     concat: {
+
       compile_js: {
         options: {
-          banner: '<%= meta.banner %>'
+          banner: '<%= meta.banner %>\n(function() {\n',
+          process: function(src, filepath) {
+            return '// Source: ' + filepath + '\n' +
+              src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+          },
+          footer: '})();'
         },
         src: [ 
           '<%= vendor_files.js %>', 
@@ -97,7 +103,7 @@ module.exports = function ( grunt ) {
       build: {
         dir: '<%= build_dir %>/app',
         src: [
-          '<%= build_dir %>/<%= vendor_files.js %>',
+          '<%= build_dir %>/app/vendor/**/*.js',
           '<%= app_files.first %>',
           '<%= build_dir %>/app/src/**/*.js',
           '<%= build_dir %>/app/stylesheet/**/*.less',
