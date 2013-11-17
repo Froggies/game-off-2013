@@ -3,7 +3,13 @@ var GithubController = (function() {
   'use strict';
 
   function Github() {
+    this.token = localStorage['githubToken'];
+    this.user = undefined;
+    this.friends = [];
     this.view = new GithubView(this);
+    if(this.token !== undefined) {
+      this.getUserInfos(this.token);
+    }
   }
 
   ObjectUtil.inherit(Github, AbstractController);
@@ -17,9 +23,10 @@ var GithubController = (function() {
     var url = 'https://api.github.com/user?access_token='+token;
     GithubUtil.call(url, 
       function(data) {
-        var user = JSON.parse(data);
-        console.log(user);
-        this.getFollowings(user.following_url, token);
+        this.user = JSON.parse(data);
+        this.view.refreshAvatars();
+        console.log(this.user);
+        this.getFollowings(this.user.following_url, token);
       }, 
       function(error) {
         console.log(error);
@@ -33,7 +40,9 @@ var GithubController = (function() {
     console.log(url);
     GithubUtil.call(url, 
       function(data) {
-        console.log(data);
+        this.friends = JSON.parse(data);
+        this.view.refreshAvatars();
+        console.log(this.friends);
       }, 
       function(error) {
         console.log(error);
