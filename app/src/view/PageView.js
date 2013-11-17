@@ -61,30 +61,16 @@ var PageView = (function() {
       '<footer class="footer">', '', '</footer>'
     ].join('');
     var content = this.container.getElementsByClassName('content')[0];
-    content.appendChild(ViewUtil.buildButtonImg(
-      'logo classic', 
-      '', 
-      function() {
-        this.controller.startGame('classic');
-      }, 
-      this
-    ));
-    content.appendChild(ViewUtil.buildButtonImg(
-      'logo froggies', 
-      '', 
-      function() {
-        this.controller.startGame('froggies');
-      }, 
-      this
-    ));
-    content.appendChild(ViewUtil.buildButtonImg(
-      'logo github', 
-      '', 
-      function() {
-        this.controller.startGame('github');
-      }, 
-      this
-    ));
+    _.each(Constants.TEAMS, function(team) {
+      content.appendChild(ViewUtil.buildButtonImg(
+        'logo ' + team, 
+        '', 
+        function() {
+          this.controller.startGame(team);
+        }, 
+        this
+      ));
+    }, this);
     var footer = this.container.getElementsByTagName('footer')[0];
     footer.appendChild(ViewUtil.buildButton(
       LangUtil.get('chooseUserPageBack'), 
