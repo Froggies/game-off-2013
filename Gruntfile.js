@@ -55,9 +55,15 @@ module.exports = function ( grunt ) {
     },
 
     concat: {
+
       compile_js: {
         options: {
-          banner: '<%= meta.banner %>'
+          banner: '<%= meta.banner %>\n(function() {\n',
+          process: function(src, filepath) {
+            return '// Source: ' + filepath + '\n' +
+              src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+          },
+          footer: '})();'
         },
         src: [ 
           '<%= vendor_files.js %>', 
