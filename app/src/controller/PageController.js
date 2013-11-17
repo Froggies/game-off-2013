@@ -22,6 +22,20 @@ var PageController = (function() {
     this.view.showChooseUserPage();
   };
 
+  Page.prototype.showGithubPage = function() {
+    this.view.showGithubPage();
+  };
+
+  Page.prototype.onChooseTeam = function(team) {
+    if(team === 'github') {
+      this.showGithubPage();
+      var g = new GithubController();
+      g.start(this.view.getContentPage());
+    } else {
+      this.startGame(team);
+    }
+  };
+
   Page.prototype.startGame = function(team) {
     this.globalContainer.innerHTML = '';
     var game = new GameController(team);

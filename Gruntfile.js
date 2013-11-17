@@ -103,7 +103,7 @@ module.exports = function ( grunt ) {
       build: {
         dir: '<%= build_dir %>/app',
         src: [
-          '<%= build_dir %>/<%= vendor_files.js %>',
+          '<%= build_dir %>/app/vendor/**/*.js',
           '<%= app_files.first %>',
           '<%= build_dir %>/app/src/**/*.js',
           '<%= build_dir %>/app/stylesheet/**/*.less',

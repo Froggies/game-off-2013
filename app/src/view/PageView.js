@@ -66,7 +66,7 @@ var PageView = (function() {
         'logo ' + team, 
         '', 
         function() {
-          this.controller.startGame(team);
+          this.controller.onChooseTeam(team);
         }, 
         this
       ));
@@ -76,6 +76,24 @@ var PageView = (function() {
       LangUtil.get('chooseUserPageBack'), 
       this.controller.showFirstPage, this.controller
     ));
+  };
+
+  Page.prototype.showGithubPage = function() {
+    this.container.className = 'page githubPage';
+    this.container.innerHTML = [
+      '<h1 class="title">', LangUtil.get('githubPageTitle'), '</h1>',
+      '<div class="content"></div>',
+      '<footer class="footer">', '', '</footer>'
+    ].join('');
+    var footer = this.container.getElementsByTagName('footer')[0];
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('githubPageBack'), 
+      this.controller.showChooseUserPage, this.controller
+    ));
+  };
+
+  Page.prototype.getContentPage = function() {
+    return this.container.getElementsByClassName('content')[0];
   };
 
   return Page;
