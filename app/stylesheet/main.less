@@ -1,4 +1,5 @@
 @import "reset.less";
+@import "font.less";
 @import "game.less";
 @import "header.less";
 @import "backlog.less";
@@ -12,7 +13,7 @@
 @import "bonus.less";
 @import "page.less";
 @import "lang.less";
-
+@import "buttons.less"; 
 body {
 	position: relative;
 	background-color: #000;
@@ -29,38 +30,4 @@ body {
 	left:0;
 	right:0;
 	margin:auto;
-}
-
-button{
-	position: relative;
-	border:none;
-
-    color: #444;
-    text-decoration: none;
-    background-color: #FFF;
-    font-size: 1.2em;
-    display: inline-block;
-
-    padding: 10px 20px;
-    margin: 10px;
-
-    border-radius: 2px;
-
-	text-align: center;
-	cursor: pointer;
-}
-
-button:disabled {
-	opacity: 0.3;
-	cursor: default;
-}
-
-button img {
-	max-width: 40px;
-}
-
-button:hover,button:focus{
-    background-color: #ffb802;
-}
-button:active{
 }
