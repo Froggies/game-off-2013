@@ -25,8 +25,7 @@ module.exports = {
 
   vendor_files: {
     js: [
-      'app/vendor/underscore/underscore.js',
-      'app/vendor/js-base64/base64.js'
+      'app/vendor/underscore/underscore.js'
     ],
     css: [
     ],
