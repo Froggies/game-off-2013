@@ -13,7 +13,7 @@ var PageView = (function() {
     var b = document.createElement('button');
     this.container.className = 'page firstPage';
     this.container.innerHTML = [
-      '<h1 class="title">', LangUtil.get('firstPageTile'), '</h1>',
+      '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" /><h1 class="title">', LangUtil.get('firstPageTile'), '</h1>',
       '<div class="content">',
       LangUtil.get('firstPageDescription'),
       '</div>',
