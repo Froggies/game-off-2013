@@ -40,6 +40,7 @@ var LangUtil = (function() {
       \****************************/
       githubPageTitle: 'Github !',
       githubPageToken: 'Token',
+      githubPageRetainToken: 'Save my token for next times',
       githubPageBack: 'Back',
       /****************************\
       |**** CHOOSE BONUS POPUP ****|
@@ -80,6 +81,7 @@ var LangUtil = (function() {
       \****************************/
       githubPageTitle: 'Github !',
       githubPageToken: 'Token',
+      githubPageRetainToken: 'Enregistrer mon token pour la prochaine fois',
       githubPageBack: 'Retour',
       /****************************\
       |**** CHOOSE BONUS POPUP ****|

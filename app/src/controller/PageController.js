@@ -29,7 +29,7 @@ var PageController = (function() {
   Page.prototype.onChooseTeam = function(team) {
     if(team === 'github') {
       this.showGithubPage();
-      var g = new GithubController();
+      var g = new GithubController(this);
       g.start(this.view.getContentPage());
     } else {
       this.startGame(team);

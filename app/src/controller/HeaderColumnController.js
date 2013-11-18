@@ -20,6 +20,7 @@ var HeaderColumnController = (function() {
   HeaderColumn.prototype.activate = function() {
     if(this.canBeActivate === true) {
       this.isActive = true;
+      this.view.activate();
       this.columnController.activate();
     }
   };

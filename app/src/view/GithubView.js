@@ -12,9 +12,17 @@ var GithubView = (function() {
       this.inputToken.placeholder = LangUtil.get('githubPageToken');
       this.container.appendChild(this.inputToken);
       this.container.appendChild(ViewUtil.buildButton('Ok', function() {
-        this.controller.newToken(this.inputToken.value);
+        console.log(this.checkboxKeepIt.checked);
+        this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
         this.displayLoader();
       }, this));
+      this.container.appendChild(ViewUtil.buildElement('', 'br'));
+      this.checkboxKeepIt = ViewUtil.buildElement('', 'input');
+      this.checkboxKeepIt.type = 'checkbox';
+      this.container.appendChild(this.checkboxKeepIt);
+      var sentence = ViewUtil.buildElement('span');
+      sentence.innerHTML = LangUtil.get('githubPageRetainToken');
+      this.container.appendChild(sentence);
     } else {
       this.displayLoader();
     }
@@ -43,6 +51,13 @@ var GithubView = (function() {
   Github.prototype.displayLoader = function() {
     this.container.innerHTML = '';
     this.container.appendChild(ViewUtil.buildContainer('loader'));
+  };
+
+  Github.prototype.displayError = function(error) {
+    this.container.innerHTML = '';
+    var errorDiv = ViewUtil.buildContainer('error');
+    errorDiv.innerHTML = error;
+    this.container.appendChild(errorDiv);
   };
 
   Github.prototype.refreshAvatars = function() {
