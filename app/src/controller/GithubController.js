@@ -16,6 +16,29 @@ var GithubController = (function() {
 
   ObjectUtil.inherit(Github, AbstractController);
 
+  Github.prototype.showHelp = function() {
+    var helpConfig = [
+      {img: 'assets/img/help/github/1.png', sentenceKey: 'helpGithub1'},
+      {img: 'assets/img/help/github/2.png', sentenceKey: 'helpGithub2'},
+      {img: 'assets/img/help/github/3.png', sentenceKey: 'helpGithub3'},
+      {img: 'assets/img/help/github/4.png', sentenceKey: 'helpGithub4'},
+      {img: 'assets/img/help/github/5.png', sentenceKey: 'helpGithub5'}
+    ];
+    this.view.container.innerHTML = '';
+    this.helpController = new HelpController(helpConfig);
+    this.helpController.start(this.view.container);
+    this.view.container.appendChild(ViewUtil.buildButton(
+      LangUtil.get('githubPageNoAccount'),
+      this.pageController.showChooseUserPage,
+      this.pageController
+    ));
+    this.view.container.appendChild(ViewUtil.buildButton(
+      LangUtil.get('githubPageHaveToken'),
+      this.view.displayInputToken,
+      this.view
+    ));
+  };
+
   Github.prototype.newToken = function(token, keepIt) {
     if(keepIt === true) {
       localStorage['githubToken'] = token;

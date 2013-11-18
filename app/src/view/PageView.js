@@ -37,13 +37,7 @@ var PageView = (function() {
     this.container.className = 'page helpPage';
     this.container.innerHTML = [
       '<h1 class="title">', LangUtil.get('helpPageTitle'), '</h1>',
-      '<div class="content">',
-      '<ul>',
-      '<li>d&d card from backlog to dev</li>',
-      '<li>3 same cards adjacents == immediate do</li>',
-      '<li>each level pass == new dev or new task for a dev</li>',
-      '</ul>',
-      '</div>',
+      '<div class="content"></div>',
       '<footer class="footer">', '', '</footer>'
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];

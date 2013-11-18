@@ -7,28 +7,33 @@ var GithubView = (function() {
     this.container = ViewUtil.buildContainer('github');
 
     if(this.controller.token === undefined) {
-      this.inputToken = ViewUtil.buildElement('', 'input');
-      this.inputToken.type = 'text';
-      this.inputToken.placeholder = LangUtil.get('githubPageToken');
-      this.container.appendChild(this.inputToken);
-      this.container.appendChild(ViewUtil.buildButton('Ok', function() {
-        console.log(this.checkboxKeepIt.checked);
-        this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
-        this.displayLoader();
-      }, this));
-      this.container.appendChild(ViewUtil.buildElement('', 'br'));
-      this.checkboxKeepIt = ViewUtil.buildElement('', 'input');
-      this.checkboxKeepIt.type = 'checkbox';
-      this.container.appendChild(this.checkboxKeepIt);
-      var sentence = ViewUtil.buildElement('span');
-      sentence.innerHTML = LangUtil.get('githubPageRetainToken');
-      this.container.appendChild(sentence);
+      this.displayInputToken();
     } else {
       this.displayLoader();
     }
   }
 
   ObjectUtil.inherit(Github, AbstractView);
+
+  Github.prototype.displayInputToken = function() {
+    this.container.innerHTML = '';
+    this.inputToken = ViewUtil.buildElement('', 'input');
+    this.inputToken.type = 'text';
+    this.inputToken.placeholder = LangUtil.get('githubPageToken');
+    this.container.appendChild(this.inputToken);
+    this.container.appendChild(ViewUtil.buildButton('Ok', function() {
+      this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
+      this.displayLoader();
+    }, this));
+    this.container.appendChild(ViewUtil.buildButton(LangUtil.get('githubPageHelp'), this.controller.showHelp, this.controller));
+    this.container.appendChild(ViewUtil.buildElement('', 'br'));
+    this.checkboxKeepIt = ViewUtil.buildElement('', 'input');
+    this.checkboxKeepIt.type = 'checkbox';
+    this.container.appendChild(this.checkboxKeepIt);
+    var sentence = ViewUtil.buildElement('span');
+    sentence.innerHTML = LangUtil.get('githubPageRetainToken');
+    this.container.appendChild(sentence);
+  };
 
   function buildUserButton(user, view) {
     var button = ViewUtil.buildButtonImg(
