@@ -10,6 +10,7 @@ var ColumnController = (function() {
     this.header = new HeaderColumnController(this, index);
     this.cardTimeout = undefined;
     this.isPause = false;
+    this.hasInactiveRow = true;
     this.rows = [];
     for(var i=0; i<Constants.NB_ROWS; i++) {
       this.rows.push(new RowController());
@@ -28,9 +29,21 @@ var ColumnController = (function() {
   };
 
   Column.prototype.setCanBeActivate = function(bool) {
-    this.canBeActivate = bool;
-    this.view.refreshCanBeActivate();
-    this.header.setCanBeActivate(bool);
+    if(this.hasInactiveRow === true) {
+      var nbRowInactive = 0;
+      _.each(this.rows, function(row) {
+        if(row.isActive === false) {
+          nbRowInactive = nbRowInactive + 1;
+        }
+      });
+      if(nbRowInactive > 0) {
+        this.canBeActivate = bool;
+        this.view.refreshCanBeActivate();
+        this.header.setCanBeActivate(bool);
+      } else {
+        this.hasInactiveRow = false;
+      }
+    }
   };
 
   Column.prototype.activate = function() {
