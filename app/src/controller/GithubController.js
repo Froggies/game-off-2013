@@ -6,6 +6,7 @@ var GithubController = (function() {
     this.token = localStorage['githubToken'];
     this.user = undefined;
     this.friends = [];
+    this.selectedTeam = [];
     this.view = new GithubView(this);
     if(this.token !== undefined) {
       this.getUserInfos(this.token);
@@ -24,9 +25,8 @@ var GithubController = (function() {
     GithubUtil.call(url, 
       function(data) {
         this.user = JSON.parse(data);
-        this.view.refreshAvatars();
         console.log(this.user);
-        this.getFollowings(this.user.following_url, token);
+        this.getFollowings(this.user.following_url, this.user.followers_url, token);
       }, 
       function(error) {
         console.log(error);
@@ -35,20 +35,40 @@ var GithubController = (function() {
     );
   };
 
-  Github.prototype.getFollowings = function(u, token) {
+  Github.prototype.getFollowings = function(u, u2, token) {
     var url = u.split('{')[0] + '?access_token='+token;
-    console.log(url);
     GithubUtil.call(url, 
       function(data) {
         this.friends = JSON.parse(data);
-        this.view.refreshAvatars();
-        console.log(this.friends);
+        this.getFolloweds(u2, token);
       }, 
       function(error) {
         console.log(error);
       }, 
       this
     );
+  };
+
+  Github.prototype.getFolloweds = function(u, token) {
+    var url = u.split('{')[0] + '?access_token='+token;
+    GithubUtil.call(url, 
+      function(data) {
+        this.friends = _.union(this.friends, JSON.parse(data));
+        this.view.refreshAvatars();
+      }, 
+      function(error) {
+        console.log(error);
+      }, 
+      this
+    );
+  };
+
+  Github.prototype.addMember = function(member) {
+    this.selectedTeam.push(member);
+  };
+
+  Github.prototype.removeMember = function(member) {
+    this.selectedTeam = _.without(this.selectedTeam, member);
   };
 
   return Github;

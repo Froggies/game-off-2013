@@ -39,7 +39,7 @@ var LangUtil = (function() {
       |***** GITHUB USER PAGE *****|
       \****************************/
       githubPageTitle: 'Github !',
-      githubPageToken: 'Token : ',
+      githubPageToken: 'Token',
       githubPageBack: 'Back',
       /****************************\
       |**** CHOOSE BONUS POPUP ****|
@@ -79,7 +79,7 @@ var LangUtil = (function() {
       |***** GITHUB USER PAGE *****|
       \****************************/
       githubPageTitle: 'Github !',
-      githubPageToken: 'Token : ',
+      githubPageToken: 'Token',
       githubPageBack: 'Retour',
       /****************************\
       |**** CHOOSE BONUS POPUP ****|
