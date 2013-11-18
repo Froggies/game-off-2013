@@ -1,5 +1,5 @@
 {
-  "name": "game-off-2013",
+  "name": "PanicBacklog",
   "version": "0.1.0",
   "scripts": {
     "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS"
