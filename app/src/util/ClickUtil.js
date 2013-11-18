@@ -5,11 +5,11 @@ var ClickUtil = (function() {
   return {
 
     listen: function(element, callback, context) {
-      return element.onclick = function() {
+      return element.onclick = function(evt) {
         if(context !== undefined) {
-          callback.call(context);
+          callback.call(context, evt);
         } else {
-          callback();
+          callback(evt);
         }
       };
     }

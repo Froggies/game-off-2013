@@ -49,6 +49,7 @@ button{
 	vertical-align:top;
 	cursor:pointer;
 	font-family:"komika";
+	position: relative;
 }
 button:hover, button:focus{
 	background-color:#CCC;
@@ -58,4 +59,16 @@ button:active{
 	box-shadow: 0 1px 0 0 #999999 inset, 0 -1px 0 0 #FFFFFF inset;
 	padding-top:11px;
 	padding-bottom:9px;
+}
+
+button.info {
+	position: absolute;
+	top: -12px;
+	right: -12px;
+	padding: 5px;
+	margin: 0;
+	width: 25px;
+	height: 25px;
+	border-radius: 50%;
+	line-height: 5px;
 }

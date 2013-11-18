@@ -46,6 +46,12 @@ var LangUtil = (function() {
       |**** CHOOSE BONUS POPUP ****|
       \****************************/
       chooseBonusPopupTitle: 'Choose a bonus !',
+      chooseBonusPopupBacklogCardsPP: 'Your tasks can have 1 sup card before blowup',
+      chooseBonusPopupEmptyBacklog: 'By clicking you empty your tasks',
+      chooseBonusPopupCardTimeMM: 'Divide by 2 all cards\' time in game (not in tasks)',
+      chooseBonusPopupNewDev: 'Active the next dev in your team',
+      chooseBonusPopupNewTask: 'Active the next task in the first dev who have empty task',
+      chooseBonusPopupLifePP: 'Add a life in your lifes\'',
       /****************************\
       |******* PAUSE  POPUP *******|
       \****************************/
@@ -87,6 +93,12 @@ var LangUtil = (function() {
       |**** CHOOSE BONUS POPUP ****|
       \****************************/
       chooseBonusPopupTitle: 'Choisis un bonus !',
+      chooseBonusPopupBacklogCardsPP: 'Vous pouvez avoir 1 carte de plus dans vos tâches avant de mourir',
+      chooseBonusPopupEmptyBacklog: 'En cliquant vous videz vos tâches',
+      chooseBonusPopupCardTimeMM: 'Divise par 2 le temps de toutes les cartes en jeu (pas dans vos tâches)',
+      chooseBonusPopupNewDev: 'Active le 1er dev, non actif, dans votre équipe',
+      chooseBonusPopupNewTask: 'Active 1 tâche dans le 1er dev qui a une tâche non active',
+      chooseBonusPopupLifePP: 'Ajoute une nouvelle vie',
       /****************************\
       |******* PAUSE  POPUP *******|
       \****************************/
