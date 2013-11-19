@@ -176,6 +176,12 @@ var ColumnController = (function() {
     return false;
   };
 
+  Column.prototype.removeAllCards = function() {
+    _.each(this.rows, function(row) {
+      row.removeCard();
+    }, this);
+  };
+
   return Column;
 
 })();
