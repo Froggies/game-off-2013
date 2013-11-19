@@ -21,8 +21,6 @@ var LangUtil = (function() {
       /****************************\
       |******** FIRST PAGE ********|
       \****************************/
-      firstPageTile: 'Welcome in Panic Backlog !',
-      firstPageDescription: 'You are a tyrannical project chief and you have to affect tasks to your developpers. You have to make evolve your team, to cope with change, to treat a large amount of tasks, before the backlog blows up.',
       firstPageHelp: 'Help',
       firstPageStart: 'Start',
       /****************************\
@@ -90,8 +88,6 @@ var LangUtil = (function() {
       /****************************\
       |******** FIRST PAGE ********|
       \****************************/
-      firstPageTile: 'Bienvenu dans Panic Backlog !',
-      firstPageDescription: 'Tu es un chef de projet tyranique et tu dois affecter des tâches à tes développeurs. Tu dois faire évoluer ton équipe, pour faire face au changement, pour traiter un très grand nombre de tâches, avant que le backlog ne déborde.',
       firstPageHelp: 'Aide',
       firstPageStart: 'Démarrer',
       /****************************\
