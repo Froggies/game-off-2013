@@ -85,6 +85,10 @@ var GameController = (function() {
       if(this.header.score.level % Constants.NB_LVL_BONUS === 0) {
         this.pause();
         this.popupController.displayChooseBonusPopup();
+        this.backlog.removeAllCards();
+        _.each(this.columns, function(column) {
+          column.removeAllCards();
+        });
       } else {
         _.each(this.columns, function(column) {
           column.setCanBeActivate(true);
