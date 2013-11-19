@@ -12,23 +12,17 @@ var PageView = (function() {
   Page.prototype.showFirstPage = function() {
     var b = document.createElement('button');
     this.container.className = 'page firstPage';
-    this.container.innerHTML = [
-      '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" /><h1 class="title">', LangUtil.get('firstPageTile'), '</h1>',
-      '<div class="content">',
-      LangUtil.get('firstPageDescription'),
-      '</div>',
-      '<footer class="footer">', '', '</footer>'
-    ].join('');
+    this.container.innerHTML = '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" /><footer class="footer"></footer>';
     var title = this.container.getElementsByTagName('h1')[0];
     var lang = new LangController();
-    lang.start(title);
+    lang.start(this.container);
     var footer = this.container.getElementsByTagName('footer')[0];
     footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('firstPageHelp'), 
+      LangUtil.get('firstPageHelp'),
       this.controller.showHelpPage, this.controller
     ));
     footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('firstPageStart'), 
+      LangUtil.get('firstPageStart'),
       this.controller.showChooseUserPage, this.controller
     ));
   };
@@ -37,7 +31,7 @@ var PageView = (function() {
     this.container.className = 'page helpPage';
     this.container.innerHTML = [
       '<h1 class="title">', LangUtil.get('helpPageTitle'), '</h1>',
-      '<div class="content"></div>',
+      '<div class="content"></div>', 
       '<footer class="footer">', '', '</footer>'
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
