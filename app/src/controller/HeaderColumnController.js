@@ -12,6 +12,12 @@ var HeaderColumnController = (function() {
 
   ObjectUtil.inherit(HeaderColumn, AbstractController);
 
+  HeaderColumn.prototype.resign = function() {
+    this.isActive = false;
+    this.canBeActivate = false;
+    this.view.resign();
+  };
+
   HeaderColumn.prototype.setCanBeActivate = function(bool) {
     this.canBeActivate = bool;
     this.view.refreshCanBeActivate();

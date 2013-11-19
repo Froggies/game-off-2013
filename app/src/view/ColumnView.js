@@ -29,6 +29,10 @@ var ColumnView = (function() {
 		this.container.className = 'column active';
 	};
 
+	Column.prototype.inactivate = function() {
+		this.container.className = 'column inactive';
+	};
+
 	Column.prototype.addDiv = function() {
     this.container.appendChild(ViewUtil.buildContainer('dev'));
   };
