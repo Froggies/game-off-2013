@@ -2,15 +2,17 @@
 	width: 100px;
 	height: 75px;
 	display: inline-block;
-	border: 3px solid #6f6f6f;
-	background-color: #6f6f6f;
+	border: 3px solid #4A4A4A;
+	background-color: #4A4A4A;
 	border-radius:2px;
 	vertical-align: middle;
 	position: relative;
 }
 .column.active .headerColumn {
 	background-image: url(../assets/img/dev-card-bg.png);
-	box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	border: 3px solid #6F6F6F;
+	background-color: #888;
 }
 
 .headerColumn.canBeActive.true {
@@ -21,26 +23,14 @@
 	position: absolute;
 	top: -10px;
 	right: -20px;
-	width: 30px;
-	height: 30px;
-	line-height: 22px;
 	text-align: right;
-	content: '+';
+	padding: 4px;
+	line-height: 13px;
+	content: 'upgrade !';
 	font-family: 'komika';
-	color: #000;
-	border: 5px solid #FFF;
-	box-shadow: 0 0 0 1px #000, 0 0 5px rgba(0,0,0,0.8);
-	border-radius: 50%;
-	font-weight: bold;
-	font-size: 33px;
-
-	background: #e02100; /* Old browsers */
-	background: -moz-linear-gradient(top,  #e02100 0%, #cb2100 99%); /* FF3.6+ */
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e02100), color-stop(99%,#cb2100)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(top,  #e02100 0%,#cb2100 99%); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(top,  #e02100 0%,#cb2100 99%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(top,  #e02100 0%,#cb2100 99%); /* IE10+ */
-	background: linear-gradient(to bottom,  #e02100 0%,#cb2100 99%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e02100', endColorstr='#cb2100',GradientType=0 ); /* IE6-9 */
-
+	color: #e02100;
+	border: 1px solid #000;
+	border-radius: 2px;
+	font-size: 1em;
+	background: #FFF;
 }

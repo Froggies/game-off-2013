@@ -1,27 +1,33 @@
 .score {
 	padding: 0 10px;
 	display: inline-block;
+	vertical-align: middle;
+	width:350px;
 }
+	.score .dollar, .score .level, .score .life{
+		display: inline-block;
+		vertical-align: middle;
+		width: 30%;
+	}
 
-.life div {
-	background:#FFF;
-	width:25px;
-	height: 25px;
-	display: inline-block;
-	margin: 2px;
-	font-family: 'komika';
-	font-size: 25px;
-	line-height: 18px;
-	text-align: right;
-	font-size: 30px;
-}
-
-.life .active {
-	color: #e02100;
-	border: 1px solid #000;
-}
-
-.life .inactive {
-	color: #AAA;
-	background:#BBB;
-}
+		.life div {
+			width:25px;
+			height: 25px;
+			display: inline-block;
+			margin: 2px;
+			font-family: 'komika';
+			font-size: 25px;
+			line-height: 18px;
+			text-align: right;
+			font-size: 30px;
+			transition:color 200ms,background-color 200ms;
+		}
+			.life .active {
+				color: #e02100;
+				border: 1px solid #000;
+				background-color:#FFF;
+			}
+			.life .inactive {
+				color: #AAA;
+				background-color:#BBB;
+			}

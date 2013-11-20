@@ -5,8 +5,28 @@
 	border: 1px solid #444;
 	box-shadow:0 0 4px rgba(0,0,0,0.5) inset;
 	overflow: hidden;
+	width: 80%;
+	height: 10px;
+	margin: 10px 10%;
 }
 	.gauge div {
 		height: 100%;
-		box-shadow:0 2px 0 0 rgba(255,255,255,0.8) inset;
+		box-shadow:0 2px 4px 0 rgba(255,255,255,0.6) inset,0 -2px 4px 0 rgba(0,0,0,0.6) inset;
+		transition:width 200ms;
 	}
+
+.gaugebacklog{
+	border:1px solid #000;
+}
+
+.gauge .relax {
+	background-color: green;
+}
+
+.gauge .nervous {
+	background-color: orange;
+}
+
+.gauge .dead {
+	background-color: #e02100;
+}

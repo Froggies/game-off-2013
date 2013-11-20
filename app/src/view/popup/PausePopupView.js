@@ -12,8 +12,8 @@ var PausePopupView = (function() {
 
 		this.content = ViewUtil.buildContainer('content');
 		this.content.innerHTML = LangUtil.get('pausePopupSentence');
-		this.timeContainer = ViewUtil.buildContainer('time');
-		this.ellapsedTimeContainer = ViewUtil.buildContainer('ellapsed');
+		this.timeContainer = ViewUtil.buildContainer('gauge');
+		this.ellapsedTimeContainer = ViewUtil.buildContainer('bg-red');
 		this.timeContainer.appendChild(this.ellapsedTimeContainer);
 		this.container.appendChild(this.timeContainer);
 		this.container.appendChild(this.content);

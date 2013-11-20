@@ -10,7 +10,7 @@ var BacklogView = (function() {
 		this.title.innerHTML = LangUtil.get('backlog');
 		this.container.appendChild(this.title);
 
-		this.gauge = ViewUtil.buildContainer('gauge');
+		this.gauge = ViewUtil.buildContainer('gauge gaugebacklog');
 		this.gaugePercentage = ViewUtil.buildContainer('');
 		this.gauge.appendChild(this.gaugePercentage);
 		this.container.appendChild(this.gauge);
