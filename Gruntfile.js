@@ -27,7 +27,7 @@ module.exports = function ( grunt ) {
     },
 
     clean: [ 
-      '<%= build_dir %>', 
+      '<%= build_dir %>',
       '<%= compile_dir %>'
     ],
 
@@ -65,10 +65,10 @@ module.exports = function ( grunt ) {
           },
           footer: '})();'
         },
-        src: [ 
-          '<%= vendor_files.js %>', 
+        src: [
+          '<%= vendor_files.js %>',
           '<%= app_files.first %>',
-          '<%= build_dir %>/app/src/**/*.js'   
+          '<%= build_dir %>/app/src/**/*.js'
         ],
         dest: '<%= compile_dir %>/<%= pkg.name %>-<%= pkg.version %>.js'
       }
@@ -120,12 +120,12 @@ module.exports = function ( grunt ) {
     },
 
     watch: {
-      files: [ '<%= app_files.html %>', 
-               '<%= app_files.js %>', 
-               '<%= vendor_files.js %>', 
-               '<%= app_files.assets %>', 
-               '<%= app_files.stylesheet %>', 
-               '<%= test_files.js %>' 
+      files: [ '<%= app_files.html %>',
+               '<%= app_files.js %>',
+               '<%= vendor_files.js %>',
+               '<%= app_files.assets %>',
+               '<%= app_files.stylesheet %>',
+               '<%= test_files.js %>'
             ],
       tasks: ['jshint', 'karma:build:run', 'build']
     },
@@ -145,8 +145,8 @@ module.exports = function ( grunt ) {
     },
 
     jshint: {
-      files: [ '<%= app_files.js %>',  
-               '<%= test_files.js %>' 
+      files: [ '<%= app_files.js %>',
+               '<%= test_files.js %>'
             ],
       options: {
         curly: true,
@@ -172,7 +172,7 @@ module.exports = function ( grunt ) {
           it: false,
           expect: false,
           requirejs: false,
-          dump: false 
+          dump: false
         }
       }
     },
