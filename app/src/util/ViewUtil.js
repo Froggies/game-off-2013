@@ -14,6 +14,9 @@ var ViewUtil = (function() {
     removeClassName: function(element, className) {
       element.classList.remove(className);
     },
+    hasClassName: function(element, className) {
+      return element.classList.contains(className);
+    },
     buildContainer: function(className) {
       var div = buildElement('div');
       div.className = className;

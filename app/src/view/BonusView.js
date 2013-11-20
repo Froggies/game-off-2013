@@ -14,38 +14,40 @@ var BonusView = (function() {
 	}
 
 	ObjectUtil.inherit(Bonus, AbstractView);
-
   
-  /*DONE POUR LES DIV
-  function initButton(container, button) {
-    ViewUtil.inactiveButton(button);
-    button.className = 'noActive';
-    container.appendChild(button);
-  }
-  */
-  function initBonus(container, bonus) {
+  var initBonus = function(container, bonusElement, callback, context, timeInactive) {
+    ViewUtil.addClassName(bonusElement, 'noActive');
+    container.appendChild(bonusElement);
+    ClickUtil.listen(bonusElement, function() {
+      if(ViewUtil.hasClassName(bonusElement, 'active') === true) {
+        callback.call(context);
+        inactiveBonusDuring(bonusElement, timeInactive);
+      }
+    }, this);
+  };
+
+
+  function inactiveBonusDuring(bonus, time) {
     ViewUtil.addClassName(bonus, 'noActive');
-    container.appendChild(bonus);
-  }
-
-
-  /*A REWORKER POUR LES DIV*/
-  function inactiveButtonDuring(button, time) {
-    ViewUtil.inactiveButton(button);
+    ViewUtil.removeClassName(bonus, 'active');
     TimeoutUtil.timeout(function() {
-      ViewUtil.activeButton(button);
+      ViewUtil.removeClassName(bonus, 'noActive');
+      ViewUtil.addClassName(bonus, 'active');
     }, time);
   }
 
 
 	Bonus.prototype.addBacklogCardsImprovement = function() {
     this.bonusBacklogCardsImprovement = ViewUtil.buildContainer('backlogCardsImprovement');
-    this.container.appendChild(this.bonusBacklogCardsImprovement);
-    ClickUtil.listen(this.bonusBacklogCardsImprovement, function(){
-      this.controller.game.nbCardsInBacklogMax = this.controller.game.nbCardsInBacklogMax + 1;
-      inactiveButtonDuring(this.bonusBacklogCardsImprovement, 60 * 1000 * 1);
-    }, this);
-    initBonus(this.container, this.bonusBacklogCardsImprovement);
+    initBonus(
+      this.container, 
+      this.bonusBacklogCardsImprovement, 
+      function() {
+        this.controller.game.nbCardsInBacklogMax = this.controller.game.nbCardsInBacklogMax + 1;
+      }, 
+      this,
+      60 * 1000 * 1
+    );
   };
   Bonus.prototype.activateBacklogCardsImprovement = function() {
     ViewUtil.removeClassName(this.bonusBacklogCardsImprovement, 'noActive');
@@ -55,12 +57,15 @@ var BonusView = (function() {
 
   Bonus.prototype.addEmptyBacklog = function() {
     this.bonusEmptyBacklog = ViewUtil.buildContainer('emptyBacklog');
-    this.container.appendChild(this.bonusEmptyBacklog);
-    ClickUtil.listen(this.bonusEmptyBacklog, function(){
-      this.controller.game.backlog.removeAllCards();
-      inactiveButtonDuring(this.bonusEmptyBacklog, 60 * 1000 * 5);
-    }, this);
-    initBonus(this.container, this.bonusEmptyBacklog);
+    initBonus(
+      this.container, 
+      this.bonusEmptyBacklog,
+      function() {
+        this.controller.game.backlog.removeAllCards();
+      }, 
+      this,
+      60 * 1000 * 5
+    );
   };
   Bonus.prototype.activateEmptyBacklog = function() {
     ViewUtil.removeClassName(this.bonusEmptyBacklog, 'noActive');
@@ -70,18 +75,21 @@ var BonusView = (function() {
 
   Bonus.prototype.addCardTimeMinus = function() {
     this.bonusCardTimeMinus = ViewUtil.buildContainer('cardTimeMinus');
-    this.container.appendChild(this.bonusCardTimeMinus);
-    ClickUtil.listen(this.bonusCardTimeMinus, function(){
-      _.each(this.controller.game.columns, function(column) {
-        _.each(column.rows, function(row) {
-          if(row.card !== undefined) {
-            row.card.time = row.card.time / 2;
-          }
+    initBonus(
+      this.container, 
+      this.bonusCardTimeMinus,
+      function() {
+        _.each(this.controller.game.columns, function(column) {
+          _.each(column.rows, function(row) {
+            if(row.card !== undefined) {
+              row.card.time = row.card.time / 2;
+            }
+          });
         });
-      });
-      inactiveButtonDuring(this.bonusCardTimeMinus, 60 * 1000 * 2);
-    }, this);
-    initBonus(this.container, this.bonusCardTimeMinus);
+      }, 
+      this,
+      60 * 1000 * 2
+    );
   };
   Bonus.prototype.activateCardTimeMinus = function() {
     ViewUtil.removeClassName(this.bonusCardTimeMinus, 'noActive');
@@ -91,19 +99,22 @@ var BonusView = (function() {
 
   Bonus.prototype.addNewDev = function() {
     this.bonusNewDev = ViewUtil.buildContainer('newDev');
-    this.container.appendChild(this.bonusNewDev);
-    ClickUtil.listen(this.bonusNewDev, function(){
-      _.find(this.controller.game.columns, function(column) {
-        if(column.isActive === false) {
-          column.setCanBeActivate(true);
-          column.activate();
-          return true;
-        }
-        return false;
-      });
-      inactiveButtonDuring(this.bonusNewDev, 60 * 1000 * 1);
-    }, this);
-    initBonus(this.container, this.bonusNewDev);
+    initBonus(
+      this.container, 
+      this.bonusNewDev,
+      function() {
+        _.find(this.controller.game.columns, function(column) {
+          if(column.isActive === false) {
+            column.setCanBeActivate(true);
+            column.activate();
+            return true;
+          }
+          return false;
+        });
+      }, 
+      this,
+      60 * 1000 * 1
+    );
   };
   Bonus.prototype.activateNewDev = function() {
     ViewUtil.removeClassName(this.bonusNewDev, 'noActive');
@@ -113,24 +124,27 @@ var BonusView = (function() {
 
   Bonus.prototype.addNewTask = function() {
     this.bonusNewTask = ViewUtil.buildContainer('newTask');
-    this.container.appendChild(this.bonusNewTask);
-    ClickUtil.listen(this.bonusNewTask, function(){
-      _.find(this.controller.game.columns, function(column) {
-        if(column.isActive === true) {
-          var find = _.find(column.rows, function(row) {
-            if(row.isActive === false) {
-              row.activate();
-              return true;
-            }
-            return false;
-          });
-          return find !== undefined;
-        }
-        return false;
-      });
-      inactiveButtonDuring(this.bonusNewTask, 60 * 1000 * 2);
-    }, this);
-    initBonus(this.container, this.bonusNewTask);
+    initBonus(
+      this.container, 
+      this.bonusNewTask,
+      function() {
+        _.find(this.controller.game.columns, function(column) {
+          if(column.isActive === true) {
+            var find = _.find(column.rows, function(row) {
+              if(row.isActive === false) {
+                row.activate();
+                return true;
+              }
+              return false;
+            });
+            return find !== undefined;
+          }
+          return false;
+        });
+      }, 
+      this,
+      60 * 1000 * 2
+    );
   };
   Bonus.prototype.activateNewTask = function() {
     ViewUtil.removeClassName(this.bonusNewTask, 'noActive');
@@ -140,13 +154,16 @@ var BonusView = (function() {
 
   Bonus.prototype.addLifeImprovement = function() {
     this.bonusLifeImprovement = ViewUtil.buildContainer('lifeImprovement');
-    this.container.appendChild(this.bonusLifeImprovement);
-    ClickUtil.listen(this.bonusLifeImprovement, function(){
-      this.controller.game.header.score.nbLife = this.controller.game.header.score.nbLife + 1;
-      this.controller.game.header.score.view.updateScore();
-      inactiveButtonDuring(this.bonusLifeImprovement, 60 * 1000 * 1);
-    }, this);
-    initBonus(this.container, this.bonusLifeImprovement);
+    initBonus(
+      this.container, 
+      this.bonusLifeImprovement,
+      function() {
+        this.controller.game.header.score.nbLife = this.controller.game.header.score.nbLife + 1;
+        this.controller.game.header.score.view.updateScore();
+      }, 
+      this,
+      60 * 1000 * 1
+    );
   };
   Bonus.prototype.activateLifeImprovement = function() {
     ViewUtil.removeClassName(this.bonusLifeImprovement, 'noActive');
