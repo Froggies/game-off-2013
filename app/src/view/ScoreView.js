@@ -14,9 +14,9 @@ var ScoreView = (function() {
 		this.container.appendChild(this.containerLife);
 		for (var i = 0; i < Constants.NB_LIFE; i++) {
 			if(this.controller.nbLife >= i) {
-				this.containerLife.appendChild(ViewUtil.buildContainer('active'));
+				this.containerLife.appendChild(ViewUtil.buildContainer('active')).innerHTML = '+';
 			} else {
-				this.containerLife.appendChild(ViewUtil.buildContainer('inactive'));
+				this.containerLife.appendChild(ViewUtil.buildContainer('inactive')).innerHTML = '+';
 			}
 		}
 		this.tempScore = 0;

@@ -1,18 +1,20 @@
 .bonus {
 	display: inline-block;
-	vertical-align: top;
-	width: 70%;
-	padding: 0 10px;
+	padding: 10px;
 }
 
-.bonus button {
+.bonus div {
 	height: 50px;
+	width: 50px;
 	margin: 1px;
 	padding: 1px;
-	vertical-align: middle;
-	max-width: 20%;
+	display: inline-block;
 }
 
-.bonus button.noActive {
+.bonus div.noActive {
 	background-color: red;
+}
+.bonus div.active {
+	background-color: green;
+	cursor: pointer;
 }

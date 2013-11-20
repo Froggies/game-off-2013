@@ -14,7 +14,7 @@ var Constants = {
   CARD_BACKLOG_TOP_BY: 0.55,//speed of cards in backlog, greater is speeder
   SCORE_TIME_SHOW: 10,//show +1 score every msc
   SCORE_FACTOR: 86.56,//display big score (score * factor)
-  NB_LVL_BONUS: 5,//each nb level display bonus popup 
+  NB_LVL_BONUS: 3,//each nb level display bonus popup 
   NB_TASK_BEFORE_RESIGN: 20,//after x, the dev can resign
   NB_LUCK_RESIGN: 8//1 luck on x to resign (after x tasks)
 };

@@ -3,19 +3,25 @@
 	display: inline-block;
 }
 
-.score .life .active:before, .score .life .inactive:before {
-	content: "♥";
-}
-
-.score .life .active:before {
-	color: red;
-}
-
-.score .life .inactive:before {
-	color: #ccc;
-}
-
-.score .life .active, .score .life .inactive {
+.life div {
+	background:#FFF;
+	width:25px;
+	height: 25px;
 	display: inline-block;
+	margin: 2px;
+	font-family: 'komika';
 	font-size: 25px;
+	line-height: 18px;
+	text-align: right;
+	font-size: 30px;
+}
+
+.life .active {
+	color: #e02100;
+	border: 1px solid #000;
+}
+
+.life .inactive {
+	color: #AAA;
+	background:#BBB;
 }

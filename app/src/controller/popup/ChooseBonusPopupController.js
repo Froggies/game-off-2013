@@ -9,6 +9,8 @@ var ChooseBonusPopupController = (function() {
 
   ObjectUtil.inherit(Popup, AbstractController);
 
+
+
   Popup.prototype.onChooseBacklogCardsImprovement = function() {
     this.popupController.game.header.bonus.activateBacklogCardsImprovement();
     this.onNoChoose();
@@ -38,7 +40,7 @@ var ChooseBonusPopupController = (function() {
     this.popupController.game.header.bonus.activateLifeImprovement();
     this.onNoChoose();
   };
-
+  
   Popup.prototype.onNoChoose = function() {
     this.popupController.view.hidePopup();
     this.popupController.game.resume();
