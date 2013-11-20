@@ -23,6 +23,7 @@ var LangUtil = (function() {
       \****************************/
       firstPageHelp: 'Help',
       firstPageStart: 'Start',
+      firstPageCredits: 'Credits',
       /****************************\
       |******** HELP  PAGE ********|
       \****************************/
@@ -84,6 +85,15 @@ var LangUtil = (function() {
       backlog: 'Tasks',
       chooseBonusPopupClose: 'No thanks !',
       /****************************\
+      |****** CREDITS PAGE ********|
+      \****************************/
+      creditsPageTitle: 'Credits',
+      creditsPageSentence: 'This game was build by a subset of Froggies\' team ! Originally created for the game-off-2013 contest, launched by github. All source are available in our github !',
+      creditsPageAudreySentence: 'I\'m the <br /> devOps',//br to be consistent in en and fr (so long)
+      creditsPageLaurentSentence: 'I\'m the cogniticien',
+      creditsPageRomainSentence: 'I\'m the dev',
+      creditsPageBack: 'Back',
+      /****************************\
       |********* BUBBLES **********|
       \****************************/
       resignSentences: ['By by amigo !', 'I go work for github !', 'Microsoft\'s job is better than here !']
@@ -94,6 +104,7 @@ var LangUtil = (function() {
       \****************************/
       firstPageHelp: 'Aide',
       firstPageStart: 'Démarrer',
+      firstPageCredits: 'Crédits',
       /****************************\
       |******** HELP  PAGE ********|
       \****************************/
@@ -154,6 +165,15 @@ var LangUtil = (function() {
       \****************************/
       backlog: 'Tâches',
       chooseBonusPopupClose: 'Non merci !',
+      /****************************\
+      |****** CREDITS PAGE ********|
+      \****************************/
+      creditsPageTitle: 'Crédits',
+      creditsPageSentence: 'Ce jeu a été créé par une partie des membres de la Froggies Team ! Au départ il a été créé pour le concours game-off-2013, organisé par Github. Toutes les sources sont disponibles sur notre compte Github !',
+      creditsPageAudreySentence: 'Je suis la devOps',
+      creditsPageLaurentSentence: 'Je suis le cogniticien',
+      creditsPageRomainSentence: 'Je suis le dev',
+      creditsPageBack: 'Retour',
       /****************************\
       |********* BUBBLES **********|
       \****************************/
