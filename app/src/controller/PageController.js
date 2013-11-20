@@ -39,6 +39,10 @@ var PageController = (function() {
     this.view.showGithubPage();
   };
 
+  Page.prototype.showCreditsPage = function() {
+    this.view.showCreditsPage();
+  };
+
   Page.prototype.onChooseTeam = function(team) {
     if(team === 'github') {
       this.showGithubPage();
