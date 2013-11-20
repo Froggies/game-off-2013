@@ -224,12 +224,13 @@ module.exports = function ( grunt ) {
     });
 
     grunt.file.copy('app/index.tpl.html', this.data.dir + '/index.html', { 
-      process: function ( contents, path ) {
+      process: function (contents, path) {
         return grunt.template.process( contents, {
           data: {
             scripts: jsFiles,
             styles: lessFiles,
-            version: grunt.config( 'pkg.version' )
+            version: grunt.config( 'pkg.version' ),
+            mytitle: grunt.config('pkg.name')
           }
         });
       }
