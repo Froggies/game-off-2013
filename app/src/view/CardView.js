@@ -7,8 +7,8 @@ var CardView = (function() {
 		this.container = ViewUtil.buildContainer('card');
 		this.typeContainer = ViewUtil.buildContainer('type');
 		this.complexityContainer = ViewUtil.buildContainer('complexity');
-		this.timeContainer = ViewUtil.buildContainer('time');
-		this.ellapsedTimeContainer = ViewUtil.buildContainer('ellapsed');
+		this.timeContainer = ViewUtil.buildContainer('time gauge');
+		this.ellapsedTimeContainer = ViewUtil.buildContainer('ellapsed gradient-red');
 		this.container.appendChild(this.typeContainer);
 		this.container.appendChild(this.complexityContainer);
 		this.timeContainer.appendChild(this.ellapsedTimeContainer);

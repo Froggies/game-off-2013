@@ -1,43 +1,55 @@
 .card {
-	margin: 4px;
-	height: 50px;
-	background-color: #dedede;
+	margin: 4px 9px;
+	height: 75px;
+	background-color: #EEE;
 	border: 1px solid #222222;
 	box-shadow: 0 0 2px rgba(0,0,0,0.4);
+	width: 100px;
+	text-align: center;
+	color: #444;
 }
+	.backlog .card:hover,.backlog .card:focus{
+		background-color: #FFF;
+		color: #111;
+	}
+	.card .type {
+		padding: 8px 5px;
+		font-family: 'komika';
+	}
+	.card .complexity {
+		width: 52px;
+		display: inline-block;
+		margin:0 0 4px;
+	}
+		.card .complexity .star {
+			background: url("../assets/img/stars.png") no-repeat;
+			width: 12px;
+			height: 11px;
+			margin: 0 1px 0 0;
+			display: inline-block;
+		}
+		.card .complexity .star.active {
+			background-position: -12px 0;
+		}
+		.card .complexity .star.inactive {
+			background-position: 0 0;
+		}
+	.card .time {
+		width: 80%;
+		height: 10px;
+		margin: 0 10%;
+	}
 .row .card{
 	margin:0;
 	height:100%;
+	width: 100%;
+	border: none;
+	box-shadow: 0 0 2px rgba(0,0,0,0.4), 0 0 0 1px #222 inset;
+	background: #FFF;
+	opacity:1;
 }
 
-.card .type {
-
-}
-
-.card .complexity {
-
-}
-
-.card .complexity .star:before {
-	content: '★';
-}
-
-.card .complexity .star.active {
-	color: #FBE600;
-}
-
-.card .complexity .star.inactive {
-	color: #CCC;
-}
-
-.card .time {
-	width: 80%;
-	height: 10px;
-	background-color: #fff;
-	margin: 0 10%;
-}
-
-.card .time .ellapsed {
-	height: 10px;
-	background-color: red;
+.row.active + .row.active .card{
+	opacity:0.6;
+	box-shadow: 0 0 0 1px #222 inset;
 }

@@ -10,10 +10,10 @@ var BacklogView = (function() {
 		this.title.innerHTML = LangUtil.get('backlog');
 		this.container.appendChild(this.title);
 
-		this.gaugeContainer = ViewUtil.buildContainer('gaugeContainer');
 		this.gauge = ViewUtil.buildContainer('gauge');
-		this.gaugeContainer.appendChild(this.gauge);
-		this.container.appendChild(this.gaugeContainer);
+		this.gaugePercentage = ViewUtil.buildContainer('');
+		this.gauge.appendChild(this.gaugePercentage);
+		this.container.appendChild(this.gauge);
 
 		this.cardsContainer = ViewUtil.buildContainer('cards');
 		this.container.appendChild(this.cardsContainer);
@@ -24,17 +24,17 @@ var BacklogView = (function() {
 	Backlog.prototype.updateGauge = function() {
 		var percent = (this.controller.cards.length * 100) / this.controller.game.nbCardsInBacklogMax;
 		this.title.innerHTML = LangUtil.get('backlog') + ' : ' + this.controller.cards.length + '/' + this.controller.game.nbCardsInBacklogMax;
-		ViewUtil.removeClassName(this.gauge, 'relax');
-		ViewUtil.removeClassName(this.gauge, 'nervous');
-		ViewUtil.removeClassName(this.gauge, 'dead');
+		ViewUtil.removeClassName(this.gaugePercentage, 'relax');
+		ViewUtil.removeClassName(this.gaugePercentage, 'nervous');
+		ViewUtil.removeClassName(this.gaugePercentage, 'dead');
 		if(percent < 30) {
-			ViewUtil.addClassName(this.gauge, 'relax');
+			ViewUtil.addClassName(this.gaugePercentage, 'relax');
 		} else if(percent < 60) {
-			ViewUtil.addClassName(this.gauge, 'nervous');
+			ViewUtil.addClassName(this.gaugePercentage, 'nervous');
 		} else {
-			ViewUtil.addClassName(this.gauge, 'dead');
+			ViewUtil.addClassName(this.gaugePercentage, 'dead');
 		}
-		this.gauge.style.width = percent + '%';
+		this.gaugePercentage.style.width = percent + '%';
 	};
 
 	return Backlog;
