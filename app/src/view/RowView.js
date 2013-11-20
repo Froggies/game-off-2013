@@ -13,6 +13,10 @@ var RowView = (function() {
 		this.container.className = 'row active';
 	};
 
+	Row.prototype.inactivate = function() {
+		this.container.className = 'row inactive';
+	};
+
 	Row.prototype.clear = function() {
 		this.container.innerHTML = '';
 	};

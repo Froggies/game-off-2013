@@ -16,15 +16,26 @@ var HeaderColumnView = (function() {
     if(this.index === 0) {
       this.activate();
     }
-    ClickUtil.listen(this.container, function() {
-      this.onClick(); 
-    }, this);
+    ClickUtil.listen(this.container, this.onClick, this);
   }
 
   ObjectUtil.inherit(HeaderColumn, AbstractView);
 
   HeaderColumn.prototype.refreshCanBeActivate = function() {
     this.container.className = this.classes.join(' ') + ' canBeActive ' + this.controller.canBeActivate;
+  };
+
+  HeaderColumn.prototype.resign = function() {
+    if(this.isArrayTeam) {
+      this.container.style.backgroundImage = '';
+    }
+    var sentence = ViewUtil.buildContainer('bubble');
+    var sentences = LangUtil.get('resignSentences');
+    sentence.innerHTML = sentences[_.random(0, sentences.length-1)];
+    this.container.appendChild(sentence);
+    TimeoutUtil.timeout(function() {
+      this.container.removeChild(sentence);
+    }, 2500, this);
   };
 
   HeaderColumn.prototype.activate = function() {

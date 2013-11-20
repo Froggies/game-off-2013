@@ -11,6 +11,7 @@ var ColumnController = (function() {
     this.cardTimeout = undefined;
     this.isPause = false;
     this.hasInactiveRow = true;
+    this.nbTaskRealised = 0;
     this.rows = [];
     for(var i=0; i<Constants.NB_ROWS; i++) {
       this.rows.push(new RowController());
@@ -76,6 +77,8 @@ var ColumnController = (function() {
   Column.prototype.newCurrentCard = function() {
     if(this.rows[0].card !== undefined && this.isPause === false) {
       this.cardTimeout = TimeoutUtil.timeout(function() {
+        window.clearInterval(this.cardTimeout);
+        this.cardTimeout = undefined;
         var card = this.rows[0].card;
         if(card !== undefined) {
           card.time = card.time - 0.1;
@@ -105,10 +108,15 @@ var ColumnController = (function() {
   };
 
   Column.prototype.timeFinish = function() {
+    this.nbTaskRealised = this.nbTaskRealised + 1;
     this.game.incrementeScore(this.rows[0].card.complexity);
     this.game.search3cardsAdjacent();
     this.rows[0].removeCard();
     this.moveCardsByOnRow();
+    if(this.nbTaskRealised > Constants.NB_TASK_BEFORE_RESIGN && 
+      _.random(0, Constants.NB_LUCK_RESIGN) === 0) {
+      this.resign();
+    }
   };
 
   Column.prototype.moveCardsByOnRow = function() {
@@ -180,6 +188,20 @@ var ColumnController = (function() {
     _.each(this.rows, function(row) {
       row.removeCard();
     }, this);
+  };
+
+  Column.prototype.resign = function() {
+    this.isActive = false;
+    this.canBeActivate = false;
+    this.cardTimeout = undefined;
+    this.isPause = false;
+    this.hasInactiveRow = true;
+    this.nbTaskRealised = 0;
+    TimeoutUtil.timeout(this.view.inactivate, 2000, this.view);
+    this.header.resign();
+    _.each(this.rows, function(row) {
+      row.inactivate();
+    });
   };
 
   return Column;

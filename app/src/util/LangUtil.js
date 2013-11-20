@@ -82,7 +82,11 @@ var LangUtil = (function() {
       |********* BACKLOG **********|
       \****************************/
       backlog: 'Tasks',
-      chooseBonusPopupClose: 'No thanks !'
+      chooseBonusPopupClose: 'No thanks !',
+      /****************************\
+      |********* BUBBLES **********|
+      \****************************/
+      resignSentences: ['By by amigo !', 'I go work for github !', 'Microsoft\'s job is better than here !']
     },
     fr: {
       /****************************\
@@ -149,7 +153,11 @@ var LangUtil = (function() {
       |********* BACKLOG **********|
       \****************************/
       backlog: 'Tâches',
-      chooseBonusPopupClose: 'Non merci !'
+      chooseBonusPopupClose: 'Non merci !',
+      /****************************\
+      |********* BUBBLES **********|
+      \****************************/
+      resignSentences: ['Trop de tâches, je démissione !', 'C\'est pas possible cette boite, ciao.', 'Je m\'en fou de tes tâches, je me barre !', 'Complètement null à chier ce job, je vais vori ailleurs']
     }
   };
 
