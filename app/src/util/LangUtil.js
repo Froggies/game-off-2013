@@ -200,6 +200,9 @@ var LangUtil = (function() {
     },
     changeLang: function(lang) {
       currentLang = lang;
+    },
+    getCurrentLang: function() {
+      return currentLang;
     }
 
   };
