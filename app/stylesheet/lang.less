@@ -5,18 +5,30 @@
 }
 
 .langs .lang {
-	width: 16px;
-	height: 11px;
+	height: 32px;
 	background:url(../assets/img/flags.png) no-repeat;
 	display: inline-block;
 	cursor: pointer;
-	padding: 0 5px;
+	margin: 0 5px;
+	opacity: 0.5;
+}
+.langs .lang:hover, .langs .lang:hover{
+	opacity: 1;
 }
 
 .langs .lang.en {
-	background-position: 0 -11px
+	background-position: 0 -32px;
+	width: 42px;
 }
-
+	.langs .lang.en.langActive {
+		background-position: 0 0;
+		opacity: 1;
+	}
 .langs .lang.fr {
-	background-position: -16px 0
+	background-position: -42px -32px;
+	width: 45px;
 }
+	.langs .lang.fr.langActive {
+		background-position: -42px 0;
+		opacity: 1;
+	}
