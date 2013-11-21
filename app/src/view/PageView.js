@@ -17,6 +17,14 @@ var PageView = (function() {
     var lang = new LangController();
     lang.start(this.container);
     var footer = this.container.getElementsByTagName('footer')[0];
+
+    var firstPageStart = ViewUtil.buildButton(
+      LangUtil.get('firstPageStart'),
+      this.controller.showChooseUserPage, this.controller
+    );
+    firstPageStart.className = 'firstPageStart bg-red';
+    footer.appendChild(firstPageStart);
+
     footer.appendChild(ViewUtil.buildButton(
       LangUtil.get('firstPageHelp'),
       this.controller.showHelpPage, this.controller
@@ -24,10 +32,6 @@ var PageView = (function() {
     footer.appendChild(ViewUtil.buildButton(
       LangUtil.get('firstPageCredits'),
       this.controller.showCreditsPage, this.controller
-    ));
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('firstPageStart'),
-      this.controller.showChooseUserPage, this.controller
     ));
   };
 
