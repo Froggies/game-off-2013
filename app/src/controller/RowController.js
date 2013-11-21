@@ -29,12 +29,14 @@ var RowController = (function() {
     if(this.canAcceptCard() === true) {
       this.card = card;
       card.start(this.view.container);
+      this.view.refreshOccuped();
     }
   };
 
   Row.prototype.removeCard = function() {
     this.card = undefined;
     this.view.clear();
+    this.view.refreshOccuped();
   };
 
   Row.prototype.search3cardsAdjacent = function(prevRow, nextRow) {
