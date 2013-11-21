@@ -230,7 +230,8 @@ module.exports = function ( grunt ) {
             scripts: jsFiles,
             styles: lessFiles,
             version: grunt.config( 'pkg.version' ),
-            mytitle: grunt.config('pkg.name')
+            mytitle: grunt.config('pkg.name'),
+            favicon: grunt.config('app_files.favicon')
           }
         });
       }

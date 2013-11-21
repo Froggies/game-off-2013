@@ -5,6 +5,7 @@ module.exports = {
 
   
   app_files: {
+    favicon: 'assets/img/favicon.png',
     first: [ 
       '<%= build_dir %>/app/src/util/ObjectUtil.js',
       '<%= build_dir %>/app/src/controller/AbstractController.js',
