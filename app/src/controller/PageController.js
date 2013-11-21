@@ -47,6 +47,12 @@ var PageController = (function() {
     this.view.showToolPage();
   };
 
+  Page.prototype.showEndPage = function() {
+    this.globalContainer.innerHTML = '';
+    this.start(this.globalContainer);
+    this.view.showEndPage();
+  };
+
   Page.prototype.onChooseTeam = function(team) {
     if(team === 'github') {
       this.showGithubPage();
@@ -59,7 +65,7 @@ var PageController = (function() {
 
   Page.prototype.startGame = function(team) {
     this.globalContainer.innerHTML = '';
-    var game = new GameController(team);
+    var game = new GameController(team, this);
 
     var popups = new PopupController(
       game, 

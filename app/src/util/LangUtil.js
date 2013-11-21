@@ -102,7 +102,17 @@ var LangUtil = (function() {
       /****************************\
       |********* BUBBLES **********|
       \****************************/
-      resignSentences: ['By by amigo !', 'I go work for github !', 'Microsoft\'s job is better than here !']
+      resignSentences: ['By by amigo !', 'I go work for github !', 'Microsoft\'s job is better than here !'],
+      /****************************\
+      |********* END GAME *********|
+      \****************************/
+      endSentence1: 'You finish the game !',
+      endSentence2: 'Yes in this game there are no winner/no looser every players learn !',
+      endSentence3: 'We hope you have learn, how the old project method is borry !',
+      endSentence4: 'If no, please replay.',
+      endSentence5: 'Else you can learn more on agile methods.',
+      endReplayButton: 'Replay',
+      endAgileButton: 'Agile manifest'
     },
     fr: {
       /****************************\
@@ -189,7 +199,17 @@ var LangUtil = (function() {
       /****************************\
       |********* BUBBLES **********|
       \****************************/
-      resignSentences: ['Trop de tâches, je démissione !', 'C\'est pas possible cette boite, ciao.', 'Je m\'en fou de tes tâches, je me barre !', 'Complètement null à chier ce job, je vais vori ailleurs']
+      resignSentences: ['Trop de tâches, je démissione !', 'C\'est pas possible cette boite, ciao.', 'Je m\'en fou de tes tâches, je me barre !', 'Complètement null à chier ce job, je vais vori ailleurs'],
+      /****************************\
+      |********* END GAME *********|
+      \****************************/
+      endSentence1: 'Vous avez fini le jeu !',
+      endSentence2: 'Oui dans ce jeu il n\'y a ni gagnant, ni perdant : tous les joueurs apprennent !',
+      endSentence3: 'Nous espérons que vous avez appris que gérer un projet de cette façon est très fastidieux et ennuyeux !',
+      endSentence4: 'Si ce n\'est pas le cas, s\'il vous rejouer !',
+      endSentence5: 'Sinon vous pouvez en apprendre plus sur les méthodes agiles.',
+      endReplayButton: 'Rejouer',
+      endAgileButton: 'Manifeste Agile'
     }
   };
 
