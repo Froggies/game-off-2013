@@ -116,6 +116,43 @@ var PageView = (function() {
       LangUtil.get('creditsPageBack'), 
       this.controller.showFirstPage, this.controller
     ));
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('toolPageTitle'), 
+      this.controller.showToolPage, this.controller
+    ));
+  };
+
+  function buildTool(className, urlLink) {
+    return '<a href="'+urlLink+'" class="'+className+'" target="_blank"></a>';
+  }
+
+  Page.prototype.showToolPage = function() {
+    this.container.className = 'page toolPage';
+    this.container.innerHTML = [
+      '<h1 class="title">', LangUtil.get('toolPageTitle'), '</h1>',
+      '<div class="content">', 
+      LangUtil.get('toolPageSentence'),
+      '<div class="tools">',
+      buildTool('vanillajs', 'http://vanilla-js.com/'),
+      buildTool('node', 'http://nodejs.org/'),
+      buildTool('npm', 'https://npmjs.org/'),
+      buildTool('grunt', 'http://gruntjs.com/'),
+      buildTool('bower', 'http://bower.io/'),
+      buildTool('karma', 'http://karma-runner.github.io/'),
+      buildTool('underscore', 'http://underscorejs.org/'),
+      '</div>',
+      '</div>',
+      '<footer class="footer">', '', '</footer>'
+    ].join('');
+    var footer = this.container.getElementsByTagName('footer')[0];
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('toolPageBack'), 
+      this.controller.showFirstPage, this.controller
+    ));
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('creditsPageTitle'), 
+      this.controller.showCreditsPage, this.controller
+    ));
   };
 
   Page.prototype.getContentPage = function() {

@@ -94,6 +94,12 @@ var LangUtil = (function() {
       creditsPageRomainSentence: 'I\'m the dev',
       creditsPageBack: 'Back',
       /****************************\
+      |******* TOOLS PAGE *********|
+      \****************************/
+      toolPageTitle: 'Tools',
+      toolPageSentence: 'TODO - translate : Toute l\'équipe d ePanicBacklog souahite remercier tous les passionnés qui créer des outils, open-source, fiables et vraiment très utiles. Merci à vous tous !',
+      toolPageBack: 'Back',
+      /****************************\
       |********* BUBBLES **********|
       \****************************/
       resignSentences: ['By by amigo !', 'I go work for github !', 'Microsoft\'s job is better than here !']
@@ -174,6 +180,12 @@ var LangUtil = (function() {
       creditsPageLaurentSentence: 'Je suis le cogniticien',
       creditsPageRomainSentence: 'Je suis le dev',
       creditsPageBack: 'Retour',
+      /****************************\
+      |******* TOOLS PAGE *********|
+      \****************************/
+      toolPageTitle: 'Outils',
+      toolPageSentence: 'Toute l\'équipe d ePanicBacklog souahite remercier tous les passionnés qui créer des outils, open-source, fiables et vraiment très utiles. Merci à vous tous !',
+      toolPageBack: 'Retour',
       /****************************\
       |********* BUBBLES **********|
       \****************************/
