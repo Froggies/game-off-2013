@@ -155,6 +155,34 @@ var PageView = (function() {
     ));
   };
 
+  Page.prototype.showEndPage = function() {
+    this.container.className = 'page endPage';
+    this.container.innerHTML = [
+      '<div class="allTitles">',
+      '<h1 class="title">', LangUtil.get('endSentence1'), '</h1>',
+      '<h1 class="title">', LangUtil.get('endSentence2'), '</h1>',
+      '<h1 class="title">', LangUtil.get('endSentence3'), '</h1>',
+      '<h1 class="title">', LangUtil.get('endSentence4'), '</h1>',
+      '<h1 class="title">', LangUtil.get('endSentence5'), '</h1>',
+      '</div>',
+      '<footer class="footer">', '', '</footer>'
+    ].join('');
+    TimeoutUtil.timeout(function() {
+      this.container.getElementsByClassName('allTitles')[0].style.top = '-330px';
+    }, 1000, this);
+    var footer = this.container.getElementsByTagName('footer')[0];
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('endReplayButton'), 
+      this.controller.startGame, this.controller
+    ));
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('endAgileButton'), 
+      function() {
+        window.open('http://agilemanifesto.org/iso/'+LangUtil.getCurrentLang());
+      }
+    ));
+  };
+
   Page.prototype.getContentPage = function() {
     return this.container.getElementsByClassName('content')[0];
   };

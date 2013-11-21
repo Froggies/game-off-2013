@@ -2,8 +2,9 @@ var GameController = (function() {
 
   'use strict';
 
-  function Game(team) {
+  function Game(team, pageController) {
     this.team = team;
+    this.pageController = pageController;
     this.timeout = undefined;
     this.columns = [];
     this.nbCardsInBacklogMax = Constants.NB_CARDS_IN_BACKLOG_MAX;
@@ -82,7 +83,10 @@ var GameController = (function() {
       this.pause();//TODO rework update time card backlog
       this.resume();//TODO rework update time card backlog
       this.header.score.updateLevel();
-      if(this.header.score.level % Constants.NB_LVL_BONUS === 0) {
+      if(this.header.score.level >= Constants.NB_LVL_END) {
+        this.pause();
+        this.pageController.showEndPage();
+      } else if(this.header.score.level % Constants.NB_LVL_BONUS === 0) {
         this.pause();
         this.popupController.displayChooseBonusPopup();
         this.backlog.removeAllCards();
