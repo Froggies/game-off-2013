@@ -48,6 +48,7 @@ var ColumnController = (function() {
     }
   };
 
+  //call by headerColumn when user click on it
   Column.prototype.activate = function() {
     if(this.canBeActivate === true) {
       this.isActive = true;

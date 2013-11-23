@@ -17,12 +17,30 @@ var HeaderColumnView = (function() {
       this.activate();
     }
     ClickUtil.listen(this.container, this.controller.activate, this.controller);
+    this.message = ViewUtil.buildContainer('message');
+    this.container.appendChild(this.message);
   }
 
   ObjectUtil.inherit(HeaderColumn, AbstractView);
 
   HeaderColumn.prototype.refreshCanBeActivate = function() {
     this.container.className = this.classes.join(' ') + ' canBeActive ' + this.controller.canBeActivate;
+    if(this.controller.canBeActivate === true) {
+      if(this.controller.isActive === false) {
+        this.message.innerHTML = LangUtil.get('columnRecruit');
+      } else {
+        this.message.innerHTML = LangUtil.get('columnUpgrade');
+      }
+      this.message.style.display = 'block';
+    } else {
+      this.message.style.display = 'none';
+    }
+  };
+
+  HeaderColumn.prototype.activate = function() {
+    if(this.isArrayTeam) {
+      this.container.style.backgroundImage = 'url('+this.team[this.index].avatar_url+')';
+    }
   };
 
   HeaderColumn.prototype.resign = function() {
@@ -36,12 +54,6 @@ var HeaderColumnView = (function() {
     TimeoutUtil.timeout(function() {
       this.container.removeChild(sentence);
     }, 2500, this);
-  };
-
-  HeaderColumn.prototype.activate = function() {
-    if(this.isArrayTeam) {
-      this.container.style.backgroundImage = 'url('+this.team[this.index].avatar_url+')';
-    }
   };
 
   return HeaderColumn;

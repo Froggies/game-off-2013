@@ -85,6 +85,11 @@ var LangUtil = (function() {
       backlog: 'Tasks',
       chooseBonusPopupClose: 'No thanks !',
       /****************************\
+      |********* COLUMNS **********|
+      \****************************/
+      columnRecruit: 'Recruit !',
+      columnUpgrade: 'Upgrade !',
+      /****************************\
       |****** CREDITS PAGE ********|
       \****************************/
       creditsPageTitle: 'Credits',
@@ -181,6 +186,11 @@ var LangUtil = (function() {
       \****************************/
       backlog: 'Tâches',
       chooseBonusPopupClose: 'Non merci !',
+      /****************************\
+      |********* COLUMNS **********|
+      \****************************/
+      columnRecruit: 'Recruter !',
+      columnUpgrade: 'Améliorer !',
       /****************************\
       |****** CREDITS PAGE ********|
       \****************************/
