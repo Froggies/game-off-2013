@@ -77,21 +77,14 @@ var ColumnController = (function() {
   };
 
   Column.prototype.newCurrentCard = function() {
-    if(this.rows[0].card !== undefined && this.isPause === false) {
+    var card = this.rows[0].card;
+    if(card !== undefined) {
+      card.startTime();
       this.cardTimeout = TimeoutUtil.timeout(function() {
-        window.clearInterval(this.cardTimeout);
+        window.clearTimeout(this.cardTimeout);
         this.cardTimeout = undefined;
-        var card = this.rows[0].card;
-        if(card !== undefined) {
-          card.time = card.time - 0.1;
-          card.refreshView();
-          if(card.time <= 0) {
-            this.timeFinish();
-          } else {
-            this.newCurrentCard();
-          }
-        }
-      }, 100, this);
+        this.timeFinish();
+      }, this.rows[0].card.time * 1000, this);
     }
   };
 
@@ -113,7 +106,9 @@ var ColumnController = (function() {
 
   Column.prototype.timeFinish = function() {
     this.nbTaskRealised = this.nbTaskRealised + 1;
-    this.game.incrementeScore(this.rows[0].card.complexity);
+    if(this.rows[0].card !== undefined) {
+      this.game.incrementeScore(this.rows[0].card.complexity);
+    }
     this.game.search3cardsAdjacent();
     this.rows[0].removeCard();
     this.moveCardsByOnRow();
@@ -141,15 +136,10 @@ var ColumnController = (function() {
 
   Column.prototype.pause = function() {
     this.isPause = true;
-    window.clearInterval(this.cardTimeout);
-    this.cardTimeout = undefined;
   };
 
   Column.prototype.resume = function() {
     this.isPause = false;
-    if(this.cardTimeout === undefined && this.rows[0].card !== undefined) {
-      this.newCurrentCard();
-    }
   };
 
   Column.prototype.search3cardsAdjacent = function(prevColumn, nextColumn) {

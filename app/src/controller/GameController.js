@@ -33,7 +33,6 @@ var GameController = (function() {
   Game.prototype.pause = function() {
     window.clearInterval(this.timeout);
     this.timeout = undefined;
-    this.backlog.pause();
     _.each(this.columns, function(column) {
       column.pause();
     });
@@ -46,7 +45,6 @@ var GameController = (function() {
           window.clearInterval(this.timeout);
         }
       }, GameUtil.calculTimeNewCard(this.header.score.score), this);
-      this.backlog.resume();
       _.each(this.columns, function(column) {
         column.resume();
       });

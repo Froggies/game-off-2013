@@ -1,22 +1,21 @@
 var CardController = (function() {
 
-	'use strict';
+  'use strict';
 
-	function Card(type, complexity, time) {
-		this.type = type;
-		this.complexity = complexity;
-		this.initialTime = time;
-		this.time = time;
-		this.view = new CardView(this);
-	}
+  function Card(type, complexity, time) {
+    this.type = type;
+    this.complexity = complexity;
+    this.time = time;
+    this.view = new CardView(this);
+  }
 
-	ObjectUtil.inherit(Card, AbstractController);
+  ObjectUtil.inherit(Card, AbstractController);
 
-	Card.prototype.refreshView = function() {
-		this.view.refresh();
-	};
+  Card.prototype.startTime = function() {
+    this.view.startTime();
+  };
 
-	return Card;
+  return Card;
 
 })();
 

@@ -26,14 +26,6 @@
     -moz-animation:    moveTapisRoulant 200ms linear infinite;
 }
 
-.backlog .cards .card {
-	position: absolute;
-	left: 0px;
-    top: 460px;
-	cursor:move;
-}
-
-
 @-webkit-keyframes moveTapisRoulant {
     0% { background-position: 0 0px; }
     100% { background-position: 0 -6px; }
@@ -41,4 +33,31 @@
 @-moz-keyframes moveTapisRoulant {
     0% { background-position: 0 0px; }
     100% { background-position: 0 -6px; }
+} 
+@keyframes moveTapisRoulant {
+    0% { background-position: 0 0px; }
+    100% { background-position: 0 -6px; }
+} 
+
+.backlog .cards .card {
+	position: absolute;
+	left: 0px;
+    top: 0;
+	cursor:move;
+	animation: moveCards 10s linear;
+    -webkit-animation: moveCards 10s linear;
+    -moz-animation: moveCards 10s linear;
+}
+
+@-webkit-keyframes moveCards {
+    0% { top: 460px; }
+    100% { top: 0; }
+}
+@-moz-keyframes moveCards {
+    0% { top: 460px; }
+    100% { top: 0; }
+}
+@keyframes moveCards {
+    0% { top: 460px; }
+    100% { top: 0; }
 } 

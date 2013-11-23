@@ -6,7 +6,6 @@ var BacklogController = (function() {
     this.game = game;
 		this.view = new BacklogView(this);
 		this.cards = [];
-    this.intervalMoveCardsToTop = undefined;
 	}
 
 	ObjectUtil.inherit(Backlog, AbstractController);
@@ -15,9 +14,6 @@ var BacklogController = (function() {
 		this.cards.push(card);
 		card.start(this.view.cardsContainer);
 		this.view.updateGauge();
-    if(this.cards.length > 0) {
-      this.resume();//launch interval
-    }
 	};
 
 	Backlog.prototype.removeCard = function(card) {
@@ -34,29 +30,6 @@ var BacklogController = (function() {
     }, this);
     this.cards = [];
     this.view.updateGauge();
-  };
-
-  Backlog.prototype.pause = function() {
-    window.clearInterval(this.intervalMoveCardsToTop);
-    this.intervalMoveCardsToTop = undefined;
-  };
-
-  Backlog.prototype.resume = function() {
-    if(this.intervalMoveCardsToTop === undefined) {
-      this.intervalMoveCardsToTop = TimeoutUtil.interval(function() {
-        _.each(this.cards, function(card) {
-          var element = card.view.container;
-          var top = (window.getComputedStyle ?
-            window.getComputedStyle(element, null).getPropertyValue('top') :
-            element.currentStyle ? element.currentStyle.top : '0'
-          );
-          top = parseFloat(top.split('px')[0], 10);
-          if(top > 0) {
-            element.style.top = (top - Constants.CARD_BACKLOG_TOP_BY) + 'px';
-          }
-        }, this);
-      }, 10, this);
-    }
   };
 
 	return Backlog;

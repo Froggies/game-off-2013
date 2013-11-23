@@ -36,7 +36,29 @@
 		}
 	.card .gauge {
 		margin: 0 10%;
+		display: block;
 	}
+	.card .gauge div {
+		animation-name: timeCard;
+		animation-timing-function: linear;
+	    -webkit-animation-name: timeCard;
+	    -webkit-animation-timing-function: linear;
+	    -moz-animation-name: timeCard;
+	    -moz-animation-timing-function: linear;
+	}
+	@-webkit-keyframes timeCard {
+	    0% { width: 100%; }
+	    100% { width: 0; }
+	}
+	@-moz-keyframes timeCard {
+	    0% { width: 100%; }
+	    100% { width: 0; }
+	}
+	@keyframes timeCard {
+	    0% { width: 100%; }
+	    100% { width: 0; }
+	} 
+
 .row .card{
 	margin:0;
 	height:100%;
