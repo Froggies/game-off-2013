@@ -16,7 +16,7 @@ var HeaderColumnView = (function() {
     if(this.index === 0) {
       this.activate();
     }
-    ClickUtil.listen(this.container, this.onClick, this);
+    ClickUtil.listen(this.container, this.controller.activate, this.controller);
   }
 
   ObjectUtil.inherit(HeaderColumn, AbstractView);
@@ -42,10 +42,6 @@ var HeaderColumnView = (function() {
     if(this.isArrayTeam) {
       this.container.style.backgroundImage = 'url('+this.team[this.index].avatar_url+')';
     }
-  };
-
-  HeaderColumn.prototype.onClick = function() {
-    this.controller.activate();
   };
 
   return HeaderColumn;
