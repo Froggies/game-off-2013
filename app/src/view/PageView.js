@@ -33,6 +33,10 @@ var PageView = (function() {
       LangUtil.get('firstPageCredits'),
       this.controller.showCreditsPage, this.controller
     ));
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('compatibilityPageTitle'),
+      this.controller.showCompatibilityPage, this.controller
+    ));
   };
 
   Page.prototype.showHelpPage = function() {
@@ -184,6 +188,35 @@ var PageView = (function() {
       function() {
         window.open('http://agilemanifesto.org/iso/'+LangUtil.getCurrentLang());
       }
+    ));
+  };
+
+  function buildCompatibility(name, isCompatible) {
+    return ['<li class="compatibility ', isCompatible, '">',
+      name,
+      '</li>'].join('');
+  }
+
+  Page.prototype.showCompatibilityPage = function() {
+    this.container.className = 'page compatibilityPage';
+    var noCompatible = '';
+    if(CompatibilityUtil.isCompatible() === false) {
+      noCompatible = LangUtil.get('compatibilityPageNoCompatible');
+    }
+    this.container.innerHTML = [
+      '<h1 class="title">', LangUtil.get('compatibilityPageTitle'), '</h1>',
+      '<div class="content">', noCompatible, '<ul>',
+      buildCompatibility('Drag & Drop', CompatibilityUtil.hasDragAndDrop()),
+      buildCompatibility('Css transition', CompatibilityUtil.hasCssTransition()),
+      buildCompatibility('Ajax request', CompatibilityUtil.hasAjaxRequest()),
+      buildCompatibility('Local storage', CompatibilityUtil.hasLocalStorage()),
+      '</ul></div>',
+      '<footer class="footer">', '', '</footer>'
+    ].join('');
+    var footer = this.container.getElementsByTagName('footer')[0];
+    footer.appendChild(ViewUtil.buildButton(
+      LangUtil.get('compatibilityPageBack'), 
+      this.controller.showFirstPage, this.controller
     ));
   };
 

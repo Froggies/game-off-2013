@@ -5,4 +5,8 @@ window.onload = function() {
   var page = new PageController(globalContainer);
   page.start(globalContainer);
 
+  if(CompatibilityUtil.isCompatible() === false) {
+    page.showCompatibilityPage();
+  }
+
 };

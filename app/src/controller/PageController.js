@@ -53,6 +53,10 @@ var PageController = (function() {
     this.view.showEndPage();
   };
 
+  Page.prototype.showCompatibilityPage = function() {
+    this.view.showCompatibilityPage();
+  };
+
   Page.prototype.onChooseTeam = function(team) {
     if(team === 'github') {
       this.showGithubPage();

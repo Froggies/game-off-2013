@@ -39,6 +39,12 @@ var LangUtil = (function() {
       helpGame9: 'To use a bonus, click on it, in the header of game.',
       helpPageBack: 'Back',
       /****************************\
+      |**** COMPATIBILITY PAGE ****|
+      \****************************/
+      compatibilityPageTitle: 'Compatibility',
+      compatibilityPageNoCompatible: 'TODO - translate : Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
+      compatibilityPageBack: 'Back',
+      /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
       chooseUserPageTitle: 'Choose your player !',
@@ -140,6 +146,12 @@ var LangUtil = (function() {
       helpGame8: 'Finallement choisis un bonus en clickant dessus.',
       helpGame9: 'Pour utiliser un bonus, click dessus, dans le haut du jeu.',
       helpPageBack: 'Retour',
+      /****************************\
+      |**** COMPATIBILITY PAGE ****|
+      \****************************/
+      compatibilityPageTitle: 'Compatibilité',
+      compatibilityPageNoCompatible: 'Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
+      compatibilityPageBack: 'Retour',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
