@@ -5,6 +5,7 @@ var Constants = {
   NB_ROWS: 5,
   NB_CARDS_IN_BACKLOG_MAX: 15,
   NB_LIFE: 3,
+  NB_BONUS: 6,
   CARD_TYPE: [
     'bug', 'feature', 'ie', 'options', 'css', 'db', 'sql', 'api', 'config',
     'merge', 'mobile', 'native', 'ff', 'email', 'phone', 'meeting'

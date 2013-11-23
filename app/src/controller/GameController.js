@@ -87,8 +87,10 @@ var GameController = (function() {
         this.pause();
         this.pageController.showEndPage();
       } else if(this.header.score.level % Constants.NB_LVL_BONUS === 0) {
-        this.pause();
-        this.popupController.displayChooseBonusPopup();
+        if(this.header.bonus.hasInactiveBonus() === true) {
+          this.pause();
+          this.popupController.displayChooseBonusPopup();
+        }
         this.backlog.removeAllCards();
         _.each(this.columns, function(column) {
           column.removeAllCards();
