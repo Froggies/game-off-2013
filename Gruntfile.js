@@ -231,7 +231,8 @@ module.exports = function ( grunt ) {
             styles: lessFiles,
             version: grunt.config( 'pkg.version' ),
             mytitle: grunt.config('pkg.name'),
-            favicon: grunt.config('app_files.favicon')
+            favicon: grunt.config('app_files.favicon'),
+            nojs_sentence: grunt.config('nojs_sentence')
           }
         });
       }

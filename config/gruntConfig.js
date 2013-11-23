@@ -3,6 +3,7 @@ module.exports = {
   build_dir: 'build',
   compile_dir: 'bin',
 
+  nojs_sentence: 'Please, activate javascript in your browser !',
   
   app_files: {
     favicon: 'assets/img/favicon.png',
