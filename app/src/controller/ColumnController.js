@@ -193,6 +193,8 @@ var ColumnController = (function() {
     _.each(this.rows, function(row) {
       row.removeCard();
     }, this);
+    this.hasCard = false;
+    this.view.refreshClass();
   };
 
   Column.prototype.resign = function() {
