@@ -7,6 +7,7 @@ var ColumnController = (function() {
     this.view = new ColumnView(this);
     this.isActive = false;
     this.canBeActivate = false;
+    this.hasCard = false;
     this.header = new HeaderColumnController(this, index);
     this.cardTimeout = undefined;
     this.isPause = false;
@@ -39,7 +40,7 @@ var ColumnController = (function() {
       });
       if(nbRowInactive > 0) {
         this.canBeActivate = bool;
-        this.view.refreshCanBeActivate();
+        this.view.refreshClass();
         this.header.setCanBeActivate(bool);
       } else {
         this.hasInactiveRow = false;
@@ -51,7 +52,7 @@ var ColumnController = (function() {
     if(this.canBeActivate === true) {
       this.isActive = true;
       this.canBeActivate = false;
-      this.view.refreshCanBeActivate();
+      this.view.refreshClass();
       this.header.setCanBeActivate(false);
       this.view.activate();
       this.activeNextRow();
@@ -101,6 +102,8 @@ var ColumnController = (function() {
         if(i === 0) {
           this.newCurrentCard();
         }
+        this.hasCard = true;
+        this.view.refreshClass();
         return true;
       }
     }
@@ -113,6 +116,8 @@ var ColumnController = (function() {
     this.game.search3cardsAdjacent();
     this.rows[0].removeCard();
     this.moveCardsByOnRow();
+    this.hasCard = this.rows[0].card !== undefined;
+    this.view.refreshClass();
     if(this.nbTaskRealised > Constants.NB_TASK_BEFORE_RESIGN && 
       _.random(0, Constants.NB_LUCK_RESIGN) === 0) {
       this.resign();
