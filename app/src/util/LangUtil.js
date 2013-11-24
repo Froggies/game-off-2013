@@ -113,13 +113,9 @@ var LangUtil = (function() {
       creditsPageAudreySentence: 'I\'m the <br /> devOps',//br to be consistent in en and fr (so long)
       creditsPageLaurentSentence: 'I\'m the cogniticien',
       creditsPageRomainSentence: 'I\'m the dev',
-      creditsPageBack: 'Back',
-      /****************************\
-      |******* TOOLS PAGE *********|
-      \****************************/
       toolPageTitle: 'Tools',
       toolPageSentence: 'TODO - translate : Toute l\'équipe d ePanicBacklog souahite remercier tous les passionnés qui créer des outils, open-source, fiables et vraiment très utiles. Merci à vous tous !',
-      toolPageBack: 'Back',
+      creditsPageBack: 'Back',
       /****************************\
       |********* BUBBLES **********|
       \****************************/
@@ -229,13 +225,9 @@ var LangUtil = (function() {
       creditsPageAudreySentence: 'Je suis la devOps',
       creditsPageLaurentSentence: 'Je suis le cogniticien',
       creditsPageRomainSentence: 'Je suis le dev',
-      creditsPageBack: 'Retour',
-      /****************************\
-      |******* TOOLS PAGE *********|
-      \****************************/
       toolPageTitle: 'Outils',
       toolPageSentence: 'Toute l\'équipe d ePanicBacklog souahite remercier tous les passionnés qui créer des outils, open-source, fiables et vraiment très utiles. Merci à vous tous !',
-      toolPageBack: 'Retour',
+      creditsPageBack: 'Retour',
       /****************************\
       |********* BUBBLES **********|
       \****************************/
