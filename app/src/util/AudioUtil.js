@@ -50,6 +50,15 @@ var AudioUtil = (function() {
     enable: function() {
       isEnable = true;
     },
+    isEnable: function() {
+      return isEnable;
+    },
+    canBeEnable: function() {
+      return false;/*
+      return CompatibilityUtil.hasAudioMp3() || 
+        CompatibilityUtil.hasAudioWav() || 
+        CompatibilityUtil.hasAudioOgg();*/
+    },
     playMoney: function() {
       startSong('money');
     },
