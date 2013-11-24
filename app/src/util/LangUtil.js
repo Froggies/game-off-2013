@@ -47,7 +47,7 @@ var LangUtil = (function() {
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
-      chooseUserPageTitle: 'Choose your player !',
+      chooseUserPageTitle: 'Select your player !',
       chooseUserPageBack: 'Back',
       /****************************\
       |***** GITHUB USER PAGE *****|
@@ -72,7 +72,7 @@ var LangUtil = (function() {
       /****************************\
       |**** CHOOSE BONUS POPUP ****|
       \****************************/
-      chooseBonusPopupTitle: 'Choose a bonus !',
+      chooseBonusPopupTitle: 'Active a bonus !',
       chooseBonusPopupBacklogCardsPP: 'Your tasks can have 1 sup card before blowup',
       chooseBonusPopupEmptyBacklog: 'By clicking you empty your tasks',
       chooseBonusPopupCardTimeMM: 'Divide by 2 all cards\' time in game (not in tasks)',
@@ -180,7 +180,7 @@ var LangUtil = (function() {
       /****************************\
       |**** CHOOSE BONUS POPUP ****|
       \****************************/
-      chooseBonusPopupTitle: 'Choisis un bonus !',
+      chooseBonusPopupTitle: 'Active un bonus !',
       chooseBonusPopupBacklogCardsPP: 'Vous pouvez avoir 1 carte de plus dans vos tâches avant de mourir',
       chooseBonusPopupEmptyBacklog: 'En cliquant vous videz vos tâches',
       chooseBonusPopupCardTimeMM: 'Divise par 2 le temps de toutes les cartes en jeu (pas dans vos tâches)',

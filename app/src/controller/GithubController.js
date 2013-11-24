@@ -27,16 +27,13 @@ var GithubController = (function() {
     this.view.container.innerHTML = '';
     this.helpController = new HelpController(helpConfig);
     this.helpController.start(this.view.container);
-    this.view.container.appendChild(ViewUtil.buildButton(
-      LangUtil.get('githubPageNoAccount'),
-      this.pageController.showChooseUserPage,
-      this.pageController
-    ));
-    this.view.container.appendChild(ViewUtil.buildButton(
-      LangUtil.get('githubPageHaveToken'),
-      this.view.displayInputToken,
-      this.view
-    ));
+
+    var githubPageNoAccount = ViewUtil.buildButton(LangUtil.get('githubPageNoAccount'),this.pageController.showChooseUserPage, this.pageController);
+    githubPageNoAccount.className = 'btn';
+    this.view.container.appendChild(githubPageNoAccount);
+    var githubPageHaveToken = ViewUtil.buildButton(LangUtil.get('githubPageHaveToken'),this.view.displayInputToken, this.view);
+    githubPageHaveToken.className = 'btn';
+    this.view.container.appendChild(githubPageHaveToken);
   };
 
   Github.prototype.newToken = function(token, keepIt) {

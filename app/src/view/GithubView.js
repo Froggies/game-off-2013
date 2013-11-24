@@ -26,7 +26,7 @@ var GithubView = (function() {
         this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
         this.displayLoader();
       }, this);
-    githubButtonOk.className = 'btn';
+    githubButtonOk.className = 'btn-main';
     this.container.appendChild(githubButtonOk);
 
     var githubPageHelp = ViewUtil.buildButton(LangUtil.get('githubPageHelp'),this.controller.showHelp, this.controller);
@@ -37,7 +37,7 @@ var GithubView = (function() {
     this.checkboxKeepIt = ViewUtil.buildElement('', 'input');
     this.checkboxKeepIt.type = 'checkbox';
     this.container.appendChild(this.checkboxKeepIt);
-    var sentence = ViewUtil.buildElement('span');
+    var sentence = ViewUtil.buildElement('githubPageRetainToken', 'span');
     sentence.innerHTML = LangUtil.get('githubPageRetainToken');
     this.container.appendChild(sentence);
   };

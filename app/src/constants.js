@@ -18,5 +18,5 @@ var Constants = {
   NB_LVL_BONUS: 3,//each nb level display bonus popup 
   NB_TASK_BEFORE_RESIGN: 20,//after x, the dev can resign
   NB_LUCK_RESIGN: 8,//1 luck on x to resign (after x tasks)
-  NB_LVL_END: 10//after x level the game was finish
+  NB_LVL_END: 1//after x level the game was finish
 };

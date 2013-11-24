@@ -58,11 +58,14 @@ var ChooseBonusPopupView = (function() {
     this.container.appendChild(this.content);
 
     this.footer = ViewUtil.buildElement('footer', 'footer');
-    this.footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('chooseBonusPopupClose'), 
+
+    var chooseBonusPopupClose = ViewUtil.buildButton(
+      LangUtil.get('chooseBonusPopupClose'),
       controller.onNoChoose, 
-      controller
-    ));
+      controller);
+    chooseBonusPopupClose.className = 'btn';
+    this.footer.appendChild(chooseBonusPopupClose);
+
     this.container.appendChild(this.footer);
   }
 

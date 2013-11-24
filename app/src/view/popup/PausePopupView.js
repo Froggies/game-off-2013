@@ -20,11 +20,14 @@ var PausePopupView = (function() {
 		this.container.appendChild(this.content);
 
 		this.footer = ViewUtil.buildElement('footer', 'footer');
-		this.footer.appendChild(ViewUtil.buildButton(
-			LangUtil.get('pausePopupClose'), 
+
+		var pausePopupClose = ViewUtil.buildButton(
+			LangUtil.get('pausePopupClose'),
 			controller.onClose, 
-			controller
-		));
+			controller);
+		pausePopupClose.className = 'btn-main';
+		this.footer.appendChild(pausePopupClose);
+
 		this.container.appendChild(this.footer);
 	}
 
