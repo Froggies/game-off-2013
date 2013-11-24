@@ -108,18 +108,16 @@ var LangUtil = (function() {
       /****************************\
       |****** CREDITS PAGE ********|
       \****************************/
-      creditsPageTitle: 'Credits',
-      creditsPageSentence: 'This game was build by a subset of Froggies\' team ! Originally created for the game-off-2013 contest, launched by github. All source are available in our github !',
+      creditsPageSentence: 'Panic Backlog was realised for the GitHub Game Off 2013',
+      creditsPageAchievement: 'Achievement',
+      creditsPageTechno: 'Techno',
+      creditsPageLanguage: 'Languages',
+      creditsPageTool: 'Tools',
+      creditsPageThx: 'Thanks',
       creditsPageAudreySentence: 'I\'m the <br /> devOps',//br to be consistent in en and fr (so long)
       creditsPageLaurentSentence: 'I\'m the cogniticien',
       creditsPageRomainSentence: 'I\'m the dev',
       creditsPageBack: 'Back',
-      /****************************\
-      |******* TOOLS PAGE *********|
-      \****************************/
-      toolPageTitle: 'Tools',
-      toolPageSentence: 'TODO - translate : Toute l\'équipe d ePanicBacklog souahite remercier tous les passionnés qui créer des outils, open-source, fiables et vraiment très utiles. Merci à vous tous !',
-      toolPageBack: 'Back',
       /****************************\
       |********* BUBBLES **********|
       \****************************/
@@ -224,18 +222,16 @@ var LangUtil = (function() {
       /****************************\
       |****** CREDITS PAGE ********|
       \****************************/
-      creditsPageTitle: 'Crédits',
-      creditsPageSentence: 'Ce jeu a été créé par une partie des membres de la Froggies Team ! Au départ il a été créé pour le concours game-off-2013, organisé par Github. Toutes les sources sont disponibles sur notre compte Github !',
+      creditsPageSentence: 'Panic Backlog a été réalisé pour le concours GitHub Game Off 2013',
+      creditsPageAchievement: 'Réalisation',
+      creditsPageTechno: 'Techno',
+      creditsPageLanguage: 'Langages',
+      creditsPageTool: 'Outils',
+      creditsPageThx: 'Remerciement',
       creditsPageAudreySentence: 'Je suis la devOps',
       creditsPageLaurentSentence: 'Je suis le cogniticien',
       creditsPageRomainSentence: 'Je suis le dev',
       creditsPageBack: 'Retour',
-      /****************************\
-      |******* TOOLS PAGE *********|
-      \****************************/
-      toolPageTitle: 'Outils',
-      toolPageSentence: 'Toute l\'équipe d ePanicBacklog souahite remercier tous les passionnés qui créer des outils, open-source, fiables et vraiment très utiles. Merci à vous tous !',
-      toolPageBack: 'Retour',
       /****************************\
       |********* BUBBLES **********|
       \****************************/

@@ -123,11 +123,31 @@ var PageView = (function() {
     return '<a href="'+urlLink+'" target="_blank"><img src="assets/img/tool/'+imgName+'.png" /></a>';
   }
 
+  function buildGoButton(elem, langKey, topPx) {
+    var btn = ViewUtil.buildButton(
+      LangUtil.get(langKey),
+      function() {
+        elem.style.top = topPx;
+      }
+    );
+    btn.className = 'btn';
+    return btn;
+  }
 
   Page.prototype.showCreditsPage = function() {
     this.container.className = 'page creditsPage';
     this.container.innerHTML = [
-      '<div class="generique"><h1 class="title">Panic Backlog</h1><p>Panic Backlog a été réalisé pour le concours GitHub Game Off II</p><h2>Réalisation</h2><p>Romain Maneschi<br />Audrey Novak<br />Laurent Dufour</p><h2>Techno</h2><p>HTML5<br />CSS3<br />JavaScript</p><h2>Langages</h2><p>HTML5<br />CSS3<br />JavaScript</p><h2>Outils</h2><p>Vanillas-js<br />Node Js<br />Npm<br />Grunt<br />Bower<br />Karma<br />Underscore<br /><br />',
+      '<div class="generique">',
+      '<h1 class="title">Panic Backlog</h1>',
+      '<p>', LangUtil.get('creditsPageSentence'), '</p>',
+      '<h2>', LangUtil.get('creditsPageAchievement'), '</h2>',
+      '<p>Romain Maneschi<br />Audrey Novak<br />Laurent Dufour</p>',
+      '<h2>', LangUtil.get('creditsPageTechno'), '</h2>',
+      '<p>HTML5<br />CSS3<br />JavaScript</p>',
+      '<h2>', LangUtil.get('creditsPageLanguage'), '</h2>',
+      '<p>HTML5<br />CSS3<br />JavaScript</p>',
+      '<h2>', LangUtil.get('creditsPageTool'), '</h2>',
+      '<p>Vanillas-js<br />Node Js<br />Npm<br />Grunt<br />Bower<br />Karma<br />Underscore<br /><br />',
       buildimgTool('vanillajs', 'http://vanilla-js.com/'),
       buildimgTool('nodejs', 'http://nodejs.org/'),
       buildimgTool('npm', 'https://npmjs.org/'),
@@ -135,76 +155,32 @@ var PageView = (function() {
       buildimgTool('bower', 'http://bower.io/'),
       buildimgTool('karma', 'http://karma-runner.github.io/'),
       buildimgTool('underscore', 'http://underscorejs.org/'),
-      '</p><h2>Remerciement</h2><p>Julien Lafont<br />Adeline Dibling<br />Vivian Pennel<br />GitHub</p></div><footer class="footer"></footer>'
-    ].join('');
-    var footer = this.container.getElementsByTagName('footer')[0];
-    var creditsPageBack = ViewUtil.buildButton(
-      LangUtil.get('creditsPageBack'),
-      this.controller.showFirstPage, this.controller
-    );
-    creditsPageBack.className = 'btn';
-    footer.appendChild(creditsPageBack);
-  };
-  /*
-  Page.prototype.showCreditsPage = function() {
-    this.container.className = 'page creditsPage';
-    this.container.innerHTML = [
-      '<h1 class="title">', LangUtil.get('creditsPageTitle'), '</h1>',
-      '<div class="content">', 
-      LangUtil.get('creditsPageSentence'),
+      '</p>',
+      '<h2>', LangUtil.get('creditsPageThx'), '</h2>',
+      '<p>Julien Lafont<br />Adeline Dibling<br />Vivian Pennel<br />GitHub</p>',
       '<div class="froggies">',
       buildMember('audrey', LangUtil.get('creditsPageAudreySentence'), 'https://github.com/audreyn', '', '', 'https://twitter.com/udr3y', '', ''),
       buildMember('laurent', LangUtil.get('creditsPageLaurentSentence'), 'https://github.com/undless', 'https://www.facebook.com/laurent.dufour.3152', 'https://plus.google.com/u/0/107033330099598983714/posts?tab=XX', 'https://twitter.com/_LaurentDufour', 'http://fr.linkedin.com/pub/laurent-dufour/33/49/30', 'http://fr.viadeo.com/fr/profile/laurent.dufour1492'),
       buildMember('romain', LangUtil.get('creditsPageRomainSentence'), 'https://github.com/manland', 'https://www.facebook.com/romain.maneschi', 'https://plus.google.com/+RomainManeschi', 'https://twitter.com/RmManeschi', 'http://fr.linkedin.com/pub/romain-maneschi/5b/422/aa9', 'http://fr.viadeo.com/fr/profile/romain.maneschi%E2%80%8E'),
       '</div>',
       '</div>',
-      '<footer class="footer">', '', '</footer>'
+      '<footer class="footer"></footer>'
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('creditsPageBack'), 
+    var btn = ViewUtil.buildButton(
+      LangUtil.get('creditsPageBack'),
       this.controller.showFirstPage, this.controller
-    ));
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('toolPageTitle'), 
-      this.controller.showToolPage, this.controller
-    ));
+    );
+    btn.className = 'btn';
+    footer.appendChild(btn);
+    var generique = this.container.getElementsByClassName('generique')[0];
+    footer.appendChild(buildGoButton(generique, 'creditsPageAchievement', '-350px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageTechno', '-500px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageLanguage', '-640px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-800px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1270px'));
   };
-  
 
-  function buildTool(className, urlLink) {
-    return '<a href="'+urlLink+'" class="'+className+'" target="_blank"></a>';
-  }
-
-  Page.prototype.showToolPage = function() {
-    this.container.className = 'page toolPage';
-    this.container.innerHTML = [
-      '<h1 class="title">', LangUtil.get('toolPageTitle'), '</h1>',
-      '<div class="content">', 
-      LangUtil.get('toolPageSentence'),
-      '<div class="tools">',
-      buildTool('vanillajs', 'http://vanilla-js.com/'),
-      buildTool('node', 'http://nodejs.org/'),
-      buildTool('npm', 'https://npmjs.org/'),
-      buildTool('grunt', 'http://gruntjs.com/'),
-      buildTool('bower', 'http://bower.io/'),
-      buildTool('karma', 'http://karma-runner.github.io/'),
-      buildTool('underscore', 'http://underscorejs.org/'),
-      '</div>',
-      '</div>',
-      '<footer class="footer">', '', '</footer>'
-    ].join('');
-    var footer = this.container.getElementsByTagName('footer')[0];
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('toolPageBack'), 
-      this.controller.showFirstPage, this.controller
-    ));
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('creditsPageTitle'), 
-      this.controller.showCreditsPage, this.controller
-    ));
-  };
-*/
   Page.prototype.showEndPage = function() {
     this.container.className = 'page endPage';
     this.container.innerHTML = [

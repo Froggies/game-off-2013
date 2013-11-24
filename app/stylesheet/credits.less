@@ -1,5 +1,7 @@
 
-
+.page.creditsPage .footer .btn {
+	display: inline-block;
+}
 
 .generique{
 	padding: 200px 0 100px;
@@ -63,175 +65,72 @@
     100% { top:-1100px; }
 } 
 
-
-/*
-
-.page.creditsPage .content {
-
+.page.creditsPage .generique .froggies {
+	width: 700px;
+	padding-top: 60px;
 }
 
-.page.creditsPage .title {
-	padding: 25px 0;
+.page.creditsPage .generique .froggies .member {
+        width: 136px;
+        height: 90px;
+        display: inline-block;
+        color: #000;
+        position: relative;
+        vertical-align: top;
 }
 
-.page.creditsPage .content .froggies {
-	text-align: center;
-	padding: 90px 0;
+.page.creditsPage .generique .froggies .member.audrey {
+        background-image: url(../assets/img/team/froggies/audrey.jpg);
 }
 
-.page.creditsPage .content .froggies .member {
-	width: 136px;
-	height: 90px;
-	display: inline-block;
-	color: #000;
-	position: relative;
-	vertical-align: top;
+.page.creditsPage .generique .froggies .member.audrey .bubble {
+        line-height: 25px;
+        left: 40px;
+        top: 80px;
 }
 
-.page.creditsPage .content .froggies .member .network {
-	background-size: 20px;
-	width: 20px;
-	height: 20px;
-	display: inline-block;
-	position: absolute;
-	top: -30px;
+.page.creditsPage .generique .froggies .member.audrey .bubble:before {
+        bottom: 72px;
+        border-right-width: 0;
+        border-left-width: 35px;
+        border-bottom-width: 0;
+        border-top-width: 20px;
+        left: 46px;
 }
 
-.page.creditsPage .content .froggies .member .network.inactive {
-	cursor: default;
-	opacity: 0.2;
+.page.creditsPage .generique .froggies .member.laurent {
+        background-image: url(../assets/img/team/froggies/laurent.jpg);
+        margin: 0 20%;
 }
 
-.page.creditsPage .content .froggies .member .network.github {
-	background-image: url(../assets/img/brand/github.png);
-	left: -15px;
+.page.creditsPage .generique .froggies .member.laurent .bubble {
+        line-height: 25px;
+        left: -20px;
+        top: 80px;
 }
 
-.page.creditsPage .content .froggies .member .network.twitter {
-	background-image: url(../assets/img/brand/twitter.png);
-	left: 15px;
+.page.creditsPage .generique .froggies .member.laurent .bubble:before {
+        bottom: 72px;
+        border-right-width: 35px;
+        border-bottom-width: 0;
+        border-top-width: 20px;
+        left: 46px;
 }
 
-.page.creditsPage .content .froggies .member .network.googleplus {
-	background-image: url(../assets/img/brand/googleplus.png);
-	left: 45px;
+.page.creditsPage .generique .froggies .member.romain {
+        background-image: url(../assets/img/team/froggies/romain.jpg);
 }
 
-.page.creditsPage .content .froggies .member .network.facebook {
-	background-image: url(../assets/img/brand/facebook.png);
-	left: 75px;
+.page.creditsPage .generique .froggies .member.romain .bubble {
+        line-height: 50px;
+        left: -55px;
+        top: 75px;
 }
 
-.page.creditsPage .content .froggies .member .network.linkedin {
-	background-image: url(../assets/img/brand/linkedin.png);
-	left: 105px;
+.page.creditsPage .generique .froggies .member.romain .bubble:before {
+        bottom: 73px;
+        border-right-width: 45px;
+        border-bottom-width: 0;
+        border-top-width: 15px;
+        left: 75px;
 }
-
-.page.creditsPage .content .froggies .member .network.viadeo {
-	background-image: url(../assets/img/brand/viadeo.png);
-	left: 135px;
-}
-
-.page.creditsPage .content .froggies .member.audrey {
-	background-image: url(../assets/img/team/froggies/audrey.jpg);
-}
-
-.page.creditsPage .content .froggies .member.audrey .bubble {
-	line-height: 25px;
-	left: 40px;
-	top: 80px;
-}
-
-.page.creditsPage .content .froggies .member.audrey .bubble:before {
-	bottom: 72px;
-	border-right-width: 0;
-	border-left-width: 35px;
-	border-bottom-width: 0;
-	border-top-width: 20px;
-	left: 46px;
-}
-
-.page.creditsPage .content .froggies .member.laurent {
-	background-image: url(../assets/img/team/froggies/laurent.jpg);
-	margin: 0 20%;
-}
-
-.page.creditsPage .content .froggies .member.laurent .bubble {
-	line-height: 25px;
-	left: -20px;
-	top: 80px;
-}
-
-.page.creditsPage .content .froggies .member.laurent .bubble:before {
-	bottom: 72px;
-	border-right-width: 35px;
-	border-bottom-width: 0;
-	border-top-width: 20px;
-	left: 46px;
-}
-
-.page.creditsPage .content .froggies .member.romain {
-	background-image: url(../assets/img/team/froggies/romain.jpg);
-}
-
-.page.creditsPage .content .froggies .member.romain .bubble {
-	line-height: 50px;
-	left: -55px;
-	top: 75px;
-}
-
-.page.creditsPage .content .froggies .member.romain .bubble:before {
-	bottom: 73px;
-	border-right-width: 45px;
-	border-bottom-width: 0;
-	border-top-width: 15px;
-	left: 75px;
-}
-
-.page.toolPage .title {
-	padding: 25px;
-}
-
-.page.toolPage .content .tools {
-	text-align: center;
-	padding: 70px 0;
-}
-
-.page.toolPage .content .tools a {
-	width: 100px;
-	height: 130px;
-	display: inline-block;
-	background-size: 100%;
-	background-repeat: no-repeat;
-	background-position: center;
-	margin: 5px;
-}
-
-.page.toolPage .content .tools .vanillajs {
-	background-image: url(../assets/img/tool/vanillajs.png);
-}
-
-.page.toolPage .content .tools .node {
-	background-image: url(../assets/img/tool/nodejs.png);
-}
-
-.page.toolPage .content .tools .npm {
-	background-image: url(../assets/img/tool/npm.png);
-}
-
-.page.toolPage .content .tools .grunt {
-	background-image: url(../assets/img/tool/grunt.png);
-}
-
-.page.toolPage .content .tools .bower {
-	background-image: url(../assets/img/tool/bower.png);
-}
-
-.page.toolPage .content .tools .karma {
-	background-image: url(../assets/img/tool/karma.png);
-}
-
-.page.toolPage .content .tools .underscore {
-	background-image: url(../assets/img/tool/underscore.png);
-}
-*/
