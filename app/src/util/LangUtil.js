@@ -113,6 +113,7 @@ var LangUtil = (function() {
       creditsPageTechno: 'Techno',
       creditsPageLanguage: 'Languages',
       creditsPageTool: 'Tools',
+      creditsPageOnlineTool: 'Web Tools',
       creditsPageThx: 'Thanks',
       creditsPageAudreySentence: 'I\'m the <br /> devOps',//br to be consistent in en and fr (so long)
       creditsPageLaurentSentence: 'I\'m the cogniticien',
@@ -227,6 +228,7 @@ var LangUtil = (function() {
       creditsPageTechno: 'Techno',
       creditsPageLanguage: 'Langages',
       creditsPageTool: 'Outils',
+      creditsPageOnlineTool: 'Outils Web',
       creditsPageThx: 'Remerciement',
       creditsPageAudreySentence: 'Je suis la devOps',
       creditsPageLaurentSentence: 'Je suis le cogniticien',
