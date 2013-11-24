@@ -9,6 +9,7 @@ module.exports = function ( grunt ) {
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks("grunt-image-embed");
   
   var gruntConfig = require( './config/gruntConfig.js' );
 
@@ -185,6 +186,16 @@ module.exports = function ( grunt ) {
           keepalive: false
         }
       }
+    },
+
+    imageEmbed: {
+      dist: {
+        src: [ "app/stylesheet/*.less" ],
+        dest: "build/stylesheet/output.css",
+        options: {
+          deleteAfterEncoding : false
+        }
+      }
     }
 
   };
@@ -193,7 +204,7 @@ module.exports = function ( grunt ) {
 
   grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build'] );
   
-  grunt.registerTask( 'compile', [ 'jshint', 'karma:compile:start', 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
+  grunt.registerTask( 'compile', [ 'jshint', 'karma:compile:start', 'build', 'imageEmbed', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
 
   grunt.registerTask( 'dev', [ 'connect','jshint', 'karma:build:start', 'watch' ] );
 

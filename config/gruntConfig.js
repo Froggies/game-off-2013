@@ -16,7 +16,7 @@ module.exports = {
     html: [ 'app/index.tpl.html' ],
     stylesheet: ['app/stylesheet/**/*.less'],
     assets: ['app/assets/**/*'],
-    less: 'app/stylesheet/main.less',
+    less: '<%= build_dir %>/stylesheet/output.css',
   },
 
   test_files: {
