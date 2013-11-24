@@ -123,18 +123,30 @@ var PageView = (function() {
     return '<a href="'+urlLink+'" target="_blank"><img src="assets/img/tool/'+imgName+'.png" /></a>';
   }
 
+  function buildGoButton(elem, langKey, topPx) {
+    var btn = ViewUtil.buildButton(
+      LangUtil.get(langKey),
+      function() {
+        elem.style.top = topPx;
+      }
+    );
+    btn.className = 'btn';
+    return btn;
+  }
 
   Page.prototype.showCreditsPage = function() {
     this.container.className = 'page creditsPage';
     this.container.innerHTML = [
       '<div class="generique">',
       '<h1 class="title">Panic Backlog</h1>',
-      '<p>Panic Backlog a été réalisé pour le concours GitHub Game Off II</p>',
-      '<h2>Réalisation</h2>',
+      '<p>', LangUtil.get('creditsPageSentence'), '</p>',
+      '<h2>', LangUtil.get('creditsPageAchievement'), '</h2>',
       '<p>Romain Maneschi<br />Audrey Novak<br />Laurent Dufour</p>',
-      '<h2>Techno</h2>',
-      '<p>HTML5<br />CSS3<br />JavaScript</p><h2>Langages</h2><p>HTML5<br />CSS3<br />JavaScript</p>',
-      '<h2>Outils</h2>',
+      '<h2>', LangUtil.get('creditsPageTechno'), '</h2>',
+      '<p>HTML5<br />CSS3<br />JavaScript</p>',
+      '<h2>', LangUtil.get('creditsPageLanguage'), '</h2>',
+      '<p>HTML5<br />CSS3<br />JavaScript</p>',
+      '<h2>', LangUtil.get('creditsPageTool'), '</h2>',
       '<p>Vanillas-js<br />Node Js<br />Npm<br />Grunt<br />Bower<br />Karma<br />Underscore<br /><br />',
       buildimgTool('vanillajs', 'http://vanilla-js.com/'),
       buildimgTool('nodejs', 'http://nodejs.org/'),
@@ -143,7 +155,8 @@ var PageView = (function() {
       buildimgTool('bower', 'http://bower.io/'),
       buildimgTool('karma', 'http://karma-runner.github.io/'),
       buildimgTool('underscore', 'http://underscorejs.org/'),
-      '</p><h2>Remerciement</h2>',
+      '</p>',
+      '<h2>', LangUtil.get('creditsPageThx'), '</h2>',
       '<p>Julien Lafont<br />Adeline Dibling<br />Vivian Pennel<br />GitHub</p>',
       '<div class="froggies">',
       buildMember('audrey', LangUtil.get('creditsPageAudreySentence'), 'https://github.com/audreyn', '', '', 'https://twitter.com/udr3y', '', ''),
@@ -154,12 +167,18 @@ var PageView = (function() {
       '<footer class="footer"></footer>'
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
-    var creditsPageBack = ViewUtil.buildButton(
+    var btn = ViewUtil.buildButton(
       LangUtil.get('creditsPageBack'),
       this.controller.showFirstPage, this.controller
     );
-    creditsPageBack.className = 'btn';
-    footer.appendChild(creditsPageBack);
+    btn.className = 'btn';
+    footer.appendChild(btn);
+    var generique = this.container.getElementsByClassName('generique')[0];
+    footer.appendChild(buildGoButton(generique, 'creditsPageAchievement', '-350px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageTechno', '-500px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageLanguage', '-640px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-800px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1270px'));
   };
 
   Page.prototype.showEndPage = function() {
