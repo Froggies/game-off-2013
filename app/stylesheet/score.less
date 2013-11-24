@@ -7,8 +7,10 @@
 	.score .dollar, .score .level, .score .life{
 		display: inline-block;
 		vertical-align: middle;
-		width: 30%;
 	}
+	 .score .level, .score .life{
+		margin-left: 45px;
+	 }
 
 		.life div {
 			width:25px;
@@ -31,3 +33,28 @@
 				color: #AAA;
 				background-color:#BBB;
 			}
+	.score .level{
+		font-family: 'komika';
+		color: #444;
+	}
+	.score .level span{
+		display: inline-block;
+		vertical-align: middle;
+	}
+	.score .level .number{
+		margin-left: 5px;
+	}
+	.score .gauge{
+		margin: 10px 0 0;
+		width: 100%;
+	}
+	.score .dollar{
+		color:green;
+		background: #FFF;
+		padding: 4px 5px;
+		width: 70px;
+		font-family: 'komika';
+		text-align: right;
+		border: 3px #AAA solid;
+		box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	}

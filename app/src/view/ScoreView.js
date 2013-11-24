@@ -62,7 +62,7 @@ var ScoreView = (function() {
   };
 
   Score.prototype.updateLevel = function() {
-    this.containerLevel.innerHTML = 'level : ' + this.controller.level;
+    this.containerLevel.innerHTML = '<span class="leveltext">Level</span><span class="number number' + this.controller.level + '"></span>';
 
     if(this.controller.level > 0 && this.controller.level % Constants.NB_LVL_BONUS === 0) {
       this.levelNextFactor = this.levelNextFactor + 1;
@@ -85,4 +85,3 @@ var ScoreView = (function() {
   return Score;
 
 })();
-
