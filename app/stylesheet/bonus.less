@@ -16,6 +16,38 @@
 	background: url('../assets/img/locked.png') no-repeat center center #FFF;
 	opacity: 0.3;
 }
+.bonus div.waiting {
+	background-color: red;
+	position: relative;
+}
+.bonus div.waiting .gaugebonus {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 0;
+	background-color: #999;
+	opacity: 0.9;
+	margin: 0;
+	animation-name: inactiveBonusGauge;
+	animation-timing-function: linear;
+    -webkit-animation-name: inactiveBonusGauge;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: inactiveBonusGauge;
+    -moz-animation-timing-function: linear;
+}
+@-webkit-keyframes inactiveBonusGauge {
+    0% { height: 100%; }
+    100% { height: 0; }
+}
+@-moz-keyframes inactiveBonusGauge {
+    0% { height: 100%; }
+    100% { height: 0; }
+}
+@keyframes inactiveBonusGauge {
+    0% { height: 100%; }
+    100% { height: 0; }
+} 
+
 .bonus div.active {
 	background-color: green;
 	cursor: pointer;

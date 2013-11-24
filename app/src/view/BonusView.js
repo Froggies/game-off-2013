@@ -26,16 +26,20 @@ var BonusView = (function() {
     }, this);
   };
 
-
   function inactiveBonusDuring(bonus, time) {
-    ViewUtil.addClassName(bonus, 'noActive');
+    ViewUtil.addClassName(bonus, 'waiting');
     ViewUtil.removeClassName(bonus, 'active');
+    var gaugebonus = ViewUtil.buildContainer('gaugebonus');
+    bonus.appendChild(gaugebonus);
     TimeoutUtil.timeout(function() {
-      ViewUtil.removeClassName(bonus, 'noActive');
+      ViewUtil.removeClassName(bonus, 'waiting');
       ViewUtil.addClassName(bonus, 'active');
+      bonus.removeChild(gaugebonus);
     }, time);
+    gaugebonus.style.animationDuration = time + 'ms';
+    gaugebonus.style.WebkitAnimationDuration = time + 'ms';
+    gaugebonus.style.MozAnimationDuration = time + 'ms';
   }
-
 
 	Bonus.prototype.addBacklogCardsImprovement = function() {
     this.bonusBacklogCardsImprovement = ViewUtil.buildContainer('backlogCardsImprovement');
