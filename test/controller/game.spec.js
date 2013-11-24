@@ -56,6 +56,7 @@ define(dependencies, function() {
     }
 
     it('should remove 3 cards when same cards type is adjacents multiple times', function () {
+      Constants.NB_LVL_BONUS = 3;
       _.each(game.columns, function(column) {
         initColumnWith1Card(column, 'fake');
       });
