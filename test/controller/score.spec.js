@@ -1,5 +1,5 @@
 var dependencies = [
-	'controller/ScoreController', 'view/ScoreView',
+	'controller/ScoreController', 'view/ScoreView'
 ];
 
 define(dependencies, function() {
