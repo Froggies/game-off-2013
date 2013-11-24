@@ -7,6 +7,7 @@ var GameController = (function() {
     this.pageController = pageController;
     this.timeout = undefined;
     this.columns = [];
+    this.nbSprint = 0;
     this.nbCardsInBacklogMax = Constants.NB_CARDS_IN_BACKLOG_MAX;
     for(var i=0; i<Constants.NB_COLUMNS; i++) {
       this.columns.push(new ColumnController(this, i));
@@ -27,7 +28,7 @@ var GameController = (function() {
     for(var indexColumn=0; indexColumn < this.columns.length; indexColumn++) {
       this.columns[indexColumn].start(this.view.getColumnsContainer());
     }
-    this.resume();
+    this.startSprint();
   };
 
   Game.prototype.pause = function() {
@@ -113,6 +114,11 @@ var GameController = (function() {
     _.each(this.columns, function(column) {
       column.setCanBeActivate(false);
     });
+  };
+
+  Game.prototype.startSprint = function() {
+    this.nbSprint = this.nbSprint + 1;
+    this.view.showNewSprint();
   };
 
   return Game;

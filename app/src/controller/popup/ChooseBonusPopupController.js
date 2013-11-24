@@ -43,7 +43,7 @@ var ChooseBonusPopupController = (function() {
   
   Popup.prototype.onNoChoose = function() {
     this.popupController.view.hidePopup();
-    this.popupController.game.resume();
+    this.popupController.game.startSprint();
   };
 
 	return Popup;

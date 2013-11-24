@@ -91,6 +91,16 @@ var LangUtil = (function() {
       backlog: 'Tasks',
       chooseBonusPopupClose: 'No thanks !',
       /****************************\
+      |********* SPRINT ***********|
+      \****************************/
+      sprint: 'Month',
+      sprint1: 'The birth...',
+      sprint2: 'The start-up...',
+      sprint3: 'The emergence...',
+      sprint4: 'The revelation...',
+      sprint5: 'The revolution...',
+      sprint6: 'The wealth...',
+      /****************************\
       |********* COLUMNS **********|
       \****************************/
       columnRecruit: 'Recruit !',
@@ -198,6 +208,16 @@ var LangUtil = (function() {
       \****************************/
       backlog: 'Tâches',
       chooseBonusPopupClose: 'Non merci !',
+      /****************************\
+      |********* SPRINT ***********|
+      \****************************/
+      sprint: 'Mois',
+      sprint1: 'La naissance...',
+      sprint2: 'La start-up...',
+      sprint3: 'L\'émergence...',
+      sprint4: 'La révélation...',
+      sprint5: 'La révolution...',
+      sprint6: 'La richesse...',
       /****************************\
       |********* COLUMNS **********|
       \****************************/
