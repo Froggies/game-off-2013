@@ -54,10 +54,9 @@ var AudioUtil = (function() {
       return isEnable;
     },
     canBeEnable: function() {
-      return false;/*
       return CompatibilityUtil.hasAudioMp3() || 
         CompatibilityUtil.hasAudioWav() || 
-        CompatibilityUtil.hasAudioOgg();*/
+        CompatibilityUtil.hasAudioOgg();
     },
     playMoney: function() {
       startSong('money');
