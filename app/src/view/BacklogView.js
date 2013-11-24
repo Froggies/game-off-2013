@@ -6,7 +6,7 @@ var BacklogView = (function() {
     Backlog.parent.constructor.apply(this, arguments);
     this.container = ViewUtil.buildContainer('backlog');
 
-    this.title = ViewUtil.buildContainer('title');
+    this.title = ViewUtil.buildContainer('backlogtitle');
     this.title.innerHTML = LangUtil.get('backlog');
     this.container.appendChild(this.title);
 

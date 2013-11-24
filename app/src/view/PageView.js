@@ -208,30 +208,42 @@ var PageView = (function() {
   Page.prototype.showEndPage = function() {
     this.container.className = 'page endPage';
     this.container.innerHTML = [
-      '<div class="allTitles">',
-      '<h1 class="title">', LangUtil.get('endSentence1'), '</h1>',
-      '<h1 class="title">', LangUtil.get('endSentence2'), '</h1>',
-      '<h1 class="title">', LangUtil.get('endSentence3'), '</h1>',
-      '<h1 class="title">', LangUtil.get('endSentence4'), '</h1>',
-      '<h1 class="title">', LangUtil.get('endSentence5'), '</h1>',
-      '</div>',
-      '<footer class="footer">', '', '</footer>'
+      '<h1 class="title">', LangUtil.get('endTitle'), '</h1>',
+      '<div class="content">', LangUtil.get('endContent'), '</div>',
+      '<footer class="footer"></footer>'
     ].join('');
+    /*
     TimeoutUtil.timeout(function() {
       this.container.getElementsByClassName('allTitles')[0].style.top = '-330px';
     }, 1000, this);
+    */
     var footer = this.container.getElementsByTagName('footer')[0];
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('endReplayButton'), 
+
+    var endReplayButton = ViewUtil.buildButton(
+      LangUtil.get('endReplayButton'),
       this.controller.startGame, this.controller
-    ));
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('endAgileButton'), 
+    );
+    endReplayButton.className = 'btn';
+    footer.appendChild(endReplayButton);
+
+    var endBack = ViewUtil.buildButton(
+      LangUtil.get('endBack'),
+      this.controller.showFirstPage, this.controller
+    );
+    endBack.className = 'btn';
+    footer.appendChild(endBack);
+
+    var endAgileButton = ViewUtil.buildButton(
+      LangUtil.get('endAgileButton'),
       function() {
         window.open('http://agilemanifesto.org/iso/'+LangUtil.getCurrentLang());
       }
-    ));
+    );
+    endAgileButton.className = 'btn-main';
+    footer.appendChild(endAgileButton);
+
   };
+
 
   function buildCompatibility(name, isCompatible) {
     return ['<li class="compatibility ', isCompatible, '">',
