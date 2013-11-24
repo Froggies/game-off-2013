@@ -26,10 +26,4 @@ window.onload = function() {
   }
   document.getElementsByTagName('body')[0].appendChild(audioManager);
 
-  AudioUtil.playMoney();
-  TimeoutUtil.timeout(function() {
-    AudioUtil.stopMoney();
-    AudioUtil.playLevelUp();
-  }, 2000);
-
 };
