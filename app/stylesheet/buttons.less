@@ -1,40 +1,199 @@
-/*
 
-button{
+
+/*--------------------------------*\
+	BUTTON
+\*--------------------------------*/
+
+
+.btn, .firstPageStart{
+	font-family:"komika";
+	font-size: 1em;
 	position: relative;
 	border:none;
-
-    color: #444;
-    text-decoration: none;
-    background-color: #FFF;
-    font-size: 1.2em;
-    display: inline-block;
-
+    color: #000;
+    background: none;
+    display: block;
     padding: 10px 20px;
-    margin: 10px;
-
-    border-radius: 2px;
-
+    margin: 0 auto;
 	text-align: center;
 	cursor: pointer;
+	z-index: 9;
 }
 
-button:disabled {
-	opacity: 0.3;
+.btn:hover,.btn:focus{
+	color: #cb2100;
+}
+.btn:hover:before{
+	content: "";
+	width: 84%;
+	height: 80%;
+	position: absolute;
+	top: 10%;
+	z-index: -1;
+	background: #FFF;
+	transform: rotate(-1deg);
+	-webkit-transform: rotate(-1deg);
+	margin: 0 auto;
+	box-shadow: 6px 6px rgba(0,0,0,0.5);
+	left: 8%;
+}
+.btn:active{
+    padding: 16px 20px 4px;
+}
+.btn:active:before{
+	box-shadow: none;
+	top: 20%;
+}
+
+
+
+
+.btn:disabled{
+	opacity: 0.4;
 	cursor: default;
 }
-
-button img {
-	max-width: 40px;
+.btn:disabled:hover,.btn:disabled:focus{
+	color: #000;
+}
+.btn:disabled:hover:before,.btn:disabled:focus:before{
+	display: none;
+}
+.btn:disabled:active{
+    padding: 10px 20px;
 }
 
-button:hover,button:focus{
-    background-color: #ffb802;
+
+
+
+/*--------------------------------*\
+	MAIN BUTTON
+\*--------------------------------*/
+
+
+.btn-main, .firstPageStart{
+	font-family:"komika";
+	font-size: 1em;
+	position: relative;
+	border:none;
+    color: #000;
+    background: none;
+    display: block;
+    padding: 10px 20px;
+    margin: 0 auto;
+	text-align: center;
+	cursor: pointer;
+	z-index: 9;
 }
-button:active{
+.btn-main:before{
+	content: "";
+	width: 84%;
+	height: 80%;
+	position: absolute;
+	top: 10%;
+	z-index: -1;
+	background: #FFF;
+	transform: rotate(-1deg);
+	-webkit-transform: rotate(-1deg);
+	margin: 0 auto;
+	box-shadow: 6px 6px rgba(0,0,0,0.5);
+	left: 8%;
+}
+.btn-main:hover, .btn-main:focus{
+	color:#cb2100;
 }
 
-*/
+.btn-main:active{
+    padding: 16px 20px 4px;
+}
+.btn-main:active:before{
+	box-shadow: none;
+	top: 20%;
+}
+
+
+/*--------------------------------*\
+	START BUTTON
+\*--------------------------------*/
+
+.firstPageStart {
+	z-index: 9;
+	font-size: 1.6em;
+	width: 180px;
+}
+.firstPageStart:after {
+	content: "";
+	width: 0;
+	height: 60%;
+	border-top: 8px solid transparent;
+	border-left: 170px solid #FFF;
+	border-bottom: 10px solid transparent;
+	position: absolute;
+	top: 7px;
+	z-index: -1;
+	margin: 0 auto;
+	left: 12px;
+}
+.firstPageStart:before {
+	content: "";
+	width: 0;
+	height: 60%;
+	border-top: 8px solid transparent;
+	border-left: 170px solid #222;
+	border-bottom: 10px solid transparent;
+	position: absolute;
+	top: 12px;
+	z-index: -1;
+	margin: 0 auto;
+	left: 18px;
+}
+.firstPageStart:hover,.firstPageStart:focus{
+	color: #cb2100;
+}
+
+.firstPageStart:active{
+    padding: 16px 20px 4px;
+}
+.firstPageStart:active:before{
+	display: none;
+}
+.firstPageStart:active:after{
+	top: 12px;
+}
+
+/*--------------------------------*\
+	IMG BUTTON
+\*--------------------------------*/
+
+.btn-img{
+	margin: 6px 10px;
+	display: inline-block;
+	border: none;
+	vertical-align: top;
+	width: 80px;
+	height: 80px;
+	cursor: pointer;
+}
+.btn-img:hover,.btn-img:focus{
+	margin: 0 10px 12px;
+	box-shadow: 6px 6px rgba(0,0,0,0.5);
+}
+
+
+
+/*--------------------------------*\
+	SPECIFIC SET
+\*--------------------------------*/
+
+.help .btn, .githubPage .btn{
+	display: inline-block;
+	vertical-align: top;
+}
+
+
+
+
+/*
+
 
 button{
 	display:inline-block;
@@ -76,3 +235,6 @@ button.info {
 button img {
 	max-width: 40px;
 }
+
+
+*/

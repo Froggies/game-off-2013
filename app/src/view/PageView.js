@@ -12,31 +12,35 @@ var PageView = (function() {
   Page.prototype.showFirstPage = function() {
     var b = document.createElement('button');
     this.container.className = 'page firstPage';
-    this.container.innerHTML = '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" /><footer class="footer"></footer>';
+    this.container.innerHTML = '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" />';
     var title = this.container.getElementsByTagName('h1')[0];
     var lang = new LangController();
     lang.start(this.container);
-    var footer = this.container.getElementsByTagName('footer')[0];
 
     var firstPageStart = ViewUtil.buildButton(
       LangUtil.get('firstPageStart'),
       this.controller.showChooseUserPage, this.controller
     );
-    firstPageStart.className = 'firstPageStart bg-red';
-    footer.appendChild(firstPageStart);
-
-    footer.appendChild(ViewUtil.buildButton(
+    firstPageStart.className = 'firstPageStart';
+    this.container.appendChild(firstPageStart);
+    var firstPageHelp = ViewUtil.buildButton(
       LangUtil.get('firstPageHelp'),
       this.controller.showHelpPage, this.controller
-    ));
-    footer.appendChild(ViewUtil.buildButton(
+    );
+    firstPageHelp.className = 'btn';
+    this.container.appendChild(firstPageHelp);
+    var firstPageCredits = ViewUtil.buildButton(
       LangUtil.get('firstPageCredits'),
       this.controller.showCreditsPage, this.controller
-    ));
-    footer.appendChild(ViewUtil.buildButton(
+    );
+    firstPageCredits.className = 'btn';
+    this.container.appendChild(firstPageCredits);
+    var compatibilityPageTitle = ViewUtil.buildButton(
       LangUtil.get('compatibilityPageTitle'),
       this.controller.showCompatibilityPage, this.controller
-    ));
+    );
+    compatibilityPageTitle.className = 'btn';
+    this.container.appendChild(compatibilityPageTitle);
   };
 
   Page.prototype.showHelpPage = function() {
@@ -47,10 +51,12 @@ var PageView = (function() {
       '<footer class="footer">', '', '</footer>'
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
-    footer.appendChild(ViewUtil.buildButton(
+    var helpPageBack = ViewUtil.buildButton(
       LangUtil.get('helpPageBack'),
       this.controller.showFirstPage, this.controller
-    ));
+    );
+    helpPageBack.className = 'btn';
+    footer.appendChild(helpPageBack);
   };
 
   Page.prototype.showChooseUserPage = function() {
@@ -63,7 +69,7 @@ var PageView = (function() {
     var content = this.container.getElementsByClassName('content')[0];
     _.each(Constants.TEAMS, function(team) {
       content.appendChild(ViewUtil.buildButtonImg(
-        'logo ' + team, 
+        'btn-img logo ' + team, 
         '', 
         function() {
           this.controller.onChooseTeam(team);
@@ -71,11 +77,15 @@ var PageView = (function() {
         this
       ));
     }, this);
+
     var footer = this.container.getElementsByTagName('footer')[0];
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('chooseUserPageBack'), 
+    var chooseUserPageBack = ViewUtil.buildButton(
+      LangUtil.get('chooseUserPageBack'),
       this.controller.showFirstPage, this.controller
-    ));
+    );
+    chooseUserPageBack.className = 'btn';
+    footer.appendChild(chooseUserPageBack);
+
   };
 
   Page.prototype.showGithubPage = function() {
@@ -83,13 +93,17 @@ var PageView = (function() {
     this.container.innerHTML = [
       '<h1 class="title">', LangUtil.get('githubPageTitle'), '</h1>',
       '<div class="content"></div>',
-      '<footer class="footer">', '', '</footer>'
+      '<footer class="footer"></footer>'
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('githubPageBack'), 
+    var githubPageBack = ViewUtil.buildButton(
+      LangUtil.get('githubPageBack'),
       this.controller.showChooseUserPage, this.controller
-    ));
+    );
+    githubPageBack.className = 'btn';
+    footer.appendChild(githubPageBack);
+
+
   };
 
   function buildMember(pseudo, sentence, github, facebook, googleplus, twitter, linkedin, viadeo) {
@@ -105,6 +119,33 @@ var PageView = (function() {
     ].join('');
   }
 
+  function buildimgTool(imgName, urlLink) {
+    return '<a href="'+urlLink+'" target="_blank"><img src="assets/img/tool/'+imgName+'.png" /></a>';
+  }
+
+
+  Page.prototype.showCreditsPage = function() {
+    this.container.className = 'page creditsPage';
+    this.container.innerHTML = [
+      '<div class="generique"><h1 class="title">Panic Backlog</h1><p>Panic Backlog a été réalisé pour le concours GitHub Game Off II</p><h2>Réalisation</h2><p>Romain Maneschi<br />Audrey Novak<br />Laurent Dufour</p><h2>Techno</h2><p>HTML5<br />CSS3<br />JavaScript</p><h2>Langages</h2><p>HTML5<br />CSS3<br />JavaScript</p><h2>Outils</h2><p>Vanillas-js<br />Node Js<br />Npm<br />Grunt<br />Bower<br />Karma<br />Underscore<br /><br />',
+      buildimgTool('vanillajs', 'http://vanilla-js.com/'),
+      buildimgTool('nodejs', 'http://nodejs.org/'),
+      buildimgTool('npm', 'https://npmjs.org/'),
+      buildimgTool('grunt', 'http://gruntjs.com/'),
+      buildimgTool('bower', 'http://bower.io/'),
+      buildimgTool('karma', 'http://karma-runner.github.io/'),
+      buildimgTool('underscore', 'http://underscorejs.org/'),
+      '</p><h2>Remerciement</h2><p>Julien Lafont<br />Adeline Dibling<br />Vivian Pennel<br />GitHub</p></div><footer class="footer"></footer>'
+    ].join('');
+    var footer = this.container.getElementsByTagName('footer')[0];
+    var creditsPageBack = ViewUtil.buildButton(
+      LangUtil.get('creditsPageBack'),
+      this.controller.showFirstPage, this.controller
+    );
+    creditsPageBack.className = 'btn';
+    footer.appendChild(creditsPageBack);
+  };
+  /*
   Page.prototype.showCreditsPage = function() {
     this.container.className = 'page creditsPage';
     this.container.innerHTML = [
@@ -129,6 +170,7 @@ var PageView = (function() {
       this.controller.showToolPage, this.controller
     ));
   };
+  
 
   function buildTool(className, urlLink) {
     return '<a href="'+urlLink+'" class="'+className+'" target="_blank"></a>';
@@ -162,7 +204,7 @@ var PageView = (function() {
       this.controller.showCreditsPage, this.controller
     ));
   };
-
+*/
   Page.prototype.showEndPage = function() {
     this.container.className = 'page endPage';
     this.container.innerHTML = [
@@ -210,14 +252,16 @@ var PageView = (function() {
       buildCompatibility('Css transition', CompatibilityUtil.hasCssTransition()),
       buildCompatibility('Ajax request', CompatibilityUtil.hasAjaxRequest()),
       buildCompatibility('Local storage', CompatibilityUtil.hasLocalStorage()),
-      '</ul></div>',
-      '<footer class="footer">', '', '</footer>'
+      '</ul></div><footer class="footer"></footer>'
     ].join('');
+
     var footer = this.container.getElementsByTagName('footer')[0];
-    footer.appendChild(ViewUtil.buildButton(
-      LangUtil.get('compatibilityPageBack'), 
+    var compatibilityPageBack = ViewUtil.buildButton(
+      LangUtil.get('compatibilityPageBack'),
       this.controller.showFirstPage, this.controller
-    ));
+    );
+    compatibilityPageBack.className = 'btn';
+    footer.appendChild(compatibilityPageBack);
   };
 
   Page.prototype.getContentPage = function() {

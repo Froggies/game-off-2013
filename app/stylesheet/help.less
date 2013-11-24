@@ -27,11 +27,12 @@
 .help li {
 	list-style-type: decimal;
 	cursor: pointer;
-	color: #ccc;
+	font-size: 0.8em;
+	padding: 0 0 8px;
+	color: #FFF;
+	opacity: 0.2;
 }
-.help li:hover {
-	color: #fff;
+.help li:hover, .help li.selected {
+	opacity:1;
 }
-.help li.selected {
-	color: #fff;
-}
+

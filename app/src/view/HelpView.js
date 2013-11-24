@@ -13,10 +13,12 @@ var HelpView = (function() {
     this.prevButton = ViewUtil.buildButton(LangUtil.get('prev'), function() {
       this.selectItem(this.currentIndex-1, this.controller.config[this.currentIndex-1].img);
     }, this);
+    this.prevButton.className = 'btn';
     this.rightContainer.appendChild(this.prevButton);
     this.nextButton = ViewUtil.buildButton(LangUtil.get('next'), function() {
       this.selectItem(this.currentIndex+1, this.controller.config[this.currentIndex+1].img);
     }, this);
+    this.nextButton.className = 'btn';
     this.rightContainer.appendChild(this.nextButton);
     this.container.appendChild(this.rightContainer);
 

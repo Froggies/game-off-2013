@@ -21,11 +21,18 @@ var GithubView = (function() {
     this.inputToken.type = 'text';
     this.inputToken.placeholder = LangUtil.get('githubPageToken');
     this.container.appendChild(this.inputToken);
-    this.container.appendChild(ViewUtil.buildButton('Ok', function() {
-      this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
-      this.displayLoader();
-    }, this));
-    this.container.appendChild(ViewUtil.buildButton(LangUtil.get('githubPageHelp'), this.controller.showHelp, this.controller));
+
+    var githubButtonOk = ViewUtil.buildButton('Ok',function() {
+        this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
+        this.displayLoader();
+      }, this);
+    githubButtonOk.className = 'btn';
+    this.container.appendChild(githubButtonOk);
+
+    var githubPageHelp = ViewUtil.buildButton(LangUtil.get('githubPageHelp'),this.controller.showHelp, this.controller);
+    githubPageHelp.className = 'btn';
+    this.container.appendChild(githubPageHelp);
+
     this.container.appendChild(ViewUtil.buildElement('', 'br'));
     this.checkboxKeepIt = ViewUtil.buildElement('', 'input');
     this.checkboxKeepIt.type = 'checkbox';
