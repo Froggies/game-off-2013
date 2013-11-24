@@ -9,63 +9,57 @@
 
 .sprint {
 	position: absolute;
-	top: 50%;
-	right: 1500px;
+	top: 200px;
+	left: 100%;
+    height: 100px;
 	background-color: #fff;
-	width: 500px;
-	height: 300px;
+	width: 100%;
+    opacity: 0;
 	text-align: center;
-	line-height: 140px;
-	font-size: 3em;
 	font-family: "komika";
-	margin-top: -150px;
-	border-radius: 20px;
-	animation: moveSprint 10s ease-in-out;
-	-webkit-animation: moveSprint 10s ease-in-out;
-	-moz-animation: moveSprint 10s ease-in-out;
+	animation: showSprint 4s linear;
+	-webkit-animation: showSprint 4s linear;
 }
 
-.sprint .sentence {
-	text-align: right;
-	font-size: 0.5em;
-	margin-right: 20px;
+.sprint .title {
+    position: absolute;
+    color: #000;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    padding: 18px 0 0;
+    animation: moveTitle 4s linear;
+    -webkit-animation: moveTitle 4s linear;
+}
+.sprint .title span{
+    font-size: 0.5em;
 }
 
-@-webkit-keyframes moveSprint {
-    0% { 
-    	right: -500px; 
-    	
-    }
-    25% { 
-    	-webkit-transform: skewX(0deg);
-    }
-    30% { 
-    	right: 200px; 
-    	-webkit-transform: skewX(15deg);
-    }
-    40% {
-    	-webkit-transform: skewX(0deg);
-    }
-    70% { 
-    	-webkit-transform: skewX(0deg);
-    	right: 200px; 
-    }
-    75% { 
-    	-webkit-transform: skewX(-15deg);
-    }
-    100% { 
-    	right: 1500px; 
-	}
+@-webkit-keyframes showSprint {
+    0% {left:0;}
+    1% {opacity: 0;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
+    99% {left:0;opacity: 0;}
+    100% {left:100%;}
 }
-@-moz-keyframes moveSprint {
-    0% { right: -500px; }
-    30% { right: 300px; }
-    70% { right: 300px; }
-    /*100% { right: 1500px; }*/
-} 
-@keyframes moveSprint {
-    0% { right: -500px; }
-    30% { right: 300px; }
-    70% { right: 300px; }
-    /*100% { right: 1500px; }*/
+@keyframes showSprint {
+    0% {left:0;}
+    1% {opacity: 0;}
+    5% {opacity: 1;}
+    95% {opacity: 1;}
+    99% {left:0;opacity: 0;}
+    100% {left:100%;}
+}
+@-webkit-keyframes moveTitle {
+    0% {left: 100%;}
+    10% {left: 5%;}
+    90% {left: -5%;}
+    100% {left: -100%;}
+}
+@keyframes moveTitle {
+    0% {left: 100%;}
+    10% {left: 5%;}
+    90% {left: -5%;}
+    100% {left: -100%;}
 } 

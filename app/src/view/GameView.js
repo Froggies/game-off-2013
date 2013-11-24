@@ -20,15 +20,10 @@ var GameView = (function() {
 
   Game.prototype.showNewSprint = function() {
     var sprint = ViewUtil.buildContainer('sprint');
-
-    var title = ViewUtil.buildContainer('title');
-    title.innerHTML = LangUtil.get('sprint') + ' ' + this.controller.nbSprint;
-    sprint.appendChild(title);
     
-    var sentence = ViewUtil.buildContainer('sentence');
-    var potentielSentence = LangUtil.get('sprint' + this.controller.nbSprint);
-    sentence.innerHTML = potentielSentence === undefined ? '' : potentielSentence;
-    sprint.appendChild(sentence);
+    var title = ViewUtil.buildContainer('title');
+    title.innerHTML = LangUtil.get('sprint') + ' ' + this.controller.nbSprint + '<br /><span>' + LangUtil.get('sprint' + this.controller.nbSprint) + '</span>';
+    sprint.appendChild(title);
 
     this.container.appendChild(sprint);
 
