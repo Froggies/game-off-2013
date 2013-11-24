@@ -40,10 +40,35 @@ var CompatibilityUtil = (function() {
     }
   }
 
+  //from http://diveintohtml5.info/everything.html
+  function hasAudioMp3() {
+    var a = document.createElement('audio');
+    return !!a.canPlayType &&
+      !!(a.canPlayType('audio/mpeg;').replace(/no/, ''));
+  }
+
+  //from http://diveintohtml5.info/everything.html
+  function hasAudioWav() {
+    var a = document.createElement('audio');
+    return !!a.canPlayType &&
+      !!(a.canPlayType('audio/wav; codecs="1"').replace(/no/, ''));
+  }
+
+  //from http://diveintohtml5.info/everything.html
+  function hasAudioOgg() {
+    var a = document.createElement('audio');
+    return !!a.canPlayType &&
+      !!(a.canPlayType('audio/ogg; codecs="vorbis"').replace(/no/, ''));
+  }
+
   return {
 
     isCompatible: function() {
-      return hasDragAndDrop() && hasCssTransition() && hasAjaxRequest() && hasLocalStorage();
+      return hasDragAndDrop() && 
+        hasCssTransition() && 
+        hasAjaxRequest() && 
+        hasLocalStorage() &&
+        (hasAudioMp3() || hasAudioWav() || hasAudioOgg());
     },
     hasDragAndDrop: function() {
       return hasDragAndDrop();
@@ -56,6 +81,15 @@ var CompatibilityUtil = (function() {
     },
     hasLocalStorage: function() {
       return hasLocalStorage();
+    },
+    hasAudioMp3: function() {
+      return hasAudioMp3();
+    },
+    hasAudioWav: function() {
+      return hasAudioWav();
+    },
+    hasAudioOgg: function() {
+      return hasAudioOgg();
     }
 
   };

@@ -9,4 +9,10 @@ window.onload = function() {
     page.showCompatibilityPage();
   }
 
+  AudioUtil.playMoney();
+  TimeoutUtil.timeout(function() {
+    AudioUtil.stopMoney();
+    AudioUtil.playLevelUp();
+  }, 2000);
+
 };

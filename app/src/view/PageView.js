@@ -252,6 +252,9 @@ var PageView = (function() {
       buildCompatibility('Css transition', CompatibilityUtil.hasCssTransition()),
       buildCompatibility('Ajax request', CompatibilityUtil.hasAjaxRequest()),
       buildCompatibility('Local storage', CompatibilityUtil.hasLocalStorage()),
+      buildCompatibility('Audio mp3', CompatibilityUtil.hasAudioMp3()),
+      buildCompatibility('Audio wav', CompatibilityUtil.hasAudioWav()),
+      buildCompatibility('Audio ogg', CompatibilityUtil.hasAudioOgg()),
       '</ul></div><footer class="footer"></footer>'
     ].join('');
 
