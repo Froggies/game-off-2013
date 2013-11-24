@@ -190,8 +190,8 @@ module.exports = function ( grunt ) {
 
     imageEmbed: {
       dist: {
-        src: [ "app/stylesheet/*.less" ],
-        dest: "build/stylesheet/output.css",
+        src: [ "<%= compile_dir %>/stylesheet/<%= pkg.name %>-<%= pkg.version %>.css" ],
+        dest: "<%= compile_dir %>/stylesheet/<%= pkg.name %>-<%= pkg.version %>-urified.css",
         options: {
           deleteAfterEncoding : false
         }
@@ -204,7 +204,7 @@ module.exports = function ( grunt ) {
 
   grunt.registerTask( 'build', [ 'clean', 'copy:build', 'index:build'] );
   
-  grunt.registerTask( 'compile', [ 'jshint', 'karma:compile:start', 'build', 'imageEmbed', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile'] );
+  grunt.registerTask( 'compile', [ 'jshint', 'karma:compile:start', 'build', 'recess:compile', 'concat:compile_js', 'uglify:compile', 'copy:compile', 'index:compile', 'imageEmbed'] );
 
   grunt.registerTask( 'dev', [ 'connect','jshint', 'karma:build:start', 'watch' ] );
 
