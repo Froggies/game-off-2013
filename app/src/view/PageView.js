@@ -144,8 +144,6 @@ var PageView = (function() {
       '<p>Romain Maneschi<br />Audrey Novak<br />Laurent Dufour</p>',
       '<h2>', LangUtil.get('creditsPageTechno'), '</h2>',
       '<p>HTML5<br />CSS3<br />JavaScript</p>',
-      '<h2>', LangUtil.get('creditsPageLanguage'), '</h2>',
-      '<p>HTML5<br />CSS3<br />JavaScript</p>',
       '<h2>', LangUtil.get('creditsPageTool'), '</h2>',
       '<p>Vanillas-js<br />Node Js<br />Npm<br />Grunt<br />Bower<br />Karma<br />Underscore<br /><br />',
       buildimgTool('vanillajs', 'http://vanilla-js.com/'),
@@ -162,6 +160,7 @@ var PageView = (function() {
       buildimgTool('trello', 'http://trello.com/'),
       buildimgTool('travis-ci', 'https://travis-ci.org'),
       buildimgTool('david-dm', 'https://david-dm.org'),
+      buildimgTool('media', 'https://media.io'),
       '<h2>', LangUtil.get('creditsPageThx'), '</h2>',
       '<p>Julien Lafont<br />Adeline Dibling<br />Vivian Pennel<br />GitHub</p>',
       '<div class="froggies">',
@@ -182,9 +181,9 @@ var PageView = (function() {
     var generique = this.container.getElementsByClassName('generique')[0];
     footer.appendChild(buildGoButton(generique, 'creditsPageAchievement', '-350px'));
     footer.appendChild(buildGoButton(generique, 'creditsPageTechno', '-500px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageLanguage', '-640px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-800px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1270px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-650px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageOnlineTool', '-1100px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1450px'));
   };
 
   Page.prototype.showEndPage = function() {

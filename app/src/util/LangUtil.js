@@ -111,7 +111,6 @@ var LangUtil = (function() {
       creditsPageSentence: 'Panic Backlog was realised for the GitHub Game Off 2013',
       creditsPageAchievement: 'Achievement',
       creditsPageTechno: 'Techno',
-      creditsPageLanguage: 'Languages',
       creditsPageTool: 'Tools',
       creditsPageOnlineTool: 'Web Tools',
       creditsPageThx: 'Thanks',
