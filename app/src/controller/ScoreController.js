@@ -1,31 +1,35 @@
 var ScoreController = (function() {
 
-	'use strict';
+  'use strict';
 
-	function Score() {
-		this.score = 0;
-		this.level = 0;
-		this.nbLife = Constants.NB_LIFE;
-		this.view = new ScoreView(this);
-	}
+  function Score() {
+    this.score = 0;
+    this.level = 0;
+    this.nbLife = Constants.NB_LIFE;
+    this.view = new ScoreView(this);
+  }
 
-	ObjectUtil.inherit(Score, AbstractController);
+  ObjectUtil.inherit(Score, AbstractController);
 
-	Score.prototype.incrementeBy = function(score) {
-		this.score = this.score + score;
-		this.view.updateScore();
-	};
+  Score.prototype.incrementeBy = function(score) {
+    this.score = this.score + score;
+    this.view.updateScore();
+  };
 
-	Score.prototype.updateLevel = function() {
-		this.level = this.level + 1;
-		this.view.updateLevel();
-	};
+  Score.prototype.stopUpdateScore = function() {
+    this.view.stopUpdateScore();
+  };
 
-	Score.prototype.loose = function() {
-		this.nbLife = this.nbLife - 1;
-		this.view.updateLife();
-	};
+  Score.prototype.updateLevel = function() {
+    this.level = this.level + 1;
+    this.view.updateLevel();
+  };
 
-	return Score;
+  Score.prototype.loose = function() {
+    this.nbLife = this.nbLife - 1;
+    this.view.updateLife();
+  };
+
+  return Score;
 
 })();

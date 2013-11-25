@@ -79,15 +79,14 @@ var GameController = (function() {
     this.header.score.incrementeBy(score * Constants.SCORE_FACTOR);
     if(ScoreUtil.isNextLevel(this.header.score.score, this.header.score.level) === true) {
       this.pause();//TODO rework update time card backlog
-      this.resume();//TODO rework update time card backlog
       this.header.score.updateLevel();
       AudioUtil.levelUp();
       if(this.header.score.level >= Constants.NB_LVL_END) {
-        this.pause();
+        this.header.score.stopUpdateScore();
         this.pageController.showEndPage();
       } else if(this.header.score.level % Constants.NB_LVL_BONUS === 0) {
         if(this.header.bonus.hasInactiveBonus() === true) {
-          this.pause();
+          this.header.score.stopUpdateScore();
           this.popupController.displayChooseBonusPopup();
         }
         this.backlog.removeAllCards();
@@ -95,6 +94,7 @@ var GameController = (function() {
           column.removeAllCards();
         });
       } else {
+        this.resume();//TODO rework update time card backlog
         _.each(this.columns, function(column) {
           column.setCanBeActivate(true);
         });

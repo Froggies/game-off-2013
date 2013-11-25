@@ -39,6 +39,7 @@ var ScoreView = (function() {
     if(this.scoreInterval === undefined) {
       this.scoreInterval = TimeoutUtil.interval(function() {
         this.tempScore = this.tempScore + 1;
+        this.tempScore = this.tempScore >> 0;//parseInt
         if(this.tempScore <= this.controller.score) {
           this.containerScore.innerHTML = this.tempScore + ' $';
         }
@@ -49,6 +50,10 @@ var ScoreView = (function() {
         }
       }, Constants.SCORE_TIME_SHOW, this);
     }
+  };
+
+  Score.prototype.stopUpdateScore = function() {
+    this.tempScore = this.controller.score - 1;
   };
 
   Score.prototype.updateLife = function() {
