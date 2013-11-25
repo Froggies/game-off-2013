@@ -110,6 +110,7 @@ var LangUtil = (function() {
       \****************************/
       creditsPageSentence: 'Panic Backlog was realised for the GitHub Game Off 2013',
       creditsPageAchievement: 'Achievement',
+      creditsPageArt: 'Artwork',
       creditsPageTechno: 'Techno',
       creditsPageTool: 'Tools',
       creditsPageOnlineTool: 'Web Tools',
@@ -225,6 +226,7 @@ var LangUtil = (function() {
       creditsPageSentence: 'Panic Backlog a été réalisé pour le concours GitHub Game Off 2013',
       creditsPageAchievement: 'Réalisation',
       creditsPageTechno: 'Techno',
+      creditsPageArt: 'Artwork',
       creditsPageLanguage: 'Langages',
       creditsPageTool: 'Outils',
       creditsPageOnlineTool: 'Outils Web',

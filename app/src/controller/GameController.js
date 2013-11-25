@@ -82,6 +82,7 @@ var GameController = (function() {
       this.pause();//TODO rework update time card backlog
       this.resume();//TODO rework update time card backlog
       this.header.score.updateLevel();
+      AudioUtil.levelUp();
       if(this.header.score.level >= Constants.NB_LVL_END) {
         this.pause();
         this.pageController.showEndPage();
@@ -106,6 +107,7 @@ var GameController = (function() {
     this.backlog.addCard(CardUtil.buildCard(this.header.score.level));
     if(this.backlog.cards.length > this.nbCardsInBacklogMax) {
       this.header.score.loose();
+      AudioUtil.loose();
       return 'finish';
     }
   };
@@ -119,6 +121,7 @@ var GameController = (function() {
   Game.prototype.startSprint = function() {
     this.nbSprint = this.nbSprint + 1;
     this.view.showNewSprint();
+    AudioUtil.sprint();
   };
 
   return Game;

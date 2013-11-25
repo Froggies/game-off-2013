@@ -144,6 +144,8 @@ var PageView = (function() {
       '<p>Romain Maneschi<br />Audrey Novak<br />Laurent Dufour</p>',
       '<h2>', LangUtil.get('creditsPageTechno'), '</h2>',
       '<p>HTML5<br />CSS3<br />JavaScript</p>',
+      '<h2>', LangUtil.get('creditsPageArt'), '</h2>',
+      '<p>Songs/FX : http://www.freesound.org/<br />Font : ??<br />Images : Laurent Dufour with <3 </p>',
       '<h2>', LangUtil.get('creditsPageTool'), '</h2>',
       '<p>Vanillas-js<br />Node Js<br />Npm<br />Grunt<br />Bower<br />Karma<br />Underscore<br /><br />',
       buildimgTool('vanillajs', 'http://vanilla-js.com/'),
@@ -162,7 +164,7 @@ var PageView = (function() {
       buildimgTool('david-dm', 'https://david-dm.org'),
       buildimgTool('media', 'https://media.io'),
       '<h2>', LangUtil.get('creditsPageThx'), '</h2>',
-      '<p>Julien Lafont<br />Adeline Dibling<br />Vivian Pennel<br />GitHub</p>',
+      '<p>Julien Lafont<br />Adeline Dibling<br />Vivian Pennel<br />GitHub</p><br /><br />',
       '<div class="froggies">',
       buildMember('audrey', LangUtil.get('creditsPageAudreySentence'), 'https://github.com/audreyn', '', '', 'https://twitter.com/udr3y', '', ''),
       buildMember('laurent', LangUtil.get('creditsPageLaurentSentence'), 'https://github.com/undless', 'https://www.facebook.com/laurent.dufour.3152', 'https://plus.google.com/u/0/107033330099598983714/posts?tab=XX', 'https://twitter.com/_LaurentDufour', 'http://fr.linkedin.com/pub/laurent-dufour/33/49/30', 'http://fr.viadeo.com/fr/profile/laurent.dufour1492'),
@@ -181,9 +183,10 @@ var PageView = (function() {
     var generique = this.container.getElementsByClassName('generique')[0];
     footer.appendChild(buildGoButton(generique, 'creditsPageAchievement', '-350px'));
     footer.appendChild(buildGoButton(generique, 'creditsPageTechno', '-500px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-650px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageOnlineTool', '-1100px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1450px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageArt', '-650px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-810px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageOnlineTool', '-1250px'));
+    footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1590px'));
   };
 
   Page.prototype.showEndPage = function() {

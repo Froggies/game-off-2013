@@ -23,6 +23,7 @@ var PageController = (function() {
   ObjectUtil.inherit(Page, AbstractController);
 
   Page.prototype.showFirstPage = function() {
+    AudioUtil.accueil();
     this.view.showFirstPage();
   };
 
@@ -48,6 +49,7 @@ var PageController = (function() {
   };
 
   Page.prototype.showEndPage = function() {
+    AudioUtil.end();
     this.globalContainer.innerHTML = '';
     this.start(this.globalContainer);
     this.view.showEndPage();
@@ -68,6 +70,7 @@ var PageController = (function() {
   };
 
   Page.prototype.startGame = function(team) {
+    AudioUtil.inGame();
     this.globalContainer.innerHTML = '';
     var game = new GameController(team, this);
 

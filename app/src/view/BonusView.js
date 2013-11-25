@@ -35,6 +35,7 @@ var BonusView = (function() {
       ViewUtil.removeClassName(bonus, 'waiting');
       ViewUtil.addClassName(bonus, 'active');
       bonus.removeChild(gaugebonus);
+      AudioUtil.bonusReady();
     }, time);
     gaugebonus.style.animationDuration = time + 'ms';
     gaugebonus.style.WebkitAnimationDuration = time + 'ms';

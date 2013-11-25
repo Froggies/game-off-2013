@@ -17,11 +17,14 @@ var ColumnView = (function() {
     if(this.controller.isActive === true && 
       this.controller.hasCard === true) {
       this.container.className = 'column active';
+      AudioUtil.keyboard();
     } else if(this.controller.isActive === true && 
       this.controller.hasCard === false) {
       this.container.className = 'column active waiting';
+      AudioUtil.keyboardStop();
     } else {
       this.container.className = 'column inactive';
+      AudioUtil.keyboardStop();
     }
   };
 

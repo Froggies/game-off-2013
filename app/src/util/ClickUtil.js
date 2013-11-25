@@ -6,6 +6,7 @@ var ClickUtil = (function() {
 
     listen: function(element, callback, context) {
       return element.onclick = function(evt) {
+        AudioUtil.click();
         if(context !== undefined) {
           callback.call(context, evt);
         } else {

@@ -16,6 +16,28 @@ define(dependencies, function() {
 
     var game;
 
+    window.AudioUtil = {
+      disable: function() {},
+      enable: function() {},
+      isEnable: function() {},
+      canBeEnable: function() {},
+      click: function() {},
+      money: function() {},
+      moneyStop: function() {},
+      levelUp: function() {},
+      bonusReady: function() {},
+      sprint: function() {},
+      keyboard: function() {},
+      keyboardStop: function() {},
+      loose: function() {},
+      accueil: function() {},
+      accueilStop: function() {},
+      end: function() {},
+      endStop: function() {},
+      inGame: function() {},
+      inGameStop: function() {}
+    };
+
     beforeEach(function() {
       game = new GameController('', {
         showEndPage: function() {},

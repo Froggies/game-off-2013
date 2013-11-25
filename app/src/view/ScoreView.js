@@ -35,6 +35,7 @@ var ScoreView = (function() {
   };
 
   Score.prototype.updateScore = function() {
+    AudioUtil.money();
     if(this.scoreInterval === undefined) {
       this.scoreInterval = TimeoutUtil.interval(function() {
         this.tempScore = this.tempScore + 1;
@@ -44,6 +45,7 @@ var ScoreView = (function() {
         if(this.tempScore >= this.controller.score) {
           window.clearInterval(this.scoreInterval);
           this.scoreInterval = undefined;
+          AudioUtil.moneyStop();
         }
       }, Constants.SCORE_TIME_SHOW, this);
     }
