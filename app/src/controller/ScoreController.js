@@ -24,9 +24,6 @@ var ScoreController = (function() {
 	Score.prototype.loose = function() {
 		this.nbLife = this.nbLife - 1;
 		this.view.updateLife();
-		if(this.nbLife === 0) {
-			window.alert('Game Over');
-		}
 	};
 
 	return Score;
