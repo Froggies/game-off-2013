@@ -134,15 +134,10 @@ var BonusView = (function() {
       this.bonusNewTask,
       function() {
         _.find(this.controller.game.columns, function(column) {
-          if(column.isActive === true) {
-            var find = _.find(column.rows, function(row) {
-              if(row.isActive === false) {
-                row.activate();
-                return true;
-              }
-              return false;
-            });
-            return find !== undefined;
+          if(column.isActive === true && column.hasInactiveRow === true) {
+            column.setCanBeActivate(true);
+            column.activate();
+            return true;
           }
           return false;
         });
