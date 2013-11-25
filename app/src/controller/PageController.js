@@ -72,6 +72,7 @@ var PageController = (function() {
   Page.prototype.startGame = function(team) {
     AudioUtil.inGame();
     this.globalContainer.innerHTML = '';
+    this.team = team;
     var game = new GameController(team, this);
 
     var popups = new PopupController(

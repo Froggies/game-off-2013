@@ -205,7 +205,10 @@ var PageView = (function() {
 
     var endReplayButton = ViewUtil.buildButton(
       LangUtil.get('endReplayButton'),
-      this.controller.startGame, this.controller
+      function() {
+        this.controller.startGame(this.controller.team);
+      }, 
+      this
     );
     endReplayButton.className = 'btn';
     footer.appendChild(endReplayButton);
