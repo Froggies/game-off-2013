@@ -19,6 +19,8 @@ var HeaderColumnView = (function() {
     ClickUtil.listen(this.container, this.controller.activate, this.controller);
     this.message = ViewUtil.buildContainer('message');
     this.container.appendChild(this.message);
+    this.nbRowActive = ViewUtil.buildContainer('number');
+    this.container.appendChild(this.nbRowActive);
   }
 
   ObjectUtil.inherit(HeaderColumn, AbstractView);
@@ -35,6 +37,7 @@ var HeaderColumnView = (function() {
     } else {
       this.message.style.display = 'none';
     }
+    this.nbRowActive.className = 'number number'+this.controller.columnController.nbRowActive;
   };
 
   HeaderColumn.prototype.activate = function() {

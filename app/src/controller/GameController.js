@@ -12,7 +12,6 @@ var GameController = (function() {
     for(var i=0; i<Constants.NB_COLUMNS; i++) {
       this.columns.push(new ColumnController(this, i));
     }
-
     this.view = new GameView(this);
     this.backlog = new BacklogController(this);
     this.header = new HeaderController(this);

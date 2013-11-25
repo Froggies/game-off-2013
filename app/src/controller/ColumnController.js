@@ -13,6 +13,7 @@ var ColumnController = (function() {
     this.isPause = false;
     this.hasInactiveRow = true;
     this.nbTaskRealised = 0;
+    this.nbRowActive = 0;
     this.rows = [];
     for(var i=0; i<Constants.NB_ROWS; i++) {
       this.rows.push(new RowController());
@@ -51,6 +52,7 @@ var ColumnController = (function() {
   //call by headerColumn when user click on it
   Column.prototype.activate = function() {
     if(this.canBeActivate === true) {
+      this.nbRowActive = this.nbRowActive + 1;
       this.isActive = true;
       this.canBeActivate = false;
       this.view.refreshClass();
@@ -189,6 +191,7 @@ var ColumnController = (function() {
   };
 
   Column.prototype.resign = function() {
+    this.nbRowActive = 0;
     this.isActive = false;
     this.canBeActivate = false;
     this.cardTimeout = undefined;
