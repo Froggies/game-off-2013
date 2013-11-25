@@ -53,8 +53,10 @@ define(dependencies, function() {
       expect(game.view.controller).toBe(game);
     });
 
-    it('should display finish after NB_CARDS_IN_BACKLOG_MAX loops', function () {
-      for(var i=0; i<Constants.NB_CARDS_IN_BACKLOG_MAX; i++) {
+    it('should display finish after NB_CARDS_IN_BACKLOG_MAX * NB_LIFE loops', function () {
+      var nbLoop = Constants.NB_CARDS_IN_BACKLOG_MAX*Constants.NB_LIFE;
+      nbLoop = nbLoop + Constants.NB_LIFE - 1;//because we add 1 card in backlog before loose
+      for(var i=0; i<nbLoop; i++) {
         game.loop();
       }
       expect(game.loop()).toBe('finish');

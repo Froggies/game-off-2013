@@ -107,11 +107,12 @@ var GameController = (function() {
     if(this.backlog.cards.length > this.nbCardsInBacklogMax) {
       this.header.score.loose();
       AudioUtil.loose();
+      this.backlog.removeAllCards();
       if(this.header.score.nbLife === 0) {
         this.pause();
         this.pageController.showEndPage();
+        return 'finish';
       }
-      return 'finish';
     }
   };
 
