@@ -174,12 +174,6 @@ var PageView = (function() {
       '<footer class="footer"></footer>'
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
-    var btn = ViewUtil.buildButton(
-      LangUtil.get('creditsPageBack'),
-      this.controller.showFirstPage, this.controller
-    );
-    btn.className = 'btn';
-    footer.appendChild(btn);
     var generique = this.container.getElementsByClassName('generique')[0];
     footer.appendChild(buildGoButton(generique, 'creditsPageAchievement', '-350px'));
     footer.appendChild(buildGoButton(generique, 'creditsPageTechno', '-500px'));
@@ -187,6 +181,12 @@ var PageView = (function() {
     footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-810px'));
     footer.appendChild(buildGoButton(generique, 'creditsPageOnlineTool', '-1250px'));
     footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1590px'));
+    var btn = ViewUtil.buildButton(
+      LangUtil.get('creditsPageBack'),
+      this.controller.showFirstPage, this.controller
+    );
+    btn.className = 'btn';
+    footer.appendChild(btn);
   };
 
   Page.prototype.showEndPage = function() {
