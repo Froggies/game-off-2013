@@ -63,8 +63,24 @@ var ScoreView = (function() {
     }, this);
   };
 
+  var buildLevelSpan = function buildLevelSpan(nb) {
+    if(nb >= 10) {
+      return buildLevelSpan(Math.floor(nb/10)) + buildLevelSpan(nb%10);
+    } else {
+      var res = [
+        '<span class="number number',
+        nb,
+        '"></span>'
+      ].join('');
+      return res;
+    }
+  };
+
   Score.prototype.updateLevel = function() {
-    this.containerLevel.innerHTML = '<span class="leveltext">Level</span><span class="number number' + this.controller.level + '"></span>';
+    this.containerLevel.innerHTML = [
+      '<span class="leveltext">Level</span>', 
+      buildLevelSpan(this.controller.level)
+    ].join('');
 
     if(this.controller.level > 0 && this.controller.level % Constants.NB_LVL_BONUS === 0) {
       this.levelNextFactor = this.levelNextFactor + 1;
