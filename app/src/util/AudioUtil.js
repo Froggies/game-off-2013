@@ -4,6 +4,7 @@ var AudioUtil = (function() {
 
   var audioPlayers = {};
   var isEnable = true;
+  var songs = ['click', 'money', 'levelup', 'bonusReady', 'sprint', 'keyboard', 'loose', 'accueil', 'end', 'inGame'];
 
   function buildAudioPlayer(name) {
     var a = document.createElement('audio');
@@ -43,11 +44,13 @@ var AudioUtil = (function() {
   }
 
   function loadAllSongs() {
-    var songs = ['click', 'money', 'levelup', 'bonusReady', 'sprint', 'keyboard', 'loose', 'accueil', 'end', 'inGame'];
     _.each(songs, function(song) {
       buildAudioPlayer(song);
     });
   }
+
+  //load all songs (in songs array on top of this class) at start 
+  loadAllSongs();
 
   return {
 
