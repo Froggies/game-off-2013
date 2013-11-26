@@ -203,6 +203,15 @@ var PageView = (function() {
     */
     var footer = this.container.getElementsByTagName('footer')[0];
 
+    var endAgileButton = ViewUtil.buildButton(
+      LangUtil.get('endAgileButton'),
+      function() {
+        window.open('http://agilemanifesto.org/iso/'+LangUtil.getCurrentLang());
+      }
+    );
+    endAgileButton.className = 'btn-main';
+    footer.appendChild(endAgileButton);
+
     var endReplayButton = ViewUtil.buildButton(
       LangUtil.get('endReplayButton'),
       function() {
@@ -219,15 +228,6 @@ var PageView = (function() {
     );
     endBack.className = 'btn';
     footer.appendChild(endBack);
-
-    var endAgileButton = ViewUtil.buildButton(
-      LangUtil.get('endAgileButton'),
-      function() {
-        window.open('http://agilemanifesto.org/iso/'+LangUtil.getCurrentLang());
-      }
-    );
-    endAgileButton.className = 'btn-main';
-    footer.appendChild(endAgileButton);
 
   };
 
