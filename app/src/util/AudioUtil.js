@@ -21,25 +21,33 @@ var AudioUtil = (function() {
     s.type = 'audio/ogg';
     a.appendChild(s);
     a.load();
-    audioPlayers[name] = a;
+    return a;
   }
 
-  function startSong(player, loop) {
+  function startSong(player, loop, optSuffixe) {
     if(isEnable === true) {
-      if(audioPlayers[player] === undefined) {
-        buildAudioPlayer(player);
+      var name = player;
+      if(optSuffixe !== undefined) {
+        name = name + optSuffixe;
+      }
+      if(audioPlayers[name] === undefined) {
+        audioPlayers[name] = buildAudioPlayer(player);
       }
       if(loop === true) {
-        audioPlayers[player].loop = true;
+        audioPlayers[name].loop = true;
       }
-      audioPlayers[player].time = 0;
-      audioPlayers[player].play();
+      audioPlayers[name].time = 0;
+      audioPlayers[name].play();
     }
   }
 
-  function stopSong(player) {
-    if(audioPlayers[player] !== undefined) {
-      audioPlayers[player].pause();
+  function stopSong(player, optSuffixe) {
+    var name = player;
+    if(optSuffixe !== undefined) {
+      name = name + optSuffixe;
+    }
+    if(audioPlayers[name] !== undefined) {
+      audioPlayers[name].pause();
     }
   }
 
@@ -89,11 +97,11 @@ var AudioUtil = (function() {
     sprint: function() {
       startSong('sprint');
     },
-    keyboard: function() {
-      startSong('keyboard');
+    keyboard: function(index) {
+      startSong('keyboard', false, index);
     },
-    keyboardStop: function() {
-      stopSong('keyboard');
+    keyboardStop: function(index) {
+      stopSong('keyboard', index);
     },
     loose: function() {
       startSong('loose');
