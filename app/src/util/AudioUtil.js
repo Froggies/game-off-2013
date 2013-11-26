@@ -5,11 +5,8 @@ var AudioUtil = (function() {
   var audioPlayers = {};
   var isEnable = true;
 
-  function buildAudioPlayer(name, loop) {
+  function buildAudioPlayer(name) {
     var a = document.createElement('audio');
-    if(loop === true) {
-      a.loop = true;
-    }
     var s = document.createElement('source');
     s.src = 'assets/audio/'+name+'.wav';
     s.type = 'audio/wav';
@@ -29,7 +26,10 @@ var AudioUtil = (function() {
   function startSong(player, loop) {
     if(isEnable === true) {
       if(audioPlayers[player] === undefined) {
-        buildAudioPlayer(player, loop);
+        buildAudioPlayer(player);
+      }
+      if(loop === true) {
+        audioPlayers[player].loop = true;
       }
       audioPlayers[player].time = 0;
       audioPlayers[player].play();
@@ -40,6 +40,13 @@ var AudioUtil = (function() {
     if(audioPlayers[player] !== undefined) {
       audioPlayers[player].pause();
     }
+  }
+
+  function loadAllSongs() {
+    var songs = ['click', 'money', 'levelup', 'bonusReady', 'sprint', 'keyboard', 'loose', 'accueil', 'end', 'inGame'];
+    _.each(songs, function(song) {
+      buildAudioPlayer(song);
+    });
   }
 
   return {
