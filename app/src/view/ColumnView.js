@@ -17,14 +17,14 @@ var ColumnView = (function() {
     if(this.controller.isActive === true && 
       this.controller.hasCard === true) {
       this.container.className = 'column active';
-      AudioUtil.keyboard();
+      AudioUtil.keyboard(this.controller.index);
     } else if(this.controller.isActive === true && 
       this.controller.hasCard === false) {
       this.container.className = 'column active waiting';
-      AudioUtil.keyboardStop();
+      AudioUtil.keyboardStop(this.controller.index);
     } else {
       this.container.className = 'column inactive';
-      AudioUtil.keyboardStop();
+      AudioUtil.keyboardStop(this.controller.index);
     }
   };
 

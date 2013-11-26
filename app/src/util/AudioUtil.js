@@ -4,12 +4,10 @@ var AudioUtil = (function() {
 
   var audioPlayers = {};
   var isEnable = true;
+  var songs = ['click', 'money', 'levelup', 'bonusReady', 'sprint', 'keyboard', 'loose', 'accueil', 'end', 'inGame'];
 
-  function buildAudioPlayer(name, loop) {
+  function buildAudioPlayer(name) {
     var a = document.createElement('audio');
-    if(loop === true) {
-      a.loop = true;
-    }
     var s = document.createElement('source');
     s.src = 'assets/audio/'+name+'.wav';
     s.type = 'audio/wav';
@@ -23,24 +21,44 @@ var AudioUtil = (function() {
     s.type = 'audio/ogg';
     a.appendChild(s);
     a.load();
-    audioPlayers[name] = a;
+    return a;
   }
 
-  function startSong(player, loop) {
+  function startSong(player, loop, optSuffixe) {
     if(isEnable === true) {
-      if(audioPlayers[player] === undefined) {
-        buildAudioPlayer(player, loop);
+      var name = player;
+      if(optSuffixe !== undefined) {
+        name = name + optSuffixe;
       }
-      audioPlayers[player].time = 0;
-      audioPlayers[player].play();
+      if(audioPlayers[name] === undefined) {
+        audioPlayers[name] = buildAudioPlayer(player);
+      }
+      if(loop === true) {
+        audioPlayers[name].loop = true;
+      }
+      audioPlayers[name].time = 0;
+      audioPlayers[name].play();
     }
   }
 
-  function stopSong(player) {
-    if(audioPlayers[player] !== undefined) {
-      audioPlayers[player].pause();
+  function stopSong(player, optSuffixe) {
+    var name = player;
+    if(optSuffixe !== undefined) {
+      name = name + optSuffixe;
+    }
+    if(audioPlayers[name] !== undefined) {
+      audioPlayers[name].pause();
     }
   }
+
+  function loadAllSongs() {
+    _.each(songs, function(song) {
+      buildAudioPlayer(song);
+    });
+  }
+
+  //load all songs (in songs array on top of this class) at start 
+  loadAllSongs();
 
   return {
 
@@ -79,11 +97,11 @@ var AudioUtil = (function() {
     sprint: function() {
       startSong('sprint');
     },
-    keyboard: function() {
-      startSong('keyboard');
+    keyboard: function(index) {
+      startSong('keyboard', false, index);
     },
-    keyboardStop: function() {
-      stopSong('keyboard');
+    keyboardStop: function(index) {
+      stopSong('keyboard', index);
     },
     loose: function() {
       startSong('loose');

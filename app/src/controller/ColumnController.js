@@ -4,6 +4,7 @@ var ColumnController = (function() {
 
   function Column(game, index) {
     this.game = game;
+    this.index = index;
     this.view = new ColumnView(this);
     this.isActive = false;
     this.canBeActivate = false;
