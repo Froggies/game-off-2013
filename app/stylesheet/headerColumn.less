@@ -1,4 +1,4 @@
-.headerColumn {
+.headerColumn, .headerColumn .avatar {
 	width: 106px;
 	height: 81px;
 	display: inline-block;
@@ -60,19 +60,20 @@
 
 
 .column.active .headerColumn {
-	background-image: url("../assets/img/cardDev-empty.png");
-	background-color: transparent;
+	background-position: 10px 10px;
+	background-size: 48px 60px;
+	background-repeat: no-repeat;
+
 }
 .column.active .headerColumn.classic {
 	background-image: url("../assets/img/cardDev.png");
 	background-color: transparent;
+	width: 106px;
+	height: 81px;
+	top: 0;
+	left: 0;
 }
 .column.active .headerColumn .avatar{
-	content: "";
-	position: absolute;
-	width: 48px;
-	height: 60px;
-	top: 10px;
-	left: 10px;
-	background-position: center;
+	background-image: url("../assets/img/cardDev-empty.png");
+	background-color: transparent;
 }

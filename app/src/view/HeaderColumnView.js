@@ -51,7 +51,7 @@ var HeaderColumnView = (function() {
   HeaderColumn.prototype.activate = function() {
     if(this.isArrayTeam) {
       var avatar = this.team[_.random(0, this.team.length-1)].avatar_url;
-      this.avatarContainer.style.backgroundImage = 'url('+avatar+')';
+      this.container.style.backgroundImage = 'url('+avatar+')';
     }
   };
 
