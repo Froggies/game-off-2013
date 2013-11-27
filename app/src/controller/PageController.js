@@ -64,6 +64,17 @@ var PageController = (function() {
       this.showGithubPage();
       var g = new GithubController(this);
       g.start(this.view.getContentPage());
+    } else if(team === 'froggies') {
+      this.startGame(
+        [
+          {avatar_url: 'assets/img/team/froggies/audrey.jpg'}, 
+          {avatar_url: 'assets/img/team/froggies/adeline.jpg'}, 
+          {avatar_url: 'assets/img/team/froggies/laurent.jpg'}, 
+          {avatar_url: 'assets/img/team/froggies/julien.jpg'}, 
+          {avatar_url: 'assets/img/team/froggies/vivian.jpg'},
+          {avatar_url: 'assets/img/team/froggies/romain.jpg'}
+        ]
+      );
     } else {
       this.startGame(team);
     }
