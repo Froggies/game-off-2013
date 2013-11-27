@@ -1,15 +1,15 @@
 var AbstractController = (function() {
 
-	'use strict';
+  'use strict';
 
-	function Abstract() {
-	}
+  function Abstract() {
+  }
 
-	Abstract.prototype.start = function(element) {
-		this.view.draw(element);
-	};
+  Abstract.prototype.start = function(element) {
+    this.view.draw(element);
+  };
 
-	return Abstract;
+  return Abstract;
 
 })();
 

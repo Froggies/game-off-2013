@@ -151,7 +151,7 @@ var PageView = (function() {
       '<h2>', LangUtil.get('creditsPageTechno'), '</h2>',
       '<p>HTML5<br />CSS3<br />JavaScript</p>',
       '<h2>', LangUtil.get('creditsPageArt'), '</h2>',
-      '<p>Songs/FX : http://www.freesound.org/<br />Font : ??<br />Images : Laurent Dufour with <3 </p>',
+      '<p>Songs/FX : <a href="http://www.freesound.org/" target="_blank">freesound.org</a><br />Font : <a href="http://www.fontsquirrel.com/fonts/Komika-Axis" target="_blank">Komika-Axis</a><br />Images : Laurent Dufour with <3 </p>',
       '<h2>', LangUtil.get('creditsPageTool'), '</h2>',
       '<p>Vanillas-js<br />Node Js<br />Npm<br />Grunt<br />Bower<br />Karma<br />Underscore<br /><br />',
       buildimgTool('vanillajs', 'http://vanilla-js.com/'),
