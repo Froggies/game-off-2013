@@ -97,18 +97,6 @@ var GithubController = (function() {
     );
   };
 
-  Github.prototype.addMember = function(member) {
-    this.selectedTeam.push(member);
-    if(this.selectedTeam.length === Constants.NB_COLUMNS || 
-      this.selectedTeam.length === this.friends.length) {
-      this.pageController.startGame(this.friends);
-    }
-  };
-
-  Github.prototype.removeMember = function(member) {
-    this.selectedTeam = _.without(this.selectedTeam, member);
-  };
-
   return Github;
 
 })();

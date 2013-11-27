@@ -42,27 +42,6 @@ var GithubView = (function() {
     this.container.appendChild(sentence);
   };
 
-  function buildUserButton(user, view) {
-    var button = ViewUtil.buildButtonImg(
-      '', user.login, function() {
-        if(button.className === 'btn') {
-          ViewUtil.removeClassName(button, 'btn');
-          ViewUtil.addClassName(button, 'btn-main');
-          view.controller.addMember(user);
-          view.refreshSelect();
-        } else {
-          ViewUtil.removeClassName(button, 'btn-main');
-          ViewUtil.addClassName(button, 'btn');
-          view.controller.removeMember(user);
-          view.refreshSelect();
-        }
-      }
-    );
-    ViewUtil.addClassName(button, 'btn');
-    button.style.backgroundImage = 'url('+user.avatar_url+')';
-    return button;
-  }
-
   Github.prototype.displayLoader = function() {
     this.container.innerHTML = '';
     this.container.appendChild(ViewUtil.buildContainer('loader'));
@@ -73,21 +52,6 @@ var GithubView = (function() {
     var errorDiv = ViewUtil.buildContainer('error');
     errorDiv.innerHTML = error;
     this.container.appendChild(errorDiv);
-  };
-
-  Github.prototype.refreshAvatars = function() {
-    this.container.innerHTML = '';
-    this.select = ViewUtil.buildContainer('sentence');
-    this.container.appendChild(this.select);
-    this.refreshSelect();
-    this.container.appendChild(buildUserButton(this.controller.user, this));
-    _.each(this.controller.friends, function(friend) {
-      this.container.appendChild(buildUserButton(friend, this));
-    }, this);
-  };
-
-  Github.prototype.refreshSelect = function() {
-    this.select.innerHTML = 'Select ' + (Constants.NB_COLUMNS - this.controller.selectedTeam.length) + ' members';
   };
 
   return Github;
