@@ -57,15 +57,16 @@ var HeaderColumnView = (function() {
   };
 
   HeaderColumn.prototype.resign = function() {
-    if(this.isArrayTeam) {
-      this.container.style.backgroundImage = '';
-    }
     var sentence = ViewUtil.buildContainer('bubble');
     var sentences = LangUtil.get('resignSentences');
     sentence.innerHTML = sentences[_.random(0, sentences.length-1)];
     this.container.appendChild(sentence);
     TimeoutUtil.timeout(function() {
+      if(this.isArrayTeam) {
+        this.avatarContainer.style.backgroundImage = '';
+      }
       this.container.removeChild(sentence);
+      this.refreshCanBeActivate();
     }, 2500, this);
   };
 
