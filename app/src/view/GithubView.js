@@ -45,17 +45,20 @@ var GithubView = (function() {
   function buildUserButton(user, view) {
     var button = ViewUtil.buildButtonImg(
       '', user.login, function() {
-        if(button.className === '') {
-          button.className = 'selected';
+        if(button.className === 'btn') {
+          ViewUtil.removeClassName(button, 'btn');
+          ViewUtil.addClassName(button, 'btn-main');
           view.controller.addMember(user);
           view.refreshSelect();
         } else {
-          button.className = '';
+          ViewUtil.removeClassName(button, 'btn-main');
+          ViewUtil.addClassName(button, 'btn');
           view.controller.removeMember(user);
           view.refreshSelect();
         }
       }
     );
+    ViewUtil.addClassName(button, 'btn');
     button.style.backgroundImage = 'url('+user.avatar_url+')';
     return button;
   }

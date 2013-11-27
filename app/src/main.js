@@ -9,7 +9,7 @@ window.onload = function() {
     page.showCompatibilityPage();
   }
 
-  var audioManager = ViewUtil.buildButton('Audio', function() {
+  var audioManager = ViewUtil.buildButton('', function() {
     if(AudioUtil.isEnable() === true) {
       AudioUtil.disable();
       ViewUtil.removeClassName(audioManager, 'active');
