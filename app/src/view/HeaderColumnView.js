@@ -7,13 +7,11 @@ var HeaderColumnView = (function() {
     this.team = team;
     this.isArrayTeam = _.isArray(team);
     this.container = ViewUtil.buildContainer('headerColumn');
+    ClickUtil.listen(this.container, this.controller.internalActivate, this.controller);
     
     if(this.isArrayTeam === false) {
       ViewUtil.addClassName(this.container, team);
-    }
-
-    ClickUtil.listen(this.container, this.controller.activate, this.controller);
-    if(this.isArrayTeam === true) {
+    } else {
       this.avatarContainer = ViewUtil.buildContainer('avatar');
       this.container.appendChild(this.avatarContainer);
       this.avatar = this.team[_.random(0, this.team.length-1)].avatar_url;
@@ -25,9 +23,6 @@ var HeaderColumnView = (function() {
     this.container.appendChild(this.message);
     this.nbRowActive = ViewUtil.buildContainer('number');
     this.container.appendChild(this.nbRowActive);
-    if(this.controller.index === 0) {
-      this.activate();
-    }
   }
 
   ObjectUtil.inherit(HeaderColumn, AbstractView);
@@ -61,6 +56,7 @@ var HeaderColumnView = (function() {
     var sentences = LangUtil.get('resignSentences');
     sentence.innerHTML = sentences[_.random(0, sentences.length-1)];
     this.container.appendChild(sentence);
+    this.avatar = this.team[_.random(0, this.team.length-1)].avatar_url;
     TimeoutUtil.timeout(function() {
       if(this.isArrayTeam) {
         this.avatarContainer.style.backgroundImage = '';

@@ -11,7 +11,9 @@ define(dependencies, function() {
 
     beforeEach(function() {
       headerColumn = new HeaderColumnController({
-        activate: function() {},
+        activate: function() {
+          headerColumn.activate();
+        },
         game: {team: 'classic'}
       });
     });

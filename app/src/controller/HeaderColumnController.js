@@ -23,11 +23,16 @@ var HeaderColumnController = (function() {
     this.view.refreshCanBeActivate();
   };
 
+  /*must be call by view only*/
+  HeaderColumn.prototype.internalActivate = function() {
+    this.columnController.activate();
+  };
+
+  /*will be call by columnController*/
   HeaderColumn.prototype.activate = function() {
     if(this.canBeActivate === true) {
       this.isActive = true;
       this.view.activate();
-      this.columnController.activate();
     }
   };
 

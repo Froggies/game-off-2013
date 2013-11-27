@@ -1,5 +1,6 @@
 var dependencies = [
   'controller/ColumnController', 'view/ColumnView',
+  'controller/HeaderColumnController', 'view/HeaderColumnView',
   'controller/GameController', 'view/GameView',
   'controller/ScoreController', 'view/ScoreView',
   'constants'

@@ -57,6 +57,7 @@ var ColumnController = (function() {
       this.isActive = true;
       this.canBeActivate = false;
       this.view.refreshClass();
+      this.header.activate();
       this.header.setCanBeActivate(false);
       this.view.activate();
       this.activeNextRow();
