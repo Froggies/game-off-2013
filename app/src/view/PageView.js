@@ -201,18 +201,22 @@ var PageView = (function() {
     this.container.className = 'page endPage';
     this.container.innerHTML = [
       '<h1 class="title">', LangUtil.get('endTitle'), '</h1>',
-      '<div class="content">', LangUtil.get('endContent'), '</div>',
-      '<footer class="footer"></footer>'
+      '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" />',
+      '<div class="content">', LangUtil.get('endContent'), '</div>'
     ].join('');
-    var footer = this.container.getElementsByTagName('footer')[0];
+    var content = this.container.getElementsByClassName('content')[0];
     var endAgileButton = ViewUtil.buildButton(
       LangUtil.get('endAgileButton'),
       function() {
-        window.open('http://agilemanifesto.org/iso/'+LangUtil.getCurrentLang());
+        if(LangUtil.getCurrentLang() === 'fr') {
+          window.open('http://fr.wikipedia.org/wiki/M%C3%A9thode_agile');
+        } else {
+          window.open('http://en.wikipedia.org/wiki/Agile_software_development');
+        }
       }
     );
     endAgileButton.className = 'btn-main';
-    footer.appendChild(endAgileButton);
+    content.appendChild(endAgileButton);
 
     var endReplayButton = ViewUtil.buildButton(
       LangUtil.get('endReplayButton'),
@@ -222,14 +226,14 @@ var PageView = (function() {
       this
     );
     endReplayButton.className = 'btn';
-    footer.appendChild(endReplayButton);
+    content.appendChild(endReplayButton);
 
     var endBack = ViewUtil.buildButton(
       LangUtil.get('endBack'),
       this.controller.showFirstPage, this.controller
     );
     endBack.className = 'btn';
-    footer.appendChild(endBack);
+    content.appendChild(endBack);
 
   };
 
