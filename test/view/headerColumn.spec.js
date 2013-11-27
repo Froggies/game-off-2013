@@ -10,7 +10,7 @@ define(dependencies, function() {
 		var headerColumn;
 
 		beforeEach(function() {
-			headerColumn = new HeaderColumnView({}, '');
+			headerColumn = new HeaderColumnView({}, 'classic');
 		});
 
 		it('should have a container', function () {

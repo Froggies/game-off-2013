@@ -12,7 +12,7 @@ define(dependencies, function() {
     beforeEach(function() {
       headerColumn = new HeaderColumnController({
         activate: function() {},
-        game: {team: ''}
+        game: {team: 'classic'}
       });
     });
 

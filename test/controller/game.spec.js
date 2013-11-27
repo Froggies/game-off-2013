@@ -39,7 +39,7 @@ define(dependencies, function() {
     };
 
     beforeEach(function() {
-      game = new GameController('', {
+      game = new GameController('classic', {
         showEndPage: function() {},
         start: function() {}
       });

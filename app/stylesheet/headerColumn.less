@@ -1,4 +1,4 @@
-.headerColumn, .headerColumn .avatar {
+.headerColumn, .headerColumn .avatar, .headerColumn .decoration {
 	width: 106px;
 	height: 81px;
 	display: inline-block;
@@ -12,7 +12,7 @@
 	background-color: #888;
 }
 
-.headerColumn.canBeActive.true {
+.headerColumn.canBeActive {
 	cursor: pointer;
 }
 
@@ -59,12 +59,6 @@
 }
 
 
-.column.active .headerColumn {
-	background-position: 10px 10px;
-	background-size: 48px 60px;
-	background-repeat: no-repeat;
-
-}
 .column.active .headerColumn.classic {
 	background-image: url("../assets/img/cardDev.png");
 	background-color: transparent;
@@ -73,7 +67,23 @@
 	top: 0;
 	left: 0;
 }
-.column.active .headerColumn .avatar{
+.column.active .headerColumn .decoration{
 	background-image: url("../assets/img/cardDev-empty.png");
 	background-color: transparent;
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.column.inactive .headerColumn .decoration{
+	display: none;
+}
+
+.column.active .headerColumn .avatar {
+	position: absolute;
+	width: 48px;
+	height: 60px;
+	top: 10px;
+	left: 10px;
+	background-position: center;
 }
