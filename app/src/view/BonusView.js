@@ -170,8 +170,10 @@ var BonusView = (function() {
       this.container, 
       this.bonusLifeImprovement,
       function() {
-        this.controller.game.header.score.nbLife = this.controller.game.header.score.nbLife + 1;
-        this.controller.game.header.score.view.updateScore();
+        if(this.controller.game.header.score.nbLife < Constants.NB_LIFE) {
+          this.controller.game.header.score.nbLife = this.controller.game.header.score.nbLife + 1;
+          this.controller.game.header.score.view.updateLife();
+        }
       },
       this,
       60 * 1000 * 1
