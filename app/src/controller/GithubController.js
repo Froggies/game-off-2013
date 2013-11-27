@@ -11,6 +11,8 @@ var GithubController = (function() {
     this.view = new GithubView(this);
     if(this.token !== undefined) {
       this.getUserInfos(this.token);
+    } else {
+      this.view.displayInputToken();
     }
   }
 
@@ -44,6 +46,7 @@ var GithubController = (function() {
   };
 
   Github.prototype.getUserInfos = function(token) {
+    this.view.displayLoader();
     var url = 'https://api.github.com/user?access_token='+token;
     GithubUtil.call(url, 
       function(data) {
