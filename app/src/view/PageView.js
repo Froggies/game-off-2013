@@ -200,8 +200,8 @@ var PageView = (function() {
   Page.prototype.showEndPage = function() {
     this.container.className = 'page endPage';
     this.container.innerHTML = [
-      '<h1 class="title">', LangUtil.get('endTitle'), '</h1>',
       '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" />',
+      '<h1 class="title">', LangUtil.get('endTitle'), '</h1>',
       '<div class="content">', LangUtil.get('endContent'), '</div>'
     ].join('');
     var content = this.container.getElementsByClassName('content')[0];
