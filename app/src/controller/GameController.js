@@ -84,11 +84,10 @@ var GameController = (function() {
       if(this.header.score.level >= Constants.NB_LVL_END) {
         this.header.score.stopUpdateScore();
         this.pageController.showEndPage();
-      } else if(this.header.score.level % Constants.NB_LVL_BONUS === 0) {
-        if(this.header.bonus.hasInactiveBonus() === true) {
-          this.header.score.stopUpdateScore();
-          this.popupController.displayChooseBonusPopup();
-        }
+      } else if(this.header.score.level % Constants.NB_LVL_BONUS === 0 &&
+          this.header.bonus.hasInactiveBonus() === true) {
+        this.header.score.stopUpdateScore();
+        this.popupController.displayChooseBonusPopup();
         this.backlog.removeAllCards();
         _.each(this.columns, function(column) {
           column.removeAllCards();
