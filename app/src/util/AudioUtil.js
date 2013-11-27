@@ -4,6 +4,7 @@ var AudioUtil = (function() {
 
   var audioPlayers = {};
   var isEnable = true;
+  var lastSongPlayed = 'accueil';
   var songs = ['click', 'money', 'levelup', 'bonusReady', 'sprint', 'keyboard', 'loose', 'accueil', 'end', 'inGame'];
 
   function buildAudioPlayer(name) {
@@ -70,6 +71,7 @@ var AudioUtil = (function() {
     },
     enable: function() {
       isEnable = true;
+      startSong(lastSongPlayed, true);
     },
     isEnable: function() {
       return isEnable;
@@ -109,6 +111,7 @@ var AudioUtil = (function() {
     accueil: function() {
       AudioUtil.endStop();
       AudioUtil.inGameStop();
+      lastSongPlayed = 'accueil';
       startSong('accueil', true);
     },
     accueilStop: function() {
@@ -117,6 +120,7 @@ var AudioUtil = (function() {
     end: function() {
       AudioUtil.accueilStop();
       AudioUtil.inGameStop();
+      lastSongPlayed = 'end';
       startSong('end', true);
     },
     endStop: function() {
@@ -125,6 +129,7 @@ var AudioUtil = (function() {
     inGame: function() {
       AudioUtil.accueilStop();
       AudioUtil.endStop();
+      lastSongPlayed = 'inGame';
       startSong('inGame', true);
     },
     inGameStop: function() {
