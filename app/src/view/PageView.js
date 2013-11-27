@@ -82,62 +82,6 @@ var PageView = (function() {
       ClickUtil.listen(selectteam, function() {
           this.controller.onChooseTeam(team);
         }, this);
-
-
-
-
-
-/*
-        var selectteam = ViewUtil.buildContainer('selectteam');
-        var selectteam.appendChild(ViewUtil.buildContainer('selectteam'+team))
-
-
-
-            this.imgBonusEmptyBacklog = ViewUtil.buildContainer('imgbonus');
-            this.bonusEmptyBacklog.appendChild(this.imgBonusEmptyBacklog);
-            initBonus(
-              this.container, 
-              this.bonusEmptyBacklog,
-              function() {
-                this.controller.game.backlog.removeAllCards();
-              }, 
-              this,
-              60 * 1000 * 5
-            );
-            function(container, bonusElement, callback, context, timeInactive)
-
-
-        ViewUtil.addClassName(bonusElement, 'noActive');
-        container.appendChild(bonusElement);
-        ClickUtil.listen(bonusElement, function() {
-          if(ViewUtil.hasClassName(bonusElement, 'active') === true) {
-            callback.call(context);
-            inactiveBonusDuring(bonusElement, timeInactive);
-          }
-        }, this);
-
-
-*/
-
-
-
-
-/*
-        ViewUtil.buildButtonImg(
-        'btn-img logo ' + team, 
-        '', 
-        function() {
-          this.controller.onChooseTeam(team);
-        }, 
-        this
-      )
-
-*/
-
-
-
-
-
     }, this);
 
     var footer = this.container.getElementsByTagName('footer')[0];
@@ -237,12 +181,14 @@ var PageView = (function() {
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
     var generique = this.container.getElementsByClassName('generique')[0];
-    footer.appendChild(buildGoButton(generique, 'creditsPageAchievement', '-350px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageTechno', '-500px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageArt', '-650px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-810px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageOnlineTool', '-1250px'));
-    footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1590px'));
+    TimeoutUtil.timeout(function() {
+      footer.appendChild(buildGoButton(generique, 'creditsPageAchievement', '-350px'));
+      footer.appendChild(buildGoButton(generique, 'creditsPageTechno', '-500px'));
+      footer.appendChild(buildGoButton(generique, 'creditsPageArt', '-650px'));
+      footer.appendChild(buildGoButton(generique, 'creditsPageTool', '-810px'));
+      footer.appendChild(buildGoButton(generique, 'creditsPageOnlineTool', '-1250px'));
+      footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1590px'));
+    }, 30000, this);
     var btn = ViewUtil.buildButton(
       LangUtil.get('creditsPageBack'),
       this.controller.showFirstPage, this.controller
@@ -258,13 +204,7 @@ var PageView = (function() {
       '<div class="content">', LangUtil.get('endContent'), '</div>',
       '<footer class="footer"></footer>'
     ].join('');
-    /*
-    TimeoutUtil.timeout(function() {
-      this.container.getElementsByClassName('allTitles')[0].style.top = '-330px';
-    }, 1000, this);
-    */
     var footer = this.container.getElementsByTagName('footer')[0];
-
     var endAgileButton = ViewUtil.buildButton(
       LangUtil.get('endAgileButton'),
       function() {
