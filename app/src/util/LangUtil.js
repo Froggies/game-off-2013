@@ -47,7 +47,7 @@ var LangUtil = (function() {
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
-      chooseUserPageTitle: 'Select your player !',
+      chooseUserPageTitle: 'Select your team !',
       chooseUserPageBack: 'Back',
       /****************************\
       |***** GITHUB USER PAGE *****|
@@ -162,7 +162,7 @@ var LangUtil = (function() {
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
-      chooseUserPageTitle: 'Choisis ton joueur !',
+      chooseUserPageTitle: 'Choisis ton équipe !',
       chooseUserPageBack: 'Retour',
       /****************************\
       |***** GITHUB USER PAGE *****|

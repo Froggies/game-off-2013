@@ -44,6 +44,8 @@ var BonusView = (function() {
 
 	Bonus.prototype.addBacklogCardsImprovement = function() {
     this.bonusBacklogCardsImprovement = ViewUtil.buildContainer('backlogCardsImprovement');
+    this.imgBonusBacklogCardsImprovement = ViewUtil.buildContainer('imgbonus');
+    this.bonusBacklogCardsImprovement.appendChild(this.imgBonusBacklogCardsImprovement);
     initBonus(
       this.container, 
       this.bonusBacklogCardsImprovement, 
@@ -62,6 +64,8 @@ var BonusView = (function() {
 
   Bonus.prototype.addEmptyBacklog = function() {
     this.bonusEmptyBacklog = ViewUtil.buildContainer('emptyBacklog');
+    this.imgBonusEmptyBacklog = ViewUtil.buildContainer('imgbonus');
+    this.bonusEmptyBacklog.appendChild(this.imgBonusEmptyBacklog);
     initBonus(
       this.container, 
       this.bonusEmptyBacklog,
@@ -80,6 +84,8 @@ var BonusView = (function() {
 
   Bonus.prototype.addCardTimeMinus = function() {
     this.bonusCardTimeMinus = ViewUtil.buildContainer('cardTimeMinus');
+    this.imgBonusCardTimeMinus = ViewUtil.buildContainer('imgbonus');
+    this.bonusCardTimeMinus.appendChild(this.imgBonusCardTimeMinus);
     initBonus(
       this.container, 
       this.bonusCardTimeMinus,
@@ -104,6 +110,8 @@ var BonusView = (function() {
 
   Bonus.prototype.addNewDev = function() {
     this.bonusNewDev = ViewUtil.buildContainer('newDev');
+    this.imgBonusNewDev = ViewUtil.buildContainer('imgbonus');
+    this.bonusNewDev.appendChild(this.imgBonusNewDev);
     initBonus(
       this.container, 
       this.bonusNewDev,
@@ -129,6 +137,8 @@ var BonusView = (function() {
 
   Bonus.prototype.addNewTask = function() {
     this.bonusNewTask = ViewUtil.buildContainer('newTask');
+    this.imgBonusNewTask = ViewUtil.buildContainer('imgbonus');
+    this.bonusNewTask.appendChild(this.imgBonusNewTask);
     initBonus(
       this.container, 
       this.bonusNewTask,
@@ -154,13 +164,15 @@ var BonusView = (function() {
 
   Bonus.prototype.addLifeImprovement = function() {
     this.bonusLifeImprovement = ViewUtil.buildContainer('lifeImprovement');
+    this.imgBonusLifeImprovement = ViewUtil.buildContainer('imgbonus');
+    this.bonusLifeImprovement.appendChild(this.imgBonusLifeImprovement);
     initBonus(
       this.container, 
       this.bonusLifeImprovement,
       function() {
         this.controller.game.header.score.nbLife = this.controller.game.header.score.nbLife + 1;
         this.controller.game.header.score.view.updateScore();
-      }, 
+      },
       this,
       60 * 1000 * 1
     );

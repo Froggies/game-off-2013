@@ -21,7 +21,7 @@ var PageView = (function() {
       LangUtil.get('firstPageStart'),
       this.controller.showChooseUserPage, this.controller
     );
-    firstPageStart.className = 'firstPageStart';
+    firstPageStart.className = 'btn-main firstPageStart';
     this.container.appendChild(firstPageStart);
     var firstPageHelp = ViewUtil.buildButton(
       LangUtil.get('firstPageHelp'),
@@ -68,14 +68,76 @@ var PageView = (function() {
     ].join('');
     var content = this.container.getElementsByClassName('content')[0];
     _.each(Constants.TEAMS, function(team) {
-      content.appendChild(ViewUtil.buildButtonImg(
+
+      var selectteam = ViewUtil.buildContainer('selectteam');
+
+      var selectteamtitle = ViewUtil.buildContainer('selectteam-title');
+      selectteamtitle.innerHTML=team;
+
+      selectteam.appendChild(ViewUtil.buildContainer('selectteam-'+team));
+      selectteam.appendChild(selectteamtitle);
+
+      content.appendChild(selectteam);
+
+      ClickUtil.listen(selectteam, function() {
+          this.controller.onChooseTeam(team);
+        }, this);
+
+
+
+
+
+/*
+        var selectteam = ViewUtil.buildContainer('selectteam');
+        var selectteam.appendChild(ViewUtil.buildContainer('selectteam'+team))
+
+
+
+            this.imgBonusEmptyBacklog = ViewUtil.buildContainer('imgbonus');
+            this.bonusEmptyBacklog.appendChild(this.imgBonusEmptyBacklog);
+            initBonus(
+              this.container, 
+              this.bonusEmptyBacklog,
+              function() {
+                this.controller.game.backlog.removeAllCards();
+              }, 
+              this,
+              60 * 1000 * 5
+            );
+            function(container, bonusElement, callback, context, timeInactive)
+
+
+        ViewUtil.addClassName(bonusElement, 'noActive');
+        container.appendChild(bonusElement);
+        ClickUtil.listen(bonusElement, function() {
+          if(ViewUtil.hasClassName(bonusElement, 'active') === true) {
+            callback.call(context);
+            inactiveBonusDuring(bonusElement, timeInactive);
+          }
+        }, this);
+
+
+*/
+
+
+
+
+/*
+        ViewUtil.buildButtonImg(
         'btn-img logo ' + team, 
         '', 
         function() {
           this.controller.onChooseTeam(team);
         }, 
         this
-      ));
+      )
+
+*/
+
+
+
+
+
     }, this);
 
     var footer = this.container.getElementsByTagName('footer')[0];

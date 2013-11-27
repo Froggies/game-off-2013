@@ -29,9 +29,13 @@ var HeaderColumnView = (function() {
     this.container.className = this.classes.join(' ') + ' canBeActive ' + this.controller.canBeActivate;
     if(this.controller.canBeActivate === true) {
       if(this.controller.isActive === false) {
-        this.message.innerHTML = LangUtil.get('columnRecruit');
+        //this.message.innerHTML = LangUtil.get('columnRecruit');
+        this.message.className = 'lvlup-add';
+        this.message.innerHTML = '<img src="assets/img/lvlup-add.png" alt="' + LangUtil.get('columnRecruit') + '" />';
       } else {
-        this.message.innerHTML = LangUtil.get('columnUpgrade');
+        //this.message.innerHTML = LangUtil.get('columnUpgrade');
+        this.message.className = 'lvlup-up';
+        this.message.innerHTML = '<img src="assets/img/lvlup-up.png" alt="' + LangUtil.get('columnUpgrade') + '" />';
       }
       this.message.style.display = 'block';
     } else {

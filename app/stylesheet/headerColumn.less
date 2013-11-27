@@ -1,16 +1,14 @@
 .headerColumn {
-	width: 100px;
-	height: 75px;
+	width: 106px;
+	height: 81px;
 	display: inline-block;
-	border: 3px solid #4A4A4A;
-	background-color: #4A4A4A;
 	border-radius:2px;
 	vertical-align: middle;
 	position: relative;
+	background-color: #888;
 }
 .column.active .headerColumn {
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
-	border: 3px solid #6F6F6F;
 	background-color: #888;
 }
 
@@ -35,8 +33,9 @@
 }
 
 .headerColumn .number {
-	float: right;
-	margin: 20px 10px 0 0;
+	position: absolute;
+	top: 35px;
+	right: 13px;
 }
 
 .headerColumn .number.number0 {
@@ -47,7 +46,7 @@
 	display:inline-block;
 	width:112px;
 	height:105px;
-	background-image: url(../assets/img/nogeek.png);
+	background-image: url("../assets/img/nogeek.png");
 	background-repeat: no-repeat;
 	background-position: center right;
 	vertical-align: middle;
@@ -57,4 +56,39 @@
 }
 .column.active.waiting .dev {
 	background-image: url(../assets/img/geek.png);
+}
+
+
+
+.column.active .headerColumn.classic {
+	background-image: url("../assets/img/cardDev.png");
+	background-color: transparent;
+}
+.column.active .headerColumn.froggies {
+	background-image: url("../assets/img/cardDev-empty.png");
+	background-color: transparent;
+}
+.column.active .headerColumn.froggies:before{
+	content: "";
+	position: absolute;
+	width: 48px;
+	height: 60px;
+	top: 10px;
+	left: 10px;
+	background-position: center;
+}
+.column.active .headerColumn.froggies.index0:before {
+	background-image: url(../assets/img/team/froggies/adeline.jpg);
+}
+.column.active .headerColumn.froggies.index1:before {
+	background-image: url(../assets/img/team/froggies/audrey.jpg);
+}
+.column.active .headerColumn.froggies.index2:before {
+	background-image: url(../assets/img/team/froggies/julien.jpg);
+}
+.column.active .headerColumn.froggies.index3:before {
+	background-image: url(../assets/img/team/froggies/vivian.jpg);
+}
+.column.active .headerColumn.froggies.index4:before {
+	background-image: url(../assets/img/team/froggies/laurent.jpg);
 }
