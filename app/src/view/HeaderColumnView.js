@@ -16,6 +16,7 @@ var HeaderColumnView = (function() {
     if(this.isArrayTeam === true) {
       this.avatarContainer = ViewUtil.buildContainer('avatar');
       this.container.appendChild(this.avatarContainer);
+      this.avatar = this.team[_.random(0, this.team.length-1)].avatar_url;
       this.decorationContainer = ViewUtil.buildContainer('decoration');
       this.container.appendChild(this.decorationContainer);
     }
@@ -51,8 +52,7 @@ var HeaderColumnView = (function() {
 
   HeaderColumn.prototype.activate = function() {
     if(this.isArrayTeam === true) {
-      var avatar = this.team[_.random(0, this.team.length-1)].avatar_url;
-      this.avatarContainer.style.backgroundImage = 'url('+avatar+')';
+      this.avatarContainer.style.backgroundImage = 'url('+this.avatar+')';
     }
   };
 
