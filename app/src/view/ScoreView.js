@@ -38,7 +38,13 @@ var ScoreView = (function() {
     AudioUtil.money();
     if(this.scoreInterval === undefined) {
       this.scoreInterval = TimeoutUtil.interval(function() {
-        this.tempScore = this.tempScore + 1;
+        if(this.controller.score - this.tempScore > 100) {
+          this.tempScore = this.tempScore + 100;
+        } else if(this.controller.score - this.tempScore > 10) {
+          this.tempScore = this.tempScore + 10;
+        } else {
+          this.tempScore = this.tempScore + 1;
+        }
         this.tempScore = this.tempScore >> 0;//parseInt
         if(this.tempScore <= this.controller.score) {
           this.containerScore.innerHTML = this.tempScore + ' $';
