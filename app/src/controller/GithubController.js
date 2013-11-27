@@ -87,7 +87,7 @@ var GithubController = (function() {
           }
         }, this);
         this.friends = _.union(this.friends, allNewFriends);
-        this.view.refreshAvatars();
+        this.pageController.startGame(this.friends);
       }, 
       function(error) {
         localStorage.removeItem('githubToken');

@@ -8,19 +8,23 @@ var HeaderColumnView = (function() {
     this.index = this.controller.index;
     this.isArrayTeam = _.isArray(team);
     if(this.isArrayTeam) {
-      this.classes = ['headerColumn', 'classic', 'index' + this.index];
+      this.classes = ['headerColumn', 'index' + this.index];
     } else {
       this.classes = ['headerColumn', team, 'index' + this.index];
     }
     this.container = ViewUtil.buildContainer(this.classes.join(' '));
-    if(this.index === 0) {
-      this.activate();
-    }
     ClickUtil.listen(this.container, this.controller.activate, this.controller);
+    if(this.isArrayTeam) {
+      this.avatarContainer = ViewUtil.buildContainer('avatar');
+      this.container.appendChild(this.avatarContainer);
+    }
     this.message = ViewUtil.buildContainer('message');
     this.container.appendChild(this.message);
     this.nbRowActive = ViewUtil.buildContainer('number');
     this.container.appendChild(this.nbRowActive);
+    if(this.index === 0) {
+      this.activate();
+    }
   }
 
   ObjectUtil.inherit(HeaderColumn, AbstractView);
@@ -46,7 +50,8 @@ var HeaderColumnView = (function() {
 
   HeaderColumn.prototype.activate = function() {
     if(this.isArrayTeam) {
-      this.container.style.backgroundImage = 'url('+this.team[this.index].avatar_url+')';
+      var avatar = this.team[_.random(0, this.team.length-1)].avatar_url;
+      this.avatarContainer.style.backgroundImage = 'url('+avatar+')';
     }
   };
 
