@@ -13,42 +13,42 @@ var ChooseBonusPopupView = (function() {
     this.content = ViewUtil.buildContainer('content');
     
     buildButton(
-      'Backlog cards ++',
+      'backlogCardsImprovement',
       LangUtil.get('chooseBonusPopupBacklogCardsPP'), 
       this.content, 
       this.controller.onChooseBacklogCardsImprovement, 
       this.controller
     );
     buildButton(
-      'Empty backlog', 
+      'emptyBacklog', 
       LangUtil.get('chooseBonusPopupEmptyBacklog'), 
       this.content, 
       this.controller.onChooseEmptyBacklog, 
       this.controller
     );
     buildButton(
-      'Cards\' time --', 
+      'cardTimeMinus', 
       LangUtil.get('chooseBonusPopupCardTimeMM'), 
       this.content, 
       this.controller.onChooseCardTimeMinus, 
       this.controller
     );
     buildButton(
-      'New dev', 
+      'newDev', 
       LangUtil.get('chooseBonusPopupNewDev'), 
       this.content, 
       this.controller.onChooseNewDev, 
       this.controller
     );
     buildButton(
-      'New task in dev', 
+      'newTask', 
       LangUtil.get('chooseBonusPopupNewTask'), 
       this.content, 
       this.controller.onChooseNewTask, 
       this.controller
     );
     buildButton(
-      'Life ++', 
+      'lifeImprovement', 
       LangUtil.get('chooseBonusPopupLifePP'), 
       this.content, 
       this.controller.onChooseLifeImprovement, 
@@ -71,31 +71,17 @@ var ChooseBonusPopupView = (function() {
 
   ObjectUtil.inherit(Popup, AbstractView);
 
-  function buildButton(title, description, container, callback, context) {
-    var button = ViewUtil.buildButton(
-      title, 
-      function(evt) {
-        container.removeChild(button);
-        callback.call(context);
-      },
-      context
-    );
-    var info = ViewUtil.buildButton('i', function(evt) {
-      evt.stopPropagation();
-      button.innerHTML = description;
-      var returnButton = ViewUtil.buildButton('x', function(evt) {
-        evt.stopPropagation();
-        button.innerHTML = title;
-        button.appendChild(info);
-      });
-      returnButton.className = 'info';
-      button.appendChild(returnButton);
-    });
-    info.className = 'info';
-    button.appendChild(info);
-
-    container.appendChild(button);
-  }
+  var buildButton = function buildButton(title, description, container, callback, context) {
+    var bonus = ViewUtil.buildContainer(title + ' btn');
+    bonus.title = description;
+    var imgBonus = ViewUtil.buildContainer('imgbonus');
+    bonus.appendChild(imgBonus);
+    ClickUtil.listen(bonus, function() {
+      container.removeChild(bonus);
+      callback.call(context);
+    }, context);
+    container.appendChild(bonus);
+  };
 
   return Popup;
 

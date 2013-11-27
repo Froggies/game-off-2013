@@ -15,8 +15,9 @@ var BonusView = (function() {
 
 	ObjectUtil.inherit(Bonus, AbstractView);
   
-  var initBonus = function(container, bonusElement, callback, context, timeInactive) {
+  var initBonus = function initBonus(container, bonusElement, callback, context, timeInactive) {
     ViewUtil.addClassName(bonusElement, 'noActive');
+    bonusElement.appendChild(ViewUtil.buildContainer('imgbonus'));
     container.appendChild(bonusElement);
     ClickUtil.listen(bonusElement, function() {
       if(ViewUtil.hasClassName(bonusElement, 'active') === true) {
@@ -44,8 +45,6 @@ var BonusView = (function() {
 
 	Bonus.prototype.addBacklogCardsImprovement = function() {
     this.bonusBacklogCardsImprovement = ViewUtil.buildContainer('backlogCardsImprovement');
-    this.imgBonusBacklogCardsImprovement = ViewUtil.buildContainer('imgbonus');
-    this.bonusBacklogCardsImprovement.appendChild(this.imgBonusBacklogCardsImprovement);
     initBonus(
       this.container, 
       this.bonusBacklogCardsImprovement, 
@@ -59,13 +58,12 @@ var BonusView = (function() {
   Bonus.prototype.activateBacklogCardsImprovement = function() {
     ViewUtil.removeClassName(this.bonusBacklogCardsImprovement, 'noActive');
     ViewUtil.addClassName(this.bonusBacklogCardsImprovement, 'active');
+    this.bonusBacklogCardsImprovement.title = LangUtil.get('chooseBonusPopupBacklogCardsPP');
   };
 
 
   Bonus.prototype.addEmptyBacklog = function() {
     this.bonusEmptyBacklog = ViewUtil.buildContainer('emptyBacklog');
-    this.imgBonusEmptyBacklog = ViewUtil.buildContainer('imgbonus');
-    this.bonusEmptyBacklog.appendChild(this.imgBonusEmptyBacklog);
     initBonus(
       this.container, 
       this.bonusEmptyBacklog,
@@ -79,13 +77,12 @@ var BonusView = (function() {
   Bonus.prototype.activateEmptyBacklog = function() {
     ViewUtil.removeClassName(this.bonusEmptyBacklog, 'noActive');
     ViewUtil.addClassName(this.bonusEmptyBacklog, 'active');
+    this.bonusEmptyBacklog.title = LangUtil.get('chooseBonusPopupEmptyBacklog');
   };
 
 
   Bonus.prototype.addCardTimeMinus = function() {
     this.bonusCardTimeMinus = ViewUtil.buildContainer('cardTimeMinus');
-    this.imgBonusCardTimeMinus = ViewUtil.buildContainer('imgbonus');
-    this.bonusCardTimeMinus.appendChild(this.imgBonusCardTimeMinus);
     initBonus(
       this.container, 
       this.bonusCardTimeMinus,
@@ -105,13 +102,12 @@ var BonusView = (function() {
   Bonus.prototype.activateCardTimeMinus = function() {
     ViewUtil.removeClassName(this.bonusCardTimeMinus, 'noActive');
     ViewUtil.addClassName(this.bonusCardTimeMinus, 'active');
+    this.bonusCardTimeMinus.title = LangUtil.get('chooseBonusPopupCardTimeMM');
   };
 
 
   Bonus.prototype.addNewDev = function() {
     this.bonusNewDev = ViewUtil.buildContainer('newDev');
-    this.imgBonusNewDev = ViewUtil.buildContainer('imgbonus');
-    this.bonusNewDev.appendChild(this.imgBonusNewDev);
     initBonus(
       this.container, 
       this.bonusNewDev,
@@ -132,13 +128,12 @@ var BonusView = (function() {
   Bonus.prototype.activateNewDev = function() {
     ViewUtil.removeClassName(this.bonusNewDev, 'noActive');
     ViewUtil.addClassName(this.bonusNewDev, 'active');
+    this.bonusNewDev.title = LangUtil.get('chooseBonusPopupNewDev');
   };
 
 
   Bonus.prototype.addNewTask = function() {
     this.bonusNewTask = ViewUtil.buildContainer('newTask');
-    this.imgBonusNewTask = ViewUtil.buildContainer('imgbonus');
-    this.bonusNewTask.appendChild(this.imgBonusNewTask);
     initBonus(
       this.container, 
       this.bonusNewTask,
@@ -159,13 +154,12 @@ var BonusView = (function() {
   Bonus.prototype.activateNewTask = function() {
     ViewUtil.removeClassName(this.bonusNewTask, 'noActive');
     ViewUtil.addClassName(this.bonusNewTask, 'active');
+    this.bonusNewTask.title = LangUtil.get('chooseBonusPopupNewTask');
   };
 
 
   Bonus.prototype.addLifeImprovement = function() {
     this.bonusLifeImprovement = ViewUtil.buildContainer('lifeImprovement');
-    this.imgBonusLifeImprovement = ViewUtil.buildContainer('imgbonus');
-    this.bonusLifeImprovement.appendChild(this.imgBonusLifeImprovement);
     initBonus(
       this.container, 
       this.bonusLifeImprovement,
@@ -182,6 +176,7 @@ var BonusView = (function() {
   Bonus.prototype.activateLifeImprovement = function() {
     ViewUtil.removeClassName(this.bonusLifeImprovement, 'noActive');
     ViewUtil.addClassName(this.bonusLifeImprovement, 'active');
+    this.bonusLifeImprovement.title = LangUtil.get('chooseBonusPopupLifePP');
   };
 
 
