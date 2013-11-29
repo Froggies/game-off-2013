@@ -4,6 +4,7 @@ var AudioUtil = (function() {
 
   var audioPlayers = {};
   var isEnable = true;
+  var loadInProgress = true;
   var lastSongPlayed = 'accueil';
   var songs = ['click', 'money', 'levelup', 'bonusReady', 'sprint', 'keyboard', 'loose', 'accueil', 'end', 'inGame'];
 
@@ -26,7 +27,7 @@ var AudioUtil = (function() {
   }
 
   function startSong(player, loop, optSuffixe) {
-    if(isEnable === true && AudioUtil.canBeEnable() === true) {
+    if(isEnable === true && AudioUtil.canBeEnable() === true && loadInProgress === false) {
       var name = player;
       if(optSuffixe !== undefined) {
         name = name + optSuffixe;
@@ -39,7 +40,6 @@ var AudioUtil = (function() {
       }
       audioPlayers[name].time = 0;
       audioPlayers[name].play();
-      console.log(audioPlayers);
     }
   }
 
@@ -55,8 +55,10 @@ var AudioUtil = (function() {
 
   function loadAllSongs() {
     _.each(songs, function(song) {
-      buildAudioPlayer(song);
+      audioPlayers[song] = buildAudioPlayer(song);
     });
+    loadInProgress = false;
+    startSong(lastSongPlayed, true);
   }
 
   return {
