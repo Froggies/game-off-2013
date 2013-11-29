@@ -99,8 +99,28 @@ var CompatibilityUtil = (function() {
       return _hasDragAndDrop && 
         _hasCssTransition && 
         _hasAjaxRequest && 
-        _hasLocalStorage &&
         (_hasAudioMp3 || _hasAudioWav || _hasAudioOgg);
+    },
+    isFullCompatible: function() {
+      return _hasDragAndDrop && 
+        _hasCssTransition && 
+        _hasAjaxRequest && 
+        _hasLocalStorage &&
+        (_hasAudioMp3 && _hasAudioWav && _hasAudioOgg);
+    },
+    nbItemCompatible: function() {
+      var nb = 0;
+      nb = nb + ((_hasDragAndDrop === true) ? 1 : 0);
+      nb = nb + ((_hasCssTransition === true) ? 1 : 0);
+      nb = nb + ((_hasAjaxRequest === true) ? 1 : 0);
+      nb = nb + ((_hasLocalStorage === true) ? 1 : 0);
+      nb = nb + ((_hasAudioMp3 === true) ? 1 : 0);
+      nb = nb + ((_hasAudioWav === true) ? 1 : 0);
+      nb = nb + ((_hasAudioOgg === true) ? 1 : 0);
+      return nb;
+    },
+    nbItem: function() {
+      return 7;
     },
     hasDragAndDrop: function() {
       return _hasDragAndDrop;

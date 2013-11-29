@@ -59,6 +59,10 @@ var GithubView = (function() {
     this.checkboxKeepIt = ViewUtil.buildElement('', 'input');
     this.checkboxKeepIt.type = 'checkbox';
     this.inputTokenContainer.appendChild(this.checkboxKeepIt);
+    if(CompatibilityUtil.hasLocalStorage() === false) {
+      this.checkboxKeepIt.setAttribute('disabled', 'disabled');
+      this.checkboxKeepIt.title = LangUtil.get('githubPageNoLocalStorage');
+    }
     var sentence = ViewUtil.buildElement('githubPageRetainToken', 'span');
     sentence.innerHTML = LangUtil.get('githubPageRetainToken');
     this.inputTokenContainer.appendChild(sentence);

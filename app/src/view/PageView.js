@@ -31,8 +31,12 @@ var PageView = (function() {
       this.controller.showCreditsPage, this.controller
     );
     this.container.appendChild(firstPageCredits);
+    var compatibilityButtonTitle = [
+      LangUtil.get('compatibilityPageTitle'), ' ',
+      CompatibilityUtil.nbItemCompatible(), '/', CompatibilityUtil.nbItem()
+    ].join('');
     var compatibilityPageTitle = ViewUtil.buildButton(
-      LangUtil.get('compatibilityPageTitle'), '',
+      compatibilityButtonTitle, '',
       this.controller.showCompatibilityPage, this.controller
     );
     this.container.appendChild(compatibilityPageTitle);

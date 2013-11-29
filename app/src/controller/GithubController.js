@@ -4,7 +4,10 @@ var GithubController = (function() {
 
   function Github(pageController) {
     this.pageController = pageController;
-    this.token = localStorage['githubToken'];
+    this.token = undefined;
+    if(CompatibilityUtil.hasLocalStorage() === true) {
+      this.token = localStorage['githubToken'];
+    }
     this.user = undefined;
     this.friends = [];
     this.selectedTeam = [];
@@ -23,7 +26,7 @@ var GithubController = (function() {
   };
 
   Github.prototype.newToken = function(token, keepIt) {
-    if(keepIt === true) {
+    if(CompatibilityUtil.hasLocalStorage() === true && keepIt === true) {
       localStorage['githubToken'] = token;
     }
     this.getUserInfos(token);
