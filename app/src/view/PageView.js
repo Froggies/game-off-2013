@@ -240,6 +240,8 @@ var PageView = (function() {
     var noCompatible = '';
     if(CompatibilityUtil.isCompatible() === false) {
       noCompatible = LangUtil.get('compatibilityPageNoCompatible');
+    } else if(CompatibilityUtil.isCompatible() === true && CompatibilityUtil.isFullCompatible() === false) {
+      noCompatible = LangUtil.get('compatibilityPageNoFullCompatible');
     }
     this.container.innerHTML = [
       '<h1 class="title">', LangUtil.get('compatibilityPageTitle'), '</h1>',
