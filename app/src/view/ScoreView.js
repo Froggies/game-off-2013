@@ -19,7 +19,6 @@ var ScoreView = (function() {
       }
     }
     this.tempScore = 0;
-    this.levelNextFactor = 1;
     this.gauge = ViewUtil.buildContainer('gauge gaugeLevel');
     this.gaugePercentage = ViewUtil.buildContainer('');
     this.gauge.appendChild(this.gaugePercentage);
@@ -93,10 +92,7 @@ var ScoreView = (function() {
       buildLevelSpan(this.controller.level)
     ].join('');
 
-    if(this.controller.level > 0 && this.controller.level % Constants.NB_LVL_BONUS === 0) {
-      this.levelNextFactor = this.levelNextFactor + 1;
-    }
-    var percent = (this.controller.level * 100) / (Constants.NB_LVL_BONUS * this.levelNextFactor);
+    var percent = (this.controller.level * 100) / (Constants.NB_LVL_END);
 
     ViewUtil.removeClassName(this.gaugePercentage, 'relax');
     ViewUtil.removeClassName(this.gaugePercentage, 'nervous');
