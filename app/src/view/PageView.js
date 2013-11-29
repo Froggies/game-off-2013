@@ -10,10 +10,9 @@ var PageView = (function() {
   ObjectUtil.inherit(Page, AbstractView);
 
   Page.prototype.showFirstPage = function() {
-    var b = document.createElement('button');
     this.container.className = 'page firstPage';
     this.container.innerHTML = '<img src="assets/img/panicbacklog_logo.png" alt="Panic Backlog" class="mainlogo" />';
-    var title = this.container.getElementsByTagName('h1')[0];
+    
     var lang = new LangController();
     lang.start(this.container);
 
