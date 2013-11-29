@@ -45,6 +45,13 @@ var LangUtil = (function() {
       compatibilityPageNoCompatible: 'TODO - translate : Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
       compatibilityPageBack: 'Back',
       compatibilityPageTryBack: 'Try anyway',
+      compatibilityDdDescription: 'All game is based on this system !',
+      compatibilityCssTransitionDescription: 'All game is based on this system !',
+      compatibilityAjaxDescription: 'You can\'t play your github account !',
+      compatibilityLocalStorageDescription: 'You can\'t store your github token',
+      compatibilityMp3Description: 'You can\'t play mp3 songs !',
+      compatibilityWavDescription: 'You can\'t play wav songs !',
+      compatibilityOggDescription: 'You can\'t play ogg songs !',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
@@ -162,6 +169,13 @@ var LangUtil = (function() {
       compatibilityPageNoCompatible: 'Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
       compatibilityPageBack: 'Retour',
       compatibilityPageTryBack: 'Essayer quand même',
+      compatibilityDdDescription: 'Tout le jeu est basé sur le Drag&Drop !',
+      compatibilityCssTransitionDescription: 'Tout le jeu est basé sur les transitions css !',
+      compatibilityAjaxDescription: 'Vous ne pouvez pas joué avec votre compte github !',
+      compatibilityLocalStorageDescription: 'Vous ne pouvez pas sauvé votre token github !',
+      compatibilityMp3Description: 'Vous ne pouvez pas écouté le son au format mp3 !',
+      compatibilityWavDescription: 'Vous ne pouvez pas écouté le son au format wav !',
+      compatibilityOggDescription: 'Vous ne pouvez pas écouté le son au format ogg !',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/

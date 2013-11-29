@@ -224,9 +224,10 @@ var PageView = (function() {
   };
 
 
-  function buildCompatibility(name, isCompatible) {
+  function buildCompatibility(name, isCompatible, description) {
     return ['<li class="compatibility ', isCompatible, '">',
       name,
+      '<span class="description">', description, '</span>',
       '</li>'].join('');
   }
 
@@ -239,13 +240,13 @@ var PageView = (function() {
     this.container.innerHTML = [
       '<h1 class="title">', LangUtil.get('compatibilityPageTitle'), '</h1>',
       '<div class="content">', noCompatible, '<ul>',
-      buildCompatibility('Drag & Drop', CompatibilityUtil.hasDragAndDrop()),
-      buildCompatibility('Css transition', CompatibilityUtil.hasCssTransition()),
-      buildCompatibility('Ajax request', CompatibilityUtil.hasAjaxRequest()),
-      buildCompatibility('Local storage', CompatibilityUtil.hasLocalStorage()),
-      buildCompatibility('Audio mp3', CompatibilityUtil.hasAudioMp3()),
-      buildCompatibility('Audio wav', CompatibilityUtil.hasAudioWav()),
-      buildCompatibility('Audio ogg', CompatibilityUtil.hasAudioOgg()),
+      buildCompatibility('Drag & Drop', CompatibilityUtil.hasDragAndDrop(), LangUtil.get('compatibilityDdDescription')),
+      buildCompatibility('Css transition', CompatibilityUtil.hasCssTransition(), LangUtil.get('compatibilityCssTransitionDescription')),
+      buildCompatibility('Ajax request', CompatibilityUtil.hasAjaxRequest(), LangUtil.get('compatibilityAjaxDescription')),
+      buildCompatibility('Local storage', CompatibilityUtil.hasLocalStorage(), LangUtil.get('compatibilityLocalStorageDescription')),
+      buildCompatibility('Audio mp3', CompatibilityUtil.hasAudioMp3(), LangUtil.get('compatibilityMp3Description')),
+      buildCompatibility('Audio wav', CompatibilityUtil.hasAudioWav(), LangUtil.get('compatibilityWavDescription')),
+      buildCompatibility('Audio ogg', CompatibilityUtil.hasAudioOgg(), LangUtil.get('compatibilityOggDescription')),
       '</ul></div><footer class="footer"></footer>'
     ].join('');
 

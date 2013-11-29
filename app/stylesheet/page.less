@@ -25,6 +25,7 @@
 .compatibility{
 	padding: 10px;
 	text-align: center;
+	line-height: 22px;
 }
 
 .compatibility.true:after {
@@ -49,6 +50,19 @@
 	transform:rotate(-2deg);
 	-webkit-transform:rotate(-2deg);
 	margin-left: 10px;
+}
+
+.compatibility .description {
+	position: absolute;
+	right: 0;
+	margin-right: 50px;
+	line-height: 22px;
+	padding: 10px;
+	font-size: 0.8em;
+}
+
+.compatibility.true .description {
+	display: none;
 }
 
 .chooseUserPage .content{
