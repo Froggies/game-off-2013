@@ -122,7 +122,7 @@ var LangUtil = (function() {
       creditsPageSentence: 'Panic Backlog was realised for the GitHub Game Off 2013',
       creditsPageAchievement: 'Achievement',
       creditsPageArt: 'Artwork',
-      creditsPageTechno: 'Techno',
+      creditsPageTechno: 'Technos',
       creditsPageTool: 'Tools',
       creditsPageOnlineTool: 'Web Tools',
       creditsPageThx: 'Thanks',
@@ -248,7 +248,7 @@ var LangUtil = (function() {
       \****************************/
       creditsPageSentence: 'Panic Backlog a été réalisé pour le concours GitHub Game Off 2013',
       creditsPageAchievement: 'Réalisation',
-      creditsPageTechno: 'Techno',
+      creditsPageTechno: 'Technos',
       creditsPageArt: 'Artwork',
       creditsPageLanguage: 'Langages',
       creditsPageTool: 'Outils',
@@ -266,7 +266,7 @@ var LangUtil = (function() {
       |********* END GAME *********|
       \****************************/
       endTitle: 'Vous avez fini le jeu !',
-      endContent: 'Oui dans ce jeu il n\'y a ni gagnant, ni perdant : tous les joueurs apprennent ! Nous espérons que vous avez appris que gérer un projet de cette façon est très fastidieux et ennuyeux ! Si ce n\'est pas le cas, n\'hésites pas à rejouer ! Sinon tu peux en apprendre plus sur les méthodes agiles.',
+      endContent: 'Oui dans ce jeu il n\'y a ni gagnant, ni perdant : tous les joueurs apprennent ! Nous espérons que tu as appris que gérer un projet de cette façon est très fastidieux et ennuyeux ! Si ce n\'est pas le cas, n\'hésites pas à rejouer ! Sinon tu peux en apprendre plus sur les méthodes agiles.',
       endBack: 'Menu',
       endReplayButton: 'Rejouer !',
       endAgileButton: 'Manifeste agile'
