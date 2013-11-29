@@ -85,35 +85,43 @@ var CompatibilityUtil = (function() {
     }
   }
 
+  var _hasDragAndDrop = hasDragAndDrop();
+  var _hasCssTransition = hasCssTransition();
+  var _hasAjaxRequest = hasAjaxRequest();
+  var _hasLocalStorage = hasLocalStorage();
+  var _hasAudioMp3 = hasAudioMp3();
+  var _hasAudioWav = hasAudioWav();
+  var _hasAudioOgg = hasAudioOgg();
+
   return {
 
     isCompatible: function() {
-      return hasDragAndDrop() && 
-        hasCssTransition() && 
-        hasAjaxRequest() && 
-        hasLocalStorage() &&
-        (hasAudioMp3() || hasAudioWav() || hasAudioOgg());
+      return _hasDragAndDrop && 
+        _hasCssTransition && 
+        _hasAjaxRequest && 
+        _hasLocalStorage &&
+        (_hasAudioMp3 || _hasAudioWav || _hasAudioOgg);
     },
     hasDragAndDrop: function() {
-      return hasDragAndDrop();
+      return _hasDragAndDrop;
     },
     hasCssTransition: function() {
-      return hasCssTransition();
+      return _hasCssTransition;
     },
     hasAjaxRequest: function() {
-      return hasAjaxRequest();
+      return _hasAjaxRequest;
     },
     hasLocalStorage: function() {
-      return hasLocalStorage();
+      return _hasLocalStorage;
     },
     hasAudioMp3: function() {
-      return hasAudioMp3();
+      return _hasAudioMp3;
     },
     hasAudioWav: function() {
-      return hasAudioWav();
+      return _hasAudioWav;
     },
     hasAudioOgg: function() {
-      return hasAudioOgg();
+      return _hasAudioOgg;
     }
 
   };
