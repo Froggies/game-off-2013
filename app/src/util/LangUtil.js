@@ -160,7 +160,7 @@ var LangUtil = (function() {
       helpGame4: 'Quand ton niveau le permet, tu peux engager un nouveau dev.',
       helpGame5: 'Et tu peux lui affecter de nouvelles tâches.',
       helpGame6: 'Après un certains temps tu peux avoir un bonus',
-      helpGame7: 'Pour utiliser un bonus, click dessus, dans le haut du jeu.',
+      helpGame7: 'Pour utiliser un bonus, clic dessus, dans le haut du jeu.',
       helpGame8: 'Quand tu as trop de tâches, tu perd une vie.',
       helpGame9: 'A tout moment tes développeurs peuvent démissioner !',
 
