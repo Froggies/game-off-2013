@@ -35,14 +35,6 @@ var ViewUtil = (function() {
       }
       return button;
     },
-    buildButtonImg: function(classes, label, onClick, onClickContext) {
-      var button = ViewUtil.buildButton('', onClick, onClickContext);
-      button.className = classes;
-      if(label !== '') {
-        button.innerHTML = label;
-      }
-      return button;
-    },
     buildElement: function(className, type) {
       var element = buildElement(type);
       element.className = className;
