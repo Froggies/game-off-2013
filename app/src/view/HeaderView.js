@@ -1,22 +1,25 @@
 var HeaderView = (function() {
 
-	'use strict';
+  'use strict';
 
-	function Header(controller) {
-		Header.parent.constructor.apply(this, arguments);
-		this.container = ViewUtil.buildContainer('header');
-		this.pauseButton = ViewUtil.buildButton('||');
-		this.pauseButton.className = 'btn-main buttonPause';
-		ClickUtil.listen(this.pauseButton, function() {
-			this.controller.game.pause();
-			this.controller.game.popupController.displayPausePopup();
-		}, this);
-		this.container.appendChild(this.pauseButton);
-	}
+  function Header(controller) {
+    Header.parent.constructor.apply(this, arguments);
+    this.container = ViewUtil.buildContainer('header');
+    this.container.appendChild(
+      ViewUtil.buildMainButton(
+        '||', 
+        'buttonPause', 
+        function() {
+          this.controller.game.pause();
+          this.controller.game.popupController.displayPausePopup();
+        }, 
+        this)
+    );
+  }
 
-	ObjectUtil.inherit(Header, AbstractView);
+  ObjectUtil.inherit(Header, AbstractView);
 
-	return Header;
+  return Header;
 
 })();
 

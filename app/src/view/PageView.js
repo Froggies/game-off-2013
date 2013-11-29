@@ -16,29 +16,25 @@ var PageView = (function() {
     var lang = new LangController();
     lang.start(this.container);
 
-    var firstPageStart = ViewUtil.buildButton(
-      LangUtil.get('firstPageStart'),
+    var firstPageStart = ViewUtil.buildMainButton(
+      LangUtil.get('firstPageStart'), 'firstPageStart',
       this.controller.showChooseUserPage, this.controller
     );
-    firstPageStart.className = 'btn-main firstPageStart';
     this.container.appendChild(firstPageStart);
     var firstPageHelp = ViewUtil.buildButton(
-      LangUtil.get('firstPageHelp'),
+      LangUtil.get('firstPageHelp'), '',
       this.controller.showHelpPage, this.controller
     );
-    firstPageHelp.className = 'btn';
     this.container.appendChild(firstPageHelp);
     var firstPageCredits = ViewUtil.buildButton(
-      LangUtil.get('firstPageCredits'),
+      LangUtil.get('firstPageCredits'), '',
       this.controller.showCreditsPage, this.controller
     );
-    firstPageCredits.className = 'btn';
     this.container.appendChild(firstPageCredits);
     var compatibilityPageTitle = ViewUtil.buildButton(
-      LangUtil.get('compatibilityPageTitle'),
+      LangUtil.get('compatibilityPageTitle'), '',
       this.controller.showCompatibilityPage, this.controller
     );
-    compatibilityPageTitle.className = 'btn';
     this.container.appendChild(compatibilityPageTitle);
   };
 
@@ -51,10 +47,9 @@ var PageView = (function() {
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
     var helpPageBack = ViewUtil.buildButton(
-      LangUtil.get('helpPageBack'),
+      LangUtil.get('helpPageBack'), '',
       this.controller.showFirstPage, this.controller
     );
-    helpPageBack.className = 'btn';
     footer.appendChild(helpPageBack);
   };
 
@@ -85,10 +80,9 @@ var PageView = (function() {
 
     var footer = this.container.getElementsByTagName('footer')[0];
     var chooseUserPageBack = ViewUtil.buildButton(
-      LangUtil.get('chooseUserPageBack'),
+      LangUtil.get('chooseUserPageBack'), '',
       this.controller.showFirstPage, this.controller
     );
-    chooseUserPageBack.className = 'btn';
     footer.appendChild(chooseUserPageBack);
 
   };
@@ -102,10 +96,9 @@ var PageView = (function() {
     ].join('');
     var footer = this.container.getElementsByTagName('footer')[0];
     var githubPageBack = ViewUtil.buildButton(
-      LangUtil.get('githubPageBack'),
+      LangUtil.get('githubPageBack'), '',
       this.controller.showChooseUserPage, this.controller
     );
-    githubPageBack.className = 'btn';
     footer.appendChild(githubPageBack);
 
 
@@ -129,14 +122,12 @@ var PageView = (function() {
   }
 
   function buildGoButton(elem, langKey, topPx) {
-    var btn = ViewUtil.buildButton(
-      LangUtil.get(langKey),
+    return ViewUtil.buildButton(
+      LangUtil.get(langKey), '',
       function() {
         elem.style.top = topPx;
       }
     );
-    btn.className = 'btn';
-    return btn;
   }
 
   Page.prototype.showCreditsPage = function() {
@@ -189,10 +180,9 @@ var PageView = (function() {
       footer.appendChild(buildGoButton(generique, 'creditsPageThx', '-1590px'));
     }, 30000, this);
     var btn = ViewUtil.buildButton(
-      LangUtil.get('creditsPageBack'),
+      LangUtil.get('creditsPageBack'), '',
       this.controller.showFirstPage, this.controller
     );
-    btn.className = 'btn';
     footer.appendChild(btn);
   };
 
@@ -204,8 +194,8 @@ var PageView = (function() {
       '<div class="content">', LangUtil.get('endContent'), '</div>'
     ].join('');
     var content = this.container.getElementsByClassName('content')[0];
-    var endAgileButton = ViewUtil.buildButton(
-      LangUtil.get('endAgileButton'),
+    var endAgileButton = ViewUtil.buildMainButton(
+      LangUtil.get('endAgileButton'), '',
       function() {
         if(LangUtil.getCurrentLang() === 'fr') {
           window.open('http://fr.wikipedia.org/wiki/M%C3%A9thode_agile');
@@ -214,24 +204,21 @@ var PageView = (function() {
         }
       }
     );
-    endAgileButton.className = 'btn-main';
     content.appendChild(endAgileButton);
 
     var endReplayButton = ViewUtil.buildButton(
-      LangUtil.get('endReplayButton'),
+      LangUtil.get('endReplayButton'), '',
       function() {
         this.controller.startGame(this.controller.team);
       }, 
       this
     );
-    endReplayButton.className = 'btn';
     content.appendChild(endReplayButton);
 
     var endBack = ViewUtil.buildButton(
-      LangUtil.get('endBack'),
+      LangUtil.get('endBack'), '',
       this.controller.showFirstPage, this.controller
     );
-    endBack.className = 'btn';
     content.appendChild(endBack);
 
   };
@@ -264,10 +251,9 @@ var PageView = (function() {
 
     var footer = this.container.getElementsByTagName('footer')[0];
     var compatibilityPageBack = ViewUtil.buildButton(
-      LangUtil.get('compatibilityPageBack'),
+      LangUtil.get('compatibilityPageBack'), '',
       this.controller.showFirstPage, this.controller
     );
-    compatibilityPageBack.className = 'btn';
     footer.appendChild(compatibilityPageBack);
   };
 

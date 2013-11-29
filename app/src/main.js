@@ -9,7 +9,7 @@ window.onload = function() {
     page.showCompatibilityPage();
   }
 
-  var audioManager = ViewUtil.buildButton('', function() {
+  var audioManager = ViewUtil.buildButton('', '', function() {
     if(AudioUtil.isEnable() === true) {
       AudioUtil.disable();
       ViewUtil.removeClassName(audioManager, 'active');
@@ -18,6 +18,7 @@ window.onload = function() {
       ViewUtil.addClassName(audioManager, 'active');
     }
   });
+  ViewUtil.removeClassName(audioManager, 'btn');
   ViewUtil.addClassName(audioManager, 'audio');
   if(AudioUtil.canBeEnable() === true) {
     ViewUtil.addClassName(audioManager, 'active');

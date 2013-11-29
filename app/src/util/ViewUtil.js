@@ -27,8 +27,26 @@ var ViewUtil = (function() {
       img.src = url;
       return img;
     },
-    buildButton: function(label, onClick, onClickContext) {
+    buildButton: function(label, className, onClick, onClickContext) {
       var button = buildElement('button');
+      if(className !== '') {
+        button.className = 'btn ' + className;
+      } else {
+        button.className = 'btn';
+      }
+      button.innerHTML = label;
+      if(onClick !== undefined) {
+        ClickUtil.listen(button, onClick, onClickContext);
+      }
+      return button;
+    },
+    buildMainButton: function(label, className, onClick, onClickContext) {
+      var button = buildElement('button');
+      if(className !== '') {
+        button.className = 'btn-main ' + className;
+      } else {
+        button.className = 'btn-main';
+      }
       button.innerHTML = label;
       if(onClick !== undefined) {
         ClickUtil.listen(button, onClick, onClickContext);

@@ -16,7 +16,9 @@ var GithubView = (function() {
     this.buildInputToken();
     this.container.appendChild(this.inputTokenContainer);
 
-    hideAll(this.container);
+    this.helpContainer = ViewUtil.buildContainer('helpContainer');
+    this.buildHelp();
+    this.container.appendChild(this.helpContainer);
   }
 
   ObjectUtil.inherit(Github, AbstractView);
@@ -33,15 +35,25 @@ var GithubView = (function() {
     this.inputToken.placeholder = LangUtil.get('githubPageToken');
     this.inputTokenContainer.appendChild(this.inputToken);
 
-    var githubButtonOk = ViewUtil.buildButton('Ok',function() {
-        this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
-      }, this);
-    githubButtonOk.className = 'btn-main';
-    this.inputTokenContainer.appendChild(githubButtonOk);
+    this.inputTokenContainer.appendChild(
+      ViewUtil.buildMainButton(
+        'Ok', 
+        '', 
+        function() {
+          this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
+        }, 
+        this
+      )
+    );
 
-    var githubPageHelp = ViewUtil.buildButton(LangUtil.get('githubPageHelp'),this.controller.showHelp, this.controller);
-    githubPageHelp.className = 'btn';
-    this.inputTokenContainer.appendChild(githubPageHelp);
+    this.inputTokenContainer.appendChild(
+      ViewUtil.buildButton(
+        LangUtil.get('githubPageHelp'), 
+        '', 
+        this.controller.showHelp, 
+        this.controller
+      )
+    );
 
     this.inputTokenContainer.appendChild(ViewUtil.buildElement('', 'br'));
     this.checkboxKeepIt = ViewUtil.buildElement('', 'input');
@@ -53,6 +65,7 @@ var GithubView = (function() {
   };
 
   Github.prototype.displayInputToken = function() {
+    hideAll(this.container);
     this.inputTokenContainer.style.display = 'block';
   };
 
@@ -65,6 +78,41 @@ var GithubView = (function() {
     this.inputTokenContainer.style.display = 'block';
     this.errorDiv.style.display = 'block';
     this.errorDiv.innerHTML = error;
+  };
+
+  Github.prototype.buildHelp = function() {
+    var helpConfig = [
+      {img: 'assets/img/help/github/1.png', sentenceKey: 'helpGithub1'},
+      {img: 'assets/img/help/github/2.png', sentenceKey: 'helpGithub2'},
+      {img: 'assets/img/help/github/3.png', sentenceKey: 'helpGithub3'},
+      {img: 'assets/img/help/github/4.png', sentenceKey: 'helpGithub4'},
+      {img: 'assets/img/help/github/5.png', sentenceKey: 'helpGithub5'}
+    ];
+    this.helpContainer.innerHTML = '';
+    this.helpController = new HelpController(helpConfig);
+    this.helpController.start(this.helpContainer);
+
+    this.helpContainer.appendChild(
+      ViewUtil.buildButton(
+        LangUtil.get('githubPageNoAccount'),
+        '',
+        this.controller.pageController.showChooseUserPage, 
+        this.controller.pageController
+      )
+    );
+    this.helpContainer.appendChild(
+      ViewUtil.buildButton(
+        LangUtil.get('githubPageHaveToken'),
+        '',
+        this.displayInputToken, 
+        this
+      )
+    );
+  };
+
+  Github.prototype.showHelp = function() {
+    hideAll(this.container);
+    this.helpContainer.style.display = 'block';
   };
 
   return Github;
