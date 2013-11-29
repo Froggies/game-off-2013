@@ -98,7 +98,6 @@ var CompatibilityUtil = (function() {
     isCompatible: function() {
       return _hasDragAndDrop && 
         _hasCssTransition && 
-        _hasAjaxRequest && 
         (_hasAudioMp3 || _hasAudioWav || _hasAudioOgg);
     },
     isFullCompatible: function() {

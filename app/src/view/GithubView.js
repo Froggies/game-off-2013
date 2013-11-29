@@ -35,16 +35,18 @@ var GithubView = (function() {
     this.inputToken.placeholder = LangUtil.get('githubPageToken');
     this.inputTokenContainer.appendChild(this.inputToken);
 
-    this.inputTokenContainer.appendChild(
-      ViewUtil.buildMainButton(
-        'Ok', 
-        '', 
-        function() {
-          this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
-        }, 
-        this
-      )
+    var okButton = ViewUtil.buildMainButton(
+      'Ok', 
+      '', 
+      function() {
+        this.controller.newToken(this.inputToken.value, this.checkboxKeepIt.checked);
+      }, 
+      this
     );
+    this.inputTokenContainer.appendChild(okButton);
+    if(CompatibilityUtil.hasAjaxRequest() === false) {
+      ViewUtil.inactiveButton(okButton);
+    }
 
     this.inputTokenContainer.appendChild(
       ViewUtil.buildButton(

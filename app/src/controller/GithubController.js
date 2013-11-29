@@ -12,10 +12,15 @@ var GithubController = (function() {
     this.friends = [];
     this.selectedTeam = [];
     this.view = new GithubView(this);
+    
     if(this.token !== undefined) {
       this.getUserInfos(this.token);
     } else {
       this.view.displayInputToken();
+    }
+
+    if(CompatibilityUtil.hasAjaxRequest() === false) {
+      this.view.displayError(LangUtil.get('githubPageNoAjax'));
     }
   }
 
