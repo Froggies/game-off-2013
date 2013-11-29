@@ -28,27 +28,27 @@ var LangUtil = (function() {
       |******** HELP  PAGE ********|
       \****************************/
       helpPageTitle: 'Help',
-      helpGame1: 'Tasks are delivered in right.',
-      helpGame2: 'Drag&Drop it on free dev.',
-      helpGame3: 'On drop the dev can work.',
-      helpGame4: 'When you have enought level, you can employ new dev.',
-      helpGame5: 'And you can affect task to him.',
+      helpGame1: 'Tasks are delivered at the right of your screen.',
+      helpGame2: 'Drag&Drop a card on a free dev.',
+      helpGame3: 'When you drop a card, the dev starts to work.',
+      helpGame4: 'When your level allow it, you can employ new dev.',
+      helpGame5: 'And you can affect tasks to him.',
       helpGame6: 'After some times, you can choose a bonus.',
-      helpGame7: 'To use a bonus, click on it, in the header of game.',
-      helpGame8: 'When your tasks blowup, you loose a life.',
-      helpGame9: 'At any time, your dev can resign !',
+      helpGame7: 'To use a bonus, click on it, in the header of the game.',
+      helpGame8: 'When you have to much tasks, you loose a life.',
+      helpGame9: 'At any time, your dev can quit !',
       helpPageBack: 'Back',
       /****************************\
       |**** COMPATIBILITY PAGE ****|
       \****************************/
       compatibilityPageTitle: 'Compatibility',
-      compatibilityPageNoCompatible: 'TODO - translate : Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
-      compatibilityPageNoFullCompatible: 'TODO - translate : Vous n\'êtes pas complètement compatible, mais vous pouvez jouer quand même !',
+      compatibilityPageNoCompatible: 'We are sorry, but your browser doesn\'t allow you to play ! Please upgrade it or change it !',
+      compatibilityPageNoFullCompatible: 'Your browser is not fully compatible with the game, but you can still play !',
       compatibilityPageBack: 'Back',
       compatibilityPageTryBack: 'Try anyway',
-      compatibilityDdDescription: 'All game is based on this system !',
-      compatibilityCssTransitionDescription: 'All game is based on this system !',
-      compatibilityAjaxDescription: 'You can\'t play your github account !',
+      compatibilityDdDescription: 'All the game is based on this system !',
+      compatibilityCssTransitionDescription: 'All the game is based on this system !',
+      compatibilityAjaxDescription: 'You can\'t play with your github account !',
       compatibilityLocalStorageDescription: 'You can\'t store your github token',
       compatibilityMp3Description: 'You can\'t play mp3 songs !',
       compatibilityWavDescription: 'You can\'t play wav songs !',
@@ -64,16 +64,16 @@ var LangUtil = (function() {
       githubPageTitle: 'Github !',
       githubPageToken: 'Token',
       githubPageHelp: 'Help',
-      githubPageRetainToken: 'Save my token for next times',
-      githubPageNoAjax: 'Your browser has not ajax, so you can not use github account !',
+      githubPageRetainToken: 'Save my token for the next time',
+      githubPageNoAjax: 'Your browser has not ajax, so you can\'t use your github account !',
       githubPageNoLocalStorage: 'Your browser does not support LocalStorage',
-      helpGithub1: 'When you are connected on github, go in account settings (top right corner).',
+      helpGithub1: 'When you are connected on github, go to account settings (top right corner).',
       helpGithub2: 'Go in applications menu.',
       helpGithub3: 'Click on create new token button (in personal access tokens section).',
       helpGithub4: 'Enter a name.',
       helpGithub5: 'Copy the token, and then paste it into the app.',
       githubPageHaveToken: 'I have my github token',
-      githubPageNoAccount: 'I haven\'t github account',
+      githubPageNoAccount: 'I haven\'t a github account',
       githubPageBack: 'Back',
       /****************************\
       |******** HELP COMPO ********|
@@ -84,11 +84,11 @@ var LangUtil = (function() {
       |**** CHOOSE BONUS POPUP ****|
       \****************************/
       chooseBonusPopupTitle: 'Active a bonus !',
-      chooseBonusPopupBacklogCardsPP: 'Your tasks can have 1 sup card before blowup',
-      chooseBonusPopupEmptyBacklog: 'By clicking you empty your tasks',
-      chooseBonusPopupCardTimeMM: 'Divide by 2 all cards\' time in game (not in tasks)',
+      chooseBonusPopupBacklogCardsPP: 'You can increase the size of your list task.',
+      chooseBonusPopupEmptyBacklog: 'By clicking you empty your list task',
+      chooseBonusPopupCardTimeMM: 'Divide by 2 all cards\' time that are in the game (not the one in the list task)',
       chooseBonusPopupNewDev: 'Active the next dev in your team',
-      chooseBonusPopupNewTask: 'Active the next task in the first dev who have empty task',
+      chooseBonusPopupNewTask: 'Active the next task in the first dev who have empty tasks',
       chooseBonusPopupLifePP: 'Add a life in your lifes\'',
       /****************************\
       |******* PAUSE  POPUP *******|
@@ -114,7 +114,7 @@ var LangUtil = (function() {
       /****************************\
       |********* COLUMNS **********|
       \****************************/
-      columnRecruit: 'Recruit !',
+      columnRecruit: 'Hire !',
       columnUpgrade: 'Upgrade !',
       /****************************\
       |****** CREDITS PAGE ********|
@@ -133,12 +133,12 @@ var LangUtil = (function() {
       /****************************\
       |********* BUBBLES **********|
       \****************************/
-      resignSentences: ['By by amigo !', 'I go work for github !', 'Microsoft\'s job is better than here !'],
+      resignSentences: ['By by amigo !', 'I\'m going to work for github !', 'Microsoft\'s job is better than here !'],
       /****************************\
       |********* END GAME *********|
       \****************************/
-      endTitle: 'You finish the game !',
-      endContent: 'Yes in this game there are no winner/no looser every players learn ! We hope you have learn, how the old project method is borry ! If no, please replay. Else you can learn more on agile methods.',
+      endTitle: 'You\'ve ended the game !',
+      endContent: 'Yes in this game there is no winner/no loser every player learn ! We hope that you have learned how much is boring to hold a project with this method ! If it\'s not, please replay. Else you can learn more on agile methods.',
       endBack: 'Menu',
       endReplayButton: 'Play Again !',
       endAgileButton: 'Agile manifest'
@@ -159,9 +159,9 @@ var LangUtil = (function() {
       helpGame3: 'Lorsque tu poses une tâche sur un développeur, il se met au boulot.',
       helpGame4: 'Quand ton niveau le permet, tu peux engager un nouveau dev.',
       helpGame5: 'Et tu peux lui affecter de nouvelles tâches.',
-      helpGame6: 'Après un certains temps tu peux avoir un bonus',
-      helpGame7: 'Pour utiliser un bonus, clic dessus, dans le haut du jeu.',
-      helpGame8: 'Quand tu as trop de tâches, tu perd une vie.',
+      helpGame6: 'Après un certain temps tu peux avoir un bonus',
+      helpGame7: 'Pour utiliser un bonus, cliques dessus, dans le haut du jeu.',
+      helpGame8: 'Quand tu as trop de tâches, tu perds une vie.',
       helpGame9: 'A tout moment tes développeurs peuvent démissioner !',
 
       helpPageBack: 'Retour',
@@ -169,17 +169,17 @@ var LangUtil = (function() {
       |**** COMPATIBILITY PAGE ****|
       \****************************/
       compatibilityPageTitle: 'Compatibilité',
-      compatibilityPageNoCompatible: 'Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
-      compatibilityPageNoFullCompatible: 'Vous n\'êtes pas complètement compatible, mais vous pouvez jouer quand même !',
+      compatibilityPageNoCompatible: 'Nous sommes désolés mais votre navigateur ne vous permet pas de jouer ! S\'il te plaît mets le à jour ou changes en !',
+      compatibilityPageNoFullCompatible: 'Ton navigateur n\'est pas complètement compatible, mais tu peux jouer quand même !',
       compatibilityPageBack: 'Retour',
       compatibilityPageTryBack: 'Essayer quand même',
       compatibilityDdDescription: 'Tout le jeu est basé sur le Drag&Drop !',
       compatibilityCssTransitionDescription: 'Tout le jeu est basé sur les transitions css !',
-      compatibilityAjaxDescription: 'Vous ne pouvez pas joué avec votre compte github !',
-      compatibilityLocalStorageDescription: 'Vous ne pouvez pas sauvé votre token github !',
-      compatibilityMp3Description: 'Vous ne pouvez pas écouté le son au format mp3 !',
-      compatibilityWavDescription: 'Vous ne pouvez pas écouté le son au format wav !',
-      compatibilityOggDescription: 'Vous ne pouvez pas écouté le son au format ogg !',
+      compatibilityAjaxDescription: 'Tu ne peux pas jouer avec ton compte github !',
+      compatibilityLocalStorageDescription: 'Tu ne peux pas sauver ton token github !',
+      compatibilityMp3Description: 'Tu ne peux pas écouter le son au format mp3 !',
+      compatibilityWavDescription: 'Tu ne peux pas écouter le son au format wav !',
+      compatibilityOggDescription: 'Tu ne peux pas écouter le son au format ogg !',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
@@ -192,15 +192,15 @@ var LangUtil = (function() {
       githubPageToken: 'Token',
       githubPageHelp: 'Aide',
       githubPageRetainToken: 'Enregistrer mon token pour la prochaine fois',
-      githubPageNoAjax: 'Votre navigateur ne supporte pas ajax, vous ne pouvez pas vous connecter avec votre compte github !',
-      githubPageNoLocalStorage: 'Votre navigateur ne supporte pas le LocalStorage',
-      helpGithub1: 'Lorsque vous êtes connecté à github, allez dans les options de votre compte (en haut à droite).',
-      helpGithub2: 'Allez dans le menu des applications.',
-      helpGithub3: 'Clickez sur le button "create new token" (dans la section "personal access tokens").',
-      helpGithub4: 'Entrez un nom.',
-      helpGithub5: 'Copiez le token, et collez le dans notre app.',
+      githubPageNoAjax: 'Ton navigateur ne supporte pas Ajax, tu ne peux pas te connecter avec ton compte github !',
+      githubPageNoLocalStorage: 'Ton navigateur ne supporte pas le LocalStorage',
+      helpGithub1: 'Lorsque tu es connecté à github, vas dans les options de ton compte (en haut à droite).',
+      helpGithub2: 'Vas dans le menu des applications.',
+      helpGithub3: 'Cliques sur le button "create new token" (dans la section "personal access tokens").',
+      helpGithub4: 'Entres un nom.',
+      helpGithub5: 'Copies le token, et colles le dans notre app.',
       githubPageHaveToken: 'Ok j\'ai mon token',
-      githubPageNoAccount: 'J\'ai pas de compte github !',
+      githubPageNoAccount: 'Je n\'ai pas de compte github !',
       githubPageBack: 'Retour',
       /****************************\
       |******** HELP COMPO ********|
@@ -210,13 +210,13 @@ var LangUtil = (function() {
       /****************************\
       |**** CHOOSE BONUS POPUP ****|
       \****************************/
-      chooseBonusPopupTitle: 'Active un bonus !',
-      chooseBonusPopupBacklogCardsPP: 'Vous pouvez avoir 1 carte de plus dans vos tâches avant de mourir',
-      chooseBonusPopupEmptyBacklog: 'En cliquant vous videz vos tâches',
-      chooseBonusPopupCardTimeMM: 'Divise par 2 le temps de toutes les cartes en jeu (pas dans vos tâches)',
-      chooseBonusPopupNewDev: 'Active le 1er dev, non actif, dans votre équipe',
-      chooseBonusPopupNewTask: 'Active 1 tâche dans le 1er dev qui a une tâche non active',
-      chooseBonusPopupLifePP: 'Ajoute une nouvelle vie',
+      chooseBonusPopupTitle: 'Actives un bonus !',
+      chooseBonusPopupBacklogCardsPP: 'Tu peux avoir 1 carte de plus dans tes tâches avant de mourir',
+      chooseBonusPopupEmptyBacklog: 'En cliquant tu vides tes tâches',
+      chooseBonusPopupCardTimeMM: 'Divises par 2 le temps de toutes les cartes en jeu (pas dans tes tâches)',
+      chooseBonusPopupNewDev: 'Actives le 1er dev, non actif, dans ton équipe',
+      chooseBonusPopupNewTask: 'Actives 1 tâche dans le 1er dev qui a une tâche non active',
+      chooseBonusPopupLifePP: 'Ajoutes une nouvelle vie',
       /****************************\
       |******* PAUSE  POPUP *******|
       \****************************/
@@ -261,12 +261,12 @@ var LangUtil = (function() {
       /****************************\
       |********* BUBBLES **********|
       \****************************/
-      resignSentences: ['Trop de tâches, je démissione !', 'C\'est pas possible cette boite, ciao.', 'Je m\'en fou de tes tâches, je me barre !', 'Complètement null à chier ce job, je vais vori ailleurs'],
+      resignSentences: ['Trop de tâches, je démissione !', 'C\'est pas possible cette boite, ciao.', 'Je m\'en fou de tes tâches, je me barre !', 'Complètement nul à chier ce job, je vais voir ailleurs'],
       /****************************\
       |********* END GAME *********|
       \****************************/
       endTitle: 'Vous avez fini le jeu !',
-      endContent: 'Oui dans ce jeu il n\'y a ni gagnant, ni perdant : tous les joueurs apprennent ! Nous espérons que vous avez appris que gérer un projet de cette façon est très fastidieux et ennuyeux ! Si ce n\'est pas le cas, s\'il vous rejouer ! Sinon vous pouvez en apprendre plus sur les méthodes agiles.',
+      endContent: 'Oui dans ce jeu il n\'y a ni gagnant, ni perdant : tous les joueurs apprennent ! Nous espérons que vous avez appris que gérer un projet de cette façon est très fastidieux et ennuyeux ! Si ce n\'est pas le cas, n\'hésites pas à rejouer ! Sinon tu peux en apprendre plus sur les méthodes agiles.',
       endBack: 'Menu',
       endReplayButton: 'Rejouer !',
       endAgileButton: 'Manifeste agile'
