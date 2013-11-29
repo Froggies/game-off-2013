@@ -10,16 +10,16 @@ var AudioUtil = (function() {
   function buildAudioPlayer(name) {
     var a = document.createElement('audio');
     var s = document.createElement('source');
+    s.src = 'assets/audio/'+name+'.wav';
+    s.type = 'audio/wav';
+    a.appendChild(s);
+    s = document.createElement('source');
     s.src = 'assets/audio/'+name+'.mp3';
     s.type = 'audio/mpeg';
     a.appendChild(s);
     s = document.createElement('source');
     s.src = 'assets/audio/'+name+'.ogg';
     s.type = 'audio/ogg';
-    a.appendChild(s);
-    s = document.createElement('source');
-    s.src = 'assets/audio/'+name+'.wav';
-    s.type = 'audio/wav';
     a.appendChild(s);
     a.load();
     return a;
