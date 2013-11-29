@@ -44,6 +44,7 @@ var LangUtil = (function() {
       compatibilityPageTitle: 'Compatibility',
       compatibilityPageNoCompatible: 'TODO - translate : Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
       compatibilityPageBack: 'Back',
+      compatibilityPageTryBack: 'Try anyway',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
@@ -160,6 +161,7 @@ var LangUtil = (function() {
       compatibilityPageTitle: 'Compatibilité',
       compatibilityPageNoCompatible: 'Nous sommes désolé mais votre navigateur ne vous permet pas de jouer ! S\'il vous plait mettez le à jour où changez en !',
       compatibilityPageBack: 'Retour',
+      compatibilityPageTryBack: 'Essayer quand même',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/

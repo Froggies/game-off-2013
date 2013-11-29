@@ -4,29 +4,41 @@ var CompatibilityUtil = (function() {
 
   //from http://diveintohtml5.info/everything.html
   function hasDragAndDrop() {
-    return 'draggable' in document.createElement('span');
+    try {
+      return 'draggable' in document.createElement('span');
+    } catch(e) {
+      return false;
+    }
   }
 
   //from http://stackoverflow.com/questions/7264899/detect-css-transitions-using-javascript-and-without-modernizr
   function hasCssTransition() {
-    var b = document.body || document.documentElement;
-    var s = b.style;
-    var p = 'transition';
-    if(typeof s[p] === 'string') {return true; }
+    try {
+      var b = document.body || document.documentElement;
+      var s = b.style;
+      var p = 'transition';
+      if(typeof s[p] === 'string') {return true; }
 
-    // Tests for vendor specific prop
-    var v = ['Moz', 'Webkit', 'Khtml', 'O', 'ms'];
-    p = p.charAt(0).toUpperCase() + p.substr(1);
-    for(var i=0; i<v.length; i++) {
-      if(typeof s[v[i] + p] === 'string') { return true; }
+      // Tests for vendor specific prop
+      var v = ['Moz', 'Webkit', 'Khtml', 'O', 'ms'];
+      p = p.charAt(0).toUpperCase() + p.substr(1);
+      for(var i=0; i<v.length; i++) {
+        if(typeof s[v[i] + p] === 'string') { return true; }
+      }
+    } catch(e) {
+      return false;
     }
     return false;
   }
 
   //from http://diveintohtml5.info/everything.html
   function hasAjaxRequest() {
-    if(window.XMLHttpRequest) {
-      return 'withCredentials' in new XMLHttpRequest();
+    try {
+      if(window.XMLHttpRequest) {
+        return 'withCredentials' in new XMLHttpRequest();
+      }
+    } catch(e) {
+      return false;
     }
     return false;
   }
@@ -42,23 +54,35 @@ var CompatibilityUtil = (function() {
 
   //from http://diveintohtml5.info/everything.html
   function hasAudioMp3() {
-    var a = document.createElement('audio');
-    return !!a.canPlayType &&
-      !!(a.canPlayType('audio/mpeg;').replace(/no/, ''));
+    try {
+      var a = document.createElement('audio');
+      return !!a.canPlayType &&
+        !!(a.canPlayType('audio/mpeg;').replace(/no/, ''));
+    } catch(e) {
+      return false;
+    }
   }
 
   //from http://diveintohtml5.info/everything.html
   function hasAudioWav() {
-    var a = document.createElement('audio');
-    return !!a.canPlayType &&
-      !!(a.canPlayType('audio/wav; codecs="1"').replace(/no/, ''));
+    try {
+      var a = document.createElement('audio');
+      return !!a.canPlayType &&
+        !!(a.canPlayType('audio/wav; codecs="1"').replace(/no/, ''));
+    } catch(e) {
+      return false;
+    }
   }
 
   //from http://diveintohtml5.info/everything.html
   function hasAudioOgg() {
-    var a = document.createElement('audio');
-    return !!a.canPlayType &&
-      !!(a.canPlayType('audio/ogg; codecs="vorbis"').replace(/no/, ''));
+    try {
+      var a = document.createElement('audio');
+      return !!a.canPlayType &&
+        !!(a.canPlayType('audio/ogg; codecs="vorbis"').replace(/no/, ''));
+    } catch(e) {
+      return false;
+    }
   }
 
   return {

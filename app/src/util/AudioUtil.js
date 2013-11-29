@@ -26,7 +26,7 @@ var AudioUtil = (function() {
   }
 
   function startSong(player, loop, optSuffixe) {
-    if(isEnable === true) {
+    if(isEnable === true && AudioUtil.canBeEnable() === true) {
       var name = player;
       if(optSuffixe !== undefined) {
         name = name + optSuffixe;
@@ -58,14 +58,13 @@ var AudioUtil = (function() {
     });
   }
 
-  //load all songs (in songs array on top of this class) at start 
-  loadAllSongs();
-
   return {
 
     disable: function() {
-      for(var key in audioPlayers) {
-        audioPlayers[key].pause();
+      if(AudioUtil.canBeEnable() === true) {
+        for(var key in audioPlayers) {
+          audioPlayers[key].pause();
+        }
       }
       isEnable = false;
     },
@@ -134,6 +133,9 @@ var AudioUtil = (function() {
     },
     inGameStop: function() {
       stopSong('inGame');
+    },
+    loadAllSongs: function() {
+      loadAllSongs();
     }
 
   };

@@ -22,6 +22,8 @@ window.onload = function() {
   ViewUtil.addClassName(audioManager, 'audio');
   if(AudioUtil.canBeEnable() === true) {
     ViewUtil.addClassName(audioManager, 'active');
+    //load all songs (in songs array on top of this class) at start 
+    AudioUtil.loadAllSongs();
   } else {
     AudioUtil.disable();
   }

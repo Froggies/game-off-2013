@@ -250,8 +250,12 @@ var PageView = (function() {
     ].join('');
 
     var footer = this.container.getElementsByTagName('footer')[0];
+    var buttonText = LangUtil.get('compatibilityPageBack');
+    if(CompatibilityUtil.isCompatible() === false) {
+      buttonText = LangUtil.get('compatibilityPageTryBack');
+    }
     var compatibilityPageBack = ViewUtil.buildButton(
-      LangUtil.get('compatibilityPageBack'), '',
+      buttonText, '',
       this.controller.showFirstPage, this.controller
     );
     footer.appendChild(compatibilityPageBack);
