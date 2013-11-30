@@ -1,9 +1,15 @@
 var LangUtil = (function() {
 
   'use strict';
-
-  var currentLang = navigator.language.substring(0,2);
-  var potentialLang = window.location.hash.substring(1);
+  var currentLang, potentialLang;
+  try {
+    currentLang = navigator.language.substring(0,2);
+    potentialLang = window.location.hash.substring(1);
+  } catch(e) {
+    currentLang = 'en';
+    potentialLang = 'en';
+  }
+  
   if(potentialLang === 'en') {
     currentLang = 'en';
   } else if(potentialLang === 'fr') {
