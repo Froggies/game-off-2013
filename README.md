@@ -92,6 +92,7 @@ All tests was made with [saucelabs](https://saucelabs.com) !
 | Opera = 9                  | *ko*          | *ko*           | *ko*           | No!      |
 | Opera = 10                 | *ko*          | **OK**         | *ko*           | No!      |
 | Opera = 11                 | *ko*          | **OK**         | **OK**         | No!      |
+| Opera = 12                 | **OK**        | **OK**         | **OK**         | **Sure!**|
 | Safari = 5                 | **OK**        | **OK**         | **OK**         | **Sure!**|
 
 #### OPTIONAL
@@ -107,6 +108,7 @@ All tests was made with [saucelabs](https://saucelabs.com) !
 | Opera = 9                  | *ko* | *ko*          | *ko ko ko*          | **OK**             |
 | Opera = 10                 | *ko* | **OK**        | *ko* **OK OK**      | **OK**             |
 | Opera = 11                 | *ko* | **OK**        | *ko* **OK OK**      | **OK**             |
+| Opera = 12                 |**OK**| **OK**        | *ko* **OK OK**      | **OK**             |
 | Safari = 5                 |**OK**| **OK**        | *ko* **OK OK**      | **OK**             |
 
 #### SCREENSHOT
@@ -120,4 +122,5 @@ All tests was made with [saucelabs](https://saucelabs.com) !
 * [Opera = 9](https://raw.github.com/Froggies/game-off-2013/master/screenshots/o9.png)
 * [Opera = 10](https://raw.github.com/Froggies/game-off-2013/master/screenshots/o10.png)
 * [Opera = 11](https://raw.github.com/Froggies/game-off-2013/master/screenshots/o11.png)
+* [Opera = 12](https://raw.github.com/Froggies/game-off-2013/master/screenshots/o12.png)
 * [Safari = 5](https://raw.github.com/Froggies/game-off-2013/master/screenshots/s5.png)
