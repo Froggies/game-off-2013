@@ -54,11 +54,13 @@ var LangUtil = (function() {
       compatibilityPageTryBack: 'Try anyway',
       compatibilityDdDescription: 'All the game is based on this system !',
       compatibilityCssTransitionDescription: 'All the game is based on this system !',
+      compatibilityClassListDescription: 'All the game is based on this system !',
       compatibilityAjaxDescription: 'You can\'t play with your github account !',
       compatibilityLocalStorageDescription: 'You can\'t store your github token',
       compatibilityMp3Description: 'You can\'t play mp3 songs !',
       compatibilityWavDescription: 'You can\'t play wav songs !',
       compatibilityOggDescription: 'You can\'t play ogg songs !',
+      compatibilityNavigatorLanguageDescription: 'Game can\'t select your language !',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/
@@ -180,12 +182,14 @@ var LangUtil = (function() {
       compatibilityPageBack: 'Retour',
       compatibilityPageTryBack: 'Essayer quand même',
       compatibilityDdDescription: 'Tout le jeu est basé sur le Drag&Drop !',
+      compatibilityClassListDescription: 'Tout le jeu est basé sur les listes de class !',
       compatibilityCssTransitionDescription: 'Tout le jeu est basé sur les transitions css !',
       compatibilityAjaxDescription: 'Tu ne peux pas jouer avec ton compte github !',
       compatibilityLocalStorageDescription: 'Tu ne peux pas sauver ton token github !',
       compatibilityMp3Description: 'Tu ne peux pas écouter le son au format mp3 !',
       compatibilityWavDescription: 'Tu ne peux pas écouter le son au format wav !',
       compatibilityOggDescription: 'Tu ne peux pas écouter le son au format ogg !',
+      compatibilityNavigatorLanguageDescription: 'Le jeu ne peut pas sélectionner ta langue !',
       /****************************\
       |***** CHOOSE USER PAGE *****|
       \****************************/

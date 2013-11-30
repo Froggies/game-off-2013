@@ -7,6 +7,7 @@ var dependencies = [
   'controller/UserController', 'view/UserView',
   'controller/BonusController', 'view/BonusView',
   'util/ClickUtil', 'util/GameUtil', 'util/LangUtil',
+  'util/CompatibilityUtil',
   'controller/HeaderController', 'view/HeaderView'
 ];
 

@@ -85,6 +85,24 @@ var CompatibilityUtil = (function() {
     }
   }
 
+  function hasNavigatorLanguage() {
+    try {
+      navigator.language.substring(0,2);
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
+
+  function hasClassList() {
+    try {
+      var element = document.createElement('span');
+      return 'classList' in element && 'add' in element.classList;
+    } catch(e) {
+      return false;
+    }
+  }
+
   var _hasDragAndDrop = hasDragAndDrop();
   var _hasCssTransition = hasCssTransition();
   var _hasAjaxRequest = hasAjaxRequest();
@@ -92,19 +110,24 @@ var CompatibilityUtil = (function() {
   var _hasAudioMp3 = hasAudioMp3();
   var _hasAudioWav = hasAudioWav();
   var _hasAudioOgg = hasAudioOgg();
+  var _hasNavigatorLanguage = hasNavigatorLanguage();
+  var _hasClassList = hasClassList();
 
   return {
 
     isCompatible: function() {
       return _hasDragAndDrop && 
         _hasCssTransition && 
+        _hasClassList &&
         (_hasAudioMp3 || _hasAudioWav || _hasAudioOgg);
     },
     isFullCompatible: function() {
       return _hasDragAndDrop && 
         _hasCssTransition && 
+        _hasClassList &&
         _hasAjaxRequest && 
         _hasLocalStorage &&
+        _hasNavigatorLanguage &&
         (_hasAudioMp3 && _hasAudioWav && _hasAudioOgg);
     },
     nbItemCompatible: function() {
@@ -116,10 +139,12 @@ var CompatibilityUtil = (function() {
       nb = nb + ((_hasAudioMp3 === true) ? 1 : 0);
       nb = nb + ((_hasAudioWav === true) ? 1 : 0);
       nb = nb + ((_hasAudioOgg === true) ? 1 : 0);
+      nb = nb + ((_hasClassList === true) ? 1 : 0);
+      nb = nb + ((_hasNavigatorLanguage === true) ? 1 : 0);
       return nb;
     },
     nbItem: function() {
-      return 7;
+      return 9;
     },
     hasDragAndDrop: function() {
       return _hasDragAndDrop;
@@ -141,6 +166,12 @@ var CompatibilityUtil = (function() {
     },
     hasAudioOgg: function() {
       return _hasAudioOgg;
+    },
+    hasClassList: function() {
+      return _hasClassList;
+    },
+    hasNavigatorLanguage: function() {
+      return _hasNavigatorLanguage;
     }
 
   };

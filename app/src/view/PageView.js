@@ -248,11 +248,13 @@ var PageView = (function() {
       '<div class="content">', noCompatible, '<ul>',
       buildCompatibility('Drag & Drop', CompatibilityUtil.hasDragAndDrop(), LangUtil.get('compatibilityDdDescription')),
       buildCompatibility('Css transition', CompatibilityUtil.hasCssTransition(), LangUtil.get('compatibilityCssTransitionDescription')),
+      buildCompatibility('Css class list', CompatibilityUtil.hasClassList(), LangUtil.get('compatibilityClassListDescription')),
       buildCompatibility('Ajax request', CompatibilityUtil.hasAjaxRequest(), LangUtil.get('compatibilityAjaxDescription')),
       buildCompatibility('Local storage', CompatibilityUtil.hasLocalStorage(), LangUtil.get('compatibilityLocalStorageDescription')),
       buildCompatibility('Audio mp3', CompatibilityUtil.hasAudioMp3(), LangUtil.get('compatibilityMp3Description')),
       buildCompatibility('Audio wav', CompatibilityUtil.hasAudioWav(), LangUtil.get('compatibilityWavDescription')),
       buildCompatibility('Audio ogg', CompatibilityUtil.hasAudioOgg(), LangUtil.get('compatibilityOggDescription')),
+      buildCompatibility('Navigator language', CompatibilityUtil.hasNavigatorLanguage(), LangUtil.get('compatibilityNavigatorLanguageDescription')),
       '</ul></div><footer class="footer"></footer>'
     ].join('');
 

@@ -9,13 +9,24 @@ var ViewUtil = (function() {
   return {
 
     addClassName: function(element, className) {
-      element.classList.add(className);
+      if(CompatibilityUtil.hasClassList() === true) {
+        element.classList.add(className);
+      } else {
+        element.className = element.className + ' ' + className;
+      }
     },
     removeClassName: function(element, className) {
-      element.classList.remove(className);
+      if(CompatibilityUtil.hasClassList() === true) {
+        element.classList.remove(className);
+      }
+      //no need else because game doens't start
     },
     hasClassName: function(element, className) {
-      return element.classList.contains(className);
+      if(CompatibilityUtil.hasClassList() === true) {
+        return element.classList.contains(className);
+      }
+      //no need else because game doens't start
+      return false;
     },
     buildContainer: function(className) {
       var div = buildElement('div');
