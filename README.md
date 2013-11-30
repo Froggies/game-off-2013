@@ -1,6 +1,14 @@
 ## Panic Backlog [![Build Status](https://travis-ci.org/Froggies/game-off-2013.png?branch=master)](https://travis-ci.org/Froggies/game-off-2013) [![devDependency Status](https://david-dm.org/froggies/game-off-2013/dev-status.png)](https://david-dm.org/froggies/game-off-2013#info=devDependencies)
 
-[Play the game !](http://froggies.github.io/game-off-2013/)
+* [Play the game !](http://froggies.github.io/game-off-2013/)
+* [Game's philosophy](#games-philosophy)
+* [Technos](#technos)
+* [Artwork](#artwork)
+* [Tools](#tools)
+* [Web tools](#web-tools)
+* [Installation](#installation)
+* [Team](#team)
+* [Compatibility](#compatibility)
 
 ### GAME's PHILOSOPHY
 
