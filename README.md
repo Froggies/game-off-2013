@@ -78,33 +78,33 @@ All tests was made with [saucelabs](https://saucelabs.com) !
 
 #### REQUIRED
 
-| Browser (Screenshot below) | Drag And Drop | Css Transition | Css Class list |
-| -------------------------- |:-------------:|:--------------:|:--------------:|
-| Chrome >= 26               | `OK`          | `OK`           | `OK`           |
-| Firefox >= 6               | `OK`          | `OK`           | `OK`           |
-| Internet Explorer = 6      | KO            | KO             | KO             |
-| Internet Explorer = 8      | KO            | KO             | KO             |
-| Internet Explorer = 9      | KO            | KO             | KO             |
-| Internet Explorer = 10     | `OK`          | `OK`           | `OK`           |
-| Opera = 9                  | KO            | KO             | KO             |
-| Opera = 10                 | KO            | `OK`           | KO             |
-| Opera = 11                 | KO            | `OK`           | `OK`           |
-| Safari = 5                 | `OK`          | `OK`           | `OK`           |
+| Browser (Screenshot below) | Drag And Drop | Css Transition | Css Class list | Playable |
+| -------------------------- |:-------------:|:--------------:|:--------------:|:--------:|
+| Chrome >= 26               | **OK**        | **OK**         | **OK**         | **Sure!**|
+| Firefox >= 6               | **OK**        | **OK**         | **OK**         | **Sure!**|
+| Internet Explorer = 6      | *ko*          | *ko*           | *ko*           | No!      |
+| Internet Explorer = 8      | *ko*          | *ko*           | *ko*           | No!      |
+| Internet Explorer = 9      | *ko*          | *ko*           | *ko*           | No!      |
+| Internet Explorer = 10     | **OK**        | **OK**         | **OK**         | No! WTF? |
+| Opera = 9                  | *ko*          | *ko*           | *ko*           | No!      |
+| Opera = 10                 | *ko*          | **OK**         | *ko*           | No!      |
+| Opera = 11                 | *ko*          | **OK**         | **OK**         | No!      |
+| Safari = 5                 | **OK**        | **OK**         | **OK**         | **Sure!**|
 
 #### OPTIONAL
 
 | Browser (Screenshot below) | Ajax | Local Storage | Audio (mp3 wav ogg) | Navigator language |
 | -------------------------- |:----:|:-------------:|:-------------------:|:------------------:|
-| Chrome >= 26               | `OK` | `OK`          | `OK` `OK` `OK`      | `OK`               |
-| Firefox >= 6               | `OK` | `OK`          | KO `OK` `OK`        | `OK`               |
-| Internet Explorer = 6      | KO   | KO            | KO KO KO            | KO                 |
-| Internet Explorer = 8      | KO   | `OK`          | KO KO KO            | KO                 |
-| Internet Explorer = 9      | KO   | `OK`          | KO KO KO            | KO                 |
-| Internet Explorer = 10     | `OK` | `OK`          | `OK` KO KO          | KO                 |
-| Opera = 9                  | KO   | KO            | KO KO KO            | `OK`               |
-| Opera = 10                 | KO   | `OK`          | KO `OK` `OK`        | `OK`               |
-| Opera = 11                 | KO   | `OK`          | KO `OK` `OK`        | `OK`               |
-| Safari = 5                 | `OK` | `OK`          | KO `OK` `OK`        | `OK`               |
+| Chrome >= 26               |**OK**| **OK**        | **OK OK OK**        | **OK**             |
+| Firefox >= 6               |**OK**| **OK**        | *ko* **OK OK**      | **OK**             |
+| Internet Explorer = 6      | *ko* | *ko*          | *ko ko ko*          | *ko*               |
+| Internet Explorer = 8      | *ko* | **OK**        | *ko ko ko*          | *ko*               |
+| Internet Explorer = 9      | *ko* | **OK**        | *ko ko ko*          | *ko*               |
+| Internet Explorer = 10     |**OK**| **OK**        | **OK** *ko ko*      | *ko*               |
+| Opera = 9                  | *ko* | *ko*          | *ko ko ko*          | **OK**             |
+| Opera = 10                 | *ko* | **OK**        | *ko* **OK OK**      | **OK**             |
+| Opera = 11                 | *ko* | **OK**        | *ko* **OK OK**      | **OK**             |
+| Safari = 5                 |**OK**| **OK**        | *ko* **OK OK**      | **OK**             |
 
 #### SCREENSHOT
 
